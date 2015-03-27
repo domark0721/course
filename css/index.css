@@ -1,0 +1,52 @@
+body{
+	padding: 0px;
+	margin: 0px;
+	font-family: 'Roboto', sans-serif;
+	background-color:  #ededed;
+}
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+li {
+	margin: 0;
+	padding: 0;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+ 
+html[xmlns] .clearfix {
+    display: block;
+}
+ 
+* html .clearfix {
+    height: 1%;
+}
+.headerBar{
+	background-color: #13658C;
+	margin: 0px;
+	height: 40px;
+}
+
+#headerBar-nav{
+	list-style: none;
+	display: inline;
+	float: right;
+
+}
+
+#headerBar-nav li{
+	font-size: 20px;
+	color: #fff;
+	padding: 10px 10px 0px 10px;
+	display: inline-block;
+	list-style: none;
+}

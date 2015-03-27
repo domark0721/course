@@ -1,3 +1,15 @@
 <?php
-    echo "Hi";
+
 ?>
+<!doctype html>
+<html>
+	<head>
+		<?php require("css_com.php") ?>
+		<link type="text/css" rel="stylesheet" href="css/index.css">
+		<title>NUCourse</title>
+	</head>
+	<body>
+		<?php require("header.php") ?>
+
+	</body>
+</html>
