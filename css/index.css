@@ -12,7 +12,7 @@
 }
 
 #searchControl{
-	padding: 210px 0px 150px 0px;
+	padding: 240px 0px 180px 0px;
 }
 
 #searchForm{
@@ -22,17 +22,19 @@
 	height: 42px;
 	width: 380px;
 	border:0px;
-	border-radius: 13px;
+	border-radius: 5px;
 	font-size: 20px;
 }
 
 .searchbtn{
 	margin-left: 5px;
-	padding: 0px 10px;
-	height: 42px;
+	padding: 0px 20px;
+	height: 43px;
 	font-size:20px;
 	border: 0px;
 	border-radius: 10px;
+	background-color: #AD3232;
+	color: #fff;
 }
 
 #section-hotcourse-wrap{
@@ -42,5 +44,33 @@
 	font-size: 25px;
 	text-align: center;
 	margin: 15px 0px;
-	padding: 10px 5px;
+	padding-top: 20px;
+}
+.courseItem{
+	display: inline-block;
+	width: 33%;
+	box-sizing: border-box;
+	overflow: hidden;
+	padding: 8px;
+}
+
+.courseImg img{
+	width:100%;
+	border-radius: 2px;
+}
+
+.courseName{
+	font-size: 20px;
+	color: #42996E;
+}
+
+#section-footer{
+	background-color: #C5BFBF;
+	margin-top: 50px;
+}
+
+#footerLabel{
+	text-align: center;
+	padding: 50px;
+	color: #fff;
 }

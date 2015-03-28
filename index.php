@@ -15,7 +15,7 @@
 				<div id="searchControl">
 					<form id="searchForm"method="GET" action="">
 						<input id="inputCourse" type="text" placeholder="您想要學習什麼課程？">
-						<button class="searchbtn">搜尋</button>
+						<input class="searchbtn" type="submit" value="搜尋">
 					</form>
 				</div>
 			</div>
@@ -23,12 +23,48 @@
 		<div id="section-hotcourse">
 			<div class="content-wrap">
 				<div class="indexLabel">熱門課程</div>
-					<div id="classlist-container">
-						<ul>
-							<li></li>
+					<div id="courselist-container">
+						<ul id="courselist">
+							<li class="courseItem">
+								<div class="courseCard">
+									<div class="courseImg"><img src="img/Big-Data.png"></div>
+									<div class="courseName"><i class="fa fa-book"></i> 數位邏輯</div>
+								</div>
+							</li>
+							<li class="courseItem">
+								<div class="courseCard">
+									<div class="courseImg"><img src="img/Big-Data.png"></div>
+									<div class="courseName"><i class="fa fa-book"></i> 數位邏輯</div>
+								</div>
+							</li>
+							<li class="courseItem">
+								<div class="courseCard">
+									<div class="courseImg"><img src="img/Big-Data.png"></div>
+									<div class="courseName"><i class="fa fa-book"></i> 數位邏輯</div>
+								</div>
+							</li>	
+							<li class="courseItem">
+								<div class="courseCard">
+									<div class="courseImg"><img src="img/Big-Data.png"></div>
+									<div class="courseName"><i class="fa fa-book"></i> 數位邏輯</div>
+								</div>
+							</li>
+							<li class="courseItem">
+								<div class="courseCard">
+									<div class="courseImg"><img src="img/Big-Data.png"></div>
+									<div class="courseName"><i class="fa fa-book"></i> 數位邏輯</div>
+								</div>
+							</li>
+							<li class="courseItem">
+								<div class="courseCard">
+									<div class="courseImg"><img src="img/Big-Data.png"></div>
+									<div class="courseName"><i class="fa fa-book"></i> 數位邏輯</div>
+								</div>
+							</li>
 						</ul>
 					</div>
 			</div>
 		</div>
+		<?php require("footer.php") ?>
 	</body>
 </html>
