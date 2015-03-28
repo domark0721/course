@@ -1,23 +1,46 @@
-#section-search-wrap{
-	max-width:1200px; 
+.content-wrap{
+	max-width: 1200px; 
 	width:90%;
 	margin: 0 auto;
 }
 
-#searchControl{
-	text-align: center;
-	margin: 50px 0px 0px 0px;
+#section-search {
+	background-image: url("../img/index-background.jpg");
+	background-size: cover;
+	background-position: 50% 65%;
+	width: 100%;
 }
 
+#searchControl{
+	padding: 210px 0px 150px 0px;
+}
+
+#searchForm{
+}
 #inputCourse{
-	padding: 0px 10px;
+	padding: 0px 16px;
 	height: 42px;
 	width: 380px;
 	border:0px;
+	border-radius: 13px;
 	font-size: 20px;
 }
 
 .searchbtn{
+	margin-left: 5px;
+	padding: 0px 10px;
 	height: 42px;
 	font-size:20px;
+	border: 0px;
+	border-radius: 10px;
+}
+
+#section-hotcourse-wrap{
+}
+
+.indexLabel{
+	font-size: 25px;
+	text-align: center;
+	margin: 15px 0px;
+	padding: 10px 5px;
 }
