@@ -1,52 +1,23 @@
-body{
-	padding: 0px;
-	margin: 0px;
-	font-family: 'Roboto', sans-serif;
-	background-color:  #ededed;
-}
-ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-li {
-	margin: 0;
-	padding: 0;
+#section-search-wrap{
+	max-width:1200px; 
+	width:90%;
+	margin: 0 auto;
 }
 
-.clearfix:after {
-    content: ".";
-    display: block;
-    clear: both;
-    visibility: hidden;
-    line-height: 0;
-    height: 0;
-}
- 
-html[xmlns] .clearfix {
-    display: block;
-}
- 
-* html .clearfix {
-    height: 1%;
-}
-.headerBar{
-	background-color: #13658C;
-	margin: 0px;
-	height: 40px;
+#searchControl{
+	text-align: center;
+	margin: 50px 0px 0px 0px;
 }
 
-#headerBar-nav{
-	list-style: none;
-	display: inline;
-	float: right;
-
-}
-
-#headerBar-nav li{
+#inputCourse{
+	padding: 0px 10px;
+	height: 42px;
+	width: 380px;
+	border:0px;
 	font-size: 20px;
-	color: #fff;
-	padding: 10px 10px 0px 10px;
-	display: inline-block;
-	list-style: none;
+}
+
+.searchbtn{
+	height: 42px;
+	font-size:20px;
 }
