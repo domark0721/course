@@ -1,0 +1,52 @@
+.formCard{
+	max-width: 480px; 
+	margin: 5em auto;
+	padding: 20px 5px;
+	width:90%;
+	background-color: #fff;
+	box-sizing: border-box;
+}
+.loginLabel{
+	font-size: 25px;
+}
+
+.stackForm{
+	text-align: center;
+	margin-top: 2em;
+}
+
+.stackForm input{
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 5px; 
+	box-sizing: border-box;
+	font-size: 1.2em;
+	padding: 5px 5px;
+	margin-bottom: 2em;
+}
+
+.stackForm label{
+	display: inline-block;
+	text-align: left;
+	font-size: 20px;
+	padding: 10px;
+	width: 18%;
+}
+
+.submitBtn{
+	font-size: 20px;
+	padding:8px 20px;
+	color: #fff;
+	border: 0px;
+	border-radius: 5px;
+	background-color: #209AB6;
+}
+.registerBtn{
+	font-size: 20px;
+	padding:8px 20px;
+	color: #fff;
+	border: 0px;
+	border-radius: 5px;
+	background-color: #B62031;
+}
+

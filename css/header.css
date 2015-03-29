@@ -45,12 +45,14 @@ html[xmlns] .clearfix {
 
 #headerLogo{
 	float:left;
-	color: #838383;
 	font-size: 38px;
 	display: inline;
 	margin-top: 10px;
 }
-
+#headerLogo a{
+	color: #838383;
+	text-decoration: none;
+}
 #headerBar-nav{
 	float: right;
 	list-style: none;
@@ -66,17 +68,13 @@ html[xmlns] .clearfix {
 	list-style: none;
 }
 
-#headerBar-other:hover{
-	color: #000;
-	/*background-color: rgba(0,0,0,.1);*/
-	transition:all 0.3s ease;
+.headerBar-item a{
+	color: rgba(0,0,0,.65);
+	text-decoration: none;
 }
 
-#headerBar-user{
-	/*background-color: rgba(192,72,36,.5);*/
-}
-#headerBar-user:hover{
-	/*background-color: rgba(192,72,36,.8);*/
+
+.headerBar-item a:hover{
 	color: rgba(0,0,0,1);
 	transition:all 0.3s ease;
 }
