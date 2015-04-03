@@ -11,7 +11,7 @@
 	</head>
 	<body>
 		<?php require("header.php") ?>
-		<main class="main-wrapper clearfix">
+		<div class="content-wrap">
 			<div class="formCard">
 					<form class="stackForm" action="" method="POST" >
 						<label for="username">新帳號</label>
@@ -23,7 +23,7 @@
 						<button class="registerBtn" type="submit" >註冊</button>
 					</form>
 			</div>
+		</div>
 			<?php require("footer.php") ?>
-		</main>
 	</body>
 </html>

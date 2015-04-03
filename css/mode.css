@@ -1,0 +1,89 @@
+.userControl {
+	margin: 20px 0 0 -6px;
+}
+
+
+.userControl li {
+	display: inline-block;
+	margin-right: 10px;
+	font-size: 20px;
+	padding: 4px 6px;
+	border-bottom: 3px solid transparent;
+	transition: 0.3s;
+	cursor: pointer;
+}
+
+.userControl .active , .userControl li:hover {
+	border-bottom: 3px solid #AD3232;
+}
+
+#courseList {
+	margin-top: 20px;
+}
+
+.courseItem {
+	position: relative;
+	border: 1px solid;
+	width: 70%;
+	background-color: #fff;
+	border: 0px solid #EDEDED;
+	margin-bottom: 15px;
+}
+
+.itemLeft {
+	float:left;
+	width: 33%;
+}
+
+.itemLeft img {
+	width: 100%;
+	border-radius: 2px;
+	display: block;
+}
+.item-course-info{
+	margin-left: 35%;
+	padding-top: 31px;
+}
+.item-course-name {
+	font-size: 18px;
+}
+
+.item-course-teacher {
+	font-size: 15px;
+}
+
+.item-course-status {
+	margin-top: 30px;
+}
+
+.item-course-status-container {
+	width: 60%;
+	height: 6px;
+	background-color: #E8E5E5;
+	position: relative;
+	display: inline-block;
+	border-radius: 6px;
+	margin-right: 5px;
+}
+
+.status {
+	background-color: #3238AD;
+	height: 6px;
+	width: 0%;
+	border-radius: 6px;
+}
+
+.itemRight a {
+	text-decoration: none;
+	background-color: #AD3232;
+	font-size: 18px;
+	color: #fff;
+	padding: 6px 15px;
+	border-radius: 2px;
+}
+
+.itemRight {
+	position: absolute;
+	top: 45px;
+	right: 5%;
+}

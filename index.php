@@ -20,8 +20,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="section-hotcourse">
-			<div class="content-wrap">
+			<div id="section-hotcourse" class="content-wrap">
 				<div class="indexLabel">熱門課程</div>
 					<div id="courselist-container">
 						<ul id="courselist">
@@ -64,7 +63,6 @@
 						</ul>
 					</div>
 			</div>
-		</div>
 		<div>
 		<?php require("footer.php") ?>
 	</body>
