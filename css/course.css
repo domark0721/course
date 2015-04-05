@@ -1,0 +1,95 @@
+#courseBar {
+	/*margin-top: 15px;*/
+	width: 100%;
+	background-color: #fff;
+}
+
+#courseBarPosition {
+	position: relative;
+	padding: 10px 0;
+}
+
+#coursePic img {
+	width: 100%;
+	display: block;
+  	min-height: 78px;
+  	min-width: 150px;	
+}
+
+#coursePic {
+	display: inline-block;
+	float: left;
+	width: 15%;
+}
+
+#courseInfo{
+	/*padding-top: 2px;*/
+	float: left;
+	width: 15%;
+}
+
+#courseName {
+	padding-top: 5px;
+	margin-left: 16%;
+	font-size: 35px;
+}
+
+#courseTeacher {
+	margin-left: 16%;
+	font-size: 20px;
+}
+
+.courseControl{
+	position: absolute;
+	width: 45%;
+	float: left;
+	left: 40%;
+	top: 33%;
+}
+
+.courseControl li {
+	display: inline-block;
+	margin-right: 10px;
+	font-size: 20px;
+	padding: 4px 6px;
+	border-bottom: 3px solid transparent;
+	transition: 0.3s;
+	cursor: pointer;
+}
+
+.courseControl .active , .courseControl li:hover {
+	border-bottom: 3px solid #5BAE01;
+}
+
+.announce-wrap {
+	max-width: 960px; 
+	width: 90%;
+	margin: 0 auto;
+}
+
+.announceItem {
+	position: relative;
+	margin-top: 20px;
+	background-color: #fff;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+.announceTitle {
+	font-size: 20px;
+	padding: 6px 12px;
+	display: inline-block;
+	color: #3238AD;
+}
+
+.announceDate {
+  	position: absolute;	
+	display: inline-block;
+	right: 2px;
+	padding: 10px 15px 5px 12px;
+}
+
+.announceContent{
+	padding: 6px 12px 6px 36px;
+	font-size: 16px;
+}

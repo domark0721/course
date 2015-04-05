@@ -5,13 +5,15 @@
 <html>
 	<head>
 		<?php require("css_com.php") ?>
-		<link type="text/css" rel="stylesheet" href="css/mode.css">
+		<link type="text/css" rel="stylesheet" href="css/stmode.css">
+		<link type="text/css" rel="stylesheet" href="css/temode.css">
 		<title>NUCourse</title>
 	</head>
 
 	<body>
 		<?php require("header.php") ?>
 		<div class="content-wrap">
+			<div id="role">蔡馬克  老師您好！</div>
 			<div class="userControl">
 				<ul>
 					<li>我的授課</li>
@@ -23,7 +25,7 @@
 				<div class="courseItem clearfix">
 					<div class="itemLeft"><img src="img/user-course.jpg"></div>
 					<div class="item-course-info"> 
-						<div class="item-course-name">數位邏輯</div>
+						<div class="item-course-name">資料結構</div>
 						<div class="item-course-teacher">授課老師：Amy Wang</div>
 						<div class="item-course-status">
 							<div class="item-course-status-container">
@@ -37,7 +39,7 @@
 				<div class="courseItem clearfix">
 					<div class="itemLeft"><img src="img/user-course.jpg"></div>
 					<div class="item-course-info"> 
-						<div class="item-course-name">數位邏輯</div>
+						<div class="item-course-name">資料結構</div>
 						<div class="item-course-teacher">授課老師：Amy Wang</div>
 						<div class="item-course-status">
 							<div class="item-course-status-container">
@@ -51,7 +53,7 @@
 				<div class="courseItem clearfix">
 					<div class="itemLeft"><img src="img/user-course.jpg"></div>
 					<div class="item-course-info"> 
-						<div class="item-course-name">數位邏輯</div>
+						<div class="item-course-name">資料結構</div>
 						<div class="item-course-teacher">授課老師：Amy Wang</div>
 						<div class="item-course-status">
 							<div class="item-course-status-container">
@@ -65,7 +67,7 @@
 				<div class="courseItem clearfix">
 					<div class="itemLeft"><img src="img/user-course.jpg"></div>
 					<div class="item-course-info"> 
-						<div class="item-course-name">數位邏輯</div>
+						<div class="item-course-name">資料結構</div>
 						<div class="item-course-teacher">授課老師：Amy Wang</div>
 						<div class="item-course-status">
 							<div class="item-course-status-container">

@@ -27,37 +27,37 @@
 							<li class="courseItem">
 								<div class="courseCard">
 									<div class="courseImg"><img src="img/Big-Data.png"></div>
-									<div class="courseName"><i class="fa fa-book"></i> 數位邏輯</div>
+									<div class="courseName"><i class="fa fa-book"></i> 資料結構</div>
 								</div>
 							</li>
 							<li class="courseItem">
 								<div class="courseCard">
 									<div class="courseImg"><img src="img/Big-Data.png"></div>
-									<div class="courseName"><i class="fa fa-book"></i> 數位邏輯</div>
+									<div class="courseName"><i class="fa fa-book"></i> 資料結構</div>
 								</div>
 							</li>
 							<li class="courseItem">
 								<div class="courseCard">
 									<div class="courseImg"><img src="img/Big-Data.png"></div>
-									<div class="courseName"><i class="fa fa-book"></i> 數位邏輯</div>
+									<div class="courseName"><i class="fa fa-book"></i> 資料結構</div>
 								</div>
 							</li>	
 							<li class="courseItem">
 								<div class="courseCard">
 									<div class="courseImg"><img src="img/Big-Data.png"></div>
-									<div class="courseName"><i class="fa fa-book"></i> 數位邏輯</div>
+									<div class="courseName"><i class="fa fa-book"></i> 資料結構</div>
 								</div>
 							</li>
 							<li class="courseItem">
 								<div class="courseCard">
 									<div class="courseImg"><img src="img/Big-Data.png"></div>
-									<div class="courseName"><i class="fa fa-book"></i> 數位邏輯</div>
+									<div class="courseName"><i class="fa fa-book"></i> 資料結構</div>
 								</div>
 							</li>
 							<li class="courseItem">
 								<div class="courseCard">
 									<div class="courseImg"><img src="img/Big-Data.png"></div>
-									<div class="courseName"><i class="fa fa-book"></i> 數位邏輯</div>
+									<div class="courseName"><i class="fa fa-book"></i> 資料結構</div>
 								</div>
 							</li>
 						</ul>

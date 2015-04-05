@@ -14,6 +14,8 @@
 		<div class="content-wrap">
 			<div class="formCard">
 					<form class="stackForm" action="" method="POST" >
+						<label for="userTrueName">姓名</label>
+						<input type="text" name="userTrueName"><br>
 						<label for="username">新帳號</label>
 						<input type="text" name="username"><br>
 						<label for="userpwd">新密碼</label>
