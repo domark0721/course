@@ -5,8 +5,8 @@
 <html>
 	<head>
 		<?php require("css_com.php") ?>
-		<link type="text/css" rel="stylesheet" href="css/course.css">
 		<link type="text/css" rel="stylesheet" href="css/stmode.css">
+		<link type="text/css" rel="stylesheet" href="css/course.css">
 		<title>NUCourse</title>
 	</head>
 	<body>
@@ -21,18 +21,20 @@
 						<div id="courseName">資料結構</div>
 						<div id="courseTeacher">Amy Wang</div>
 					</div>
-					<div class="courseControl">
-						<ul>
-							<li>課程公告</li>
-							<li>課程資訊</li>
-							<li>課程內容</li>
-							<li>互動與討論</li>
-						</ul>
-					</div>
 				</div>				
 			</div>
 		</div>
-		<div class="announce-wrap">
+		<div class="nav-wrap">
+			<div class="userControl">
+				<ul>
+					<li>課程公告</li>
+					<li>課程資訊</li>
+					<li>課程內容</li>
+					<li>互動與討論</li>
+				</ul>
+			</div>
+		</div>
+		<div class="announce-wrap" style="">
 			<div id="announceList-container">
 				<div class="announceItem">
 					<div class="announceTitle"><i class="fa fa-bullhorn"> 最新課程已經更新</i></div>
@@ -55,6 +57,8 @@
 					<div class="announceContent">由於之前課程教材有錯誤，目前課程已經更新。</div>
 				</div>				
 			</div>
+		</div>
+		<div class="a">
 		</div>
 		<?php require("footer.php") ?>
 	</body>
