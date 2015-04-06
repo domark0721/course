@@ -34,7 +34,8 @@
 				</ul>
 			</div>
 		</div>
-		<div class="announce-wrap" style="">
+		<div class="content-wrap" style="">
+			<div class="announce-wrap">
 			<div id="announceList-container">
 				<div class="announceItem">
 					<div class="announceTitle"><i class="fa fa-bullhorn"> 最新課程已經更新</i></div>
@@ -58,7 +59,6 @@
 				</div>				
 			</div>
 		</div>
-		<div class="a">
 		</div>
 		<?php require("footer.php") ?>
 	</body>

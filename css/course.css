@@ -17,7 +17,6 @@
 }
 
 #coursePic {
-	display: inline-block;
 	float: left;
 	width: 15%;
 }
@@ -25,27 +24,26 @@
 #courseInfo{
 	/*padding-top: 2px;*/
 	float: left;
-	width: 15%;
+	margin-left: 1%;
 }
 
 #courseName {
 	padding-top: 5px;
-	margin-left: 16%;
 	font-size: 35px;
 }
 
 #courseTeacher {
-	margin-left: 16%;
 	font-size: 20px;
 }
 
 .nav-wrap{
-	max-width: 480px;
-	width: 80%;
+	max-width: 1200px;
+	width: 90%;
 	margin: 0 auto;
 }
 
 .userControl {
+	text-align: center;
 	  margin: 10px 0 0 0;
 }
 
@@ -106,8 +104,68 @@
 	padding: 10px 15px 5px 12px;
 }
 
-.announceContent{
+.announceContent {
 	padding: 6px 12px 6px 36px;
 	font-size: 16px;
 }
 
+/* courseInfo */
+.content-wrap-courseinfo {
+	margin-top: 1em;
+}
+
+#left-wrap {
+	float: left;
+	width: 16em;
+}
+
+.asidebox{
+	background-color: #fff;
+	border: 0px solid #fff;
+	border-radius: 5px;
+	margin-bottom: 18px;
+}
+
+.asideTitle {
+	background-color: #3238AD;
+	border-radius: 5px 5px 0 0;
+	color: #fff;
+	padding: 10px 5px 10px 16px;
+}
+
+.asideContent {
+	padding: 16px 1em 1em 16px;
+}
+
+.infotable-row {
+	display: table-row;
+}
+
+.infotable-row th {
+	padding-right: 15px;
+	padding-bottom: 5px;	
+}
+
+#right-wrap {
+	margin-left: 19em;
+}
+
+.courseIntro {
+	background-color: #fff;
+	border: 0px solid #fff;
+	border-radius: 5px;	
+}
+
+.courseIntroTitle {
+	padding: 1em;
+}
+
+.section-header h2 {
+	padding: 10px 1em 10px 15px;
+	margin: 0;
+	border-bottom: 1px solid #ccc;
+}
+
+.section-header p {
+	padding: 0px 1em 1em 15px;
+}
