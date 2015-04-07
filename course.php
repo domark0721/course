@@ -24,16 +24,7 @@
 				</div>				
 			</div>
 		</div>
-		<div class="nav-wrap">
-			<div class="userControl">
-				<ul>
-					<li>課程公告</li>
-					<li>課程資訊</li>
-					<li>課程內容</li>
-					<li>互動與討論</li>
-				</ul>
-			</div>
-		</div>
+		<?php require("course-nav.php") ?>
 		<div class="content-wrap" style="">
 			<div class="announce-wrap">
 			<div id="announceList-container">

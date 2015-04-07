@@ -24,16 +24,7 @@
 				</div>				
 			</div>
 		</div>
-		<div class="nav-wrap">
-			<div class="userControl">
-				<ul>
-					<li>課程公告</li>
-					<li>課程資訊</li>
-					<li>課程內容</li>
-					<li>互動與討論</li>
-				</ul>
-			</div>
-		</div>
+		<?php require("course-nav.php") ?>
 		<div class="content-wrap clearfix content-wrap-courseinfo">
 			<div id="left-wrap" >
 				<div class="asidebox">
@@ -80,6 +71,10 @@
 								</tr>
 								<tr class="infotable-row">
 									<th class="">個人網站</th>
+									<td>marktsai.tw</td>
+								</tr>
+								<tr class="infotable-row">
+									<th class="">其他</th>
 									<td>marktsai.tw</td>
 								</tr>
 							</tbody>
