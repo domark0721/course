@@ -1,5 +1,11 @@
 <?php
-	include_once('inc/auth.php');
+	include_once('api/auth.php'); 
+	if($Member_NAME!=NULL){
+
+	}
+	else{
+		Header("Location: login.php");
+	}
 ?>
 <!doctype html>
 <html>

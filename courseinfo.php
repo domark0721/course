@@ -1,5 +1,5 @@
 <?php
-
+	include_once('api/auth.php'); 
 ?>
 <!doctype html>
 <html>

@@ -1,5 +1,5 @@
 <?php
-
+	include_once('api/auth.php'); 
 ?>
 <!doctype html>
 <html>
@@ -8,8 +8,13 @@
 		<link type="text/css" rel="stylesheet" href="css/index.css">
 		<title>NUCourse</title>
 	</head>
+
+	
 	<body>
 		<?php require("header.php") ?>
+
+
+
 		<?php require("footer.php") ?>
 	</body>
-</html>
+</html>d

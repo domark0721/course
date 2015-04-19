@@ -1,5 +1,5 @@
 <?php
-
+	include_once('api/auth.php'); 
 ?>
 <!doctype html>
 <html>
@@ -13,7 +13,7 @@
 	<body>
 		<?php require("header.php") ?>
 		<div class="content-wrap">
-			<div id="role">蔡馬克  老師您好！</div>
+			<div id="role"><?php echo $Member_NAME ?>  老師您好！</div>
 			<div class="userControl">
 				<ul>
 					<li>我的授課</li>
