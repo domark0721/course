@@ -1,5 +1,5 @@
 <?php
-
+	include_once('inc/auth.php');
 ?>
 <!doctype html>
 <html>

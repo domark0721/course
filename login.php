@@ -13,7 +13,7 @@
 		<?php require("header.php") ?>
 		<div class="content-wrap">
 			<div class="formCard">
-					<form class="stackForm" action="" method="POST">
+					<form class="stackForm" action="api/logincheck.php" method="POST">
 						<label for="username">帳號</label>
 						<input type="text" name="username"><br>
 						<label for="userpwd">密碼</label>

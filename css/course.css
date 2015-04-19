@@ -187,7 +187,7 @@
 #schedule-nav{
 	position: absolute;
 	width: 10em;
-	left: 0;
+	left: 50px;
 	top: 0;
 }
 
@@ -219,8 +219,8 @@
 } 
 
 .schedule-wrap {
-	margin-left: 20%;
-	width: 60%;
+	margin-left: 25%;
+	width: 55%;
 }
 
 .scheduleItem {
