@@ -2,7 +2,7 @@
 	session_start();
 	$IS_LOGIN = isLogin();
 	$Member_NAME = getMemberName();
-
+	
 	//判斷是否登入
 	function isLogin(){
 		if(isset($_SESSION['isLogin']) && $_SESSION['isLogin'])

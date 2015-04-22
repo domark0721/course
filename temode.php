@@ -16,7 +16,8 @@
 			<div id="role"><?php echo $Member_NAME ?>  老師您好！</div>
 			<div class="userControl">
 				<ul>
-					<li>我的授課</li>
+					<li>正在授課</li>
+					<li>結束授課</li>
 					<li>開新課程</li>
 				</ul>
 			</div>
@@ -34,7 +35,7 @@
 							<span>50%</span>
 						</div>
 					</div>
-					<div class="itemRight"><a href="#">進入課程</a></div>
+					<div class="itemRight"><a href="#">修改課程</a></div>
 				</div>
 				<div class="courseItem clearfix">
 					<div class="itemLeft"><img src="img/user-course.jpg"></div>
@@ -48,7 +49,7 @@
 							<span>50%</span>
 						</div>
 					</div>
-					<div class="itemRight"><a href="#">進入課程</a></div>
+					<div class="itemRight"><a href="#">修改課程</a></div>
 				</div>
 				<div class="courseItem clearfix">
 					<div class="itemLeft"><img src="img/user-course.jpg"></div>
@@ -62,7 +63,7 @@
 							<span>50%</span>
 						</div>
 					</div>
-					<div class="itemRight"><a href="#">進入課程</a></div>
+					<div class="itemRight"><a href="#">修改課程</a></div>
 				</div>	
 				<div class="courseItem clearfix">
 					<div class="itemLeft"><img src="img/user-course.jpg"></div>
@@ -76,7 +77,7 @@
 							<span>50%</span>
 						</div>
 					</div>
-					<div class="itemRight"><a href="#">進入課程</a></div>
+					<div class="itemRight"><a href="#">修改課程</a></div>
 				</div>			
 			</div>
 

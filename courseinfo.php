@@ -91,11 +91,19 @@
 							<p>test<br>test<br>test<br></p>
 						</div>
 						<div class="section-header" id="arti-sec1">
-							<h2>課程大綱</h2>
+							<h2>授課大綱</h2>
+							<p>test<br>test<br>test<br></p>
+						</div>
+						<div class="section-header" id="arti-sec1">
+							<h2>上課形式</h2>
 							<p>test<br>test<br>test<br></p>
 						</div>
 						<div class="section-header" id="arti-sec1">
 							<h2>指定用書</h2>
+							<p>test<br>test<br>test<br></p>
+						</div>
+						<div class="section-header" id="arti-sec1">
+							<h2>參考資料</h2>
 							<p>test<br>test<br>test<br></p>
 						</div>
 

@@ -39,7 +39,7 @@
 				<div id="schedule-container">
 					<div class="scheduleItem">
 						<div class="chapterTitle" id="chpater-1"><i class="fa fa-bookmark-o"></i> CH1: 基本概念</div>
-						<div class="subChapter" id="chpater-1-1">1-1<span> 複雜度</span></div>
+						<div class="subChapter" id="chpater-1-1"><a href="coursesection.php">1-1<span> 複雜度</span></a></div>
 						<div class="subChapter" id="chpater-1-2">1-2<span> 符號</span></div>
 						<div class="subChapter" id="chpater-1-3">1-3<span> 符號</span></div>
 						<div class="subChapter" id="chpater-1-4">1-4<span> 符號</span></div>

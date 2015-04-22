@@ -1,4 +1,3 @@
-
 <header class="headerBar" >
 	<div class="content-wrap">
 		<div id="headerLogo"><a href="index.php">NUCourse</a></div>

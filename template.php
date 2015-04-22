@@ -17,4 +17,4 @@
 
 		<?php require("footer.php") ?>
 	</body>
-</html>d
+</html>

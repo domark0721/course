@@ -1,0 +1,17 @@
+#videoBar{
+	width:100%;
+	background-color: #323131;
+}
+
+#video {
+	/*position: relative;*/
+	padding-bottom: 40%;
+	/*padding-top: 25px;*/
+	height: 0;
+	text-align: center;
+}
+
+#video video {
+	width: 70%;
+	
+}
