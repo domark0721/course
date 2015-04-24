@@ -1,5 +1,5 @@
 <?php
-	$con = mysql_connect('localhost', 'root', '10038') or die("DB connect fault!");
+	$con = mysql_connect('127.0.0.1', 'root', '10038') or die("DB connect fault!");
 	// if(!$con){ echo "DB connect fault!";}
 	// else echo "Connected!";
 	mysql_select_db('course', $con);

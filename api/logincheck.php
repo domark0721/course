@@ -21,11 +21,11 @@
 		$_SESSION['memberid'] = $memberid;
 		$_SESSION['membername'] = $row[2];
 		$_SESSION['mode'] = "st";
-		echo "login success!";
+		// echo "login success!";
 		Header("Location: ../stmode.php");
 	}
 	else{
-		echo "login fail!";
+		// echo "login fail!";
 		Header("Location: ../login.php");
 	}
 
