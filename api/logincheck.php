@@ -1,25 +1,28 @@
-<?php  ?>
 <?php
 	//connect mysqldb
 	require ("../mysql.php");
 
 	//get user id and pwd
 	session_start();
-	$memberid=$_POST['username'];
-	$userpwd=$_POST['userpwd'];
+	$account=$_POST['account'];
+	$password=$_POST['password'];
 
+	if(empty($account) || empty($password)) {
+		Header("Location: ../login.php");
+	}
+	
 	//query id from member table
-	$sql = "SELECT * FROM member where memberid='$memberid'";
+	$sql = "SELECT * FROM member WHERE account='$account'";
 	$result = mysql_query($sql);
-	$row = @mysql_fetch_row($result);
+	$row = mysql_fetch_assoc($result); //save as array
 
 	// echo $row[0];
-	//判斷帳號與密碼是否為空
-	if($memberid != null && $userpwd != null && $row[0] == $memberid && $row[1] == $userpwd)
+	if(!empty($row) && $row['account'] == $account && $row['password'] == $password)
 	{
 		$_SESSION['isLogin'] = true;
-		$_SESSION['memberid'] = $memberid;
-		$_SESSION['membername'] = $row[2];
+		$_SESSION['member_id'] = $row['member_id'];
+		$_SESSION['account'] = $row['account'];
+		$_SESSION['name'] = $row['name'];
 		$_SESSION['mode'] = "st";
 		// echo "login success!";
 		Header("Location: ../stmode.php");

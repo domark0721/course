@@ -4,7 +4,7 @@
 <!doctype html>
 <html>
 	<head>
-		<?php require("css_com.php") ?>
+		<?php require("meta_com.php") ?>
 		<link type="text/css" rel="stylesheet" href="css/stmode.css">
 		<link type="text/css" rel="stylesheet" href="css/temode.css">
 		<title>NUCourse</title>

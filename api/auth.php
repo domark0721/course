@@ -13,8 +13,8 @@
 
 	//判斷已登入後，抓取使用者姓名
 	function getMemberName(){
-		if(isset($_SESSION['isLogin']) && isset($_SESSION['membername']))
-			return $_SESSION['membername'];
+		if(isset($_SESSION['isLogin']) && isset($_SESSION['account']) && isset($_SESSION['name']))
+			return $_SESSION['name'];
 		else
 			return null;
 	}

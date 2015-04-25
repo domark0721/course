@@ -4,7 +4,7 @@
 <!doctype html>
 <html>
 	<head>
-		<?php require("css_com.php") ?>
+		<?php require("meta_com.php") ?>
 		<link type="text/css" rel="stylesheet" href="css/index.css">
 		<title>NUCourse</title>
 	</head>
@@ -17,4 +17,4 @@
 
 		<?php require("footer.php") ?>
 	</body>
-</html>d
+</html>
