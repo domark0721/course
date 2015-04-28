@@ -1,0 +1,73 @@
+#videoBar{
+	width:100%;
+	background-color: #323131;
+}
+
+#video {
+	/*position: relative;*/
+	padding-bottom: 40%;
+	/*padding-top: 25px;*/
+	height: 0;
+	text-align: center;
+}
+
+#video video {
+	width: 70%;
+	
+}
+
+#courseChapterBar {
+	
+}
+
+#courseChapterBar div {
+	color: #fff;
+	padding: 10px 0;
+}
+
+#leftChapter {
+	float: left;
+	margin: 1px 0;
+	text-decoration: none;
+}
+
+#rightChapter {
+	float: right;
+	margin: 1px 0;
+	text-decoration: none;
+}
+
+#thisChapter {
+	position: relative;
+	text-align: center;
+
+}
+
+#courseTab-wrap li {
+	display: inline-block;
+
+}
+
+#courseTab-wrap li a{
+	font-size: 18px;
+	color: #000;
+	text-decoration: none;
+}
+
+.userControl {
+	margin: 15px 0 10px -6px;
+}
+
+.display-wrap {
+	max-width: 960px; 
+	width:90%;
+	margin: 0 auto;	
+}
+
+#courseContent-wrap {
+	background-color: #fff;	
+}
+
+#courseContent {
+	height: 100px;
+}

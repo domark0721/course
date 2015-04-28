@@ -8,15 +8,15 @@
 				{ 
 					if("st" == $_SESSION['mode']) 
 					{ 
-						echo '<li class="headerBar-item"><a href="temode.php"><i class="fa fa-pencil"></i> 學生模式</a></li>';
-						$_SESSION['mode'] = "te";
+						echo '<li class="headerBar-item"><a href="stmode.php"><i class="fa fa-user"></i>' ." 學生: ". $Member_NAME . '</a></li>';
+						echo '<li id="mode" class="headerBar-item"><a href="api/changeMode.php"><i class="fa fa-exchange"></i> 切換至老師模式</a></li>';
 					}
 					else
-					{  
-						echo '<li class="headerBar-item"><a href="stmode.php"><i class="fa fa-cog"></i> 老師模式</a></li>';
-						$_SESSION['mode'] = "st";
+					{ 
+						echo '<li class="headerBar-item"><a href="temode.php"><i class="fa fa-pencil"></i>' ." 老師: ". $Member_NAME . '</a></li>';
+						echo '<li id="mode" class="headerBar-item"><a href="api/changeMode.php"><i class="fa fa-exchange"></i> 切換至學生模式</a></li>';
 					}
-				echo '<li class="headerBar-item"><i class="fa fa-user"></i>' ." ". $Member_NAME . '</li>';
+				
 				echo '<li class="headerBar-item"><a href="api/logout.php"><i class="fa fa-sign-out"></i> 登出</a></li>';
 				}
 				else

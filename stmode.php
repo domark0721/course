@@ -4,6 +4,11 @@
 	
 	session_start();
 
+	//user can't enter this page if they match the mode
+	if($_SESSION['mode'] == "te"){
+		Header("location: temode.php");
+	}
+
 	$member_id = $_SESSION['member_id'];
 
 	//current and finish course
@@ -36,7 +41,7 @@
 <html>
 	<head>
 		<?php require("meta_com.php") ?>
-		<link type="text/css" rel="stylesheet" href="css/stmode.css">
+		<link type="text/css" rel="stylesheet" href="css/mode.css">
 		<title>NUCourse</title>
 	</head>
 
@@ -45,7 +50,7 @@
 		<div class="content-wrap">
 			<div id="role"><?php echo $Member_NAME ?> 同學您好！</div>
 			<div class="userControl">
-				<ul>
+				<ul class="courseTypeTab">
 					<li id="currentTag">目前課程</li>
 					<li id="finishTag">修畢課程</li>
 					<li id="favoriteTag">收藏課程</li>
@@ -115,7 +120,7 @@
 			
 		</div>
 		<?php require("footer.php") ?>
-		<?php require("js_com.php") ?>
-		<script src="js/stmode.js"></script>
+		<?php require("js/js_com.php") ?>
+		<script src="js/modeShow.js"></script>
 	</body>
 </html>

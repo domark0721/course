@@ -1,11 +1,12 @@
 <?php
-	include_once('api/auth.php'); 
+	require('course_com.php');
 ?>
+
 <!doctype html>
 <html>
 	<head>
 		<?php require("meta_com.php") ?>
-		<link type="text/css" rel="stylesheet" href="css/stmode.css">
+		<link type="text/css" rel="stylesheet" href="css/mode.css">
 		<link type="text/css" rel="stylesheet" href="css/course.css">
 		<title>NUCourse</title>
 	</head>
@@ -34,23 +35,23 @@
 							<tbody>
 								<tr class="infotable-row">
 									<th class="">課程編號</th>
-									<td>C201508902</td>
+									<td><?php echo $courseMetadata['course_id'] ?></td>
 								</tr>
 								<tr class="infotable-row">
 									<th class="">開課時間</th>
-									<td>2015年7月30日</td>
+									<td><?php echo date("Y-m-d" ,strtotime($courseMetadata['start_time'])) ?></td>
 								</tr>
 								<tr class="infotable-row">
 									<th class="">課程語言</th>
-									<td>中文</td>
+									<td><?php echo $courseMetadata['lang'] ?></td>
 								</tr>
 								<tr class="infotable-row">
 									<th class="">課程類別</th>
-									<td>資訊工程</td>
+									<td><?php echo $courseMetadata['type'] ?></td>
 								</tr>
 								<tr class="infotable-row">
 									<th class="">學習人次</th>
-									<td>13000</td>
+									<td><?php echo $courseMetadata['student_num'] ?></td>
 								</tr>
 							</tbody>
 						</table>
@@ -63,15 +64,15 @@
 							<tbody>
 								<tr class="infotable-row">
 									<th class="">老師姓名</th>
-									<td>蔡馬克</td>
+									<td><?php echo $courseMetadata['teacher_name'] ?></td>
 								</tr>
 								<tr class="infotable-row">
 									<th class="">E-mail</th>
-									<td>tds@gaislab.cs.ccu</td>
+									<td><?php echo $courseMetadata['teacher_mail'] ?></td>
 								</tr>
 								<tr class="infotable-row">
 									<th class="">個人網站</th>
-									<td>marktsai.tw</td>
+									<td><?php echo $courseMetadata['website'] ?></td>
 								</tr>
 								<tr class="infotable-row">
 									<th class="">其他</th>
@@ -88,23 +89,23 @@
 					<section class="article-section">
 						<div class="section-header" id="arti-sec1">
 							<h2>課程概述</h2>
-							<p>test<br>test<br>test<br></p>
+							<p><?php echo $courseData['description'] ?></p>
 						</div>
 						<div class="section-header" id="arti-sec1">
 							<h2>授課大綱</h2>
-							<p>test<br>test<br>test<br></p>
+							<p><?php echo $courseData['syllabus'] ?></p>
 						</div>
 						<div class="section-header" id="arti-sec1">
 							<h2>上課形式</h2>
-							<p>test<br>test<br>test<br></p>
+							<p><?php echo $courseData['teachingMethods'] ?></p>
 						</div>
 						<div class="section-header" id="arti-sec1">
 							<h2>指定用書</h2>
-							<p>test<br>test<br>test<br></p>
+							<p><?php echo $courseData['textbooks'] ?></p>
 						</div>
 						<div class="section-header" id="arti-sec1">
 							<h2>參考資料</h2>
-							<p>test<br>test<br>test<br></p>
+							<p><?php echo $courseData['references'] ?></p>
 						</div>
 
 					</section>

@@ -1,17 +1,11 @@
 <?php
-	include_once('api/auth.php'); 
-	if($Member_NAME!=NULL){
-
-	}
-	else{
-		Header("Location: login.php");
-	}
+	require('course_com.php');
 ?>
 <!doctype html>
 <html>
 	<head>
 		<?php require("meta_com.php") ?>
-		<link type="text/css" rel="stylesheet" href="css/stmode.css">
+		<link type="text/css" rel="stylesheet" href="css/mode.css">
 		<link type="text/css" rel="stylesheet" href="css/course.css">
 		<title>NUCourse</title>
 	</head>
@@ -24,8 +18,8 @@
 						<img src="img/user-course.jpg">
 					</div>
 					<div id="courseInfo">
-						<div id="courseName">資料結構</div>
-						<div id="courseTeacher">Amy Wang</div>
+						<div id="courseName"><?php echo $courseMetadata['course_name'] ?></div>
+						<div id="courseTeacher"><?php echo $courseMetadata['teacher_name'] ?></div>
 					</div>
 				</div>				
 			</div>
