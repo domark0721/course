@@ -50,15 +50,15 @@
 		<div class="content-wrap">
 			<div id="role"><?php echo $Member_NAME ?> 同學您好！</div>
 			<div class="userControl">
-				<ul class="courseTypeTab">
-					<li id="currentTag">目前課程</li>
-					<li id="finishTag">修畢課程</li>
-					<li id="favoriteTag">收藏課程</li>
-					<li>互動討論</li>
+				<ul class="tab-list">
+					<li><a href="#attened_course">目前課程</a></li>
+					<li><a href="#finish_course">修畢課程</a></li>
+					<li><a href="#favorite_course">收藏課程</a></li>
+					<li><a>互動討論</a></li>
 				</ul>
 			</div>
 
-			<div id="attened_course" class="courseList">  
+			<div id="attened_course" class="tab-content courseList">  
 <?php 
 	foreach($attened_course as $value){
 		// var_dump($value);
@@ -79,7 +79,7 @@
 				</div>
 <?php }?>
 			</div>
-			<div id="finish_course" class="courseList" style="display:none;">  
+			<div id="finish_course" class="tab-content courseList">  
 <?php 
 	foreach($finish_course as $value){
 		// var_dump($value);
@@ -100,7 +100,7 @@
 				</div>
 <?php }?>
 			</div>
-			<div id="favorite_course" class="courseList" style="display:none;">  
+			<div id="favorite_course" class="tab-content courseList" style="display:none;">  
 <?php 
 	foreach($favorite_course as $value){
 		// var_dump($value);
@@ -121,6 +121,6 @@
 		</div>
 		<?php require("footer.php") ?>
 		<?php require("js/js_com.php") ?>
-		<script src="js/modeShow.js"></script>
+		<script src="js/switch.js"></script>
 	</body>
 </html>

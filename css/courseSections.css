@@ -17,7 +17,8 @@
 }
 
 #courseChapterBar {
-	
+	text-align: center;
+	position: relative;
 }
 
 #courseChapterBar div {
@@ -26,20 +27,34 @@
 }
 
 #leftChapter {
+	position: absolute;
+	left: 0;
+	top: 0;
 	float: left;
 	margin: 1px 0;
 	text-decoration: none;
 }
 
+#leftChapter a{
+	text-decoration: none;
+	color: #fff;
+}
+
 #rightChapter {
+	position: absolute;
+	right: 0;
+	top: 0;	
 	float: right;
 	margin: 1px 0;
 	text-decoration: none;
 }
 
+#rightChapter a{
+	text-decoration: none;
+	color: #fff;
+}
+
 #thisChapter {
-	position: relative;
-	text-align: center;
 
 }
 
@@ -70,4 +85,5 @@
 
 #courseContent {
 	height: 100px;
+	padding: 12px 15px;
 }

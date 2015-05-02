@@ -6,8 +6,17 @@
 	margin: 20px 0 0 -6px;
 }
 
+.userControl ul li a {
+	text-decoration: none;
+	color: #000;
+}
+/* ---------- tab ---------- */
 
-.userControl li {
+.tab-list li {
+	display: inline-block;
+}
+
+.tab-list a {
 	display: inline-block;
 	margin-right: 10px;
 	font-size: 18px;
@@ -17,9 +26,14 @@
 	cursor: pointer;
 }
 
-.userControl .active , .userControl li:hover {
+.tab-list a.active , .tab-list a:hover {
 	border-bottom: 3px solid #5BAE01;
 }
+
+.tab-content {
+	display: none;
+}
+/* ---------- tab ---------- */
 
 .courseList {
 	margin-top: 20px;

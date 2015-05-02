@@ -21,7 +21,7 @@
 	width: 15%;
 }
 
-#courseInfo{
+#courseHeader{
 	/*padding-top: 2px;*/
 	float: left;
 	margin-left: 1%;
@@ -47,10 +47,6 @@
 	  margin: 10px 0 0 0;
 }
 
-.userControl ul li a {
-	text-decoration: none;
-	color: #000;
-}
 /*.courseControl{
 	position: absolute;
 	width: 45%;
@@ -72,6 +68,8 @@
 .courseControl .active , .courseControl li:hover {
 	border-bottom: 3px solid #5BAE01;
 }*/
+
+
 
 .announce-wrap {
 	max-width: 960px; 
@@ -187,7 +185,7 @@
 #schedule-nav{
 	position: absolute;
 	width: 10em;
-	left: 50px;
+	left: 15px;
 	top: 0;
 }
 

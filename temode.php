@@ -38,17 +38,17 @@
 		<div class="content-wrap">
 			<div id="role"><?php echo $Member_NAME ?>  老師您好！</div>
 			<div class="userControl">
-				<ul class="courseTypeTab">
-					<li id="statusOnTag">正在授課</li>
-					<li id="statusOffTag">結束授課</li>
-					<li>開新課程</li>
+				<ul class="tab-list">
+					<li><a href="#statusOn">正在授課</a></li>
+					<li><a href="#statusOff">結束授課</a></li>
+					<li><a>開新課程</a></li>
 				</ul>
 			</div>
 <?php
 	foreach ($statusOn as $value){
 
 ?>
-			<div id="statusOn" class="courseList">
+			<div id="statusOn" class="tab-content courseList">
 				<div class="courseItem clearfix">
 					<div class="itemLeft"><img src="img/user-course.jpg"></div>
 					<div class="item-course-info"> 
@@ -63,7 +63,7 @@
 	foreach ($statusOff as $value){
 
 ?>
-			<div id="statusOff" class="courseList" style="display:none">
+			<div id="statusOff" class="tab-content courseList">
 				<div class="courseItem clearfix">
 					<div class="itemLeft"><img src="img/user-course.jpg"></div>
 					<div class="item-course-info"> 
@@ -78,6 +78,6 @@
 		</div>
 		<?php require("footer.php") ?>
 		<?php require("js/js_com.php") ?>
-		<script src="js/modeShow.js"></script>
+		<script src="js/switch.js"></script>
 	</body>
 </html>
