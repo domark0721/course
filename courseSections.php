@@ -88,7 +88,7 @@
 		</div>
 		<div id="courseTab-wrap" class="display-wrap">
 			<div class="userControl">
-				<ul>
+				<ul class="tab-list">
 					<li><a href="#">文字教材</a></li>
 					<li><a href="#">隨堂練習</a></li>
 					<li><a href="#">互動與討論</a></li>

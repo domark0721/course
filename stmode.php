@@ -42,7 +42,7 @@
 	<head>
 		<?php require("meta_com.php") ?>
 		<link type="text/css" rel="stylesheet" href="css/mode.css">
-		<title>NUCourse</title>
+		<title>學生模式 - NUCourse</title>
 	</head>
 
 	<body>
@@ -51,9 +51,9 @@
 			<div id="role"><?php echo $Member_NAME ?> 同學您好！</div>
 			<div class="userControl">
 				<ul class="tab-list">
-					<li><a href="#attened_course">目前課程</a></li>
+					<li><a href="#attened_course">進行課程</a></li>
 					<li><a href="#finish_course">修畢課程</a></li>
-					<li><a href="#favorite_course">收藏課程</a></li>
+					<li><a href="#favorite_course">我的最愛</a></li>
 					<li><a>互動討論</a></li>
 				</ul>
 			</div>

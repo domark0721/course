@@ -246,3 +246,12 @@
 	margin-left: 34px;
 	padding-bottom: 10px;
 }
+
+.subChapter a {
+	color: rgba(0, 0, 0, .7);
+	transition: all 0.2s;
+}
+
+.subChapter a:hover {
+	color: rgba(0, 0, 0, 1);
+}

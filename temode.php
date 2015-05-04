@@ -30,7 +30,7 @@
 	<head>
 		<?php require("meta_com.php") ?>
 		<link type="text/css" rel="stylesheet" href="css/mode.css">
-		<title>NUCourse</title>
+		<title>老師模式 - NUCourse</title>
 	</head>
 
 	<body>
@@ -41,6 +41,7 @@
 				<ul class="tab-list">
 					<li><a href="#statusOn">正在授課</a></li>
 					<li><a href="#statusOff">結束授課</a></li>
+					<li><a>編輯中的課程</a></li>
 					<li><a>開新課程</a></li>
 				</ul>
 			</div>
@@ -55,7 +56,9 @@
 						<div class="item-course-name"><?php echo $value['course_name']?></div>
 						<div class="item-course-teacher">授課老師：<?php echo $value['teacher_name']?></div>
 					</div>
-					<div class="itemRight"><a href="#">修改課程</a></div>
+					<div class="itemRight"><a href="#">進入課程</a></div>
+					<div class="itemRight"><a href="#">進入課程</a></div>
+					<div class="itemRight"><a href="#">進入課程</a></div>
 				</div>
 			</div>
 <?php } ?>
@@ -70,7 +73,8 @@
 						<div class="item-course-name"><?php echo $value['course_name']?></div>
 						<div class="item-course-teacher">授課老師：<?php echo $value['teacher_name']?></div>
 					</div>
-					<div class="itemRight"><a href="#">修改課程</a></div>
+					<div class="itemRight"><a href="#">進入課程</a></div>
+					<div class="itemRight"><a href="#">進入課程</a></div>
 				</div>
 			</div>
 <?php } ?>

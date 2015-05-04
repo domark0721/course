@@ -1,0 +1,134 @@
+#editorBar-wrap {
+	width: 100%;
+	background-color: #fff;
+}
+
+.editorBarWrench {
+	display: block;
+	float: left;
+	font-size: 6em;
+	margin-left: 25px;
+	padding: 10px 5px 10px 5px;
+}
+
+.courseHeader {
+	float: left;
+	width: 25%;
+}
+
+#editorBarTitle {
+	font-size: 35px;
+	margin-top: 42px;
+	margin-left: 20%;
+}
+/* input css */
+.editSetting-wrap {
+	max-width: 800px; 
+	width:90%;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
+.editorBox {
+	padding: 15px 20px;
+	margin-bottom: 8px;
+	border: 1px solid rgba(0, 0, 0, 0.27);
+	border-radius: 5px;
+}
+
+.editorBox a {
+	display: block;
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+
+#editSettingForm {
+	font-size: 18px;
+}
+
+#editSettingForm input {
+	display: inline-block;
+	margin: 5px 0 15px 0;
+	border: 1px solid #ccc;
+	border-radius: 5px; 
+	box-sizing: border-box;
+	padding: 5px 8px;
+}
+
+#editSettingForm label {
+	margin-right: 15px;
+}
+
+.margin-left {
+	margin-left: 40px;
+}
+
+#course_id_input {
+	width: 11.5em;
+	background-color: #B0B0B0;
+	color: #fff;
+}
+
+#course_name_input {
+	width: 28.5em;
+}
+
+#teacher_mail_input{
+	width: 20em;
+}
+
+#start_time_input {
+	width: 9.5em;
+}
+
+#courseInfo img{
+	margin-left: 10px;
+	width: 25%;
+}
+
+.nav-wrap {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.userControl {
+	text-align: center;
+	margin: 10px 0 0 0;
+}
+
+.resultBtn {
+	text-align: center;
+}
+
+.resultBtn a{
+	margin: 20px 15px;
+}
+
+.panelBtn {
+	display: inline-block;
+	border: 0px solid #000;
+	border-radius: 5px;
+	width: 25%;
+	text-align: center;
+	padding: 10px 5px;
+	font-size: 18px;
+	color: #fff;
+	cursor: pointer;
+	transition: all 0.3s;
+}
+
+.panelBtn.save {
+	background-color: rgba(121, 176, 61, 0.9);
+}
+
+.panelBtn.save:hover {
+	background-color: rgba(121, 176, 61, 1);
+}
+
+.panelBtn.giveup {
+	background-color: rgba(173, 50, 50, 0.9);
+}
+
+.panelBtn.giveup:hover {
+	background-color: rgba(173, 50, 50, 1);
+}

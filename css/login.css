@@ -41,6 +41,11 @@
 	border-radius: 5px;
 	background-color: #209AB6;
 }
+
+.submitBtn:active {
+	box-shadow: inset 0 8px 6px -6px#5C5B5B;
+}
+
 .registerBtn{
 	font-size: 20px;
 	padding:8px 20px;
@@ -50,3 +55,6 @@
 	background-color: #B62031;
 }
 
+.registerBtn:active {
+	box-shadow: inset 0 8px 6px -6px#5C5B5B;
+}

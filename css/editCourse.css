@@ -1,0 +1,206 @@
+#courseBar {
+	/*margin-top: 15px;*/
+	width: 100%;
+	background-color: #fff;
+}
+
+#courseBarPosition {
+	position: relative;
+	padding: 10px 0;
+}
+
+#coursePic img {
+	width: 100%;
+	display: block;
+  	min-height: 78px;
+  	min-width: 150px;	
+}
+
+#coursePic {
+	float: left;
+	width: 15%;
+}
+
+#courseHeader{
+	/*padding-top: 2px;*/
+	float: left;
+	margin-left: 1%;
+}
+
+#courseName {
+	padding-top: 5px;
+	font-size: 35px;
+}
+
+#courseTeacher {
+	font-size: 20px;
+}
+
+.edit-wrap {
+	width: 90%;
+	max-width: 1400px;
+	margin: 20px auto 0 auto;
+	position: relative;
+}
+/******** left Panel ********/
+
+#leftPanel {
+	width: 24%;
+	float: left;
+}
+
+.panelBtn {
+	display: block;
+	font-size: 18px;
+	margin-left: 20px;
+	margin-bottom: 10px;
+	border: 0px solid #000;
+	border-radius: 5px;
+	width: 60%;
+	text-align: center;
+	padding: 5px 0;
+	color: #fff;
+	cursor: pointer;
+	transition: all 0.3s;
+}
+
+.panelBtn.save {
+	background-color: rgba(121, 176, 61, 0.9);
+}
+
+.panelBtn.save:hover {
+	background-color: rgba(121, 176, 61, 1);
+}
+
+.panelBtn.giveup {
+	background-color: rgba(173, 50, 50, 0.9);
+}
+
+.panelBtn.giveup:hover {
+	background-color: rgba(173, 50, 50, 1);
+}
+
+.chapterList {
+
+}
+
+.chapterItem, .sectionItem{
+	display: inline-block;
+	padding: 6px 15px;
+	font-size: 20px;
+	color: #8E8E8E;
+	cursor: pointer;
+	text-decoration: none;
+	position: relative;
+}
+
+.sectionItem {
+	font-size: 18px;
+}
+
+.chapterList a {
+
+}
+
+.sectionList {
+	margin-left: 20px;
+	display: none;
+}
+
+.sectionItem:hover , .sectionItem.active {
+	color: #000;
+}
+
+.chapterItem:hover .chapter-btns {
+	display: block;
+}
+
+.sectionItem:hover .chapter-btns {
+	display: block;
+}
+
+.addChapter {
+	display: block;
+	font-size: 20px;
+	margin: 20px 0 5px 0;
+	padding: 6px 15px;
+	cursor: pointer;
+}
+
+.chapter-btns {
+	position: absolute;
+	top: 0;
+	left: -65px;
+	border: 1px solid #8e8e8e;
+	border-radius: 5px;
+	display: none;
+}
+
+.sectionItem .chapter-btns {
+	left: -20px;
+	border: 0px;
+}
+
+.addSectionBtn, .deleteChapterBtn, .deleteSectionBtn {
+	display: inline-block;
+	font-size: 20px;
+	color: #8E8E8E;
+	text-decoration: none;
+	position: relative;
+	padding: 6px 8px;
+	cursor: pointer;
+	transition: all 0.3s;
+}
+
+.addSectionBtn:hover {
+	color: #79B03D;
+}
+
+.deleteSectionBtn:hover ,.deleteChapterBtn:hover {
+	color: #AD3232;
+}
+/******** left Panel ********/
+
+/******** right Panel ********/
+
+#rightPanel {
+	float: left;
+	width: 75%;
+	padding: 0 20px;
+	box-sizing: border-box;
+}
+
+#rightPanel label {
+	display: block;
+	font-size: 18px;
+	margin: 10px 0;
+}
+
+.sectionEditWrap {
+	display: none;
+}
+
+.sectionName {
+	padding: 0px 5px 10px 0px;
+}
+
+.sectionName input, .sectionVideo input {
+	margin: 0;
+	font-size: 18px;
+	border: 1px solid #ccc;
+	border-radius: 5px; 
+	box-sizing: border-box;
+	padding: 5px 5px;
+	margin-bottom: 1em;
+	width: 30em;
+}
+
+#video video {
+	margin: 8px 0;
+	width: 30%;
+	
+}
+/******** right Panel ********/
+
+
+

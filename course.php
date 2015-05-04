@@ -60,8 +60,8 @@
 		<div class="nav-wrap">
 			<div class="userControl">
 				<ul class="tab-list">
-					<li><a href="#announceList">課程公告</a></li>
-					<li><a href="#courseInfo">課程資訊</a></li>
+					<li><a href="#announceList">公告事項</a></li>
+					<li><a href="#courseInfo">本課資訊</a></li>
 					<li><a href="#courseSchedule">開始上課</a></li>
 					<li><a>互動與討論</a></li>
 				</ul>
