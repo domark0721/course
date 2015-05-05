@@ -27,7 +27,6 @@ $(document).ready(function(){
 
 
   $('.chapterItem').on('click', function(e){
-    console.log('hey');
       $('.sectionList').hide();
 
       $(this).next('.sectionList').fadeIn(300);
@@ -51,6 +50,7 @@ $(document).ready(function(){
   $('#saveCouseBtn').on('click', saveCourseContent);
 
   function saveCourseContent() {
+    var course_id = $('#course_id').val();
     tinyMCE.triggerSave();
 
     // get all the data by fetching left nav bar
@@ -85,7 +85,7 @@ $(document).ready(function(){
         // after getting chapter name and formatted section objs, generate chapter obj
         var chapterObj = {
           name : chapterName,
-          secitons : sectionList.toArray()
+          sections : sectionList.toArray()
         };
 
         return chapterObj;
@@ -97,7 +97,7 @@ $(document).ready(function(){
     var request = $.ajax({
       url: "api/save_editCourse.php",
       type: "POST",
-      data: { course_id : "" , chapters : chapters },
+      data: { course_id : course_id , chapters : chapters },
       dataType: "json"
     });
      

@@ -2,6 +2,8 @@
 	include_once('api/auth.php');
 	include_once("mongodb.php");
 	include_once("mysql.php");
+	$course_id = $_GET['course_id'];
+
 	if($Member_NAME!=NULL){
 
 	}
@@ -10,7 +12,7 @@
 	}
 	
 	//metadata from mysql
-	$sql = "SELECT * FROM course WHERE course_id='123'";
+	$sql = "SELECT * FROM course WHERE course_id='$course_id'";
 	$result = mysql_query($sql);
 
 	$courseMetadata_temp = array();

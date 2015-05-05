@@ -91,7 +91,20 @@
 	border-radius: 6px;
 }
 
-.itemRight a {
+.itemRight {
+	position: absolute;
+	top: 45px;
+	right: 5%;
+}
+
+.rightBtns {
+	position: absolute;
+	top: 12px;
+	right: 5%;
+
+}
+
+.itemRight a , .rightBtns a{
 	text-decoration: none;
 	background-color: #79B03D;
 	font-size: 18px;
@@ -99,15 +112,23 @@
 	padding: 6px 15px;
 	border-radius: 2px;
 }
+
+.rightBtns a {
+	display: block;
+	margin-bottom: 10px;
+}
+
 .itemRight a:hover {
 	background-color: rgba(121, 176, 61, 0.8);
 }
-.itemRight a:active {
+.itemRight a:active , .rightBtns a:active{
 	box-shadow: inset 0 8px 6px -6px#5C5B5B;
 }
 
-.itemRight {
-	position: absolute;
-	top: 45px;
-	right: 5%;
+.rightBtns a.settingBtn , .rightBtns a.editCourseBtn{
+	background-color: rgba(173, 50, 50, 1);
+	
+}
+.rightBtns a.settingBtn:hover , .rightBtns a.editCourseBtn:hover{
+	background-color: rgba(173, 50, 50, 0.8);
 }

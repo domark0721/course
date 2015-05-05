@@ -75,7 +75,7 @@
 							<span><?php echo $value['progress']?>%</span>
 						</div>
 					</div>
-					<div class="itemRight"><a href="course.php">進入課程</a></div>
+					<div class="itemRight"><a href="course.php?course_id=<?php echo $value['course_id']?>"><i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;&nbsp;進入課程</a></div>
 				</div>
 <?php }?>
 			</div>
@@ -96,7 +96,7 @@
 							<span><?php echo $value['progress']?>%</span>
 						</div>
 					</div>
-					<div class="itemRight"><a href="course.php">進入課程</a></div>
+					<div class="itemRight"><a href="course.php?course_id=<?php echo $value['course_id']?>"><i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;&nbsp;進入課程</a></div>
 				</div>
 <?php }?>
 			</div>
@@ -111,7 +111,7 @@
 						<div class="item-course-name"><?php echo $value['course_name'] ?></div>
 						<div class="item-course-teacher">授課老師：<?php echo $value['teacher_name'] ?></div>
 					</div>
-					<div class="itemRight"><a href="course.php">進入課程</a></div>
+					<div class="itemRight"><a href="course.php?course_id=<?php echo $value['course_id']?>"><i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;&nbsp;進入課程</a></div>
 				</div>
 <?php }?>
 						

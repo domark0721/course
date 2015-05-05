@@ -1,25 +1,45 @@
 <?php
+	require ("../mongodb.php");
 
-$courseID = $_POST['course_id'];
-$chapters = $_POST['chapters'];
+	$course_id = $_POST['course_id'];
+	$chapters = $_POST['chapters'];
 
-$chaptersJson = json_encode($chapters);
+	// get objectID of this course
+	$mongoQuery = array('course_id' => (int)$course_id);
+	$mon = $collection -> find($mongoQuery) -> limit(1);
+
+	foreach($mon as $data){
+		$courseData = $data;
+		break;
+	}
+
+	$courseObjectID = $courseData['_id'];
+
+	$mongoid = array('_id' => new MongoId($courseObjectID));
+
+	$updateMONGO = array(
+						'$set' => array(
+							'content' => array(
+								'chapters' => $chapters
+							))
+						);
+
+	$mongoResult = $collection->update($mongoid, $updateMONGO);
+	// var_dump($db->lastError());
 
 
-// save chapters to mongo
+    // prepare response
+	if ($mongoResult['err']) {
+		$response = array(
+			'status' => 'error',
+			'error_message' => $mongoResult['errmsg']
+		);
+	} else {
+		$response = array(
+			'status' => 'ok',
+			'error_message' => ''
+		);	
+	}
 
-
-// return result response
-
-// if success
-$response = array(
-	'status' => 'ok',
-);
-// if error
-$response = array(
-	'status' => 'error',
-);
-
-echo json_encode($response);
-
+	echo json_encode($response);
 ?>

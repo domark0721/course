@@ -38,7 +38,7 @@
 
 .edit-wrap {
 	width: 90%;
-	max-width: 1400px;
+	max-width: 1200px;
 	margin: 20px auto 0 auto;
 	position: relative;
 }
@@ -62,6 +62,7 @@
 	color: #fff;
 	cursor: pointer;
 	transition: all 0.3s;
+	text-decoration: none;
 }
 
 .panelBtn.save {

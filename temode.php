@@ -22,8 +22,7 @@
 		else
 			$statusOn[] = $row;
 	}
-	// var_dump($statusOff);
-	// exit;
+
 ?>
 <!doctype html>
 <html>
@@ -45,39 +44,47 @@
 					<li><a>開新課程</a></li>
 				</ul>
 			</div>
+
+			<div id="statusOn" class="tab-content courseList">
 <?php
 	foreach ($statusOn as $value){
-
 ?>
-			<div id="statusOn" class="tab-content courseList">
 				<div class="courseItem clearfix">
 					<div class="itemLeft"><img src="img/user-course.jpg"></div>
 					<div class="item-course-info"> 
 						<div class="item-course-name"><?php echo $value['course_name']?></div>
 						<div class="item-course-teacher">授課老師：<?php echo $value['teacher_name']?></div>
 					</div>
+					<div class="rightBtns">
+						<a class="settingBtn" href="courseSetting.php?course_id=<?php echo $value['course_id']?>"><i class="fa fa-wrench"></i>&nbsp;&nbsp;&nbsp;一般設定</a>
+						<a class="editCourseBtn" href="editCourse.php?course_id=<?php echo $value['course_id']?>"><i class="fa fa-cog"></i>&nbsp;&nbsp;&nbsp;內容編寫</a>
+						<a class="enterBtn" href="course.php?course_id=<?php echo $value['course_id']?>"><i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;&nbsp;進入課程</a>
+					</div>
+<!-- 					<div class="itemRight"><a href="#">進入課程</a></div>
 					<div class="itemRight"><a href="#">進入課程</a></div>
-					<div class="itemRight"><a href="#">進入課程</a></div>
-					<div class="itemRight"><a href="#">進入課程</a></div>
+					<div class="itemRight"><a href="#">進入課程</a></div> -->
 				</div>
-			</div>
 <?php } ?>
+			</div>
+
+			<div id="statusOff" class="tab-content courseList">
 <?php
 	foreach ($statusOff as $value){
-
 ?>
-			<div id="statusOff" class="tab-content courseList">
 				<div class="courseItem clearfix">
 					<div class="itemLeft"><img src="img/user-course.jpg"></div>
 					<div class="item-course-info"> 
 						<div class="item-course-name"><?php echo $value['course_name']?></div>
 						<div class="item-course-teacher">授課老師：<?php echo $value['teacher_name']?></div>
 					</div>
-					<div class="itemRight"><a href="#">進入課程</a></div>
-					<div class="itemRight"><a href="#">進入課程</a></div>
+					<div class="rightBtns">
+						<a class="settingBtn" href="courseSetting.php?course_id=<?php echo $value['course_id']?>"><i class="fa fa-wrench"></i>&nbsp;&nbsp;&nbsp;一般設定</a>
+						<a class="editCourseBtn" href="editCourse.php?course_id=<?php echo $value['course_id']?>"><i class="fa fa-cog"></i>&nbsp;&nbsp;&nbsp;內容編寫</a>
+						<a class="enterBtn" href="course.php?course_id=<?php echo $value['course_id']?>"><i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;&nbsp;進入課程</a>
+					</div>
 				</div>
-			</div>
 <?php } ?>
+			</div>
 			
 		</div>
 		<?php require("footer.php") ?>

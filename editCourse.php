@@ -42,17 +42,19 @@
 		<div class="edit-wrap clearfix">
 			<div id="leftPanel">
 				<a id="saveCouseBtn" class="panelBtn save">儲 存</a>
-				<a class="panelBtn giveup">離 開</a>
+				<a class="panelBtn giveup" href="temode.php">離 開</a>
 				<a class="addChapter"><i class="fa fa-plus"></i> 新增單元</a>
 				<ul class="chapterList">
 				<?php 
+				    $editWrapId = 0;
 					foreach($contentData['chapters'] as $i => $chapter){
-						$fullChapterName = sprintf("CH%d: %s", $i+1, $chapter['name']);
+						$chapterNo = sprintf("CH%d: ", $i+1);
 				?>
 						<li>
 							<div class="chapterItem">
 								<i class="fa fa-bookmark-o"></i> 
-								<span class="chapterName"><?php echo $fullChapterName; ?></span>
+								<span class="chapterNo"><?php echo $chapterNo;?></span>
+								<span class="chapterName"><?php echo $chapter['name']; ?></span>
 								<span class="chapter-btns">
 									<a class="addSectionBtn"><i class="fa fa-plus-circle"></i></a>
 									<a class="deleteChapterBtn"><i class="fa fa-trash-o"></i></a>
@@ -61,14 +63,15 @@
 						<ul class="sectionList">
 						<?php
 						foreach($chapter['sections'] as $j => $section){
-							$fullSectionName = sprintf("%d-%d: %s", $i+1, $j+1, $section['name']);
-							$sectionID = sprintf("%d-%d", $i+1, $j+1);
+							$sectionNo = sprintf("%d-%d: ", $i+1, $j+1);
 						?>
 							<li>
-								<a class="sectionItem" href="<?php echo '#sec' .$sectionID; ?>"> <?php echo $fullSectionName; ?>
-								<div class="chapter-btns">
-									<span class="deleteSectionBtn"><i class="fa fa-trash-o"></i></span>
-								</div>
+								<a class="sectionItem" href="<?php echo '#editWrap' .($editWrapId++); ?>">
+									<span class="sectionNo"><?php echo $sectionNo;?></span>
+									<?php echo $section['name']; ?>
+									<div class="chapter-btns">
+										<span class="deleteSectionBtn"><i class="fa fa-trash-o"></i></span>
+									</div>
 								</a>
 							</li>
 
@@ -100,11 +103,11 @@
 
 			<div id="rightPanel">
 			<?php
+			    $editWrapId = 0;
 				foreach($contentData['chapters'] as $i => $chapter){
 					foreach($chapter['sections'] as $j => $section){
-						$sectionID = sprintf("%d-%d", $i+1, $j+1);
 			?>
-				<div id="<?php echo "sec".$sectionID;?>" class="sectionEditWrap" >
+				<div id="<?php echo "editWrap". ($editWrapId++);?>" class="sectionEditWrap" >
 					<div class="sectionName">
 						<label for="sectionName">章節名稱</label>
 						<input class="sectionNameInput section-name" name="sectionName" value="<?php echo $section['name'];?>">
@@ -153,7 +156,9 @@
 		</div>
 		<?php require("footer.php") ?>
 		<?php require("js/js_com.php") ?>
-
+        
+        <!-- hidden param -->
+        <input type="hidden" id="course_id" value="<?php echo $course_id;?>"/>
 		<script type="text/javascript" src="js/tinymce/tinymce.min.js"></script>
 		<script type="text/javascript" src="js/editCourse.js"></script>
 	</body>
