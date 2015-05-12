@@ -20,7 +20,7 @@
 	}
 
 	//course data from mongo
-	$mongoQuery = array('course_id' => 123);
+	$mongoQuery = array('course_id' => $course_id);
 	$mon = $collection -> find($mongoQuery);
 
 	foreach($mon as $data){
@@ -124,7 +124,7 @@
 					</div>
 					
 					<div class="resultBtn">
-						<a class="panelBtn giveup">離 開</a>
+						<a class="panelBtn giveup" href="temode.php">離 開</a>
 						<a id="submitFormBtn" class="panelBtn save">儲 存</a>
 					</div>
 				</form>

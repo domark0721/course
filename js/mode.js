@@ -7,6 +7,12 @@ $(document).ready(function(){
 	$( '#currentTag' ).addClass('active');
 	$( '#statusOnTag' ).addClass('active');
 
+
+	// $('#newCourse').click(function(){
+	// 	 var lol = document.getElementById('newCourse').value;
+ //    	 alert(lol);
+	// });
+
 	$("#currentTag").click(function(){
 
 	    $('.courseTypeTab li').removeClass('active');

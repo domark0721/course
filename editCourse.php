@@ -1,9 +1,9 @@
 <?php
 	include_once('api/auth.php'); 
 	include_once("mongodb.php");
-	// $course_id = $_GET['course_id'];
-	$course_id = 123;
-	$mongoQuery = array('course_id' => $course_id);
+	$course_id = $_GET['course_id'];
+	// $course_id = 123;
+	$mongoQuery = array('course_id' => (int)$course_id);
 	$mon = $collection -> find($mongoQuery);
 
 	foreach($mon as $data){
@@ -12,7 +12,7 @@
 	}
 
 	$contentData = $courseData['content'];
-	// var_dump($totalChapterNum);
+	// var_dump($courseData);
 	// exit;
 ?>
 <!doctype html>

@@ -54,7 +54,7 @@
 					<li><a href="#attened_course">進行課程</a></li>
 					<li><a href="#finish_course">修畢課程</a></li>
 					<li><a href="#favorite_course">我的最愛</a></li>
-					<li><a>互動討論</a></li>
+					<!-- <li><a>互動討論</a></li> -->
 				</ul>
 			</div>
 

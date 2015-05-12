@@ -40,7 +40,7 @@
 					<div id="leftChapter">
 					<?php
 						if ($chapter == 0 && $section == 0){
-							echo '<a href="course.php#courseSchedule"><i class="fa fa-arrow-left"></i> 回課程首頁</a>';
+							echo '<a href="course.php?course_id=' .$course_id. '#courseSchedule"><i class="fa fa-arrow-left"></i> 回課程首頁</a>';
 						}
 						else if ($chapter > 0 && $section == 0) {
 							$preChapter_LastSection = count($sectionData[($chapter-1)]['sections']);
@@ -63,7 +63,7 @@
 						// var_dump($currentMaxSecsstion);
 
 						if($chapter == ($lastChpater-1) && $section == ($lastChpater_lastSection-1)){
-							echo '<a href="course.php#courseSchedule">回課程首頁 <i class="fa fa-arrow-right"></i></a>';
+							echo '<a href="course.php?course_id=' .$course_id. '#courseSchedule">回課程首頁 <i class="fa fa-arrow-right"></i></a>';
 						}
 						else if($section < $currentMaxSecsstion){
 							$nextSectionName = $sectionData[$chapter]['sections'][($section+1)]['name'];

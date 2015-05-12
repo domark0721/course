@@ -14,9 +14,9 @@
 		<div class="content-wrap">
 			<div class="formCard">
 					<form id="loginForm" class="stackForm" action="api/logincheck.php" method="POST">
-						<label for="account">帳號</label>
+						<label for="account" required>帳號</label>
 						<input type="text" name="account"><br>
-						<label for="password">密碼</label>
+						<label for="password" required>密碼</label>
 						<input type="password" name="password"><br>
 						<button class="submitBtn" type="submit" >登入</button>
 					</form>

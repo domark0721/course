@@ -1,0 +1,64 @@
+.newCourseForm-wrap {
+	max-width: 720px;
+	width: 90%;
+	margin: 0 auto;
+}
+
+
+#title {
+	font-size: 30px;
+	text-align: center;
+	margin: 1em 0;
+}
+
+#newCourseForm {
+	text-align: center;
+}
+
+#newCourseForm label{
+	font-size: 23px;
+	padding: 5px 10px;
+	display: block;
+}
+
+.nameInput {
+	margin: 15px 0 15px 0;
+	border: 1px solid #ccc;
+	border-radius: 5px; 
+	box-sizing: border-box;
+	padding: 5px 8px;
+	width: 50%;
+	font-size: 20px;
+}
+
+#newCourseForm button {
+	display: inline-block;
+	padding: 10px 20px;
+	width: 15%;
+	font-size: 18px;
+	color: #fff;
+	border: 0;
+	border-radius: 2px;	
+}
+
+#giveupBtn {
+	margin-top: 20px;
+	background-color: rgba(173, 50, 50, 1)
+}
+
+#giveupBtn:hover {
+	background-color: rgba(173, 50, 50, .8)
+}
+
+#giveupBtn:active, #nextBtn:active {
+	box-shadow: inset 0 8px 6px -6px #5C5B5B;
+}
+
+#nextBtn {
+	margin-left: 2em;
+	background-color: rgba(52, 141, 216, 1);
+}
+
+#nextBtn:hover {
+	background-color: rgba(52, 141, 216, .8);
+}

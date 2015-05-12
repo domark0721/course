@@ -15,13 +15,13 @@
 			<div class="formCard">
 					<form id="registerForm" class="stackForm" action="api/registercheck.php" method="POST" >
 						<label for="name">姓名</label>
-						<input type="text" name="name"><br>
+						<input type="text" name="name" required><br>
 						<label for="account">新帳號</label>
-						<input type="text" name="account"><br>
+						<input type="text" name="account" required><br>
 						<label for="password">新密碼</label>
-						<input type="password" name="password"><br>
+						<input type="password" name="password" required><br>
 						<label for="password_check">確認密碼</label>
-						<input type="password" name="password_check"><br>
+						<input type="password" name="password_check" required><br>
 						<button class="registerBtn" type="submit" >註冊</button>
 						<div class="loginMsg"></div>
 					</form>

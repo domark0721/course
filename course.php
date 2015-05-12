@@ -25,7 +25,7 @@
 	}
 	
 	//course data from mongo
-	$mongoQuery = array('course_id' => 123);
+	$mongoQuery = array('course_id' => (int)$course_id);
 	$mon = $collection -> find($mongoQuery);
 
 	foreach($mon as $data){
@@ -65,7 +65,7 @@
 					<li><a href="#announceList">公告事項</a></li>
 					<li><a href="#courseInfo">本課資訊</a></li>
 					<li><a href="#courseSchedule">開始上課</a></li>
-					<li><a>互動與討論</a></li>
+					<!-- <li><a>互動與討論</a></li> -->
 				</ul>
 			</div>
 		</div>

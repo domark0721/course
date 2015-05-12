@@ -1,4 +1,5 @@
 <?php
+	ini_set('default_charset','utf-8');
 	session_start();
 	$IS_LOGIN = isLogin();
 	$Member_NAME = getMemberName();
@@ -17,5 +18,12 @@
 			return $_SESSION['name'];
 		else
 			return null;
+	}
+
+	if($Member_NAME!=NULL){
+
+	}
+	else{
+		Header("Location: login.php");
 	}
 ?>

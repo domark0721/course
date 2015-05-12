@@ -126,6 +126,7 @@
 }
 
 .panelBtn.giveup {
+	text-decoration: none;
 	background-color: rgba(173, 50, 50, 0.9);
 }
 

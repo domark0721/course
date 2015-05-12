@@ -1,36 +1,48 @@
 <?php
+	ini_set('default_charset','utf-8');
+	include_once("../mysql.php");
+	include_once("../mongodb.php");
 
-// get teacher member info (member_id from session) id, name
+	$course_name = $_POST['courseName'];
 
+	// get teacher member info (member_id from session) id, name
+	session_start();
+	$member_id = $_SESSION['member_id'];
+	$name = $_SESSION['name'];
 
-// add a new course to db
-// 1. MySQL: insert row in `course` table (teacher_id, teacher_name and some default value)
-$course_id = ......
+	// add a new course to db
+	// 1. MySQL: insert row in `course` table (teacher_id, teacher_name and some default value)
+	$teacherInfo = "INSERT INTO course(course_name, teacher_id, teacher_name)VALUES('測試課程', '$member_id', '$name')";
+	$mysqlResult = mysql_query($teacherInfo);
+	$course_id = mysql_insert_id();
 
+	// 2. get course_id from step 1 (mysql), then insert row into MongoDB * with initial course data *
+	// Mongo Initial Course Data
+	$mongoInitData = array(
+	    "course_id" => (int)$course_id,
+		"description" => "",
+		"syllabus" => "",
+		"teachingMethods" => "",
+		"textbooks" => "",
+		"references" => "",
+	    "content" => array( 
+	    					"chapters" => [array(
+	    							"name" => "尚未初始化", "sections" => [array(
+	    								"name" => "尚未初始化", "video" => "", "content" => ""
+	    															)]
+	    										)]
+	    					)
+	);
 
-// 2. get course_id from step 1 (mysql), then insert row into MongoDB * with initial course data *
-
-$mongoInitData = array(
-    "couser_id"=> $cousr_id,
-    .....
-
-    "content" => array(
-
-    )
-)
-
-// Mongo Initial Course Data
- //   "course_id" : {get from MySQL},
- //    "description" : "",
- //    "syllabus" : "",
- //    "teachingMethods" : "",
- //    "textbooks" : "",
- //    "references" : "",
- //    "content" : {
- //        "chapters" : [ ]
-//     }  
-
-
-// redirect to course setting (pass course_id as parameter)
-
+	$mongoResult = $collection->insert($mongoInitData); //insert to mongodb
+	// var_dump($mongoResult);
+	// exit;
+	if($mysqlResult == TRUE && $mongoResult['ok'] == 1){
+		echo '<script>window.location.href="../courseSetting.php?course_id=' .$course_id. '";
+		  	 </script>';
+	}
+	else{
+		echo '<script>window.location.href="../newCourse.php";
+		  	 </script>';
+	}
 ?>
