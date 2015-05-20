@@ -22,7 +22,6 @@
 }
 
 #courseHeader{
-	/*padding-top: 2px;*/
 	float: left;
 	margin-left: 1%;
 }
@@ -231,27 +230,29 @@
 .scheduleItem a {
 	text-decoration: none;
 	color: #000;
+	font-size: 18px;
 }
 
 .chapterTitle {
 	color: #fff;
 	font-size: 18px;
 	padding:  7px 10px 7px 12px;
-	margin-bottom: 8px;
+	margin-bottom: 20px;
 	background-color: #3238AD;
 	border-radius: 5px 5px 0 0;
 }
 
 .subChapter {
 	margin-left: 34px;
-	padding: 10px 0;
+	padding-bottom: 20px;
 }
 
 .subChapter a {
-	color: rgba(0, 0, 0, .7);
+	color: rgba(0, 0, 0, 1);
 	transition: all 0.2s;
+	padding: 10px 2px;
 }
 
 .subChapter a:hover {
-	color: rgba(0, 0, 0, 1);
+	color: rgba(0, 0, 0, .7);
 }

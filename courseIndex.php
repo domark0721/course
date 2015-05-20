@@ -1,11 +1,7 @@
 <?php
-	include_once('api/auth.php');
-	include_once('api/isLogin.php'); 
 	include_once("mongodb.php");
 	include_once("mysql.php");
 
-	session_start();
-	$_SESSION['url'] = $_SERVER['REQUEST_URI']; 
 	$course_id = $_GET['course_id'];
 	
 	//metadata from mysql
@@ -28,7 +24,6 @@
 	foreach($mon as $data){
 		$courseData = $data;
 		break;
-		// var_dump($courseData);
 	}
 
 	$contentData = $courseData['content'];
@@ -39,7 +34,8 @@
 		<?php require("meta_com.php"); ?>
 		<link type="text/css" rel="stylesheet" href="css/mode.css">
 		<link type="text/css" rel="stylesheet" href="css/course.css">
-		<title><?php echo $courseMetadata['course_name']; ?> - NUCourse</title>
+		<link type="text/css" rel="stylesheet" href="css/courseIndex.css">
+		<title><?php echo $courseMetadata['course_name']; ?> 課程入口 - NUCourse</title>
 	</head>
 	<body>
 		<div class="totalWrapper">
@@ -55,45 +51,13 @@
 								<div id="courseName"><?php echo $courseMetadata['course_name']; ?></div>
 								<div id="courseTeacher"><?php echo $courseMetadata['teacher_name']; ?></div>
 							</div>
-						</div>				
-					</div>
-				</div>
-				<div class="nav-wrap">
-					<div class="userControl">
-						<ul class="tab-list">
-							<li><a href="#announceList">公告事項</a></li>
-							<li><a href="#courseInfo">本課資訊</a></li>
-							<li><a href="#courseSchedule">開始上課</a></li>
-							<!-- <li><a>互動與討論</a></li> -->
-						</ul>
-					</div>
-				</div>
-				<div id="announceList" class="tab-content announce-wrap">
-					<div id="announceList-container">
-						<div class="announceItem">
-							<div class="announceTitle"><i class="fa fa-bullhorn"> 最新課程已經更新</i></div>
-							<div class="announceDate">2015-05-18</div>
-							<div class="announceContent">由於之前課程教材有錯誤，目前課程已經更新。</div>
-						</div>
-						<div class="announceItem">
-							<div class="announceTitle"><i class="fa fa-bullhorn"> 最新課程已經更新</i></div>
-							<div class="announceDate">2015-05-18</div>
-							<div class="announceContent">由於之前課程教材有錯誤，目前課程已經更新。</div>
-						</div>
-						<div class="announceItem">
-							<div class="announceTitle"><i class="fa fa-bullhorn"> 最新課程已經更新</i></div>
-							<div class="announceDate">2015-05-18</div>
-							<div class="announceContent">由於之前課程教材有錯誤，目前課程已經更新。</div>
-						</div>	
-						<div class="announceItem">
-							<div class="announceTitle"><i class="fa fa-bullhorn"> 最新課程已經更新</i></div>
-							<div class="announceDate">2015-05-18</div>
-							<div class="announceContent">由於之前課程教材有錯誤，目前課程已經更新。</div>
+							<div><a id="joinCourseBtn" class="addCourse" href="joinCourse.php?course_id=<?php echo $course_id;?>"><i class="fa fa-graduation-cap"></i>&nbsp;&nbsp;&nbsp;修習本課程</a></div>
+							<div><a id="favoriteCourseBtn" class="addCourse"><i class="fa fa-star"></i>&nbsp;&nbsp;&nbsp;收藏課程</a></div>
 						</div>				
 					</div>
 				</div>
 
-				<div id="courseInfo" class="tab-content content-wrap clearfix content-wrap-courseinfo">
+				<div id="courseInfo" class="content-wrap clearfix content-wrap-courseinfo">
 					<div id="left-wrap" >
 						<div class="asidebox">
 							<div class="asideTitle">課程資訊</div>
@@ -179,41 +143,10 @@
 						</div>
 					</div>
 				</div>
-				<div id="courseSchedule" class="tab-content content-wrap clearfix content-wrap-schedule">
-					<nav id="schedule-nav">
-						<ul class="schedule-nav-fix">
-							<?php
-								foreach($contentData['chapters'] as $i => $chapter){
-									$courseName = sprintf("CH%d: %s", $i+1, $chapter['name'] );
-									echo '<li><a href="#chpater-'. $i .'">'. $courseName .'</a></li>';
-								}
-							?>
-						</ul>
-					</nav>
-					<div class="schedule-wrap">
-						<div id="schedule-container">
-						<?php
-							foreach($contentData['chapters'] as $i => $chapter){
-								$courseName = sprintf("CH%d: %s", $i+1, $chapter['name'] );
-								echo '<div class="scheduleItem">';
-								echo '<div class="chapterTitle" id="chapter-'. $i .'"><i class="fa fa-bookmark-o"></i> '. $courseName .'</div>';
-
-								foreach($chapter['sections'] as $j => $section){
-									$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
-									$courseURL = sprintf("courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
-															,$courseData['course_id'], $i, $j);
-									echo '<div class="subChapter"><a href="'. $courseURL .'">'. $sectionName .'</a></div>';
-								}
-								echo '</div>';
-							}
-						?>										
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
 		<?php require("footer.php"); ?>
 		<?php require("js/js_com.php"); ?>
-		<script src="js/switch.js"></script>
+		<!-- <script src="js/switch.js"></script> -->
 	</body>
 </html>

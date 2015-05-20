@@ -3,6 +3,11 @@ body{
 	margin: 0px;
 	font-family: 'Roboto', '微軟正黑體', sans-serif;
 	background-color:  #ededed;
+	height: 100%;
+}
+
+html {
+	height: 100%;
 }
 ul {
 	margin: 0;
@@ -79,6 +84,14 @@ html[xmlns] .clearfix {
 	transition:all 0.3s ease;
 }
 
+.totalWrapper {
+	min-height:100%;
+}
+
+.container {
+	padding-bottom: 169px;
+}
+
 /* 內容 */
 .content-wrap{
 	max-width: 1200px; 
@@ -86,13 +99,19 @@ html[xmlns] .clearfix {
 	margin: 0 auto;
 }
 
+footer {
+	position: relative;
+ 	height: 100px;
+ 	margin-top: -169px;
+	clear: both;
+}
+#section-footer{
+	background-color: #C5BFBF;
+	margin-top: 50px;
+}
+
 #footerLabel{
 	text-align: center;
 	padding: 50px;
 	color: #fff;
-}
-
-#section-footer{
-	background-color: #C5BFBF;
-	margin-top: 50px;
 }

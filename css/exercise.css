@@ -1,0 +1,141 @@
+.questionNum {
+	list-style-type: decimal;
+	font-size: 18px;
+}
+
+.seriesNum {
+	list-style-type: lower-alpha;
+	font-size: 18px;
+	margin-left: 20px;
+}
+
+/****** true false CSS Start *******/
+.true_false_answer_wrap {
+	margin: 10px 0 10px 0;
+	padding-right: 15px;
+}
+
+.true_false_answer_wrap label {
+    display:inline-block;
+    margin: 5px 30px 15px 0;
+    padding: 4px 30px;
+    font-size: 18px;
+    background-color: #ddd;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.true_false_answer_wrap input[type="radio"] {
+	display: none;
+}
+
+.true_false_answer_wrap input[type="radio"]:checked + label {
+    background-color: #bbb;
+}
+
+/****** true false CSS End *******/
+
+/****** single choice CSS Start *******/
+.single_choice_wrap {
+	width: 50%;
+}
+
+.single_choice_answer_wrap {
+	margin: 15px 0 10px 0;
+	padding-right: 15px;
+	width: auto;
+}
+
+.single_choice_answer_wrap label {
+    display: inline-block;
+    margin: 5px 30px 15px 0;
+    padding: 4px 30px;
+    font-size: 18px;
+    background-color: #ddd;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.single_choice_answer_wrap input[type="radio"] {
+	display: none;
+}
+
+.single_choice_answer_wrap input[type="radio"]:checked + label {
+    background-color: #bbb;
+    width: auto;
+}
+
+/****** single choice CSS End *******/
+
+/****** multi choice CSS Start *******/
+.multi_choice_wrap {
+	width: 50%;
+}
+
+.multi_choice_answer_wrap {
+	margin: 15px 0 10px 0;
+	padding-right: 15px;
+	width: auto;
+}
+
+.multi_choice_answer_wrap label {
+    display: inline-block;
+    margin: 5px 30px 15px 0;
+    padding: 4px 30px;
+    font-size: 18px;
+    background-color: #ddd;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.multi_choice_answer_wrap input[type="checkbox"] {
+	display: none;
+}
+
+.multi_choice_answer_wrap input[type="checkbox"]:checked + label {
+    background-color: #bbb;
+    width: auto;
+}
+
+/****** multi choice CSS End *******/
+
+/****** series CSS Start *******/
+.series_question {
+	margin: 15px 0 10px 0;
+	font-size: 18px;
+}
+
+.series_question_wrap {
+	width: 50%;
+}
+
+.series_question_answer_wrap {
+	margin: 15px 0 10px 0;
+	padding-right: 15px;
+	width: auto;
+}
+
+.series_question_answer_wrap label {
+    display: inline-block;
+    margin: 5px 30px 15px 0;
+    padding: 4px 30px;
+    font-size: 18px;
+    background-color: #ddd;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.series_question_answer_wrap input[type="radio"] {
+	display: none;
+}
+
+.series_question_answer_wrap input[type="radio"]:checked + label {
+    background-color: #bbb;
+    width: auto;
+}
+
+/****** series choice CSS End *******/
+
+.question {
+	font-size: 18px;
+}

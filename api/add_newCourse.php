@@ -12,7 +12,7 @@
 
 	// add a new course to db
 	// 1. MySQL: insert row in `course` table (teacher_id, teacher_name and some default value)
-	$teacherInfo = "INSERT INTO course(course_name, teacher_id, teacher_name)VALUES('測試課程', '$member_id', '$name')";
+	$teacherInfo = "INSERT INTO course(course_name, teacher_id, teacher_name)VALUES('$course_name', '$member_id', '$name')";
 	$mysqlResult = mysql_query($teacherInfo);
 	$course_id = mysql_insert_id();
 
@@ -20,15 +20,15 @@
 	// Mongo Initial Course Data
 	$mongoInitData = array(
 	    "course_id" => (int)$course_id,
-		"description" => "",
-		"syllabus" => "",
-		"teachingMethods" => "",
-		"textbooks" => "",
-		"references" => "",
+		"description" => "尚未初始化",
+		"syllabus" => "尚未初始化",
+		"teachingMethods" => "尚未初始化",
+		"textbooks" => "尚未初始化",
+		"references" => "尚未初始化",
 	    "content" => array( 
 	    					"chapters" => [array(
 	    							"name" => "尚未初始化", "sections" => [array(
-	    								"name" => "尚未初始化", "video" => "", "content" => ""
+	    								"name" => "尚未初始化", "video" => "", "content" => "尚未初始化"
 	    															)]
 	    										)]
 	    					)

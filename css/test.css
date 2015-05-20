@@ -1,0 +1,20 @@
+html, body {
+ height:100%;
+}
+
+/*除了 footer 以外的內容，使用 #wrap 框住，使用 100% 最小高度，保證內容為最大值*/
+#wrap {
+ min-height: 100%;
+}
+
+/*在內容區塊的部分，假設是 #container*/
+#container{
+ padding-bottom: 76px; //footer 有多高就用多高
+}
+
+#footer{
+ position: relative;
+ height: 76px;
+ margin-top: -76px;
+ clear:both;
+}

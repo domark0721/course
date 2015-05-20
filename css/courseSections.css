@@ -24,6 +24,7 @@
 #courseChapterBar div {
 	color: #fff;
 	padding: 10px 0;
+	font-size: 17px;
 }
 
 #leftChapter {
@@ -35,9 +36,11 @@
 	text-decoration: none;
 }
 
-#leftChapter a{
+#leftChapter a, #rightChapter a{
 	text-decoration: none;
 	color: #fff;
+	padding: 10px 2px;
+	transition: all 0.2s;
 }
 
 #rightChapter {
@@ -49,10 +52,10 @@
 	text-decoration: none;
 }
 
-#rightChapter a{
-	text-decoration: none;
-	color: #fff;
+#leftChapter a:hover, #rightChapter a:hover {
+	color: rgba(255, 255, 255, 0.7);
 }
+
 
 #thisChapter {
 

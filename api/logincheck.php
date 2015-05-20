@@ -25,7 +25,11 @@
 		$_SESSION['name'] = $row['name'];
 		$_SESSION['mode'] = "st";
 		// echo "login success!";
-		Header("Location: ../stmode.php");
+		if(isset($_SESSION['url']))
+			$url = $_SESSION['url'];
+		else
+			$url = "stmode.php";
+		Header("Location: $url");
 	}
 	else{
 		// echo "login fail!";

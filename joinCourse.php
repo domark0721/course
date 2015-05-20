@@ -3,7 +3,8 @@
 	include_once('api/isLogin.php');
 	
 	session_start();
-	$_SESSION['url'] = $_SERVER['REQUEST_URI']; 
+	$_SESSION['url'] = $_SERVER['REQUEST_URI'];
+
 ?>
 <!doctype html>
 <html>
@@ -19,7 +20,7 @@
 			<?php require("header.php"); ?>
 			<div class="container">
 				<div class="newCourseForm-wrap">
-					<div id="title"><a>您想新增課程嗎？</a></div>
+					<div id="title"><a>您即將加入以下課程</a></div>
 					<form id="newCourseForm" action="api/add_newCourse.php" method="POST">
 						<label for="courseName">請輸入課程名稱</label>
 						<input class="nameInput" name="courseName" required><br>

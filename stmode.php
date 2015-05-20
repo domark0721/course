@@ -40,87 +40,91 @@
 <!doctype html>
 <html>
 	<head>
-		<?php require("meta_com.php") ?>
+		<?php require("meta_com.php"); ?>
 		<link type="text/css" rel="stylesheet" href="css/mode.css">
 		<title>學生模式 - NUCourse</title>
 	</head>
 
 	<body>
-		<?php require("header.php") ?>
-		<div class="content-wrap">
-			<div id="role"><?php echo $Member_NAME ?> 同學您好！</div>
-			<div class="userControl">
-				<ul class="tab-list">
-					<li><a href="#attened_course">進行課程</a></li>
-					<li><a href="#finish_course">修畢課程</a></li>
-					<li><a href="#favorite_course">我的最愛</a></li>
-					<!-- <li><a>互動討論</a></li> -->
-				</ul>
-			</div>
+		<div class="totalWrapper">
+			<?php require("header.php"); ?>
+			<div class="container">
+				<div class="content-wrap">
+					<div id="role"><?php echo $Member_NAME; ?> 同學您好！</div>
+					<div class="userControl">
+						<ul class="tab-list">
+							<li><a href="#attened_course">進行課程</a></li>
+							<li><a href="#finish_course">修畢課程</a></li>
+							<li><a href="#favorite_course">我的最愛</a></li>
+							<!-- <li><a>互動討論</a></li> -->
+						</ul>
+					</div>
 
-			<div id="attened_course" class="tab-content courseList">  
+					<div id="attened_course" class="tab-content courseList">  
 <?php 
 	foreach($attened_course as $value){
 		// var_dump($value);
 ?>
-				<div class="courseItem clearfix">
-					<div class="itemLeft"><img src="img/user-course.jpg"></div>
-					<div class="item-course-info"> 
-						<div class="item-course-name"><?php echo $value['course_name'] ?></div>
-						<div class="item-course-teacher">授課老師：<?php echo $value['teacher_name'] ?></div>
-						<div class="item-course-status">
-							<div class="item-course-status-container">
-								<div class="status" style="width:<?php echo $value['progress']?>%"></div>
+						<div class="courseItem clearfix">
+							<div class="itemLeft"><img src="img/user-course.jpg"></div>
+							<div class="item-course-info"> 
+								<div class="item-course-name"><?php echo $value['course_name'];?></div>
+								<div class="item-course-teacher">授課老師：<?php echo $value['teacher_name'];?></div>
+								<div class="item-course-status">
+									<div class="item-course-status-container">
+										<div class="status" style="width:<?php echo $value['progress'];?>%"></div>
+									</div>
+									<span><?php echo $value['progress'];?>%</span>
+								</div>
 							</div>
-							<span><?php echo $value['progress']?>%</span>
+							<div class="itemRight"><a href="course.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;&nbsp;進入課程</a></div>
 						</div>
-					</div>
-					<div class="itemRight"><a href="course.php?course_id=<?php echo $value['course_id']?>"><i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;&nbsp;進入課程</a></div>
-				</div>
 <?php }?>
-			</div>
-			<div id="finish_course" class="tab-content courseList">  
+					</div>
+					<div id="finish_course" class="tab-content courseList">  
 <?php 
 	foreach($finish_course as $value){
 		// var_dump($value);
 ?>
-				<div class="courseItem clearfix">
-					<div class="itemLeft"><img src="img/user-course.jpg"></div>
-					<div class="item-course-info"> 
-						<div class="item-course-name"><?php echo $value['course_name'] ?></div>
-						<div class="item-course-teacher">授課老師：<?php echo $value['teacher_name'] ?></div>
-						<div class="item-course-status">
-							<div class="item-course-status-container">
-								<div class="status" style="width:<?php echo $value['progress']?>%"></div>
+						<div class="courseItem clearfix">
+							<div class="itemLeft"><img src="img/user-course.jpg"></div>
+							<div class="item-course-info"> 
+								<div class="item-course-name"><?php echo $value['course_name'];?></div>
+								<div class="item-course-teacher">授課老師：<?php echo $value['teacher_name'];?></div>
+								<div class="item-course-status">
+									<div class="item-course-status-container">
+										<div class="status" style="width:<?php echo $value['progress'];?>%"></div>
+									</div>
+									<span><?php echo $value['progress']?>%</span>
+								</div>
 							</div>
-							<span><?php echo $value['progress']?>%</span>
+							<div class="itemRight"><a href="course.php?course_id=<?php echo $value['course_id']; ?>"><i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;&nbsp;進入課程</a></div>
 						</div>
-					</div>
-					<div class="itemRight"><a href="course.php?course_id=<?php echo $value['course_id']?>"><i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;&nbsp;進入課程</a></div>
-				</div>
 <?php }?>
-			</div>
-			<div id="favorite_course" class="tab-content courseList" style="display:none;">  
+					</div>
+					<div id="favorite_course" class="tab-content courseList" style="display:none;">  
 <?php 
 	foreach($favorite_course as $value){
 		// var_dump($value);
 ?>
-				<div class="courseItem clearfix">
-					<div class="itemLeft"><img src="img/user-course.jpg"></div>
-					<div class="item-course-info"> 
-						<div class="item-course-name"><?php echo $value['course_name'] ?></div>
-						<div class="item-course-teacher">授課老師：<?php echo $value['teacher_name'] ?></div>
-					</div>
-					<div class="itemRight"><a href="course.php?course_id=<?php echo $value['course_id']?>"><i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;&nbsp;進入課程</a></div>
-				</div>
+						<div class="courseItem clearfix">
+							<div class="itemLeft"><img src="img/user-course.jpg"></div>
+							<div class="item-course-info"> 
+								<div class="item-course-name"><?php echo $value['course_name']; ?></div>
+								<div class="item-course-teacher">授課老師：<?php echo $value['teacher_name']; ?></div>
+							</div>
+							<div class="itemRight"><a href="course.php?course_id=<?php echo $value['course_id']?>"><i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;&nbsp;進入課程</a></div>
+						</div>
 <?php }?>
-						
-			</div>
+								
+					</div>
 
-			
+					
+				</div>
+			</div>
 		</div>
-		<?php require("footer.php") ?>
-		<?php require("js/js_com.php") ?>
+		<?php require("footer.php"); ?>
+		<?php require("js/js_com.php"); ?>
 		<script src="js/switch.js"></script>
 	</body>
 </html>

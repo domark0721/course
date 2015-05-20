@@ -20,10 +20,5 @@
 			return null;
 	}
 
-	if($Member_NAME!=NULL){
 
-	}
-	else{
-		Header("Location: login.php");
-	}
 ?>
