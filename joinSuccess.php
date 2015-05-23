@@ -11,14 +11,11 @@
 	<body>
 		<div class="totalWrapper">
 			<?php require("header.php"); ?>
-			<div class="container">
-
-			
+			<div class="container content-wrap">
+				<div>加入課程成功！</div>
+				<div>網頁跳轉中...</div>
 			</div>
 		</div>
 
-
-
-		<?php require("footer.php"); ?>
 	</body>
 </html>

@@ -13,13 +13,13 @@
 
 .courseHeader {
 	float: left;
-	width: 25%;
+	width: 70%;
 }
 
 #editorBarTitle {
 	font-size: 35px;
 	margin-top: 42px;
-	margin-left: 20%;
+	margin-left:10%;
 }
 /* input css */
 .editSetting-wrap {
@@ -77,7 +77,7 @@
 	width: 20em;
 }
 
-#start_time_input {
+.start_time_input {
 	width: 9.5em;
 }
 

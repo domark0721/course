@@ -15,14 +15,14 @@
 				<div id="section-search">
 				       <div class="content-wrap">
 						<div id="searchControl">
-							<form id="searchForm"method="GET" action="">
-								<input id="inputCourse" type="text" placeholder="您想要學習什麼課程？">
+							<form id="searchForm" method="GET" action="search.php">
+								<input id="inputCourse" type="text" name="keyword" placeholder="您想要學習什麼課程？">
 								<input class="searchbtn" type="submit" value="搜尋">
 							</form>
 						</div>
 					</div>
 				</div>
-				<div id="section-hotcourse" class="content-wrap">
+				<div id="section-hotcourse" class="content-wrap" style="display:none;">
 					<div class="indexLabel">熱門課程</div>
 						<div id="courselist-container">
 							<ul id="courselist">

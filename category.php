@@ -1,25 +1,28 @@
 <?php
 	include_once('api/auth.php');
-	include_once('api/isLogin.php');
 ?>
 <!doctype html>
 <html>
 	<head>
 		<?php require("meta_com.php"); ?>
-		<link type="text/css" rel="stylesheet" href="css/index.css">
-		<title>NUCourse</title>
+		<link type="text/css" rel="stylesheet" href="css/category.css">
+		<title>課程分類 - NUCourse</title>
 	</head>
 
 	
 	<body>
 		<div class="totalWrapper">
 			<?php require("header.php"); ?>
-			<div class="container">
+			<div class="container content-wrap">
+				<div id="leftWrap">
+				</div>
+
+				<div id="rightWrap">
+				</div>
+
+
 			</div>
 		</div>
-
-
-
 		<?php require("footer.php"); ?>
 	</body>
 </html>

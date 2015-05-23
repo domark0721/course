@@ -61,7 +61,7 @@
 }
 
 .single_choice_answer_wrap input[type="radio"]:checked + label {
-    background-color: #bbb;
+    background-color: #F0BA2F;
     width: auto;
 }
 

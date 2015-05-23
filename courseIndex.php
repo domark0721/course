@@ -1,9 +1,18 @@
 <?php
+	include_once('api/auth.php');
 	include_once("mongodb.php");
 	include_once("mysql.php");
 
 	$course_id = $_GET['course_id'];
 	
+	session_start();
+	$_SESSION['url'] = $_SERVER['REQUEST_URI'];
+	$member_id = $_SESSION['member_id'];
+
+	//check this course have been saved in mysql
+	$countResult = mysql_query("SELECT COUNT(*) as exist FROM attendent WHERE course_id='$course_id' and member_id='$member_id'");
+	$existObj = mysql_fetch_assoc($countResult);
+
 	//metadata from mysql
 	$sql = "SELECT * FROM course WHERE course_id='$course_id'";
 	$result = mysql_query($sql);
@@ -16,7 +25,9 @@
 	foreach($courseMetadata_temp as $courseMetadata){
 
 	}
-	
+	//判斷如果status = 0 或 2時候不可以進入此頁面
+	// echo $courseMetadata['status'];
+
 	//course data from mongo
 	$mongoQuery = array('course_id' => (int)$course_id);
 	$mon = $collection -> find($mongoQuery);
@@ -51,7 +62,14 @@
 								<div id="courseName"><?php echo $courseMetadata['course_name']; ?></div>
 								<div id="courseTeacher"><?php echo $courseMetadata['teacher_name']; ?></div>
 							</div>
+						<?php if($existObj['exist'] != 1){ ?>
 							<div><a id="joinCourseBtn" class="addCourse" href="joinCourse.php?course_id=<?php echo $course_id;?>"><i class="fa fa-graduation-cap"></i>&nbsp;&nbsp;&nbsp;修習本課程</a></div>
+						<?php } else { 
+									if($courseMetadata['status'] == 0){?>
+								<div><a id="closeJoinCourseBtn" class="closeAddCourse"><i class="fa fa-graduation-cap"></i>&nbsp;&nbsp;&nbsp;結束授課</a></div>	
+								<?php }else{?>
+								<div><a id="alreadyJoinCourseBtn" class="alreadyAddCourse"><i class="fa fa-graduation-cap"></i>&nbsp;&nbsp;&nbsp;已加入課程</a></div>
+						<?php }} ?>
 							<div><a id="favoriteCourseBtn" class="addCourse"><i class="fa fa-star"></i>&nbsp;&nbsp;&nbsp;收藏課程</a></div>
 						</div>				
 					</div>

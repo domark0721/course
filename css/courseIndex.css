@@ -2,7 +2,7 @@
 	margin-top: 2em;
 }
 
-.addCourse{
+.addCourse, .alreadyAddCourse, .closeAddCourse{
 	float: left;
 	display: inline-block;
 	padding: 10px 35px;
@@ -15,10 +15,26 @@
 	margin: 20px 0 20px 45px;
 }
 
-.addCourse:hover{
+.alreadyAddCourse {
+	background-color: rgba(173, 50, 50, 1);
+}
+
+.closeAddCourse {
+	background-color: rgba(0, 0, 0, 1);
+}
+
+.addCourse:hover {
 	background-color: rgba(52, 141, 216, 0.8);
 }
 
-.addCourse:active {
+.alreadyAddCourse:hover {
+	background-color: rgba(173, 50, 50, 0.8);
+}
+
+.closeAddCourse:hover {
+	background-color: rgba(0, 0, 0, .8);
+}
+
+.addCourse:active, .alreadyAddCourse:active {
 	box-shadow: inset 0 8px 6px -6px#5C5B5B;
 }

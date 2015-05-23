@@ -138,8 +138,8 @@
 											<td><?php echo $courseMetadata['teacher_mail']; ?></td>
 										</tr>
 										<tr class="infotable-row">
-											<th class="">個人網站</th>
-											<td><?php echo $courseMetadata['website']; ?></td>
+											<th class="website">個人網站</th>
+											<td><a href="<?php echo $courseMetadata['website']; ?>" target="_blank"><?php echo $courseMetadata['website']; ?></a></td>
 										</tr>
 										<tr class="infotable-row">
 											<th class="">其他</th>

@@ -1,0 +1,129 @@
+#search_form {
+	margin-top: 2.5em;
+	text-align: center;
+}
+
+.searchInput {
+	padding: 0px 16px;
+	height: 42px;
+	width: 380px;
+	border:0px;
+	border-radius: 5px;
+	font-size: 20px;
+}
+
+hr {
+	border: 0; 
+	height: 1px; 
+	background-color: #d4d4d4;
+	color:#d4d4d4;
+	margin-top: 20px;
+}
+
+.result_wrap {
+	max-width: 960px;
+	width: 90%;
+	margin: 0 auto;
+}
+
+.courseItem {
+	margin: 15px 0;
+}
+
+.courseCard {
+	position: relative;
+	background-color: #fff;
+}
+
+.courseImg {
+	float: left;
+	width: 28%;
+}
+
+.courseImg img{
+	width: 100%;
+}
+
+.courseInfo{
+	padding-top: 20px;
+	margin-left: 32%;
+}
+
+.courseName {
+	display: inline-block;
+	font-size: 20px;
+}
+
+.teacherName {
+	margin-top: 5px;
+}
+
+.status0 a {
+	color: #fff;
+	background-color: #000;
+	padding: 3px 9px;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.status1, .status0 {
+	font-size: 14px;
+	margin-left: 5px;
+	display: inline-block;
+	margin-top: 10px;
+}
+
+.status1 a {
+	color: #fff;
+	background-color: rgb(211, 44, 44);
+	padding: 3px 9px;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.tag {
+	display: inline-block;
+	text-decoration: none;
+	font-size: 15px;
+	padding: 3px 9px;
+	margin: 35px 3px 0 0;
+	color: #fff;
+	border: 0px;
+	background-color: rgba(52, 141, 216, 0.7);
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.tag:hover {
+	transition: 0.3s;
+	background-color: rgba(52, 141, 216, 1);
+}
+
+.itemRight {
+	position: absolute;
+	top: 60%;
+	right: 5%;	
+}
+
+.itemRight a{
+	text-decoration: none;
+	background-color: #79B03D;
+	font-size: 18px;
+	color: #fff;
+	padding: 6px 15px;
+	border-radius: 2px;
+}
+
+.itemRight a:hover {
+	background-color: rgba(121, 176, 61, 0.8);
+}
+.itemRight a:active {
+	box-shadow: inset 0 8px 6px -6px#5C5B5B;
+}
+
+
+.nodata {
+	margin-top: 20px;
+	text-align: center;
+	color: gray;
+}

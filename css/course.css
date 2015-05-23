@@ -142,18 +142,36 @@
 	display: table-row;
 }
 
+.infotable-row a{
+	text-decoration: none;
+	color: #000;
+	word-break: break-all;
+}
+
+.infotable-row a:hover{
+	transition: all 0.3;
+	color: rgba(0, 0, 0, 0.8);
+}
+
 .infotable-row th {
 	padding-right: 15px;
 	padding-bottom: 8px;
-
+	vertical-align: middle;
+	width: 35%;
 }
 
 .infotable-row th , .infotable-row td {
-	vertical-align: top;
 }
+
+.infotable-row td  {
+	vertical-align: top;
+	width: 50%;
+}
+
 #right-wrap {
 	margin-left: 19em;
 }
+
 
 .courseIntro {
 	background-color: #fff;

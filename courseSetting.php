@@ -39,6 +39,7 @@
 <html>
 	<head>
 		<?php require("meta_com.php"); ?>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 		<link type="text/css" rel="stylesheet" href="css/mode.css">
 		<link type="text/css" rel="stylesheet" href="css/courseSetting.css">
 		<title>課程一般設定 - NUCourse</title>
@@ -51,7 +52,7 @@
 					<div class="content-wrap clearfix">
 						<div class="editorBarWrench"><i class="fa fa-wrench"></i></div>
 						<div class="courseHeader">
-							<div id="editorBarTitle">課程一般設定</div>
+							<div id="editorBarTitle">課程一般設定 - <?php echo $courseMetadata['course_name']; ?></div>
 						</div>
 					</div>
 				</div>
@@ -94,7 +95,7 @@
 								?>
 
 								<label for="start_time">開課時間</label>
-								<input id="start_time_input" class="" name="start_time" value="<?php echo $courseMetadata['start_time']; ?>"><br>
+								<input id="datepicker" class="start_time_input" name="start_time" value="<?php echo $courseMetadata['start_time']; ?>"><br>
 								<label for="pic">封面圖片</label>
 								<input type="file" name="pic">
 								<img src="img/user-course.jpg">
@@ -142,5 +143,13 @@
 		<?php require("js/js_com.php"); ?>
 		<script type="text/javascript" src="js/tinymce/tinymce.min.js"></script>
 		<script type="text/javascript" src="js/courseSetting.js"></script>
+		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+		<script>
+			$(function() {
+				    $( "#datepicker" ).datepicker();
+				    $( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+			});
+		</script>
 	</body>
 </html>

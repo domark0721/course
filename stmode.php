@@ -3,13 +3,13 @@
 	require ("mysql.php");
 	
 	session_start();
-
+	$member_id = $_SESSION['member_id'];
 	//user can't enter this page if they match the mode
 	if($_SESSION['mode'] == "te"){
 		Header("location: temode.php");
 	}
 
-	$member_id = $_SESSION['member_id'];
+	
 
 	//current and finish course
 	$current_lesson = "SELECT * FROM attendent as a LEFT JOIN course as b ON a.course_id = b.course_id WHERE member_id='$member_id'";
