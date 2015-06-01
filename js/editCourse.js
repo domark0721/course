@@ -1,4 +1,6 @@
 $(document).ready(function(){
+  
+  bindSectionItem();
 
   tinyMCE.init({
     selector: ".sectionEditor",
@@ -32,10 +34,14 @@ $(document).ready(function(){
       $(this).next('.sectionList').fadeIn(300);
   });
 
-  $('.sectionItem').on('click', function(e){
-    e.preventDefault();
-    showEditBlock($(e.target));
-  });
+  
+  function bindSectionItem(){
+    $('.sectionItem').on('click', function(e){
+      e.preventDefault();
+      // console.log('hey');
+      showEditBlock($(e.target));
+    });
+  }
 
   function showEditBlock(target){
     $('.sectionItem').removeClass('active');
@@ -46,6 +52,65 @@ $(document).ready(function(){
     $('.sectionEditWrap').hide();
     $(activeSectionEditBlock).fadeIn();
   }
+
+  /******** add new chapter Start ********/
+  $('.addChapterBtn').on('click', function(e){
+    $chapterList = $(this).next('.chapterList');
+    // $chapterList = $btnNext.children('.chapter:last-child');
+    // console.log($chapterList);
+    var ChapterCount = $(".chapter").length;
+    var emptyChapter = '<li class="chapter">';
+    emptyChapter += '<div class="chapterItem">';
+    emptyChapter += '<i class="fa fa-bookmark-o"></i>';
+    emptyChapter += '<span class="chapterNo"> CH'+ (ChapterCount+1)+': </span>';
+    emptyChapter += '<span class="chapterName">新章節</span>';
+    emptyChapter += '<span class="chapter-btns">';
+    emptyChapter += '<a class="addSectionBtn" data-chapter-id="'+ (ChapterCount+1) +'"><i class="fa fa-plus-circle"></i></a>';
+    emptyChapter += '<a class="deleteChapterBtn"><i class="fa fa-trash-o"></i></a></span></div>';
+    emptyChapter += '<ul class="sectionList"></ul></li>';
+    // emptyChapter += '';
+
+    $chapterList.append(emptyChapter);
+  });
+  /******** add new chapter End ********/
+  
+
+  /******** add new section Start ********/
+  $('.addSectionBtn').on('click', function(e){
+      $chapterParent = $(this).parents('.chapter');
+      $sectionList = $chapterParent.find('.sectionList');
+      // console.log($sectionList);
+      var chapterNo = $(this).data('chapter-id');
+      console.log(chapterNo);
+      var editWrapCount = $(".sectionItem").length;
+      var sectionCount = $sectionList.find('.sectionItem').length;
+      var sectionNo = chapterNo + '-' + (sectionCount+1) + ': ';
+      var section_uid = (Math.floor(Math.random()*90000) + 10000) + new Date().valueOf().toString();
+      // add default section left part into section list
+      var emptySection = '<li class="section">';
+      emptySection += '<a class="sectionItem" href="#editWrap'+ editWrapCount+'">';
+      emptySection += '<span class="sectionNo">'+ sectionNo +'</span>';
+      emptySection += '新小節';
+      emptySection += '<div class="chapter-btns"><span class="deleteSectionBtn"><i class="fa fa-trash-o"></i></span></div></a></li>';
+
+      $sectionList.append(emptySection);
+
+      // add default section right part into right panel
+
+      var emptyEditor = '<div id="editWrap'+ editWrapCount +'" class="sectionEditWrap" >';
+      emptyEditor += '<div class="sectionName"><label for="sectionName">章節名稱</label>';
+      emptyEditor += '<input class="sectionNameInput section-name" name="sectionName" value="新小節"></div>';
+      emptyEditor += '<div class="sectionVideo"><label for="sectionVideo">章節影片</label>';
+      emptyEditor += '<input type="file" name="sectionVideo" class="section-video"><div id="video"><video controls>';
+      emptyEditor += '<source src="" type="video/mp4">Your browser does not support the video tag.</video></div></div>';
+      emptyEditor += '<div class="sectionEditorWrap"><label for="sectionContent">章節內容</label>';
+      emptyEditor += '<textarea id="tinyMce_'+editWrapCount+'" class="sectionEditor section-content" style="width:100%"></textarea></div>';
+      emptyEditor += '<input type="hidden" class="section-uid" value="'+ section_uid +'"></div>';
+      $('#rightPanel').append(emptyEditor);
+      tinyMCE.execCommand('mceAddEditor', false, 'tinyMce_'+editWrapCount);
+      bindSectionItem();
+    });
+  /******** add new section End ********/
 
   $('#saveCouseBtn').on('click', saveCourseContent);
 
@@ -69,12 +134,14 @@ $(document).ready(function(){
             sectionWrapId = $(this).attr('href');
             // get name, video, content value of the section's editWrapDiv
             var sectionName = $(sectionWrapId).find('.section-name').val();
+            var sectionUid = $(sectionWrapId).find('.section-uid').val();
             var sectionVideo = $(sectionWrapId).find('.section-video').val();
             var sectionContent = $(sectionWrapId).find('.sectionEditor').val();
             
             // generate the formatted seciton obj of this secitonItem
             var sectionObj = {
               name : sectionName,
+              uid : sectionUid,
               video : sectionVideo,
               content : sectionContent 
             }

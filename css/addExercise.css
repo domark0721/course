@@ -1,0 +1,156 @@
+.editSetting-wrap {
+	margin-top: 20px;
+}
+
+.nav-wrap {
+	padding-top: 0;
+}
+
+.userControl ul li a {
+	border: 1px solid #388BDB;
+	border-radius: 14px;
+	padding: 5px 21px;
+	color: #388BDB;
+} 
+
+.tab-list a.active, .tab-list a:hover {
+	border-bottom: 3px solid #265B8E;
+	background-color: #388bdb;
+	color: #fff;
+}
+
+.addExercise_wrap {
+	max-width: 800px;
+	width: 100%;
+}
+
+.question_content_wrap {
+
+}
+
+.addExercise_wrap a {
+	font-size: 18px;
+}
+
+.addExercise_wrap label {
+	display: block;
+	padding: 10px 0 10px 0;
+	font-size: 18px;
+}
+
+.question_textarea {
+	width: 90%;
+	height: 105px;
+	margin-bottom: 15px;
+	border: 1px solid #888;
+	border-radius: 10px;
+	font-size: 18px;
+	padding: 5px 10px;
+}
+
+.level_wrap label{
+	display:inline-block;
+    margin: 5px 30px 15px 0;
+    padding: 4px 20px;
+    font-size: 18px;
+    color: #616161;
+    background-color: #ddd;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 15px;
+}
+
+.level_wrap input[type="radio"], .level_wrap input[type="checkbox"]  {
+	display: none;
+}
+
+.level_wrap input[type="radio"]:checked + label, .level_wrap input[type="checkbox"]:checked + label{
+    background-color: #388BDB;
+  	color: #fff;
+}
+
+/****** tags jquery start ******/
+.ui-widget-content {
+	background: #000;
+}
+
+.tagsInput {
+	font-size: 18px;
+	border-radius: 8px;
+	border: 1px solid #888;
+	padding: 5px 10px;
+	width: 50%;
+}
+
+ul.tagit {
+  padding: 1px 9px;
+  overflow: auto;
+  margin-left: inherit;
+  margin-right: inherit;
+  font-size: 18px;
+  border-radius: 8px;
+  border: 1px solid #888;
+  width: 40%;
+}
+
+.ui-state-default, 
+.ui-widget-content .ui-state-default, 
+.ui-widget-header .ui-state-default {
+	font-weight: normal;
+	color: #388BDB;
+}
+
+/****** tags jquery end ******/
+
+.addExercise_wrap select {
+	padding: 10px 0;
+	font-size: 18px;
+	border: 1px solid #888;
+	margin-bottom: 15px;
+}
+
+.addExercise_wrap .time_select {
+	width: 10%;
+}
+
+.addExercise_wrap .time_char {
+	padding: 0 8px;
+}
+
+.opt_content div {
+	display: block;
+}
+
+.opt_content span, .opt_content textarea{
+	font-size: 18px;
+}
+
+.opt_content span {
+	display; inline-block;
+	padding: 5px 10px 5px 0;
+}
+
+.opt_content textarea {
+	display; inline-block;
+	vertical-align: top;
+	padding: 0 5px;
+	width: 85%;
+	height: 50px;
+	margin-bottom: 15px;
+	border: 1px solid #888;
+	border-radius: 10px;
+	font-size: 18px;
+	padding: 5px 10px;
+}
+
+.showSection {
+	display: none;
+}
+
+.resultBtn {
+	margin-top: 5%
+}
+
+.resultBtn button {
+  margin: 20px 15px;
+}

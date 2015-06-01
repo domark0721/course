@@ -66,19 +66,19 @@
 }
 
 .panelBtn.save {
-	background-color: rgba(121, 176, 61, 0.9);
-}
-
-.panelBtn.save:hover {
 	background-color: rgba(121, 176, 61, 1);
 }
 
+.panelBtn.save:hover {
+	background-color: rgba(121, 176, 61, .8);
+}
+
 .panelBtn.giveup {
-	background-color: rgba(173, 50, 50, 0.9);
+	background-color: rgba(173, 50, 50, 1);
 }
 
 .panelBtn.giveup:hover {
-	background-color: rgba(173, 50, 50, 1);
+	background-color: rgba(173, 50, 50, .8);
 }
 
 .chapterList {
@@ -120,12 +120,20 @@
 	display: block;
 }
 
-.addChapter {
-	display: block;
+.addChapterBtn {
+	display: inline-block;
 	font-size: 20px;
-	margin: 20px 0 5px 0;
+	margin: 20px 0 15px 14px;
 	padding: 6px 15px;
 	cursor: pointer;
+	border: 1px solid #676767;
+	border-radius: 16px;
+}
+
+.addChapterBtn:hover {
+	color: #fff;
+	background-color: #474747;
+	transition: all .3s;
 }
 
 .chapter-btns {

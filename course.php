@@ -184,29 +184,28 @@
 						<ul class="schedule-nav-fix">
 							<?php
 								foreach($contentData['chapters'] as $i => $chapter){
-									$courseName = sprintf("CH%d: %s", $i+1, $chapter['name'] );
-									echo '<li><a href="#chpater-'. $i .'">'. $courseName .'</a></li>';
-								}
-							?>
+									$courseName = sprintf("CH%d: %s", $i+1, $chapter['name'] ); ?>
+									<li><a href="#chpater-<?php echo $i; ?>"><?php echo $courseName; ?></a></li>
+							<?php } ?>
 						</ul>
 					</nav>
 					<div class="schedule-wrap">
 						<div id="schedule-container">
 						<?php
 							foreach($contentData['chapters'] as $i => $chapter){
-								$courseName = sprintf("CH%d: %s", $i+1, $chapter['name'] );
-								echo '<div class="scheduleItem">';
-								echo '<div class="chapterTitle" id="chapter-'. $i .'"><i class="fa fa-bookmark-o"></i> '. $courseName .'</div>';
+								$courseName = sprintf("CH%d: %s", $i+1, $chapter['name'] ); ?>
+								<div class="scheduleItem">
+								<div class="chapterTitle" id="chapter-<?php echo $i; ?>"><i class="fa fa-bookmark-o"></i><?php echo $courseName; ?></div>
 
-								foreach($chapter['sections'] as $j => $section){
+							<?php foreach($chapter['sections'] as $j => $section){
 									$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
 									$courseURL = sprintf("courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
-															,$courseData['course_id'], $i, $j);
-									echo '<div class="subChapter"><a href="'. $courseURL .'">'. $sectionName .'</a></div>';
-								}
-								echo '</div>';
-							}
-						?>										
+															,$courseData['course_id'], $i, $j); ?>
+
+									<div class="subChapter"><a href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a></div>
+								<?php } ?>
+								</div>
+						<?php } ?>										
 						</div>
 					</div>
 				</div>

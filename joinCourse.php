@@ -56,7 +56,7 @@
 							<a>by <?php echo $courseMetadata['teacher_name'];?></a>
 						</div>
 						<input type="hidden" name="course_id" value="<?php echo $course_id;?>"/>
-						<button class="giveupBtn" type="button" onclick="location.href='courseIndex.php?course_id=<?php echo $course_id?>'">取 消</button>
+						<button class="giveupBtn" type="button" onclick="history.back()">取 消</button>
 						<button class="joinBtn" type="submit">確定加入</button>
 					</form>
 				<?php }?>

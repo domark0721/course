@@ -23,13 +23,11 @@
 		"description" => "尚未初始化",
 		"syllabus" => "尚未初始化",
 		"teachingMethods" => "尚未初始化",
-		"textbooks" => "尚未初始化",
-		"references" => "尚未初始化",
+		"textbooks" => "尚未填寫內容",
+		"references" => "尚未填寫內容",
 	    "content" => array( 
 	    					"chapters" => [array(
-	    							"name" => "尚未初始化", "sections" => [array(
-	    								"name" => "尚未初始化", "video" => "", "content" => "尚未初始化"
-	    															)]
+	    							"name" => "尚未命名", "sections" => []
 	    										)]
 	    					)
 	);

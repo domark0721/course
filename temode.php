@@ -49,13 +49,35 @@
 			<div class="container">
 				<div class="content-wrap">
 					<div id="role"><?php echo $Member_NAME; ?>  老師您好！</div>
-					<a id="newCourse" class="newCourseBtn" href="newCourse.php"><i class="fa fa-plus-square-o"></i>&nbsp;&nbsp;開新課程</a>
+					<a id="newCourse" class="newCourseBtn" href="newCourse.php"><i class="fa fa-plus fa_newCourse"></i>開新課程</a>
 					<div class="userControl">
 						<ul class="tab-list">
 							<li><a href="#statusEditing">編輯中的課程</a></li>
 							<li><a href="#statusOn">正在授課</a></li>
 							<li><a href="#statusOff">結束授課</a></li>
 						</ul>
+					</div>
+					<div id="statusEditing" class="tab-content courseList">
+<?php
+	foreach ($statusEditing as $value){
+?>
+						<div class="courseItem clearfix">
+							<div class="itemLeft"><img src="img/user-course.jpg"></div>
+							<div class="item-course-info"> 
+								<div class="item-course-name"><?php echo $value['course_name'];?></div>
+								<div class="item-course-teacher">授課老師：<?php echo $value['teacher_name'];?></div>
+							</div>
+							<div class="middleBtns">
+								<a class="enterBtn" href="course.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-chevron-circle-right fa_plus"></i>進入課程</a>					
+								<a class="manageStudentBtn" href="studentManage.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-book fa_plus"></i>學生管理</a>
+							</div>
+							<div class="rightBtns">
+								<a class="settingBtn" href="courseSetting.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-cog fa_plus"></i> 一般設定</a>
+								<a class="editCourseBtn" href="editCourse.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-pencil fa_plus"></i> 內容編寫</a>
+								<a class="questionManage" href="exercise.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-leanpub fa_plus"></i>題庫管理</a>
+							</div>
+						</div>
+<?php } ?>
 					</div>
 
 					<div id="statusOn" class="tab-content courseList">
@@ -67,12 +89,15 @@
 							<div class="item-course-info"> 
 								<div class="item-course-name"><?php echo $value['course_name'];?></div>
 								<div class="item-course-teacher">授課老師：<?php echo $value['teacher_name'];?></div>
-								<a class="enterBtn" href="course.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;&nbsp;進入課程</a>
+							</div>
+							<div class="middleBtns">
+								<a class="enterBtn" href="course.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-chevron-circle-right fa_plus"></i>進入課程</a>					
+								<a class="manageStudentBtn" href="studentManage.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-book fa_plus"></i>學生管理</a>
 							</div>
 							<div class="rightBtns">
-								<a class="settingBtn" href="courseSetting.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-cog"></i>&nbsp;&nbsp;&nbsp;一般設定</a>
-								<a class="editCourseBtn" href="editCourse.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-pencil"></i>&nbsp;&nbsp;&nbsp;內容編寫</a>
-								<a class="manageStudentBtn" href="studentManage.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-book"></i>&nbsp;&nbsp;&nbsp;學生管理</a>
+								<a class="settingBtn" href="courseSetting.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-cog fa_plus"></i> 一般設定</a>
+								<a class="editCourseBtn" href="editCourse.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-pencil fa_plus"></i> 內容編寫</a>
+								<a class="questionManage" href="exercise.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-leanpub fa_plus"></i>題庫管理</a>
 							</div>
 		<!-- 					<div class="itemRight"><a href="#">進入課程</a></div>
 							<div class="itemRight"><a href="#">進入課程</a></div>
@@ -90,36 +115,19 @@
 							<div class="item-course-info"> 
 								<div class="item-course-name"><?php echo $value['course_name'];?></div>
 								<div class="item-course-teacher">授課老師：<?php echo $value['teacher_name'];?></div>
-								<a class="enterBtn" href="course.php?course_id=<?php echo $value['course_id']?>"><i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;&nbsp;進入課程</a>
+							</div>
+							<div class="middleBtns">
+								<a class="enterBtn" href="course.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-chevron-circle-rightfa_plus"></i>進入課程</a>					
+								<a class="manageStudentBtn" href="studentManage.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-bookfa_plus"></i>學生管理</a>
 							</div>
 							<div class="rightBtns">
-								<a class="settingBtn" href="courseSetting.php?course_id=<?php echo $value['course_id']?>"><i class="fa fa-cog"></i>&nbsp;&nbsp;&nbsp;一般設定</a>
-								<a class="editCourseBtn" href="editCourse.php?course_id=<?php echo $value['course_id']?>"><i class="fa fa-pencil"></i>&nbsp;&nbsp;&nbsp;內容編寫</a>
-								<a class="manageStudentBtn" href="studentManage.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-book"></i>&nbsp;&nbsp;&nbsp;學生管理</a>
+								<a class="settingBtn" href="courseSetting.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-cogfa_plus"></i> 一般設定</a>
+								<a class="editCourseBtn" href="editCourse.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-pencil fa_plus"></i> 內容編寫</a>
+								<a class="questionManage" href="exercise.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-leanpubfa_plus"></i>題庫管理</a>
 							</div>
 						</div>
 <?php } ?>
-					</div>
-					<div id="statusEditing" class="tab-content courseList">
-<?php
-	foreach ($statusEditing as $value){
-?>
-						<div class="courseItem clearfix">
-							<div class="itemLeft"><img src="img/user-course.jpg"></div>
-							<div class="item-course-info"> 
-								<div class="item-course-name"><?php echo $value['course_name'];?></div>
-								<div class="item-course-teacher">授課老師：<?php echo $value['teacher_name'];?></div>
-								<a class="enterBtn" href="course.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;&nbsp;進入課程</a>					
-							</div>
-							<div class="rightBtns">
-								<a class="settingBtn" href="courseSetting.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-cog"></i>&nbsp;&nbsp;&nbsp;一般設定</a>
-								<a class="editCourseBtn" href="editCourse.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-pencil"></i>&nbsp;&nbsp;&nbsp;內容編寫</a>
-								<a class="manageStudentBtn" href="studentManage.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-book"></i>&nbsp;&nbsp;&nbsp;學生管理</a>
-							</div>
-						</div>
-<?php } ?>
-					</div>
-					
+					</div>					
 				</div>
 			</div>
 		</div>

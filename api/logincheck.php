@@ -28,7 +28,7 @@
 		if(isset($_SESSION['url']))
 			$url = $_SESSION['url'];
 		else
-			$url = "stmode.php";
+			$url = "../stmode.php";
 		Header("Location: $url");
 	}
 	else{

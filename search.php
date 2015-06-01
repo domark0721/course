@@ -44,13 +44,13 @@
 				<div id="course_container" class="result_wrap">
 					<ul id="courselist">
 					<?php 
-					if(!empty($keywords) && !empty($courseListStatus1)){
+					if(!empty($keywords) && (!empty($courseListStatus1) || !empty($courseListStatus0))){
 						foreach($courseListStatus1 as $item){ ?>
 							<li class="courseItem courseCard clearfix">
 								<div class="courseImg"><img src="img/user-course.jpg" /> </div>
 								<div class="courseInfo">
 									<div class="courseName"><?php echo $item['course_name'];?></div>
-									<div class="status1"><a>開放</a></div>
+									<div class="status1"><a>開放中</a></div>
 									<div class="teacherName">授課老師：<?php echo $item['teacher_name'];?></div>
 									<?php
 										if(!empty($item['tags'])){
@@ -66,7 +66,7 @@
 								<div class="courseImg"><img src="img/user-course.jpg" /> </div>
 								<div class="courseInfo">
 									<div class="courseName"><?php echo $item['course_name'];?></div>
-									<div class="status0"><a>結束</a></div>
+									<div class="status0"><a>已結束</a></div>
 									<div class="teacherName">授課老師：<?php echo $item['teacher_name'];?></div>
 									<?php
 										if(!empty($item['tags'])){
@@ -77,9 +77,12 @@
 								</div>
 								<div class="itemRight"><a href="courseIndex.php?course_id=<?php echo $item['course_id'];?>"><i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;&nbsp;瀏覽大綱</a></div>
 							</li>
-					<?php  } 
+						<?php } 
 					}else { ?>
-						<div class="nodata">Oops! 沒有資料 :(</div>
+					<div class="nodata">
+						<img src="img/oops.png">
+						<a>沒有資料 :(</a>
+					</div>
 					<?php } ?>
 					</ul>
 				</div>

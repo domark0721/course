@@ -47,10 +47,8 @@ $(document).ready(function(){
 
   function submitForm() {
       tinyMCE.triggerSave();
-      
       // do some form validation
-
-
+      
       $('#editSettingForm').submit();
   }
 

@@ -62,14 +62,15 @@
 								<div id="courseName"><?php echo $courseMetadata['course_name']; ?></div>
 								<div id="courseTeacher"><?php echo $courseMetadata['teacher_name']; ?></div>
 							</div>
-						<?php if($existObj['exist'] != 1){ ?>
-							<div><a id="joinCourseBtn" class="addCourse" href="joinCourse.php?course_id=<?php echo $course_id;?>"><i class="fa fa-graduation-cap"></i>&nbsp;&nbsp;&nbsp;修習本課程</a></div>
+						<?php if($courseMetadata['status'] == 0){ ?>
+								<div><a id="closeJoinCourseBtn" class="closeAddCourse"><i class="fa fa-graduation-cap"></i>&nbsp;&nbsp;&nbsp;結束授課</a></div>
 						<?php } else { 
-									if($courseMetadata['status'] == 0){?>
-								<div><a id="closeJoinCourseBtn" class="closeAddCourse"><i class="fa fa-graduation-cap"></i>&nbsp;&nbsp;&nbsp;結束授課</a></div>	
-								<?php }else{?>
-								<div><a id="alreadyJoinCourseBtn" class="alreadyAddCourse"><i class="fa fa-graduation-cap"></i>&nbsp;&nbsp;&nbsp;已加入課程</a></div>
-						<?php }} ?>
+									if($existObj['exist'] != 1){ ?>
+										<div><a id="joinCourseBtn" class="addCourse" href="joinCourse.php?course_id=<?php echo $course_id;?>"><i class="fa fa-graduation-cap"></i>&nbsp;&nbsp;&nbsp;修習本課程</a></div>
+							<?php } else { ?>
+										<div><a id="alreadyJoinCourseBtn" class="alreadyAddCourse"><i class="fa fa-graduation-cap"></i>&nbsp;&nbsp;&nbsp;已加入課程</a></div>
+						<?php }
+							}  ?>
 							<div><a id="favoriteCourseBtn" class="addCourse"><i class="fa fa-star"></i>&nbsp;&nbsp;&nbsp;收藏課程</a></div>
 						</div>				
 					</div>
@@ -121,7 +122,7 @@
 										</tr>
 										<tr class="infotable-row">
 											<th class="">個人網站</th>
-											<td><?php echo $courseMetadata['website']; ?></td>
+											<td><a href="<?php echo $courseMetadata['website']; ?>" target="_blank"><?php echo $courseMetadata['website']; ?></a></td>
 										</tr>
 										<tr class="infotable-row">
 											<th class="">其他</th>
