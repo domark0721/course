@@ -38,6 +38,8 @@
 <html>
 	<head>
 		<?php require("meta_com.php"); ?>
+		<!-- <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css"> -->
+		<link href="css/jquery.tagit.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 		<link type="text/css" rel="stylesheet" href="css/mode.css">
 		<link type="text/css" rel="stylesheet" href="css/courseSetting.css">
@@ -62,22 +64,22 @@
 							<div class="editorBox">
 								<a>老師資訊</a>
 								<label for="teacher_name">姓名</label>
-								<input class="" name="teacher_name" value="<?php echo $courseMetadata['teacher_name']; ?>">
+								<input class="normalInput" name="teacher_name" value="<?php echo $courseMetadata['teacher_name']; ?>">
 								<label class="margin-left" for="teacher_mail">E-Mail</label>
-								<input id="teacher_mail_input" class="" name="teacher_mail" value="<?php echo $courseMetadata['teacher_mail']; ?>"><br>
+								<input class="normalInput teacher_mail_input" name="teacher_mail" value="<?php echo $courseMetadata['teacher_mail']; ?>"><br>
 								<label for="website">網站</label>
-								<input class="" name="website" value="<?php echo $courseMetadata['website']; ?>" style="width:90%;">
+								<input class="normalInput" name="website" value="<?php echo $courseMetadata['website']; ?>" style="width:90%;">
 							</div>
 							<div id="courseInfo" class="editorBox">
 								<a>課程資訊</a>
 								<label for="course_name">名稱</label>
-									<input id="course_name_input" name="course_name" value="<?php echo $courseMetadata['course_name']; ?>"><br>
+									<input id="course_name_input" class="normalInput" name="course_name" value="<?php echo $courseMetadata['course_name']; ?>"><br>
 								<label for="course_id">編號</label>
-									<input id="course_id_input"  name="course_id" value="<?php echo $courseMetadata['course_id']; ?>" disabled>
+									<input id="course_id_input" class="normalInput" name="course_id" value="<?php echo $courseMetadata['course_id']; ?>" disabled>
 								<label class="margin-left" for="type">類別</label>
-									<input class="" name="type" value="<?php echo $courseMetadata['type']; ?>"><br>
+									<input class="normalInput" name="type" value="<?php echo $courseMetadata['type']; ?>"><br>
 								<label for="lang">語言</label>
-									<input class="" name="lang" value="<?php echo $courseMetadata['lang']; ?>">
+									<input class="normalInput" name="lang" value="<?php echo $courseMetadata['lang']; ?>">
 								<label class="margin-left" for="lang">課程狀態</label>
 								<div class="class_status">	
 									<input id="status2" type="radio" name="status" value="2" <?php if($courseMetadata['status'] == 2) echo "checked";?>>
@@ -88,7 +90,11 @@
 									<label for="status0">結束</label>
 								</div><br>
 								<label for="start_time">開課時間</label>
-									<input id="datepicker" class="start_time_input" name="start_time" value="<?php echo $courseMetadata['start_time']; ?>"><br>
+									<input id="datepicker" class="start_time_input normalInput" name="start_time" value="<?php echo $courseMetadata['start_time']; ?>">
+								<div class="tags_wrap">
+									<label for="tags">標籤</label>
+									<input class="courseTags" type="text" name="tags" value="<?php echo $courseMetadata['tags']; ?>">
+								</div>
 								<label for="pic">封面圖片</label>
 									<input type="file" name="pic">
 								<img src="img/user-course.jpg">
@@ -135,7 +141,12 @@
 		<?php require("footer.php"); ?>
 		<?php require("js/js_com.php"); ?>
 		<script type="text/javascript" src="js/tinymce/tinymce.min.js"></script>
-		<script type="text/javascript" src="js/courseSetting.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/tag-it.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		        $(".courseTags").tagit(); 
+		</script>
 		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 		<script>
@@ -144,5 +155,8 @@
 				    $( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
 			});
 		</script>
+		<script type="text/javascript" src="js/courseSetting.js"></script>
 	</body>
 </html>
+
+

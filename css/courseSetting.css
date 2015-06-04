@@ -53,15 +53,6 @@
 	font-size: 18px;
 }
 
-#editSettingForm input {
-	display: inline-block;
-	margin: 5px 0 15px 0;
-	border: 1px solid #ccc;
-	border-radius: 5px; 
-	box-sizing: border-box;
-	padding: 5px 8px;
-}
-
 #editSettingForm label {
 	margin-right: 15px;
 }
@@ -80,8 +71,17 @@
 	width: 28.5em;
 }
 
-#teacher_mail_input{
+.teacher_mail_input{
 	width: 20em;
+}
+
+.normalInput {
+	display: inline-block;
+	margin: 5px 0 15px 0;
+	border: 1px solid #ccc;
+	border-radius: 5px; 
+	box-sizing: border-box;
+	padding: 5px 8px;
 }
 
 .class_status label {
@@ -109,7 +109,34 @@
 .start_time_input {
 	width: 9.5em;
 }
+/* tags start */
+.tags_wrap {
+	margin-bottom: 2em;
+}
 
+.courseTags {
+	display: none;
+}
+
+ul.tagit {
+	display: inline-block;
+	vertical-align: middle;
+	padding: 3px 9px;
+	overflow: auto;
+	margin-left: inherit;
+	margin-right: inherit;
+	font-size: 15px;
+	border-radius: 8px;
+	border: 1px solid #ccc;
+	width: 70%;
+}
+
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
+	font-size: 15px;
+}
+/* tags end*/
 #courseInfo img{
 	margin-left: 10px;
 	width: 25%;
@@ -127,6 +154,7 @@
 
 .resultBtn {
 	text-align: center;
+	margin-top: 1em;
 }
 
 .resultBtn a{

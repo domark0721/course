@@ -12,6 +12,7 @@
 	$lang = $_POST['lang'];
 	$status = $_POST['status'];
 	$start_time = $_POST['start_time'];
+	$tags = $_POST['tags'];
 	$description = $_POST['description'];
 	$syllabus = $_POST['syllabus'];
 	$teachingMethods = $_POST['teachingMethods'];
@@ -41,6 +42,7 @@
 									  course_name='$course_name',
 									  type='$type',
 									  lang='$lang',
+									  tags='$tags',
 									  status='$status',
 									  start_time='$start_time'
 									  WHERE course_id=$course_id";

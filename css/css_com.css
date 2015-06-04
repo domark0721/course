@@ -9,11 +9,13 @@ body{
 html {
 	height: 100%;
 }
+
 ul {
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
+
 li {
 	margin: 0;
 	padding: 0;
@@ -48,16 +50,23 @@ html[xmlns] .clearfix {
 	margin: 0 auto;
 }
 
-#headerLogo{
+#headerLogo {
 	float:left;
 	font-size: 38px;
 	display: inline;
 	margin-top: 10px;
 }
-#headerLogo a{
+
+#headerLogo a {
 	color: #838383;
 	text-decoration: none;
+	
 }
+
+#headerLogo a img {
+	width: 40%;
+}
+
 #headerBar-nav{
 	float: right;
 	list-style: none;

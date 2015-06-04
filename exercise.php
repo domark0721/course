@@ -75,6 +75,7 @@
 							<div class="topBanner_CourseName"><?php echo $courseMetadata['course_name']; ?></div>
 						</div>
 							<a class="functionBtn newQuestion" href="addExercise.php?course_id=<?php echo $course_id; ?>"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;新增題目</a>
+							<a class="functionBtn newExam" href="addExercise.php?course_id=<?php echo $course_id; ?>"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;新增題目</a>
 							<a class="functionBtn return" onclick="history.back();">返回</a>
 					</div>
 				</div>				
@@ -82,10 +83,10 @@
 					<div class="nav-wrap">
 							<div class="userControl">
 								<ul class="tab-list">
-									<li><a href="#series_question">題組</a></li>
-									<li><a href="#multi_choice">多選題</a></li>
 									<li><a href="#true_false">是非題</a></li>
+									<li><a href="#multi_choice">多選題</a></li>
 									<li><a href="#single_choice">單選題</a></li>
+									<li><a href="#series_question">題組</a></li>
 									
 								</ul>
 							</div>
@@ -104,32 +105,34 @@
 										<?php } ?>
 									</div>
 									<div class="tfQuestion"><?php echo $trueFalseQuesBody['question'];?></div>
-									<div class="questionInfo">
-										<a class="level">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
-										<a class="time">答題時間：<?php echo $question['time']; ?></a>
-										<div class="tags"><a>演算法</a><a>Binary Tree</a></div>
-									</div>
-									<div class="for_section">
-										<?php if($question['is_test'] == false){ ?>
-											<a class="is_test">適用章節： <span>未指定</span></a>
-										<?php } else{
-												foreach($contentData['chapters'] as $i => $chapter){
-													foreach($chapter['sections'] as $j => $section){
-														$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
-														$courseURL = sprintf("courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
-																				,$courseData['course_id'], $i, $j);
+									<div class="question_editor_wrap">
+										<div class="questionInfo">
+											<a class="level">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
+											<a class="time">答題時間：<?php echo $question['time']; ?></a>
+											<div class="tags"><a>演算法</a><a>Binary Tree</a></div>
+										</div>
+										<div class="for_section">
+											<?php if($question['is_test'] == false){ ?>
+												<a class="is_test">適用章節： <span>未指定</span></a>
+											<?php } else{
+													foreach($contentData['chapters'] as $i => $chapter){
+														foreach($chapter['sections'] as $j => $section){
+															$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
+															$courseURL = sprintf("courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
+																					,$courseData['course_id'], $i, $j);
 
-														if($section['uid'] == $question['test_section']){ ?>
-															<a class="is_test">適用章節：</a>
-															<a class="is_test_href" target="_blank" href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a>
-										<?php 			}
+															if($section['uid'] == $question['test_section']){ ?>
+																<a class="is_test">適用章節：</a>
+																<a class="is_test_href" target="_blank" href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a>
+											<?php 			}
+														}
 													}
-												}
-										}?>
-									</div>
-									<div class="questionFunc">
-										<a class="editQuesBtn">編輯</a>
-										<a class="deletQuesBtn">刪除</a>
+											}?>
+										</div>
+										<div class="questionFunc">
+											<a class="editQuesBtn">編輯</a>
+											<a class="deletQuesBtn">刪除</a>
+										</div>
 									</div>
 							</li>
 						<?php } }else {?>
@@ -156,58 +159,7 @@
 											<a><?php echo $options['content'];?></a>
 									<?php } }?>	
 								</div>
-								<div class="questionInfo">
-									<a class="level">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
-									<a class="time">答題時間：<?php echo $question['time']; ?></a>
-									<div class="tags"><a>演算法</a><a>Binary Tree</a></div>
-								</div>
-								<div class="for_section">
-									<?php if($question['is_test'] == false){ ?>
-										<a class="is_test">適用章節： <span>未指定</span></a>
-									<?php } else{
-											foreach($contentData['chapters'] as $i => $chapter){
-												foreach($chapter['sections'] as $j => $section){
-													$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
-													$courseURL = sprintf("courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
-																			,$courseData['course_id'], $i, $j);
-
-													if($section['uid'] == $question['test_section']){ ?>
-														<a class="is_test">適用章節：</a>
-														<a class="is_test_href" target="_blank" href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a>
-									<?php 			}
-												}
-											}
-									}?>
-								</div>
-								<div class="questionFunc">
-									<a class="editQuesBtn">編輯</a>
-									<a class="deletQuesBtn">刪除</a>
-								</div>
-							</li>
-						<?php } }else {?>
-							<div class="noQuestion">
-								<img src="img/oops.png">
-								<a>此題形沒有資料 :(</a>
-							</div>
-						<?php }?>
-					</ul>
-
-					<!-- ************* 多選題 ************* -->
-					<ul id="multi_choice" class="tab-content questionNum">
-					<?php if(!empty($multiChoiceQues)){
-							foreach($multiChoiceQues as $i => $question){
-							$multiChoiceQuesBody = $question['body'];
-							$multiChoiceQuesOpt = $multiChoiceQuesBody['options']?>
-							<li class="multi_choice_wrap">
-									<div class="question"><?php echo $multiChoiceQuesBody['question'];?><!-- <span class="questionType"> ( 多選 )</span> --></div>
-									<div class="multi_choice_answer_wrap">
-										<?php foreach($multiChoiceQuesOpt as $j => $options){
-											if($options['is_answer'] == true){?>
-												<a class="opt_true"><?php echo $options['content'];?></a>
-										<?php }else{  ?>
-												<a><?php echo $options['content'];?></a>
-										<?php } }?>	
-									</div>
+								<div class="question_editor_wrap">
 									<div class="questionInfo">
 										<a class="level">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
 										<a class="time">答題時間：<?php echo $question['time']; ?></a>
@@ -234,7 +186,62 @@
 									<div class="questionFunc">
 										<a class="editQuesBtn">編輯</a>
 										<a class="deletQuesBtn">刪除</a>
-									</div>										
+									</div>
+								</div>
+							</li>
+						<?php } }else {?>
+							<div class="noQuestion">
+								<img src="img/oops.png">
+								<a>此題形沒有資料 :(</a>
+							</div>
+						<?php }?>
+					</ul>
+
+					<!-- ************* 多選題 ************* -->
+					<ul id="multi_choice" class="tab-content questionNum">
+					<?php if(!empty($multiChoiceQues)){
+							foreach($multiChoiceQues as $i => $question){
+							$multiChoiceQuesBody = $question['body'];
+							$multiChoiceQuesOpt = $multiChoiceQuesBody['options']?>
+							<li class="multi_choice_wrap">
+									<div class="question"><?php echo $multiChoiceQuesBody['question'];?><!-- <span class="questionType"> ( 多選 )</span> --></div>
+									<div class="multi_choice_answer_wrap">
+										<?php foreach($multiChoiceQuesOpt as $j => $options){
+											if($options['is_answer'] == true){?>
+												<a class="opt_true"><?php echo $options['content'];?></a>
+										<?php }else{  ?>
+												<a><?php echo $options['content'];?></a>
+										<?php } }?>	
+									</div>
+									<div class="question_editor_wrap">
+										<div class="questionInfo">
+											<a class="level">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
+											<a class="time">答題時間：<?php echo $question['time']; ?></a>
+											<div class="tags"><a>演算法</a><a>Binary Tree</a></div>
+										</div>
+										<div class="for_section">
+											<?php if($question['is_test'] == false){ ?>
+												<a class="is_test">適用章節： <span>未指定</span></a>
+											<?php } else{
+													foreach($contentData['chapters'] as $i => $chapter){
+														foreach($chapter['sections'] as $j => $section){
+															$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
+															$courseURL = sprintf("courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
+																					,$courseData['course_id'], $i, $j);
+
+															if($section['uid'] == $question['test_section']){ ?>
+																<a class="is_test">適用章節：</a>
+																<a class="is_test_href" target="_blank" href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a>
+											<?php 			}
+														}
+													}
+											}?>
+										</div>
+										<div class="questionFunc">
+											<a class="editQuesBtn">編輯</a>
+											<a class="deletQuesBtn">刪除</a>
+										</div>
+									</div>
 							</li>
 						<?php } }else {?>
 							<div class="noQuestion">
@@ -267,32 +274,34 @@
 										</li>
 										<?php }?>
 									</ul>
-									<div class="questionInfo">
-										<a class="level">難易度：<?php for($i=1; $i<=$questionHeader['level']; $i++) echo '★';?></a>
-										<a class="time">答題時間：<?php echo $questionHeader['time']; ?></a>
-										<div class="tags"><a>演算法</a><a>Binary Tree</a></div>
-									</div>
-									<div class="for_section">
-										<?php if($questionHeader['is_test'] == false){ ?>
-											<a class="is_test">適用章節： <span>未指定</span></a>
-										<?php } else{
-												foreach($contentData['chapters'] as $i => $chapter){
-													foreach($chapter['sections'] as $j => $section){
-														$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
-														$courseURL = sprintf("courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
-																				,$courseData['course_id'], $i, $j);
+									<div class="question_editor_wrap">
+										<div class="questionInfo">
+											<a class="level">難易度：<?php for($i=1; $i<=$questionHeader['level']; $i++) echo '★';?></a>
+											<a class="time">答題時間：<?php echo $questionHeader['time']; ?></a>
+											<div class="tags"><a>演算法</a><a>Binary Tree</a></div>
+										</div>
+										<div class="for_section">
+											<?php if($questionHeader['is_test'] == false){ ?>
+												<a class="is_test">適用章節： <span>未指定</span></a>
+											<?php } else{
+													foreach($contentData['chapters'] as $i => $chapter){
+														foreach($chapter['sections'] as $j => $section){
+															$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
+															$courseURL = sprintf("courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
+																					,$courseData['course_id'], $i, $j);
 
-														if($section['uid'] == $question['test_section']){ ?>
-															<a class="is_test">適用章節：</a>
-															<a class="is_test_href" target="_blank" href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a>
-										<?php 			}
+															if($section['uid'] == $question['test_section']){ ?>
+																<a class="is_test">適用章節：</a>
+																<a class="is_test_href" target="_blank" href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a>
+											<?php 			}
+														}
 													}
-												}
-										}?>
-									</div>
-									<div class="questionFunc">
-										<a class="editQuesBtn">編輯</a>
-										<a class="deletQuesBtn">刪除</a>
+											}?>
+										</div>
+										<div class="questionFunc">
+											<a class="editQuesBtn">編輯</a>
+											<a class="deletQuesBtn">刪除</a>
+										</div>
 									</div>
 								</li>
 						<?php } }else {?>

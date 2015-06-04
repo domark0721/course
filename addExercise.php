@@ -91,7 +91,7 @@
 								</div>
 								<div class="tags_wrap">
 									<label for="tags">標籤</label>
-									<input type="text" class="tagsInput" name="tags">
+									<input type="text" class="tagsInput" name="tags" value="">
 								</div>
 								<label for="level">難易度</label>
 								<div class="level_wrap">									

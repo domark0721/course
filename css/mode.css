@@ -188,7 +188,10 @@
 	background-color: rgba(121, 176, 61, 0.8);
 }
 
-.itemRight a:active, .item-course-info a:active, .rightBtns a:active{
+.itemRight a:active,
+.item-course-info a:active,
+.rightBtns a:active,
+.middleBtns a:active {
 	box-shadow: inset 0 8px 6px -6px#5C5B5B;
 }
 
