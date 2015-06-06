@@ -1,8 +1,8 @@
 <?php
-	include_once('api/auth.php');
-	include_once("mysql.php");
-	include_once("mongodb.php");
-	include_once('api/isLogin.php');
+	include_once('../api/auth.php');
+	include_once('../mysql.php');
+	include_once('../mongodb.php');
+	include_once('../api/isLogin.php');
 
 	session_start();
 	$_SESSION['url'] = $_SERVER['REQUEST_URI']; 
@@ -57,15 +57,15 @@
 <!doctype html>
 <html>
 	<head>
-		<?php require("meta_com.php") ?>
-		<link type="text/css" rel="stylesheet" href="css/mode.css">
-		<link type="text/css" rel="stylesheet" href="css/courseSetting.css">
-		<link type="text/css" rel="stylesheet" href="css/exercise.css">
+		<?php require("../meta_com.php") ?>
+		<link type="text/css" rel="stylesheet" href="../css/mode.css">
+		<link type="text/css" rel="stylesheet" href="../css/courseSetting.css">
+		<link type="text/css" rel="stylesheet" href="../css/exercise.css">
 		<title>題庫 - NUCourse</title>
 	</head>
 	<body>
 		<div class="totalWrapper">
-			<?php require("header.php"); ?>
+			<?php require("../header.php"); ?>
 			<div class="container">
 				<div id="topBanner_wrap">
 					<div class="content-wrap clearfix">
@@ -75,7 +75,7 @@
 							<div class="topBanner_CourseName"><?php echo $courseMetadata['course_name']; ?></div>
 						</div>
 							<a class="functionBtn newQuestion" href="addExercise.php?course_id=<?php echo $course_id; ?>"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;新增題目</a>
-							<a class="functionBtn newExam" href="addExercise.php?course_id=<?php echo $course_id; ?>"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;新增題目</a>
+							<a class="functionBtn newExam" href="addExam.php?course_id=<?php echo $course_id; ?>"><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;&nbsp;新增考試</a>
 							<a class="functionBtn return" onclick="history.back();">返回</a>
 					</div>
 				</div>				
@@ -315,9 +315,9 @@
 			</div>
 		</div>
 
-		<?php require("footer.php") ?>
-		<?php require("js/js_com.php"); ?>
-		<script type="text/javascript" src="js/addExercise.js"></script>
+		<?php require("../footer.php") ?>
+		<?php require("../js/js_com.php"); ?>
+		<script type="text/javascript" src="../js/addExercise.js"></script>
 	</body>
 </html>
 

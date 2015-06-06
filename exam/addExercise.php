@@ -1,9 +1,9 @@
 <?php
-	include_once('api/auth.php');
-	include_once("mysql.php");
-	include_once("mongodb.php");
-	include_once('api/isLogin.php');
-	 date_default_timezone_set("Asia/Taipei");
+	include_once('../api/auth.php');
+	include_once('../mysql.php');
+	include_once('../mongodb.php');
+	include_once('../api/isLogin.php');
+	date_default_timezone_set("Asia/Taipei");
 
 	session_start();
 	$_SESSION['url'] = $_SERVER['REQUEST_URI']; 
@@ -42,17 +42,17 @@
 <!doctype html>
 <html>
 	<head>
-		<?php require("meta_com.php"); ?>
+		<?php require("../meta_com.php"); ?>
 		<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css">
-		<link href="css/jquery.tagit.css" rel="stylesheet" type="text/css">
-		<link type="text/css" rel="stylesheet" href="css/mode.css">
-		<link type="text/css" rel="stylesheet" href="css/courseSetting.css">
-		<link type="text/css" rel="stylesheet" href="css/addExercise.css">
+		<link href="../css/jquery.tagit.css" rel="stylesheet" type="text/css">
+		<link type="text/css" rel="stylesheet" href="../css/mode.css">
+		<link type="text/css" rel="stylesheet" href="../css/courseSetting.css">
+		<link type="text/css" rel="stylesheet" href="../css/addExercise.css">
 		<title>新增題庫 - NUCourse</title>
 	</head>	
 	<body>
 		<div class="totalWrapper">
-			<?php require("header.php"); ?>
+			<?php require("../header.php"); ?>
 			<div class="container">
 				<div id="topBanner_wrap">
 					<div class="content-wrap clearfix">
@@ -78,7 +78,7 @@
 
 					<div class="addExercise_wrap">
 						<!-- 是非題 -->
-						<form id="true_false" class="tab-content" action="api/addExercise_save.php" method="POST">
+						<form id="true_false" class="tab-content" action="../api/addExercise_save.php" method="POST">
 							<div class="question_content_wrap">
 								<label for="question">題目</label>
 									<textarea class="question_textarea" name="question"></textarea>
@@ -153,7 +153,7 @@
 							</div>
 						</form>
 						<!-- 單選題 -->
-						<form id="single_choice" class="tab-content" action="api/addExercise_save.php" method="POST">
+						<form id="single_choice" class="tab-content" action="../api/addExercise_save.php" method="POST">
 							<div class="question_content_wrap">
 								<label for="question">題目</label>
 									<textarea class="question_textarea" name="question"></textarea>
@@ -236,7 +236,7 @@
 							</div>
 						</form>
 						<!-- 多選題 -->
-						<form id="multi_choice" class="tab-content" action="api/addExercise_save.php" method="POST">
+						<form id="multi_choice" class="tab-content" action="../api/addExercise_save.php" method="POST">
 							<div class="question_content_wrap">
 								<label for="question">題目</label>
 									<textarea class="question_textarea" name="question"></textarea>
@@ -321,7 +321,7 @@
 							</div>
 						</form>
 						<!-- 題組 -->
-						<form id="series_question" class="tab-content" action="api/addExercise_save.php" method="POST">
+						<form id="series_question" class="tab-content" action="../api/addExercise_save.php" method="POST">
 							
 							<input type="hidden" name="author_id" value="<?php echo $member_id;?>">
 							<input type="hidden" name="course_id" value="<?php echo $course_id;?>">
@@ -335,16 +335,16 @@
 				</div>
 			</div>
 		</div>
-		<?php require("footer.php"); ?>
+		<?php require("../footer.php"); ?>
 		
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/tag-it.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/tag-it.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 		        $(".tagsInput").tagit();
 		</script>
-		<?php require("js/js_com.php"); ?>
-		<script type="text/javascript" src="js/addExercise.js"></script>
+		<?php require("../js/js_com.php"); ?>
+		<script type="text/javascript" src="../js/addExercise.js"></script>
 		
 		
 	</body>

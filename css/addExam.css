@@ -1,0 +1,84 @@
+h3 {
+	text-align: center;
+}
+
+.typeList {
+	margin: 0 auto;
+	text-align: center;
+}
+
+.typeList li{
+	display: inline-block;
+	color: #fff;
+	font-size: 20px;
+	background-color: #000;
+	padding: 9px 25px;
+	margin: 0 1em;
+	border-radius: 3px;
+}
+
+.addExam_wrap {
+	max-width: 750px;
+	width: 90%;
+	margin: 0 auto;
+}
+
+.addExam_wrap label {
+	display: block;
+	padding: 10px 0 10px 0;
+	font-size: 18px;
+	margin: 7px 0;
+}
+
+.addExam_wrap input {
+	font-size: 18px;
+	border-radius: 8px;
+	border: 1px solid #888;
+	padding: 5px 10px;
+}
+
+.examType_wrap label {
+	margin: 0;
+	display: inline-block;
+	padding: 6px 20px;
+	background-color: #ddd;
+	border-radius: 15px;
+	margin-right: 28px;
+}
+
+.examType_wrap input[type='radio'] {
+	display: none;
+}
+
+.examType_wrap input[type='radio']:checked + label {
+	background-color: rgba(121, 176, 61, 1);;
+	color: #fff;
+}
+
+#addExam_form {
+	margin-top: 20px;
+}
+
+#addExam_form #examName {
+	display: inline-block;
+	font-size: 18px;
+	border-radius: 8px;
+	border: 1px solid #888;
+	padding: 5px 10px;
+	background-color: #A5A5A5;
+	width: 25%;
+}
+
+#addExam_form #time {
+	width: 5%;
+}
+
+.explanation {
+	width: 90%;
+	height: 105px;
+	margin-bottom: 15px;
+	border: 1px solid #888;
+	border-radius: 10px;
+	font-size: 18px;
+	padding: 5px 10px;
+}
