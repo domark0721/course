@@ -84,8 +84,8 @@
 							<div class="userControl">
 								<ul class="tab-list">
 									<li><a href="#true_false">是非題</a></li>
-									<li><a href="#multi_choice">多選題</a></li>
 									<li><a href="#single_choice">單選題</a></li>
+									<li><a href="#multi_choice">多選題</a></li>
 									<li><a href="#series_question">題組</a></li>
 									
 								</ul>
@@ -109,7 +109,14 @@
 										<div class="questionInfo">
 											<a class="level">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
 											<a class="time">答題時間：<?php echo $question['time']; ?></a>
-											<div class="tags"><a>演算法</a><a>Binary Tree</a></div>
+											<div class="tags">
+											<?php
+											if(!empty($question['tags'])){
+												$tags = explode("," ,$question['tags']);
+												foreach($tags as $tag){ ?>
+													<a><?php echo $tag;?></a>
+										<?php }}?>
+											</div>
 										</div>
 										<div class="for_section">
 											<?php if($question['is_test'] == false){ ?>
@@ -118,7 +125,7 @@
 													foreach($contentData['chapters'] as $i => $chapter){
 														foreach($chapter['sections'] as $j => $section){
 															$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
-															$courseURL = sprintf("courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
+															$courseURL = sprintf("../courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
 																					,$courseData['course_id'], $i, $j);
 
 															if($section['uid'] == $question['test_section']){ ?>
@@ -130,7 +137,7 @@
 											}?>
 										</div>
 										<div class="questionFunc">
-											<a class="editQuesBtn">編輯</a>
+											<a class="editQuesBtn" href="exercise_edit.php?id=<?php echo $question['_id'];?>&course_id=<?php echo $course_id;?>">編輯</a>
 											<a class="deletQuesBtn">刪除</a>
 										</div>
 									</div>
@@ -163,7 +170,14 @@
 									<div class="questionInfo">
 										<a class="level">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
 										<a class="time">答題時間：<?php echo $question['time']; ?></a>
-										<div class="tags"><a>演算法</a><a>Binary Tree</a></div>
+										<div class="tags">
+											<?php
+											if(!empty($question['tags'])){
+												$tags = explode("," ,$question['tags']);
+												foreach($tags as $tag){ ?>
+													<a><?php echo $tag;?></a>
+										<?php }}?>
+										</div>
 									</div>
 									<div class="for_section">
 										<?php if($question['is_test'] == false){ ?>
@@ -184,7 +198,7 @@
 										}?>
 									</div>
 									<div class="questionFunc">
-										<a class="editQuesBtn">編輯</a>
+										<a class="editQuesBtn" href="exercise_edit.php?id=<?php echo $question['_id'];?>&course_id=<?php echo $course_id;?>">編輯</a>
 										<a class="deletQuesBtn">刪除</a>
 									</div>
 								</div>
@@ -217,7 +231,14 @@
 										<div class="questionInfo">
 											<a class="level">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
 											<a class="time">答題時間：<?php echo $question['time']; ?></a>
-											<div class="tags"><a>演算法</a><a>Binary Tree</a></div>
+											<div class="tags">
+											<?php
+											if(!empty($question['tags'])){
+												$tags = explode("," ,$question['tags']);
+												foreach($tags as $tag){ ?>
+													<a><?php echo $tag;?></a>
+										<?php }}?>
+											</div>
 										</div>
 										<div class="for_section">
 											<?php if($question['is_test'] == false){ ?>
@@ -238,7 +259,7 @@
 											}?>
 										</div>
 										<div class="questionFunc">
-											<a class="editQuesBtn">編輯</a>
+											<a class="editQuesBtn" href="exercise_edit.php?id=<?php echo $question['_id'];?>&course_id=<?php echo $course_id;?>">編輯</a>
 											<a class="deletQuesBtn">刪除</a>
 										</div>
 									</div>
@@ -299,7 +320,7 @@
 											}?>
 										</div>
 										<div class="questionFunc">
-											<a class="editQuesBtn">編輯</a>
+											<a class="editQuesBtn" href="exercise_edit.php?id=<?php echo $question['_id'];?>&course_id=<?php echo $course_id;?>">編輯</a>
 											<a class="deletQuesBtn">刪除</a>
 										</div>
 									</div>

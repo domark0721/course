@@ -1,8 +1,8 @@
 <?php
-	include_once('api/auth.php');
-	include_once("mongodb.php");
-	include_once("mysql.php");
-	include_once('api/isLogin.php');
+	include_once('../api/auth.php');
+	include_once("../mongodb.php");
+	include_once("../mysql.php");
+	include_once('../api/isLogin.php');
 
 	session_start();
 
@@ -29,8 +29,8 @@
 <!doctype html>
 <html>
 	<head>
-		<?php require("meta_com.php"); ?>
-		<link type="text/css" rel="stylesheet" href="css/exam.css">
+		<?php require("../meta_com.php"); ?>
+		<link type="text/css" rel="stylesheet" href="../css/exam.css">
 		<title>測驗 - NUCourse</title>
 	</head>
 	<body>
@@ -38,7 +38,7 @@
 			<div class="container">
 				<div class="headerOutside_wrap">
 					<div class="header exam_wrap">
-						<div class="headerLogo"><a><img src="img/logo.png"/></a></div>
+						<div class="headerLogo"><a><img src="../img/logo.png"/></a></div>
 						<div class="courseName"><a>資料結構<span class="testName"> - Midterm</span></a></div>
 						<div class="studentInfo">
 							<a>考生：<?php echo $Member_NAME;?></a>
@@ -179,6 +179,6 @@
 
 
 
-		<?php require("footer.php"); ?>
+		<?php require("../footer.php"); ?>
 	</body>
 </html>

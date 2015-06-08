@@ -125,7 +125,7 @@
 									<label for="is_test_true" name="is_test">是</label>
 								</div>
 								
-								<div id="section_trueFalse" class="showSection">
+								<div id="section_trueFalse" class="chapter_select">
 									<label for="section">適用章節</label>
 									<select class="testSection_select" name="section">
 									<?php
@@ -209,7 +209,7 @@
 									<label for="is_test_true_single" name="is_test">是</label>
 								</div>
 								
-								<div id="section_single"  class="showSection">
+								<div id="section_single"  class="chapter_select">
 									<label for="section">適用章節</label>
 									<select class="testSection_select" name="section">
 									<?php
@@ -294,7 +294,7 @@
 									<input id="is_test_true_multi" target="multi" value="true" type="radio" name="is_test">
 									<label for="is_test_true_multi" name="is_test">是</label>
 								</div>
-								<div id="section_multi"  class="showSection">
+								<div id="section_multi"  class="chapter_select">
 									<label for="section">適用章節</label>
 									<select class="testSection_select" name="section">
 									<?php

@@ -8,7 +8,7 @@
 	$password=$_POST['password'];
 
 	if(empty($account) || empty($password)) {
-		Header("Location: ../login.php");
+		Header("Location: http://127.0.0.1/www/course/login.php");
 	}
 	
 	//query id from member table
@@ -28,12 +28,12 @@
 		if(isset($_SESSION['url']))
 			$url = $_SESSION['url'];
 		else
-			$url = "../stmode.php";
+			$url = "http://127.0.0.1/www/course/stmode.php";
 		Header("Location: $url");
 	}
 	else{
 		// echo "login fail!";
-		Header("Location: ../login.php");
+		Header("Location: http://127.0.0.1/www/course/login.php");
 	}
 
 ?>

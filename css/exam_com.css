@@ -40,7 +40,7 @@ html[xmlns] .clearfix {
 
 /* headerBar start */
 .headerBar{
-	/*background-color: #143C1C;*/
+	background-color: #000;
 	margin: 0px;
 	height: 60px;
 }
@@ -56,16 +56,45 @@ html[xmlns] .clearfix {
 	font-size: 38px;
 	display: inline;
 	margin-top: 10px;
+	width: 16%;
 }
 
 #headerLogo a {
 	color: #838383;
 	text-decoration: none;
-	
 }
 
 #headerLogo a img {
-	width: 40%;
+	width: 100%;
+}
+
+.examInfo_wrap {
+	display: inline-block;
+	font-size: 18px;
+}
+
+.examInfo, .numberInfo {
+	position: relative;
+}
+
+.examInfo {
+	left: 15em;
+}
+
+.numberInfo {
+	left: 11em;
+}
+
+.examInfo a, .numberInfo a {
+	display: inline-block;
+	margin-right: 1em;
+	color: #78ac25;
+	font-weight: bold;
+	padding: 3px 0;
+}
+
+.examInfo_wrap a span {
+	font-weight: normal;
 }
 
 #headerBar-nav{
@@ -84,16 +113,31 @@ html[xmlns] .clearfix {
 }
 
 .headerBar-item a{
-	color: rgba(0,0,0,.65);
+	color: #fff;
 	text-decoration: none;
+	cursor: pointer;
+	transition: all .3s;
 }
 
-
-.headerBar-item a:hover{
-	color: rgba(0,0,0,1);
-	transition: all 0.3s ease;
+.saveBtn {
+	padding: 8px 28px;
+	background-color: rgba(121, 176, 61, 1);
+	border-radius: 5px;
 }
 
+.saveBtn:hover {
+	background-color: rgba(121, 176, 61, .8);
+}
+
+.giveUpBtn {
+	padding: 8px 28px;
+	background-color: rgba(173, 50, 50, 1);
+	border-radius: 5px;
+}
+
+.giveUpBtn:hover {
+	background-color: rgba(173, 50, 50, .8);
+}
 /* headerBar end */
 
 .totalWrapper {

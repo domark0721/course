@@ -1,5 +1,6 @@
 $(document).ready(function(){
   
+  bindChapterItem();
   bindSectionItem();
 
   tinyMCE.init({
@@ -26,14 +27,6 @@ $(document).ready(function(){
      //      {title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
      //  ]
    });
-
-
-  $('.chapterItem').on('click', function(e){
-      $('.sectionList').hide();
-
-      $(this).next('.sectionList').fadeIn(300);
-  });
-
   
   function bindSectionItem(){
     $('.sectionItem').on('click', function(e){
@@ -71,45 +64,55 @@ $(document).ready(function(){
     // emptyChapter += '';
 
     $chapterList.append(emptyChapter);
+    bindChapterItem();
   });
   /******** add new chapter End ********/
   
-
   /******** add new section Start ********/
-  $('.addSectionBtn').on('click', function(e){
-      $chapterParent = $(this).parents('.chapter');
-      $sectionList = $chapterParent.find('.sectionList');
-      // console.log($sectionList);
-      var chapterNo = $(this).data('chapter-id');
-      console.log(chapterNo);
-      var editWrapCount = $(".sectionItem").length;
-      var sectionCount = $sectionList.find('.sectionItem').length;
-      var sectionNo = chapterNo + '-' + (sectionCount+1) + ': ';
-      var section_uid = (Math.floor(Math.random()*90000) + 10000) + new Date().valueOf().toString();
-      // add default section left part into section list
-      var emptySection = '<li class="section">';
-      emptySection += '<a class="sectionItem" href="#editWrap'+ editWrapCount+'">';
-      emptySection += '<span class="sectionNo">'+ sectionNo +'</span>';
-      emptySection += '新小節';
-      emptySection += '<div class="chapter-btns"><span class="deleteSectionBtn"><i class="fa fa-trash-o"></i></span></div></a></li>';
+  function bindChapterItem(){
 
-      $sectionList.append(emptySection);
+    $('.chapterItem').on('click', function(e){
+        $('.sectionList').hide();
 
-      // add default section right part into right panel
-
-      var emptyEditor = '<div id="editWrap'+ editWrapCount +'" class="sectionEditWrap" >';
-      emptyEditor += '<div class="sectionName"><label for="sectionName">章節名稱</label>';
-      emptyEditor += '<input class="sectionNameInput section-name" name="sectionName" value="新小節"></div>';
-      emptyEditor += '<div class="sectionVideo"><label for="sectionVideo">章節影片</label>';
-      emptyEditor += '<input type="file" name="sectionVideo" class="section-video"><div id="video"><video controls>';
-      emptyEditor += '<source src="" type="video/mp4">Your browser does not support the video tag.</video></div></div>';
-      emptyEditor += '<div class="sectionEditorWrap"><label for="sectionContent">章節內容</label>';
-      emptyEditor += '<textarea id="tinyMce_'+editWrapCount+'" class="sectionEditor section-content" style="width:100%"></textarea></div>';
-      emptyEditor += '<input type="hidden" class="section-uid" value="'+ section_uid +'"></div>';
-      $('#rightPanel').append(emptyEditor);
-      tinyMCE.execCommand('mceAddEditor', false, 'tinyMce_'+editWrapCount);
-      bindSectionItem();
+        $(this).next('.sectionList').fadeIn(300);
     });
+
+    $('.addSectionBtn').on('click', function(e){
+        console.log('add section');
+        $chapterParent = $(this).parents('.chapter');
+        $sectionList = $chapterParent.find('.sectionList');
+        // console.log($sectionList);
+        var chapterNo = $(this).data('chapter-id');
+        console.log(chapterNo);
+        var editWrapCount = $(".sectionItem").length;
+        var sectionCount = $sectionList.find('.sectionItem').length;
+        var sectionNo = chapterNo + '-' + (sectionCount+1) + ': ';
+        var section_uid = (Math.floor(Math.random()*90000) + 10000) + new Date().valueOf().toString();
+        // add default section left part into section list
+        var emptySection = '<li class="section">';
+        emptySection += '<a class="sectionItem" href="#editWrap'+ editWrapCount+'">';
+        emptySection += '<span class="sectionNo">'+ sectionNo +'</span>';
+        emptySection += '新小節';
+        emptySection += '<div class="chapter-btns"><span class="deleteSectionBtn"><i class="fa fa-trash-o"></i></span></div></a></li>';
+
+        $sectionList.append(emptySection);
+
+        // add default section right part into right panel
+
+        var emptyEditor = '<div id="editWrap'+ editWrapCount +'" class="sectionEditWrap" >';
+        emptyEditor += '<div class="sectionName"><label for="sectionName">章節名稱</label>';
+        emptyEditor += '<input class="sectionNameInput section-name" name="sectionName" value="新小節"></div>';
+        emptyEditor += '<div class="sectionVideo"><label for="sectionVideo">章節影片</label>';
+        emptyEditor += '<input type="file" name="sectionVideo" class="section-video"><div id="video"><video controls>';
+        emptyEditor += '<source src="" type="video/mp4">Your browser does not support the video tag.</video></div></div>';
+        emptyEditor += '<div class="sectionEditorWrap"><label for="sectionContent">章節內容</label>';
+        emptyEditor += '<textarea id="tinyMce_'+editWrapCount+'" class="sectionEditor section-content" style="width:100%"></textarea></div>';
+        emptyEditor += '<input type="hidden" class="section-uid" value="'+ section_uid +'"></div>';
+        $('#rightPanel').append(emptyEditor);
+        tinyMCE.execCommand('mceAddEditor', false, 'tinyMce_'+editWrapCount);
+        bindSectionItem();
+      });
+  }
   /******** add new section End ********/
 
   $('#saveCouseBtn').on('click', saveCourseContent);

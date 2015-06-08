@@ -17,12 +17,13 @@ $(document).ready(function(){
   showEditor($('.tab-list a').first());
 
   $('#is_test_false, #is_test_false_single, #is_test_false_multi').on('click', function(e){
-    // $('.showSection').fadeOut();
-    $('#section_'+$(this).attr('target')).fadeOut();
+    $('#section_'+$(this).attr('target')).removeClass('show').fadeOut();
   });
 
   $('#is_test_true, #is_test_true_single, #is_test_true_multi').on('click', function(e){
-      $('#section_'+$(this).attr('target')).fadeIn();
+      $('#section_'+$(this).attr('target')).addClass('show').fadeIn();
   });
+
+  // console.log($(this).is(":checked"));
 
 });

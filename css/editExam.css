@@ -1,0 +1,276 @@
+/* ---------- tab ---------- */
+.nav-wrap {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.userControl {
+	text-align: center;
+	margin: 10px 0 0 0;
+}
+
+.userControl ul li a {
+	text-decoration: none;
+	color: #000;
+}
+
+.tab-list li {
+	display: inline-block;
+}
+
+.tab-list a {
+	display: inline-block;
+	margin-right: 10px;
+	font-size: 18px;
+	padding: 4px 6px;
+	border-bottom: 3px solid transparent;
+	transition: 0.3s;
+	cursor: pointer;
+}
+
+.tab-list a.active , .tab-list a:hover {
+	border-bottom: 3px solid #5BAE01;
+}
+
+.tab-content {
+	display: none;
+}
+/* ---------- tab ---------- */
+
+/* */
+.editExamWrap {
+	position: absolute;
+	top: 60px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.editExamContainer {
+	display: flex;
+	justify-content: space-between;
+	align-items: stretch;
+	height: 100%;
+	box-sizing: border-box;
+	overflow: auto;
+}
+
+.left-container {
+	padding: 0 15px;
+	width: 40%;
+	height: 100%;
+	overflow: scroll;
+}
+
+.right-container {
+	width: 58%;
+	background: #999;
+	overflow: scroll;
+	position: relative;
+	height: 100%;
+}
+
+#drop-question-list {
+	height: 100%;
+	padding: 15px 15px 40px 50px;
+	margin: 0;
+}
+
+#drop-question-list .questionItem {
+	background-color: #fdfdfd;
+	padding: 15px;
+	margin-bottom: 10px;
+	border-radius: 3px;
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, .5);
+}
+
+/* --------- left-container Start------------------------------- */
+.questionNum {
+	font-size: 18px;
+}
+
+.seriesNum {
+	list-style-type: lower-alpha;
+	font-size: 18px;
+	margin-left: 20px;
+}
+
+/****** true false CSS Start *******/
+.true_false_wrap, 
+.single_choice_wrap,
+.multi_choice_wrap,
+.series_question_wrap {
+    padding-bottom: 1em;
+}
+
+.true_false_answer_wrap {
+    display: inline-block;
+	margin: 10px 0 10px 0;
+}
+
+.true_false_answer_wrap a {
+    margin: 5px 10px 15px 5px;
+    padding: 4px 10px;
+    font-size: 18px;
+    background-color: #ddd;
+    cursor: default;
+    transition: all 0.3s;
+    border-radius: 15px;
+}
+
+.trueFalseAnswer {
+    background-color: #F0BA2F !important;
+}
+
+.tfQuestion {
+    display: inline-block;
+}
+
+.question_editor_wrap {
+	border: 1px solid #d4d4d4;
+	border-radius: 10px;
+	padding: 15px 15px 7px 15px;
+	width: 90%;
+	margin: 15px auto auto auto;
+}
+
+.questionInfo {
+    margin: 0 0 15px 10px;
+}
+
+.for_section {
+    margin: 10px 0 15px 10px;
+}
+
+.questionInfo a, .questionFunc a{
+    display: inline-block;
+    font-size: 16px;
+    color: #888;
+}
+
+.questionInfo .level {
+    width: 35%;
+}
+
+.questionInfo .time {
+    width: 30%;
+}
+
+.questionInfo .tags {
+    display: inline-block;
+}
+
+.questionInfo .tags a {
+    text-decoration: none;
+    margin-right: 5px;
+    font-size: 15px;
+    color: #fff;
+    padding: 3px 9px;
+    border: 0;
+    border-radius: 4px;
+    background-color: #888;
+    cursor: pointer;
+}
+
+.questionInfo .tags a:hover{
+    background-color: rgba(52, 141, 216, 1);
+    transition: all 0.3s;
+}
+
+.for_section {
+    font-size: 16px;
+    color: #888;
+}
+.for_section .is_test span{
+    padding: 2px 8px;
+    border: 1px solid #888;
+    border-radius: 5px;
+    color: #888;
+    cursor: default;
+    font-size: 15px;
+}
+
+.for_section .is_test_href {
+    text-decoration: none;
+    color: #79B03D;
+    padding: 2px 8px;
+    border: 1px solid #79B03D;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.for_section .is_test_href:hover {
+    color: #fff;
+    background-color: #79B03D;
+    transition: all 0.3s;
+}
+
+/****** true false CSS End *******/
+
+/****** single choice CSS Start *******/
+
+.single_choice_answer_wrap,
+.multi_choice_answer_wrap,
+.series_question_answer_wrap {
+	margin: 8px 0 10px 0;
+	padding-right: 15px;
+	width: auto;
+}
+
+.single_choice_answer_wrap a, 
+.multi_choice_answer_wrap a,
+.series_question_answer_wrap a {
+    margin-right: 1em;
+    margin-bottom: 5px;
+    display: inline-block;
+    font-size: 16px;
+    padding: 4px 20px;
+    background-color: #ddd;
+    cursor: default;
+    border-radius: 15px;
+}
+
+.opt_true {
+    background-color: #F0BA2F !important;
+}
+
+/****** single choice CSS End *******/
+
+/****** multi choice CSS Start *******/
+.multi_choice_answer_wrap {
+	margin: 15px 0 10px 0;
+	padding-right: 15px;
+	width: auto;
+}
+
+/****** multi choice CSS End *******/
+
+/****** series CSS Start *******/
+.series_question {
+	margin: 15px 0 10px 0;
+	font-size: 18px;
+}
+
+.series_question_answer_wrap {
+	margin: 15px 0 10px 0;
+	padding-right: 15px;
+	width: auto;
+}
+
+/****** series choice CSS End *******/
+.noQuestion{
+    text-align: center;
+    margin-top: 2em; 
+}
+
+.noQuestion a {
+    color: #818181;
+    display: block;
+    margin-top: 2em;
+}
+
+.question {
+	font-size: 18px;
+}
+
+/* --------- left-container End ------------------------------- */
