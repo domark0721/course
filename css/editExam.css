@@ -56,18 +56,19 @@
 }
 
 .left-container {
-	padding: 0 15px;
-	width: 40%;
-	height: 100%;
-	overflow: scroll;
-}
-
-.right-container {
 	width: 58%;
 	background: #999;
 	overflow: scroll;
 	position: relative;
 	height: 100%;
+
+}
+
+.right-container {
+	padding: 0 15px;
+	width: 40%;
+	height: 100%;
+	overflow: scroll;
 }
 
 #drop-question-list {
@@ -84,7 +85,11 @@
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, .5);
 }
 
-/* --------- left-container Start------------------------------- */
+/* --------- right-container Start------------------------------- */
+.true_false_wrap.questionItem.ui-sortable-helper {
+	background-color: #fff;
+}
+
 .questionNum {
 	font-size: 18px;
 }
@@ -273,4 +278,4 @@
 	font-size: 18px;
 }
 
-/* --------- left-container End ------------------------------- */
+/* --------- right-container End ------------------------------- */

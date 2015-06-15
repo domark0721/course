@@ -12,7 +12,7 @@
 
 	// add a new course to db
 	// 1. MySQL: insert row in `course` table (teacher_id, teacher_name and some default value)
-	$teacherInfo = "INSERT INTO course(course_name, teacher_id, teacher_name)VALUES('$course_name', '$member_id', '$name')";
+	$teacherInfo = "INSERT INTO course (course_name, teacher_id, teacher_name) VALUES ('$course_name', '$member_id', '$name')";
 	$mysqlResult = mysql_query($teacherInfo);
 	$course_id = mysql_insert_id();
 

@@ -22,16 +22,31 @@
 	foreach($courseMetadata_temp as $tempData){
 		$courseMetadata = $tempData;
 		break;
-	}	
+	}
+
+
+	//search question number from mongodb in exercise collection
+	$mongoQuery = array('type' => 'TRUE_FALSE');
+	$trueFalseNum = $exercise -> find($mongoQuery)->count();
+
+	$mongoQuery = array('type' => 'SINGLE_CHOICE');
+	$singleNum = $exercise -> find($mongoQuery)->count();
+
+	$mongoQuery = array('type' => 'MULTI_CHOICE');
+	$multiNum = $exercise -> find($mongoQuery)->count();
+
+	$mongoQuery = array('type' => 'SERIES_QUESTIONS');
+	$seriesNum = $exercise -> find($mongoQuery)->count();
+
 ?>
 <!doctype html>
 <html>
 	<head>
-		<?php require("../meta_com.php"); ?>
+		<?php require("../meta_com.php") ?>
 		<link type="text/css" rel="stylesheet" href="../css/mode.css">
 		<link type="text/css" rel="stylesheet" href="../css/courseSetting.css">
 		<link type="text/css" rel="stylesheet" href="../css/addExam.css">
-		<title>NUCourse</title>
+		<title>新增考試 - NUCourse</title>
 	</head>
 	<body>
 		<div class="totalWrapper">
@@ -46,37 +61,102 @@
 						</div>
 					</div>
 				</div>
-				<h3>請選擇出題模式</h3>
-				<ul id="generateType" class="typeList">
-					<li>自動</li>
-					<li>手動</li>
-				</ul>
+				<div class="generateMode_wrap">
+					<h3>請選擇出題模式</h3>
+					<ul id="generateType" class="typeList">
+						<li type="#auto_form">自動</li>
+						<li type="#manual_form">手動</li>
+					</ul>
+				</div>
 				<div class="addExam_wrap">
-					<form id="addExam_form" action="" method="POST">
-						<label for="examName">考試科目</label>
+					<!-- 自動 -->
+					<form id="auto_form" class="tab_form" action="editExam.php" method="POST">
+						<label class="label_style" for="examName">考試科目</label>
 							<a id="examName" name="examName"><?php echo $courseMetadata['course_name']; ?></a>
-							<input  name="examName" value="<?php echo $courseMetadata['course_name']; ?>" type="hidden">
-						<label for="examName">考試類別</label>
+							<input  name="examName" value="<?php echo $courseMetadata['course_name']; ?>" type="hidden"><br>
+						<label class="label_style" for="examName">考試類別</label>
 						<div class="examType_wrap">
-							<input id="examType1" value="1" type="radio" name="type">
-							<label for="examType1">小考</label>
-							<input id="examType2" value="2" type="radio" name="type">
-							<label for="examType2">期中考</label>
-							<input id="examType3" value="3" type="radio" name="type">
-							<label for="examType3">期末考</label>
-						</div>
-						<label for="time">作答總時間</label>
-							<input id="time" name="time" >
-						<label for="explanation">說明</label>
+							<input id="auto_examType1" value="test" type="radio" name="type">
+							<label for="auto_examType1">小考</label>
+							<input id="auto_examType2" value="mid" type="radio" name="type">
+							<label for="auto_examType2">期中考</label>
+							<input id="auto_examType3" value="final" type="radio" name="type">
+							<label for="auto_examType3">期末考</label>
+						</div><br>
+						<label class="label_style" for="examName">難易度</label>
+						<div class="examLevel_wrap">
+						<?php for($i=1; $i<=5; $i++){?>
+							<input id="examLevel<?php echo $i?>" value="<?php echo $i?>" type="radio" name="level">
+							<label for="examLevel<?php echo $i?>"><?php for($j=1; $j<=$i; $j++){ ?>★<?php }?></label>
+						<?php } ?>
+							
+						</div><br>
+						<label class="label_style" for="time">作答時間</label>
+							<input type="number" min="10" step="5" class="time" name="time" ><a class="word_style"> 分</a>
+						<label class="line_distent" for="check_time">檢查時間</label>
+							<input type="number" min="0" step="5" class="time" name="check_time" ><a class="word_style"> 分</a>		
+						<div class="questionNum_wrap">
+							<label for="trueFalse">是非題</label>
+								<input type="number" max="<?php echo $trueFalseNum;?>" class="questionNum" name="trueFalse">
+								<a class="showNum">(目前有 <?php echo $trueFalseNum;?> 題)</a>
+							<label for="trueFalse">單選題</label>
+								<input type="number" min="0" class="questionNum" name="trueFalse">
+								<a class="showNum">(目前有 <?php echo $singleNum;?> 題)</a><br>
+							<label for="trueFalse">多選題</label>
+								<input type="number" min="0" class="questionNum" name="trueFalse">
+								<a class="showNum">(目前有 <?php echo $multiNum;?> 題)</a>
+							<label for="trueFalse">題 組</label>
+								<input type="number" min="0" class="questionNum" name="trueFalse">
+								<a class="showNum">(目前有 <?php echo $seriesNum;?> 題)</a>	
+						</div><br>
+						<label class="label_style" for="explanation">說明</label>
 							<textarea class="explanation" name="explanation"> </textarea>
+						
+						<input type="hidden" name="generateType" value="autoMode">
+						<input type="hidden" name="course_id" value="<?php echo $course_id;?>">
+						<div class="funcBtns_wrap">
+							<button class="next" type="submit">下一步</button>
+							<button class="giveup" onclick="history.back()">取消</button>
+						</div>
+					</form>
+					<!-- 手動 -->
+					<form id="manual_form" class="tab_form" action="editExam.php" method="POST">
+						<label class="label_style" for="examName">考試科目</label>
+							<a id="examName" name="examName"><?php echo $courseMetadata['course_name']; ?></a>
+							<input  name="examName" value="<?php echo $courseMetadata['course_name']; ?>" type="hidden"><br>
+						<label class="label_style" for="examName">考試類別</label>
+						<div class="examType_wrap">
+							<input id="manual_examType1" value="test" type="radio" name="type">
+							<label for="manual_examType1">小考</label>
+							<input id="manual_examType2" value="mid" type="radio" name="type">
+							<label for="manual_examType2">期中考</label>
+							<input id="manual_examType3" value="final" type="radio" name="type">
+							<label for="manual_examType3">期末考</label>
+						</div><br>
+						<label class="label_style" for="examName">難易度</label>
+						<div class="examLevel_wrap">
+						<?php for($i=1; $i<=5; $i++){?>
+							<input id="examLevel<?php echo $i?>" value="<?php echo $i?>" type="radio" name="level">
+							<label for="examLevel<?php echo $i?>"><?php for($j=1; $j<=$i; $j++){ ?>★<?php }?></label>
+						<?php } ?>
+							
+						</div><br>
+						<label class="label_style" for="explanation">說明</label>
+							<textarea class="explanation" name="explanation"> </textarea>
+
+						<input type="hidden" name="generateType" value="manualMode">
+						<input type="hidden" name="course_id" value="<?php echo $course_id;?>">
+						<div class="funcBtns_wrap">
+							<button class="next" type="submit">下一步</button>
+							<button class="giveup" onclick="history.back()">取消</button>
+						</div>
 					</form>
 				</div>		
 			
 			</div>
 		</div>
-
-
-
-		<?php require("footer.php"); ?>
+		<?php require("../footer.php"); ?>
+		<?php require("../js/js_com.php"); ?>
+		<script type="text/javascript" src="../js/addExam.js"></script>
 	</body>
 </html>

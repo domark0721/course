@@ -40,6 +40,7 @@
 	<head>
 		<?php require("meta_com.php"); ?>
 		<link type="text/css" rel="stylesheet" href="css/mode.css">
+		<link type="text/css" rel="stylesheet" href="css/header_dark.css">
 		<title>老師模式 - NUCourse</title>
 	</head>
 

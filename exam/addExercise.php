@@ -83,7 +83,7 @@
 								<label for="question">題目</label>
 									<textarea class="question_textarea" name="question"></textarea>
 								<label for="TF_answer">本題解答</label>
-								<div class="level_wrap">
+								<div class="opt">
 									<input id="true" value="true" type="radio" name="answer">
 									<label for="true" name="TF_answer">Ｏ</label>
 									<input id="false" value="false" type="radio" name="answer">
@@ -94,7 +94,7 @@
 									<input type="text" class="tagsInput" name="tags" value="">
 								</div>
 								<label for="level">難易度</label>
-								<div class="level_wrap">									
+								<div class="opt">									
 									<input id="truefalse_level1" value="1" type="radio" name="level">
 										<label for="truefalse_level1" name="level">★</label>
 									<input id="truefalse_level2" value="2" type="radio" name="level">
@@ -118,7 +118,7 @@
 									</select>
 									<a class="time_char">秒</a>
 								<label for="is_test">選為隨堂練習</label>
-								<div class="level_wrap">
+								<div class="opt">
 									<input id="is_test_false" target="trueFalse" value="false" type="radio" name="is_test" checked>
 									<label for="is_test_false" name="is_test">否</label>
 									<input id="is_test_true" target="trueFalse" value="true" type="radio" name="is_test">
@@ -165,7 +165,7 @@
 									<div><span>(4)</span><textarea name="single_opt_content_4"></textarea></div>
 								</div>
 								<label for="single_answer">本題解答</label>
-								<div class="level_wrap">
+								<div class="opt">
 									<input id="single_opt1" value="1" type="radio" name="answer">
 									<label for="single_opt1" name="single_answer">(1)</label>
 									<input id="single_opt2" value="2" type="radio" name="answer">
@@ -178,7 +178,7 @@
 								<label for="tags">標籤</label>
 									<input class="tagsInput" name="tags">
 								<label for="level">難易度</label>
-								<div class="level_wrap">									
+								<div class="opt">									
 									<input id="single_level1" value="1" type="radio" name="level">
 										<label for="single_level1"  name="level">★</label>
 									<input id="single_level2" value="2" type="radio" name="level">
@@ -202,7 +202,7 @@
 									</select>
 									<a class="time_char">秒</a>
 								<label for="is_test">選為隨堂練習</label>
-								<div class="level_wrap">
+								<div class="opt">
 									<input id="is_test_false_single" target="single" value="false" type="radio" name="is_test" checked>
 									<label for="is_test_false_single" name="is_test">否</label>
 									<input id="is_test_true_single" target="single" value="true" type="radio" name="is_test">
@@ -249,7 +249,7 @@
 									<div><span>(5)</span><textarea name="multi_opt_content_5"></textarea></div>
 								</div>
 								<label for="single_answer">本題解答</label>
-								<div class="level_wrap">
+								<div class="opt">
 									<input id="multi_opt1" value="1" type="checkbox" name="answer[]">
 									<label for="multi_opt1" name="single_answer">(1)</label>
 									<input id="multi_opt2" value="2" type="checkbox" name="answer[]">
@@ -264,7 +264,7 @@
 								<label for="tags">標籤</label>
 									<input class="tagsInput" name="tags">
 								<label for="level">難易度</label>
-								<div class="level_wrap">									
+								<div class="opt">									
 									<input id="multi_level1" value="1" type="radio" name="level">
 										<label for="multi_level1" name="level">★</label>
 									<input id="multi_level2" value="2" type="radio" name="level">
@@ -288,7 +288,7 @@
 									</select>
 									<a class="time_char">秒</a>
 								<label for="is_test">選為隨堂練習</label>
-								<div class="level_wrap">
+								<div class="opt">
 									<input id="is_test_false_multi" target="multi" value="false" type="radio" name="is_test" checked>
 									<label for="is_test_false_multi" name="is_test">否</label>
 									<input id="is_test_true_multi" target="multi" value="true" type="radio" name="is_test">

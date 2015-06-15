@@ -1,0 +1,18 @@
+/* header */
+.headerBar{
+    background-color: #000;
+    margin: 0px;
+    height: 60px;
+}
+
+.headerBar-item a{
+    color: #B5B5B5;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.headerBar-item a:hover {
+    color: #fff;
+}
+/* header */

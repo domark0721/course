@@ -45,12 +45,6 @@ html[xmlns] .clearfix {
 	height: 60px;
 }
 
-#headerContainer{
-	max-width: 1200px;
-	width: 90%;
-	margin: 0 auto;
-}
-
 #headerLogo {
 	float:left;
 	font-size: 38px;
@@ -112,7 +106,7 @@ html[xmlns] .clearfix {
 	list-style: none;
 }
 
-.headerBar-item a{
+.headerBar-item-exam a{
 	color: #fff;
 	text-decoration: none;
 	cursor: pointer;
@@ -149,9 +143,9 @@ html[xmlns] .clearfix {
 }
 
 /* 內容 */
-.content-wrap{
+.content-wrap {
 	max-width: 1200px; 
-	width:90%;
+	width: 90%;
 	margin: 0 auto;
 }
 

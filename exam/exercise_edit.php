@@ -88,7 +88,7 @@
 								<label for="question">題目</label>
 									<textarea class="question_textarea" name="question"><?php echo $exerciseContent['question'];?></textarea>
 								<label for="TF_answer">本題解答</label>
-								<div class="level_wrap">
+								<div class="opt">
 									<input id="true" value="true" type="radio" name="answer" <?php if($exerciseContent['answer']==true) echo "checked";?>>
 									<label for="true" name="TF_answer">Ｏ</label>
 									<input id="false" value="false" type="radio" name="answer" <?php if($exerciseContent['answer']==false) echo "checked";?>>
@@ -99,7 +99,7 @@
 									<input type="text" class="tagsInput" name="tags" value="<?php echo $exerciseData['tags'];?>">
 								</div>
 								<label for="level">難易度</label>
-								<div class="level_wrap">
+								<div class="opt">
 									<?php for($l=1; $l<=5; $l++){ ?>
 										<input id="truefalse_level<?php echo $l;?>" value="<?php echo $l;?>" type="radio" name="level" <?php if($exerciseData['level']== $l) echo "checked";?>>
 											<label for="truefalse_level<?php echo $l;?>" name="level"><?php for($m=1; $m<=$l; $m++){?>★<?php }?></label>
@@ -128,7 +128,7 @@
 									</select>
 									<a class="time_char">秒</a>
 								<label for="is_test">選為隨堂練習</label>
-								<div class="level_wrap">
+								<div class="opt">
 									<input id="is_test_false" target="trueFalse" value="false" type="radio" name="is_test" <?php if($exerciseData['is_test']==false) echo "checked";?>>
 									<label for="is_test_false" name="is_test">否</label>
 									<input id="is_test_true" target="trueFalse" value="true" type="radio" name="is_test" <?php if($exerciseData['is_test']==true) echo "checked";?>>
@@ -176,7 +176,7 @@
 								<div class="opt_content">
 									<?php foreach($exerciseOpt as $i => $opt){ ?>
 									<div>
-										<span><?php echo ($i+1);?></span>
+										<span><?php echo "(" .($i+1). ")";?></span>
 										<textarea name="single_opt_content_<?php echo ($i+1);?>"><?php echo $opt['content'];?></textarea>
 									</div>
 									<?php } ?>
@@ -268,7 +268,7 @@
 								<div class="opt_content">
 									<?php foreach($exerciseOpt as $i => $opt){ ?>
 									<div>
-										<span><?php echo ($i+1);?></span>
+										<span><?php echo "(" .($i+1). ")";?></span>
 										<textarea name="multi_opt_content_<?php echo ($i+1);?>"><?php echo $opt['content'];?></textarea>
 									</div>
 									<?php } ?>

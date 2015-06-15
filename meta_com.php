@@ -3,3 +3,5 @@
 <link type="text/css" rel="stylesheet" href="http://127.0.0.1/www/course/css/normalize.css">
 <link type="text/css" rel="stylesheet" href="http://127.0.0.1/www/course/css/css_com.css">
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+
+<?php if($_SESSION['mode'] == "te") echo '<link type="text/css" rel="stylesheet" href="http://127.0.0.1/www/course/css/header_dark.css">';?>

@@ -15,11 +15,11 @@
 			</div>
 		</div>
 		<ul id="headerBar-nav">
-			<li class="headerBar-item">
-				<a class="saveBtn">儲存</a>
+			<li class="headerBar-item-exam">
+				<a id="save_exam" class="saveBtn">儲存</a>
 			</li>
-			<li class="headerBar-item">
-				<a class="giveUpBtn">離開</a>
+			<li class="headerBar-item-exam">
+				<a class="giveUpBtn" onclick="history.back()">離開</a>
 			</li>
 			</ul>
 		</ul>

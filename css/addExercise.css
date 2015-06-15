@@ -49,7 +49,7 @@
 	padding: 5px 10px;
 }
 
-.level_wrap label{
+.opt label{
 	display:inline-block;
     margin: 5px 30px 15px 0;
     padding: 4px 20px;
@@ -61,13 +61,14 @@
     border-radius: 15px;
 }
 
-.level_wrap input[type="radio"], .level_wrap input[type="checkbox"]  {
+.opt input[type="radio"], .opt input[type="checkbox"]  {
 	display: none;
 }
 
-.level_wrap input[type="radio"]:checked + label, .level_wrap input[type="checkbox"]:checked + label{
+.opt input[type="radio"]:checked + label, .opt input[type="checkbox"]:checked + label{
     background-color: #388BDB;
   	color: #fff;
+  	box-shadow: 2px 2px 2px #454545;
 }
 
 /****** tags jquery start ******/
