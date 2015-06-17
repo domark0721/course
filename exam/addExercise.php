@@ -94,27 +94,19 @@
 									<input type="text" class="tagsInput" name="tags" value="">
 								</div>
 								<label for="level">難易度</label>
-								<div class="opt">									
-									<input id="truefalse_level1" value="1" type="radio" name="level">
-										<label for="truefalse_level1" name="level">★</label>
-									<input id="truefalse_level2" value="2" type="radio" name="level">
-										<label for="truefalse_level2" name="level">★★</label>
-									<input id="truefalse_level3" value="3" type="radio" name="level">
-										<label for="truefalse_level3" name="level">★★★</label>
-									<input id="truefalse_level4" value="4" type="radio" name="level">
-										<label for="truefalse_level4" name="level">★★★★</label>
-									<input id="truefalse_level5" value="5" type="radio" name="level">
-										<label for="truefalse_level5" name="level">★★★★★</label>
+								<div class="opt">
+									<?php for($i=1; $i<=5; $i++){ ?>								
+										<input id="truefalse_level<?php echo $i;?>" value="<?php echo $i;?>" type="radio" name="level">
+											<label for="truefalse_level<?php echo $i;?>" name="level"><?php for($j=1; $j<=$i; $j++){?>★<?php }?></label>
+									<?php } ?>
 								</div>
 								<label for="time">答題時間</label>
 									<select name="min" class="time_select">
-										<option value="1">0</option><option value="1">1</option><option value="2">2</option>
-										<option value="3">3</option><option value="4">4</option><option value="5">5</option>
+										<?php for($i=0; $i<=5; $i++){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
 									</select>
 									<a class="time_char">分</a>
 									<select name="sec" class="time_select">
-										<option value="0">0</option><option value="10">10</option><option value="20">20</option>
-										<option value="30">30</option><option value="40">40</option><option value="50">50</option>
+										<?php for($i=0; $i<=50; $i+=10){ ?><option value="<?php echo $i;?>"><?php echo $i;?></option> <?php }?>
 									</select>
 									<a class="time_char">秒</a>
 								<label for="is_test">選為隨堂練習</label>
@@ -159,46 +151,33 @@
 									<textarea class="question_textarea" name="question"></textarea>
 								<label for="single_opt_content">選項內容</label>
 								<div class="opt_content">
-									<div><span>(1)</span><textarea name="single_opt_content_1"></textarea></div>
-									<div><span>(2)</span><textarea name="single_opt_content_2"></textarea></div>
-									<div><span>(3)</span><textarea name="single_opt_content_3"></textarea></div>
-									<div><span>(4)</span><textarea name="single_opt_content_4"></textarea></div>
+									<?php for($i=1; $i<=4; $i++){ ?>
+										<div><span>(<?php echo $i;?>)</span><textarea name="single_opt_content_<?php echo $i;?>"></textarea></div>
+									<?php }?>
 								</div>
 								<label for="single_answer">本題解答</label>
 								<div class="opt">
-									<input id="single_opt1" value="1" type="radio" name="answer">
-									<label for="single_opt1" name="single_answer">(1)</label>
-									<input id="single_opt2" value="2" type="radio" name="answer">
-									<label for="single_opt2" name="single_answer">(2)</label>
-									<input id="single_opt3" value="3" type="radio" name="answer">
-									<label for="single_opt3" name="single_answer">(3)</label>
-									<input id="single_opt4" value="4" type="radio" name="answer">
-									<label for="single_opt4" name="single_answer">(4)</label>
+									<?php for($i=1; $i<=4; $i++){ ?>
+									<input id="single_opt<?php echo $i;?>" value="<?php echo $i;?>" type="radio" name="answer">
+									<label for="single_opt<?php echo $i;?>" name="single_answer">(<?php echo $i;?>)</label>
+									<?php }?>
 								</div>
 								<label for="tags">標籤</label>
 									<input class="tagsInput" name="tags">
 								<label for="level">難易度</label>
-								<div class="opt">									
-									<input id="single_level1" value="1" type="radio" name="level">
-										<label for="single_level1"  name="level">★</label>
-									<input id="single_level2" value="2" type="radio" name="level">
-										<label for="single_level2" name="level">★★</label>
-									<input id="single_level3" value="3" type="radio" name="level">
-										<label for="single_level3" name="level">★★★</label>
-									<input id="single_level4" value="4" type="radio" name="level">
-										<label for="single_level4" name="level">★★★★</label>
-									<input id="single_level5" value="5" type="radio" name="level">
-										<label for="single_level5" name="level">★★★★★</label>
+								<div class="opt">
+									<?php for($i=1; $i<=5; $i++){ ?>								
+										<input id="single_level<?php echo $i;?>" value="<?php echo $i;?>" type="radio" name="level">
+											<label for="single_level<?php echo $i;?>" name="level"><?php for($j=1; $j<=$i; $j++){?>★<?php }?></label>
+									<?php } ?>							
 								</div>
 								<label for="time">答題時間</label>
 									<select name="min" class="time_select">
-										<option value="1">0</option><option value="1">1</option><option value="2">2</option>
-										<option value="3">3</option><option value="4">4</option><option value="5">5</option>
+										<?php for($i=0; $i<=5; $i++){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
 									</select>
 									<a class="time_char">分</a>
 									<select name="sec" class="time_select">
-										<option value="0">0</option><option value="10">10</option><option value="20">20</option>
-										<option value="30">30</option><option value="40">40</option><option value="50">50</option>
+										<?php for($i=0; $i<=50; $i+=10){ ?><option value="<?php echo $i;?>"><?php echo $i;?></option> <?php }?>
 									</select>
 									<a class="time_char">秒</a>
 								<label for="is_test">選為隨堂練習</label>
@@ -242,49 +221,33 @@
 									<textarea class="question_textarea" name="question"></textarea>
 								<label for="single_opt_content">選項內容</label>
 								<div class="opt_content">
-									<div><span>(1)</span><textarea name="multi_opt_content_1"></textarea></div>
-									<div><span>(2)</span><textarea name="multi_opt_content_2"></textarea></div>
-									<div><span>(3)</span><textarea name="multi_opt_content_3"></textarea></div>
-									<div><span>(4)</span><textarea name="multi_opt_content_4"></textarea></div>
-									<div><span>(5)</span><textarea name="multi_opt_content_5"></textarea></div>
+									<?php for($i=1; $i<=5; $i++){ ?>
+										<div><span>(<?php echo $i;?>)</span><textarea name="multi_opt_content_<?php echo $i;?>"></textarea></div>
+									<?php } ?>
 								</div>
 								<label for="single_answer">本題解答</label>
 								<div class="opt">
-									<input id="multi_opt1" value="1" type="checkbox" name="answer[]">
-									<label for="multi_opt1" name="single_answer">(1)</label>
-									<input id="multi_opt2" value="2" type="checkbox" name="answer[]">
-									<label for="multi_opt2" name="single_answer">(2)</label>
-									<input id="multi_opt3" value="3" type="checkbox" name="answer[]">
-									<label for="multi_opt3" name="single_answer">(3)</label>
-									<input id="multi_opt4" value="4" type="checkbox" name="answer[]">
-									<label for="multi_opt4" name="single_answer">(4)</label>
-									<input id="multi_opt5" value="5" type="checkbox" name="answer[]">
-									<label for="multi_opt5" name="single_answer">(5)</label>
+									<?php for($i=1; $i<=5; $i++){ ?>
+										<input id="multi_opt<?php echo $i;?>" value="<?php echo $i;?>" type="checkbox" name="answer[]">
+										<label for="multi_opt<?php echo $i;?>" name="single_answer">(<?php echo $i;?>)</label>
+									<?php } ?>
 								</div>
 								<label for="tags">標籤</label>
 									<input class="tagsInput" name="tags">
 								<label for="level">難易度</label>
-								<div class="opt">									
-									<input id="multi_level1" value="1" type="radio" name="level">
-										<label for="multi_level1" name="level">★</label>
-									<input id="multi_level2" value="2" type="radio" name="level">
-										<label for="multi_level2" name="level">★★</label>
-									<input id="multi_level3" value="3" type="radio" name="level">
-										<label for="multi_level3" name="level">★★★</label>
-									<input id="multi_level4" value="4" type="radio" name="level">
-										<label for="multi_level4" name="level">★★★★</label>
-									<input id="multi_level5" value="5" type="radio" name="level">
-										<label for="multi_level5" name="level">★★★★★</label>
+								<div class="opt">
+									<?php for($i=1; $i<=5; $i++){ ?>								
+										<input id="multi_level<?php echo $i;?>" value="<?php echo $i;?>" type="radio" name="level">
+											<label for="multi_level<?php echo $i;?>" name="level"><?php for($j=1; $j<=$i; $j++){?>★<?php }?></label>
+									<?php } ?>
 								</div>
 								<label for="time">答題時間</label>
 									<select name="min" class="time_select">
-										<option value="1">0</option><option value="1">1</option><option value="2">2</option>
-										<option value="3">3</option><option value="4">4</option><option value="5">5</option>
+										<?php for($i=0; $i<=5; $i++){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
 									</select>
 									<a class="time_char">分</a>
 									<select name="sec" class="time_select">
-										<option value="0">0</option><option value="10">10</option><option value="20">20</option>
-										<option value="30">30</option><option value="40">40</option><option value="50">50</option>
+										<?php for($i=0; $i<=50; $i+=10){ ?><option value="<?php echo $i;?>"><?php echo $i;?></option> <?php }?>
 									</select>
 									<a class="time_char">秒</a>
 								<label for="is_test">選為隨堂練習</label>

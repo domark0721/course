@@ -81,10 +81,14 @@
 	background-color: rgba(173, 50, 50, .8);
 }
 
-.chapterList {
-
+#saveStatus {
+	width: 74%;
+	text-align: center;
+	color: #676767;
+	transition: all .3s;
 }
 
+/* chapter editor */
 .chapterItem, .sectionItem{
 	display: inline-block;
 	padding: 6px 15px;
@@ -99,9 +103,6 @@
 	font-size: 18px;
 }
 
-.chapterList a {
-
-}
 
 .sectionList {
 	margin-left: 20px;

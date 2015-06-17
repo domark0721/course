@@ -1,4 +1,5 @@
 <?php
+	date_default_timezone_set('Asia/Taipei');
 	require ("../mongodb.php");
 
 	$course_id = $_POST['course_id'];
@@ -27,7 +28,7 @@
 	$mongoResult = $collection->update($mongoid, $updateMONGO);
 	// var_dump($db->lastError());
 
-
+	$lastEditDate = date("Y-m-d H:i:s");
     // prepare response
 	if ($mongoResult['err']) {
 		$response = array(
@@ -37,7 +38,9 @@
 	} else {
 		$response = array(
 			'status' => 'ok',
-			'error_message' => ''
+			'error_message' => '',
+			'lastEditDate' => $lastEditDate
+
 		);	
 	}
 

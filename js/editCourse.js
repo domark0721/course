@@ -174,13 +174,14 @@ $(document).ready(function(){
      // fix me :
     request.done(function( jData ) {
       if(jData.status=='ok'){
-        alert('內容已儲存！')
-        $("#saveStatus").html("最後編輯時間:"+jData.lastEditDate);
+        alert('內容已儲存！');
+        console.log(jData);
+        $("#saveStatus").html("最後儲存時間<br>"+jData.lastEditDate);
         $("#saveBtn").prop('disabled', false);
         $("#exitBtn").prop('disabled', false);
       }
       else{
-        alert('內容儲存失敗！')
+        alert('內容儲存失敗！');
         $("#saveStatus").html("儲存錯誤，請重試");
         $("#saveBtn").prop('disabled', false);
         $("#exitBtn").prop('disabled', false);    

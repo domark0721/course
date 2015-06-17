@@ -48,6 +48,7 @@
 					<div id="leftPanel">
 						<a id="saveCouseBtn" class="panelBtn save">儲 存</a>
 						<a class="panelBtn giveup" href="temode.php">離 開</a>
+						<div id="saveStatus"></div>
 						<a class="addChapterBtn"><i class="fa fa-plus"></i> 新增單元</a>
 						<ul class="chapterList">
 						<?php 

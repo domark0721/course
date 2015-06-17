@@ -6,25 +6,41 @@
 
 	session_start();
 
-	$mongoQuery = array('course_id' => (int)123);
-	$mon = $exercise -> find($mongoQuery);
-	
+	//get the course Metadata from mysql
+	$sql = "SELECT * FROM course WHERE course_id='123'";
+	$result = mysql_query($sql);
+	$courseMetadata = mysql_fetch_assoc($result);
+
+	//get the objectID of the question from mysql
+	$sql = "SELECT * FROM exam WHERE id='9'";
+	$result = mysql_query($sql);
+	$examMetadata = mysql_fetch_assoc($result);
+
+	$questionList = $examMetadata['questions'];
+	$questionArray = explode(",", $questionList);
+
 	$trueFalseQues = array();
 	$singleChoiceQues = array();
 	$multiChoiceQues = array();
 	$seriesQues = array();
 
-	foreach($mon as $data){
-		if($data['type'] == "TRUE_FALSE"){
-			$trueFalseQues[] = $data;
-		}else if($data['type'] == "SINGLE_CHOICE"){
-			$singleChoiceQues[] = $data;
-		}else if($data['type'] == "MULTI_CHOICE"){
-			$multiChoiceQues[] = $data;
-		}else if($data['type'] == "SERIES_QUESTIONS"){
-			$seriesQues[] = $data;
+	foreach($questionArray as $question){
+		$mongoQuery = array('_id' => new MongoId($question));
+		$mon = $exercise -> find($mongoQuery);
+		// var_dump($mon);
+
+		foreach($mon as $data){
+			if($data['type'] == "TRUE_FALSE"){
+				$trueFalseQues[] = $data;
+			}else if($data['type'] == "SINGLE_CHOICE"){
+				$singleChoiceQues[] = $data;
+			}else if($data['type'] == "MULTI_CHOICE"){
+				$multiChoiceQues[] = $data;
+			}else if($data['type'] == "SERIES_QUESTIONS"){
+				$seriesQues[] = $data;
+			}
 		}
-	}	
+	}
 ?>
 <!doctype html>
 <html>
@@ -50,19 +66,25 @@
 							<table class="examInfo">
 								<tr class="examInfo-row">
 									<th class="">科 目</th>
-									<td>資料結構 <span>by</span>蔡東軒</td>
+									<td><?php echo $courseMetadata['course_name'];?></td>
+								</tr>
+								<tr class="examInfo-row">
+									<th class="">授課老師</th>
+									<td><?php echo $courseMetadata['teacher_name'];?></td>
 								</tr>
 								<tr class="examInfo-row">
 									<th class="">類 別</th>
-									<td>期中考</td>
+									<td><?php if($examMetadata['type'] == 'test') echo '小考';
+											  else if($examMetadata['type'] == 'mid') echo '期中考';
+											  else if($examMetadata['type'] == 'final') echo '期末考';?></td>
 								</tr>	
 								<tr class="examInfo-row">
 									<th class="">時 間</th>
-									<td>50 分</td>
+									<td><?php echo $examMetadata['time'];?></td>
 								</tr>	
 								<tr class="examInfo-row">
 									<th class="">說 明</th>
-									<td>測驗完請記得按送出按鈕，時間到會自動送出考卷，若按上一頁離開則會跳出提醒視窗。</td>
+									<td><?php echo $examMetadata['explanation'];?></td>
 								</tr>							
 							</table>
 						</div>

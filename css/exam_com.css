@@ -62,24 +62,20 @@ html[xmlns] .clearfix {
 	width: 100%;
 }
 
-.examInfo_wrap {
+.examTitle_wrap {
 	display: inline-block;
-	font-size: 18px;
-}
-
-.examInfo, .numberInfo {
 	position: relative;
+	font-size: 28px;
+	color: #78ac25;
+	left: 9em;
+	top: 13px;
 }
 
-.examInfo {
-	left: 15em;
+.examType, .courseName {
+	display: inline-block;
 }
 
-.numberInfo {
-	left: 11em;
-}
-
-.examInfo a, .numberInfo a {
+/*.examInfo a, .courseName a {
 	display: inline-block;
 	margin-right: 1em;
 	color: #78ac25;
@@ -89,7 +85,7 @@ html[xmlns] .clearfix {
 
 .examInfo_wrap a span {
 	font-weight: normal;
-}
+}*/
 
 #headerBar-nav{
 	float: right;

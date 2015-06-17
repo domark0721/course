@@ -70,12 +70,12 @@
 
 .examInfo .examInfo-row th {
 	padding-bottom: 1em;
-	width: 10%;
+	width: 7%;
 	font-weight: bold;
 }
 
 .examInfo .examInfo-row td {
-	width: 90%;
+	width: 45%;
 	vertical-align: top;
 }
 

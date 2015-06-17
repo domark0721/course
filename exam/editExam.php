@@ -5,19 +5,44 @@
 	include_once('../api/isLogin.php');
 
 	session_start();
-	$_SESSION['url'] = $_SERVER['REQUEST_URI']; 
-	$course_id = $_POST['course_id'];
+	$_SESSION['url'] = $_SERVER['REQUEST_URI'];
+
+	
 
 	// get POST data from addExam page (exam name....)
-	// $generate_type = $_POST['generate_type'];
+	$course_id = $_POST['course_id'];
+	$course_name = $_POST['course_name'];
+	$type = $_POST['type'];
+	$from_date = $_POST['from_date'];
+	// exam period start 
+	$start_date = $_POST['start_date'];
+		$start_hour = $_POST['start_hour'];
+		$start_min = $_POST['start_min'];
+	$start_time = $start_hour . ':' . $start_min ;
+	$end_date = $_POST['end_date'];
+		$end_hour = $_POST['end_hour'];
+		$end_min = $_POST['end_min'];
+	$end_time = $end_hour . ':' . $end_min ;
+	// exam period end
+	$explanation = $_POST['explanation'];
+	$generateType = $_POST['generateType'];
+
+	if($generateType == "autoMode"){
+		$level = $_POST['level'];
+		$time = $_POST['time'];
+		$check_time = $_POST['check_time'];
+		$trueFalse = $_POST['trueFalse'];
+		$singleChoice = $_POST['singleChoice'];
+		$multiChoice = $_POST['multiChoice'];
+		$seriesQues = $_POST['seriesQues'];
+	}
+
 	$generate_type = 'manualMode';
 
 	// Get course meta data
 	$sql = "SELECT * FROM course WHERE course_id='$course_id'";
 	$result = mysql_query($sql);
-
-	$row = mysql_fetch_assoc($result);
-	$courseMetadata = $row;
+	$courseMetadata = mysql_fetch_assoc($result);
 
 	// get all questions of the course from mongo
 	$mongoQuery = array('course_id' => (int)$course_id);
@@ -83,18 +108,17 @@
 	<body>
 		<div class="totalWrapper">
 			<?php require("header_exam.php"); ?>
-<!-- 			<div id="topBanner_wrap">
-				<div class="content-wrap clearfix">
-					<div class="editorBarIcon"><i class="fa fa-leanpub"></i></div>
-					<div class="courseHeader">
-						<div class="topBanner_Title">題庫</div>
-						<div class="topBanner_CourseName"><?php echo $courseMetadata['course_name']; ?></div>
-					</div>
-						<a class="functionBtn newQuestion" href="addExercise.php?course_id=<?php echo $course_id; ?>"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;新增題目</a>
-						<a class="functionBtn newExam" href="addExam.php?course_id=<?php echo $course_id; ?>"><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;&nbsp;新增考試</a>
-						<a class="functionBtn return" onclick="history.back();">返回</a>
+			<div class="exam_status_wrap">
+				<div class="examInfo">
+				<a>平均難度：<span>★★★★★</span></a>
+				<a>時間：<span>40:50</span></a><br>
 				</div>
-			</div> -->
+				<div class="numberInfo">
+					<a>題數：<span>25</span></a><a>是非：<span>10</span></a>
+					<a>單選：<span>5</span></a><a>多選：<span>8</span></a>
+					<a>題組：<span>9</span></a>
+				</div>
+			</div>
 			<div class="editExamWrap">
 				<div class="editExamContainer">
 					<div class="left-container">			
@@ -538,6 +562,13 @@
 				</div>
 				<!-- hidden parameter -->
 				<input type="hidden" id="course_id" value="<?php echo $course_id;?>"/>
+				<input type="hidden" id="course_name" value="<?php echo $course_name;?>"/>
+				<input type="hidden" id="type" value="<?php echo $type;?>"/>
+				<input type="hidden" id="start_date" value="<?php echo $start_date;?>"/>
+				<input type="hidden" id="start_time" value="<?php echo $start_time;?>"/>
+				<input type="hidden" id="end_date" value="<?php echo $end_date;?>"/>
+				<input type="hidden" id="end_time" value="<?php echo $end_time;?>"/>
+				<input type="hidden" id="explanation" value="<?php echo $explanation;?>"/>
 			</div>
 		</div>
 

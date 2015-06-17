@@ -2,11 +2,22 @@
 	require ("../mysql.php");
 
 	$course_id = $_POST['course_id'];
-	$exam_paper = $_POST['exam_paper'];
-	$exam_paper = implode(",", $exam_paper);
-	// $exam_paper = json_decode($exam_paper);
+	$course_name = $_POST['course_name'];
+	$type = $_POST['type'];
+	$start_date = $_POST['start_date'];
+	$start_time = $_POST['start_time'];
+	$end_date = $_POST['end_date'];
+	$end_time = $_POST['end_time'];
+	$level = 5;
+	$time = "50:00";
+	$explanation = $_POST['explanation'];
 
-	$examData = "INSERT INTO exam (course_id, questions) VALUES ('$course_id','$exam_paper')";
+	$questions = $_POST['exam_paper'];
+	$questions = implode(",", $questions);
+
+	// save to mysql
+	$examData = "INSERT INTO exam (course_id, course_name, type, start_date, start_time, end_date, end_time, level, explanation, time, questions) 
+						VALUES ('$course_id', '$course_name', '$type','$start_date', '$start_time', '$end_date', '$end_time', '$level', '$explanation', '$time', '$questions')";
 	$mysqlResult = mysql_query($examData);
 
 
