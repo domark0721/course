@@ -98,20 +98,20 @@
 								<input type="text" name="start_date" class="start_date" readonly>
 							<div class="exam_time_select">
 								<select name="start_hour" class="time_select">
-									<?php for($i=0; $i<=24; $i++){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
+									<?php for($i=0; $i<=24; $i++){ ?> <option value="<?php if($i<10) echo "0".$i;else echo $i;?>"><?php echo $i;?></option> <?php } ?>
 								</select><span>時</span>
 								<select name="start_min" class="time_select">
-									<?php for($i=0; $i<=55; $i+=5){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
+									<?php for($i=0; $i<=55; $i+=5){ ?> <option value="<?php if($i<10) echo "0".$i;else echo $i;?>"><?php echo $i;?></option> <?php } ?>
 								</select><span>分</span>
 							</div><br>
 							<label for="time">結束時間</label>
 								<input type="text" name="end_date" class="end_date" readonly>
 							<div class="exam_time_select">
 								<select name="end_hour" class="time_select">
-									<?php for($i=0; $i<=24; $i++){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
+									<?php for($i=0; $i<=24; $i++){ ?> <option value="<?php if($i<10) echo "0".$i;else echo $i;?>"><?php echo $i;?></option> <?php } ?>
 								</select><span>時</span>
 								<select name="end_min" class="time_select">
-									<?php for($i=0; $i<=55; $i+=5){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
+									<?php for($i=0; $i<=55; $i+=5){ ?> <option value="<?php if($i<10) echo "0".$i;else echo $i;?>"><?php echo $i;?></option> <?php } ?>
 								</select><span>分</span>
 							</div>
 						</div><br>
@@ -163,20 +163,20 @@
 								<input type="text" name="start_date" class="start_date" readonly>
 							<div class="exam_time_select">
 								<select name="start_hour" class="time_select">
-									<?php for($i=0; $i<=24; $i++){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
+									<?php for($i=0; $i<=24; $i++){ ?> <option value="<?php if($i<10) echo "0".$i;else echo $i;?>"><?php echo $i;?></option> <?php } ?>
 								</select><span>時</span>
 								<select name="start_min" class="time_select">
-									<?php for($i=0; $i<=55; $i+=5){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
+									<?php for($i=0; $i<=55; $i+=5){ ?> <option value="<?php if($i<10) echo "0".$i;else echo $i;?>"><?php echo $i;?></option> <?php } ?>
 								</select><span>分</span>
 							</div><br>
 							<label for="time">結束時間</label>
 								<input type="text" name="end_date" class="end_date" readonly>
 							<div class="exam_time_select">
 								<select name="end_hour" class="time_select">
-									<?php for($i=0; $i<=24; $i++){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
+									<?php for($i=0; $i<=24; $i++){ ?> <option value="<?php if($i<10) echo "0".$i;else echo $i;?>"><?php echo $i;?></option> <?php } ?>
 								</select><span>時</span>
 								<select name="end_min" class="time_select">
-									<?php for($i=0; $i<=55; $i+=5){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
+									<?php for($i=0; $i<=55; $i+=5){ ?> <option value="<?php if($i<10) echo "0".$i;else echo $i;?>"><?php echo $i;?></option> <?php } ?>
 								</select><span>分</span>
 							</div>
 						</div><br>
@@ -201,7 +201,7 @@
 		<script>
 		$(function() {
 			$( ".start_date" ).datepicker({
-				dateFormat: 'yy/mm/dd',
+				dateFormat: 'yy-mm-dd',
 				changeMonth: true,
 				changeYear: true,
 				numberOfMonths: 1,
@@ -210,7 +210,7 @@
 					}
 			});
 			$( ".end_date" ).datepicker({
-				dateFormat: 'yy/mm/dd',
+				dateFormat: 'yy-mm-dd',
 				changeMonth: true,
 				changeYear: true,
 				numberOfMonths: 1,

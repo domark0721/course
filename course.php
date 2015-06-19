@@ -11,15 +11,7 @@
 	//metadata from mysql
 	$sql = "SELECT * FROM course WHERE course_id='$course_id'";
 	$result = mysql_query($sql);
-
-	$courseMetadata_temp = array();
-	while($row = mysql_fetch_assoc($result)){
-		$courseMetadata_temp[] = $row;
-	}	
-
-	foreach($courseMetadata_temp as $courseMetadata){
-
-	}
+	$courseMetadata = mysql_fetch_assoc($result);
 	
 	//course data from mongo
 	$mongoQuery = array('course_id' => (int)$course_id);
@@ -64,10 +56,11 @@
 							<li><a href="#announceList">公告事項</a></li>
 							<li><a href="#courseInfo">本課資訊</a></li>
 							<li><a href="#courseSchedule">開始上課</a></li>
-							<!-- <li><a>互動與討論</a></li> -->
+							<li><a href="#exam">測 驗</a></li>
 						</ul>
 					</div>
 				</div>
+				<!-- 公告 -->
 				<div id="announceList" class="tab-content announce-wrap">
 					<div id="announceList-container">
 						<div class="announceItem">
@@ -93,6 +86,7 @@
 					</div>
 				</div>
 
+				<!-- 課程資訊 -->
 				<div id="courseInfo" class="tab-content content-wrap clearfix content-wrap-courseinfo">
 					<div id="left-wrap" >
 						<div class="asidebox">
@@ -150,7 +144,7 @@
 							</div>
 						</div>
 					</div>
-
+					
 					<div id="right-wrap">
 						<div class="courseIntro">
 							<section class="article-section">
@@ -174,11 +168,12 @@
 									<h2>參考資料</h2>
 									<p><?php echo $courseData['references']; ?></p>
 								</div>
-
 							</section>
 						</div>
 					</div>
 				</div>
+
+				<!-- 上課目錄 -->
 				<div id="courseSchedule" class="tab-content content-wrap clearfix content-wrap-schedule">
 					<nav id="schedule-nav">
 						<ul class="schedule-nav-fix">
@@ -195,7 +190,7 @@
 							foreach($contentData['chapters'] as $i => $chapter){
 								$courseName = sprintf("CH%d: %s", $i+1, $chapter['name'] ); ?>
 								<div class="scheduleItem">
-								<div class="chapterTitle" id="chapter-<?php echo $i; ?>"><i class="fa fa-bookmark-o"></i><?php echo $courseName; ?></div>
+								<div class="chapterTitle" id="chapter-<?php echo $i; ?>"><i class="fa fa-bookmark-o"></i> <?php echo $courseName; ?></div>
 
 							<?php foreach($chapter['sections'] as $j => $section){
 									$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
@@ -207,6 +202,37 @@
 								</div>
 						<?php } ?>										
 						</div>
+					</div>
+				</div>
+
+				<!-- 測驗專區 -->
+				<div id="exam" class="tab-content content-wrap clearfix content-wrap-exam">
+					<div class="examList_container">
+				<?php 
+					$sql = "SELECT * FROM exam WHERE course_id='$course_id'";
+					$result = mysql_query($sql);
+
+					if(mysqli_num_rows($result)>0){
+						while($examData = mysql_fetch_assoc($result)) {
+				?>
+						<div class="exam_item">
+							<table class="exam_table">
+								<tr class="examInfo-row">
+									<td class="exam_type"><a><?php if($examData['type']=="test")echo "小考";
+																	else if($examData['type']=="mid")echo "期中考";
+																	else if($examData['type']=="final")echo "期末考";?></a></td>
+									<td class="exam_time"><i class="fa fa-clock-o"></i> <?php echo $examData['time'];?></td>
+									<td class="exam_date"><i class="fa fa-table"></i> <?php echo $examData['start_date'];?> <i class="fa fa-chevron-right"></i> <?php echo $examData['end_date'];?></td>
+									<td class="enter_exam"><a href="exam/exam.php?id=<?php echo $examData['id'];?>">進入考試</a></td>
+								</tr>						
+							</table>
+						</div>							
+						
+				<?php }}else{ ?>
+						<div class="exam_item">
+							<a class="no_exam">--- 該課程尚無考試 ---</a>
+						</div>															
+				<?php }?>				
 					</div>
 				</div>
 			</div>

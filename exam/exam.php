@@ -5,25 +5,27 @@
 	include_once('../api/isLogin.php');
 
 	session_start();
-
 	//get the course Metadata from mysql
 	$sql = "SELECT * FROM course WHERE course_id='123'";
 	$result = mysql_query($sql);
 	$courseMetadata = mysql_fetch_assoc($result);
 
+	$id = $_GET['id'];
 	//get the objectID of the question from mysql
-	$sql = "SELECT * FROM exam WHERE id='9'";
+	$sql = "SELECT * FROM exam WHERE id='$id'";
 	$result = mysql_query($sql);
 	$examMetadata = mysql_fetch_assoc($result);
 
 	$questionList = $examMetadata['questions'];
 	$questionArray = explode(",", $questionList);
 
+	//all question will save in below array
 	$trueFalseQues = array();
 	$singleChoiceQues = array();
 	$multiChoiceQues = array();
 	$seriesQues = array();
 
+	// query exercise from mongodb
 	foreach($questionArray as $question){
 		$mongoQuery = array('_id' => new MongoId($question));
 		$mon = $exercise -> find($mongoQuery);
@@ -90,7 +92,7 @@
 						</div>
 						<div class="examCheck_wrap">
 							<a class="examCheckBtn startBtn">開始考試</a>
-							<a class="examCheckBtn giveUpBtn">放棄</a>
+							<a class="examCheckBtn giveUpBtn" onclick="history.back();">放 棄</a>
 						</div>
 				</div>
 				<div class="exercise_wrap exerciseList">

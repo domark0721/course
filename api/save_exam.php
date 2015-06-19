@@ -6,10 +6,12 @@
 	$type = $_POST['type'];
 	$start_date = $_POST['start_date'];
 	$start_time = $_POST['start_time'];
+		$start_date = $start_date . " " . $start_time;
 	$end_date = $_POST['end_date'];
 	$end_time = $_POST['end_time'];
+		$end_date = $end_date . " " . $end_time;
 	$level = 5;
-	$time = "50:00";
+	$time = "50 : 00";
 	$explanation = $_POST['explanation'];
 
 	$questions = $_POST['exam_paper'];
