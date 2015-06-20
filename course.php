@@ -55,7 +55,7 @@
 						<ul class="tab-list">
 							<li><a href="#announceList">公告事項</a></li>
 							<li><a href="#courseInfo">本課資訊</a></li>
-							<li><a href="#courseSchedule">開始上課</a></li>
+							<li><a href="#courseSchedule">課程目錄</a></li>
 							<li><a href="#exam">測 驗</a></li>
 						</ul>
 					</div>
@@ -210,9 +210,7 @@
 					<div class="examList_container">
 				<?php 
 					$sql = "SELECT * FROM exam WHERE course_id='$course_id'";
-					$result = mysql_query($sql);
-
-					if(mysqli_num_rows($result)>0){
+					$result = mysql_query($sql);					if(mysql_num_rows($result)){
 						while($examData = mysql_fetch_assoc($result)) {
 				?>
 						<div class="exam_item">
@@ -236,8 +234,8 @@
 					</div>
 				</div>
 			</div>
+			<?php require("footer.php"); ?>
 		</div>
-		<?php require("footer.php"); ?>
 		<?php require("js/js_com.php"); ?>
 		<script src="js/switch.js"></script>
 	</body>

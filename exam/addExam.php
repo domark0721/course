@@ -193,8 +193,8 @@
 				</div>		
 			
 			</div>
+			<?php require("../footer.php"); ?>
 		</div>
-		<?php require("../footer.php"); ?>
 		<?php require("../js/js_com.php"); ?>
 		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 		<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>

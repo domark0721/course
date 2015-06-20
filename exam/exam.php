@@ -199,10 +199,9 @@
 					<?php } ?>
 				</div>
 			</div>
+			<?php require("../footer.php"); ?>
 		</div>
-
-
-
-		<?php require("../footer.php"); ?>
+		<?php require("../js/js_com.php"); ?>
+		<script src="../js/exam.js"></script>
 	</body>
 </html>

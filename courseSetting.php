@@ -137,8 +137,8 @@
 					</div>
 				</div>
 			</div>
+			<?php require("footer.php"); ?>
 		</div>
-		<?php require("footer.php"); ?>
 		<?php require("js/js_com.php"); ?>
 		<script type="text/javascript" src="js/tinymce/tinymce.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>

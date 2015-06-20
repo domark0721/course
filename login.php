@@ -22,18 +22,17 @@
 			<?php require("header.php"); ?>
 			<div class="container">
 				<div class="content-wrap">
-					<div class="formCard">
-							<form id="loginForm" class="stackForm" action="api/loginCheck.php" method="POST">
-								<label for="account" required>帳號</label>
-								<input type="text" name="account"><br>
-								<label for="password" required>密碼</label>
-								<input type="password" name="password"><br>
-								<button class="submitBtn" type="submit" >登入</button>
-							</form>
-					</div>
+					<form id="loginForm" class="stackForm" action="api/loginCheck.php" method="POST">
+						<label for="account" required>帳號</label>
+						<input type="text" name="account"><br>
+						<label for="password" required>密碼</label>
+						<input type="password" name="password"><br>
+						<button class="submitBtn" type="submit" >登入</button>
+					</form>
 				</div>
 			</div>
+			<?php require("footer.php"); ?>
 		</div>
-		<?php require("footer.php"); ?>
+		
 	</body>
 </html>

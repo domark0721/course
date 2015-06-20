@@ -131,8 +131,8 @@
 					</div>					
 				</div>
 			</div>
+			<?php require("footer.php"); ?>
 		</div>
-		<?php require("footer.php"); ?>
 		<?php require("js/js_com.php"); ?>
 		<script src="js/switch.js"></script>
 	</body>

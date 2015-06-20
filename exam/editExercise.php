@@ -182,7 +182,7 @@
 									<?php } ?>
 								</div>
 								<label for="single_answer">本題解答</label>
-								<div class="level_wrap">
+								<div class="opt">
 									<?php foreach($exerciseOpt as $i => $opt){ ?>
 									<input id="single_opt<?php echo ($i+1);?>" value="<?php echo ($i+1);?>" type="radio" name="answer" <?php if($opt['is_answer']==true) echo"checked";?>>
 									<label for="single_opt<?php echo ($i+1);?>" name="single_answer">(<?php echo ($i+1);?>)</label>
@@ -191,7 +191,7 @@
 								<label for="tags">標籤</label>
 									<input class="tagsInput" name="tags" value="<?php echo $exerciseData['tags'];?>">
 								<label for="level">難易度</label>
-									<div class="level_wrap">
+									<div class="opt">
 									<?php for($l=1; $l<=5; $l++){ ?>
 										<input id="single_level<?php echo $l;?>" value="<?php echo $l;?>" type="radio" name="level" <?php if($exerciseData['level']== $l) echo "checked";?>>
 											<label for="single_level<?php echo $l;?>" name="level"><?php for($m=1; $m<=$l; $m++){?>★<?php }?></label>
@@ -220,7 +220,7 @@
 									</select>
 									<a class="time_char">秒</a>
 								<label for="is_test">選為隨堂練習</label>
-								<div class="level_wrap">
+								<div class="opt">
 									<input id="is_test_false_single" target="single" value="false" type="radio" name="is_test" <?php if($exerciseData['is_test']==false) echo "checked";?>>
 									<label for="is_test_false_single" name="is_test">否</label>
 									<input id="is_test_true_single" target="single" value="true" type="radio" name="is_test" <?php if($exerciseData['is_test']==true) echo "checked";?>>
@@ -274,7 +274,7 @@
 									<?php } ?>
 								</div>
 								<label for="single_answer">本題解答</label>
-								<div class="level_wrap">
+								<div class="opt">
 									<?php foreach($exerciseOpt as $i => $opt){ ?>
 									<input id="multi_opt<?php echo ($i+1);?>" value="<?php echo ($i+1);?>" type="checkbox" name="answer[]" <?php if($opt['is_answer']==true) echo"checked";?>>
 									<label for="multi_opt<?php echo ($i+1);?>" name="single_answer">(<?php echo ($i+1);?>)</label>
@@ -283,7 +283,7 @@
 								<label for="tags">標籤</label>
 									<input class="tagsInput" name="tags">
 								<label for="level">難易度</label>
-								<div class="level_wrap">
+								<div class="opt">
 									<?php for($l=1; $l<=5; $l++){ ?>
 										<input id="multi_level<?php echo $l;?>" value="<?php echo $l;?>" type="radio" name="level" <?php if($exerciseData['level']== $l) echo "checked";?>>
 											<label for="multi_level<?php echo $l;?>" name="level"><?php for($m=1; $m<=$l; $m++){?>★<?php }?></label>
@@ -312,7 +312,7 @@
 									</select>
 									<a class="time_char">秒</a>
 								<label for="is_test">選為隨堂練習</label>
-								<div class="level_wrap">
+								<div class="opt">
 									<input id="is_test_false_multi" target="multi" value="false" type="radio" name="is_test" <?php if($exerciseData['is_test']==false) echo "checked";?>>
 									<label for="is_test_false_multi" name="is_test">否</label>
 									<input id="is_test_true_multi" target="multi" value="true" type="radio" name="is_test" <?php if($exerciseData['is_test']==true) echo "checked";?>>
@@ -363,8 +363,9 @@
 					</div>
 				</div>
 			</div>
+			<?php require("../footer.php"); ?>
 		</div>
-		<?php require("../footer.php"); ?>
+		
 		
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>

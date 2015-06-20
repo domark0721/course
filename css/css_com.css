@@ -95,9 +95,9 @@ html[xmlns] .clearfix {
 }
 
 /* headerBar end */
-
 .totalWrapper {
 	min-height:100%;
+	position:relative;
 }
 
 .container {
@@ -112,10 +112,10 @@ html[xmlns] .clearfix {
 }
 
 footer {
-	position: relative;
- 	height: 100px;
- 	margin-top: -169px;
-	clear: both;
+	width:100%;
+	position: absolute;
+	bottom:0;
+	left:0;
 }
 #section-footer{
 	background-color: #C5BFBF;

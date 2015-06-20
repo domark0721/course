@@ -1,3 +1,28 @@
+.back_to_schedule_wrap {
+	position: relative;
+	z-index: 100;
+}
+
+.back_to_schedule {
+	position: absolute;
+	left: 13%;
+	bottom: 169px;
+}
+
+.back_to_schedule a{
+	text-decoration: none;
+	color: #fff;
+	font-size: 18px;
+	background-color: #5F5F5F;
+	padding: 5px 10px;
+	border-radius: 5px;
+	transition: all .3s;
+}
+
+.back_to_schedule a:hover {
+	background-color: #000;
+}
+
 #videoBar{
 	width:100%;
 	background-color: #323131;
@@ -69,20 +94,61 @@
 }
 
 .userControl {
-	margin: 15px 0 10px -6px;
+	margin: 15px 0 1.5em -6px;
+	text-align: center;
 }
 
 .display-wrap {
 	max-width: 960px; 
-	width:90%;
+	width: 90%;
 	margin: 0 auto;	
 }
 
-#courseContent-wrap {
-	background-color: #fff;	
+/* courseContent */
+#courseContent {
+	background-color: #fff;
+	border-radius: 5px;
 }
 
-#courseContent {
-	height: 100px;
-	padding: 12px 15px;
+#courseContent .Content {
+	padding: 8px 1.5em;
+}
+
+/* test */
+.exerciseList_wrap {
+	padding: 2em 4em;
+}
+
+#courseExercise {
+	background-color: #fff;
+	border-radius: 5px;
+}
+
+.finish_test_wrap {
+	  margin-top: 2em;
+}
+
+.finish_test_wrap .finishBtns {
+	display: block;
+	text-align: center;
+}
+
+.finishBtns a {
+	background-color: rgba(121, 176, 61, 1);
+	color: #fff;
+	padding: 6px 15px;
+	border-radius: 5px;
+	font-size: 18px;
+	cursor: pointer;
+	transition: all .3s;
+}
+
+.finishBtns a:hover {
+	background-color: rgba(121, 176, 61, 0.7);
+}
+/* disqus */
+.disqus-display-wrap {
+	max-width: 750px; 
+	width: 90%;
+	margin: 0 auto;	
 }

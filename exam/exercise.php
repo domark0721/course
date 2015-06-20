@@ -137,14 +137,14 @@
 											}?>
 										</div>
 										<div class="questionFunc">
-											<a class="editQuesBtn" href="exercise_edit.php?id=<?php echo $question['_id'];?>&course_id=<?php echo $course_id;?>">編輯</a>
+											<a class="editQuesBtn" href="editExercise.php?id=<?php echo $question['_id'];?>&course_id=<?php echo $course_id;?>">編輯</a>
 											<a class="deletQuesBtn">刪除</a>
 										</div>
 									</div>
 							</li>
 						<?php } }else {?>
 							<div class="noQuestion">
-								<img src="img/oops.png">
+								<img src="../img/oops.png">
 								<a>此題形沒有資料 :(</a>
 							</div>
 						<?php }?>
@@ -198,14 +198,14 @@
 										}?>
 									</div>
 									<div class="questionFunc">
-										<a class="editQuesBtn" href="exercise_edit.php?id=<?php echo $question['_id'];?>&course_id=<?php echo $course_id;?>">編輯</a>
+										<a class="editQuesBtn" href="editExercise.php?id=<?php echo $question['_id'];?>&course_id=<?php echo $course_id;?>">編輯</a>
 										<a class="deletQuesBtn">刪除</a>
 									</div>
 								</div>
 							</li>
 						<?php } }else {?>
 							<div class="noQuestion">
-								<img src="img/oops.png">
+								<img src="../img/oops.png">
 								<a>此題形沒有資料 :(</a>
 							</div>
 						<?php }?>
@@ -259,14 +259,14 @@
 											}?>
 										</div>
 										<div class="questionFunc">
-											<a class="editQuesBtn" href="exercise_edit.php?id=<?php echo $question['_id'];?>&course_id=<?php echo $course_id;?>">編輯</a>
+											<a class="editQuesBtn" href="editExercise.php?id=<?php echo $question['_id'];?>&course_id=<?php echo $course_id;?>">編輯</a>
 											<a class="deletQuesBtn">刪除</a>
 										</div>
 									</div>
 							</li>
 						<?php } }else {?>
 							<div class="noQuestion">
-								<img src="img/oops.png">
+								<img src="../img/oops.png">
 								<a>此題形沒有資料 :(</a>
 							</div>
 						<?php }?>
@@ -320,23 +320,23 @@
 											}?>
 										</div>
 										<div class="questionFunc">
-											<a class="editQuesBtn" href="exercise_edit.php?id=<?php echo $question['_id'];?>&course_id=<?php echo $course_id;?>">編輯</a>
+											<a class="editQuesBtn" href="editExercise.php?id=<?php echo $question['_id'];?>&course_id=<?php echo $course_id;?>">編輯</a>
 											<a class="deletQuesBtn">刪除</a>
 										</div>
 									</div>
 								</li>
 						<?php } }else {?>
 							<div class="noQuestion">
-								<img src="img/oops.png">
+								<img src="../img/oops.png">
 								<a>此題形沒有資料 :(</a>
 							</div>
 						<?php }?>
 					</ul>
 				</div>
 			</div>
+			<?php require("../footer.php") ?>
 		</div>
-
-		<?php require("../footer.php") ?>
+		
 		<?php require("../js/js_com.php"); ?>
 		<script type="text/javascript" src="../js/addExercise.js"></script>
 	</body>

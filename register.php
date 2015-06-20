@@ -30,8 +30,8 @@
 					</div>
 				</div>
 			</div>
+			<?php require("footer.php"); ?>
 		</div>
-		<?php require("footer.php"); ?>
 		<script type="text/javascript">
 
 		</script>

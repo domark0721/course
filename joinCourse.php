@@ -62,7 +62,7 @@
 				<?php }?>
 				</div>
 			</div>
-		</div>
 			<?php require("footer.php"); ?>
+		</div>
 	</body>
 </html>

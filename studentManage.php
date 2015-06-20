@@ -60,8 +60,8 @@
 				<div class="editSetting-wrap">
 				</div>
 			</div>
+			<?php require("footer.php"); ?>
 		</div>
-		<?php require("footer.php"); ?>
 		<?php require("js/js_com.php"); ?>
 	</body>
 </html>

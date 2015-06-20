@@ -570,9 +570,10 @@
 				<input type="hidden" id="end_time" value="<?php echo $end_time;?>"/>
 				<input type="hidden" id="explanation" value="<?php echo $explanation;?>"/>
 			</div>
+			<?php require("../js/js_com.php"); ?>
 		</div>
 
-		<?php require("../js/js_com.php"); ?>
+		
 		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 		<script type="text/javascript" src="../js/addExercise.js"></script>
 		<script type="text/javascript" src="../js/editExam.js"></script>
