@@ -87,7 +87,6 @@
 									<li><a href="#single_choice">單選題</a></li>
 									<li><a href="#multi_choice">多選題</a></li>
 									<li><a href="#series_question">題組</a></li>
-									
 								</ul>
 							</div>
 					</div>
@@ -138,7 +137,7 @@
 										</div>
 										<div class="questionFunc">
 											<a class="editQuesBtn" href="editExercise.php?id=<?php echo $question['_id'];?>&course_id=<?php echo $course_id;?>">編輯</a>
-											<a class="deletQuesBtn">刪除</a>
+											<a class="deletQuesBtn" data-exercise-id="<?php echo $question['_id'];?>">刪除</a>
 										</div>
 									</div>
 							</li>
@@ -199,7 +198,7 @@
 									</div>
 									<div class="questionFunc">
 										<a class="editQuesBtn" href="editExercise.php?id=<?php echo $question['_id'];?>&course_id=<?php echo $course_id;?>">編輯</a>
-										<a class="deletQuesBtn">刪除</a>
+										<a class="deletQuesBtn" data-excercise-id="<?php echo $question['_id'];?>">刪除</a>
 									</div>
 								</div>
 							</li>
@@ -260,7 +259,7 @@
 										</div>
 										<div class="questionFunc">
 											<a class="editQuesBtn" href="editExercise.php?id=<?php echo $question['_id'];?>&course_id=<?php echo $course_id;?>">編輯</a>
-											<a class="deletQuesBtn">刪除</a>
+											<a class="deletQuesBtn"  data-excercise-id="<?php echo $question['_id'];?>">刪除</a>
 										</div>
 									</div>
 							</li>
@@ -321,7 +320,7 @@
 										</div>
 										<div class="questionFunc">
 											<a class="editQuesBtn" href="editExercise.php?id=<?php echo $question['_id'];?>&course_id=<?php echo $course_id;?>">編輯</a>
-											<a class="deletQuesBtn">刪除</a>
+											<a class="deletQuesBtn" data-excercise-id="<?php echo $question['_id'];?>">刪除</a>
 										</div>
 									</div>
 								</li>
@@ -339,6 +338,7 @@
 		
 		<?php require("../js/js_com.php"); ?>
 		<script type="text/javascript" src="../js/addExercise.js"></script>
+		<script type="text/javascript" src="../js/Exercise.js"></script>
 	</body>
 </html>
 

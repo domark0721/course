@@ -13,7 +13,7 @@
 			<?php require("header.php"); ?>
 
 			<div class="container">
-
+			<input type="search" class="clearch">
 			</div>
 
 			<?php require("footer.php"); ?>

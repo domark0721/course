@@ -121,7 +121,7 @@
 			</div>
 			<div class="editExamWrap">
 				<div class="editExamContainer">
-					<div class="left-container">			
+					<div class="left-container">
 						<ol id="drop-question-list">
 						<!-- 是非題 -->
 						<?php foreach($examList as $question){
@@ -315,6 +315,9 @@
 						</ol>
 					</div>
 					<div class="right-container">
+						<div class="search_wrap">
+							<input id="search_exercise" class="clearable" placeholder="輸入題目關鍵字"/>
+						</div>
 						<div id="exerciseList" class="">
 							<div class="nav-wrap">
 									<div class="userControl">
@@ -331,9 +334,24 @@
 							<ul id="true_false" class="tab-content questionNum">
 							<?php if(!empty($questionList['trueFalseQues'])){
 									foreach($questionList['trueFalseQues'] as $i => $question){
-										$trueFalseQuesBody = $question['body'];?>
-									<li class="true_false_wrap questionItem">
-										<input type="hidden" value="<?php echo $question['_id'];?>">
+										$trueFalseQuesBody = $question['body'];
+										// for sectionName
+										if(!($question['is_test'] == false)){
+											foreach($contentData['chapters'] as $i => $chapter){
+												foreach($chapter['sections'] as $j => $section){
+													$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
+													$courseURL = sprintf("../courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
+																			,$courseData['course_id'], $i, $j);
+														if($section['uid'] == $question['test_section']){
+															break;
+														}
+													}
+												}
+										?>
+									<li class="true_false_wrap questionItem" data-exercise-id="<?php echo $question['_id'];?>" 
+																			 data-exercise-type="TRUE_FALSE" 
+																			 data-section-uid="<?php echo $question['test_section'];?>" 
+																			 data-section-name="<?php echo $sectionName;?>">
 										<div class="true_false_answer_wrap">
 											<?php if($trueFalseQuesBody['answer'] == true){ ?>
 												<a class="trueFalseAnswer">Ｏ</a>
@@ -358,23 +376,14 @@
 											<div class="for_section">
 												<?php if($question['is_test'] == false){ ?>
 													<a class="is_test">適用章節： <span>未指定</span></a>
-												<?php } else{
-														foreach($contentData['chapters'] as $i => $chapter){
-															foreach($chapter['sections'] as $j => $section){
-																$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
-																$courseURL = sprintf("../courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
-																						,$courseData['course_id'], $i, $j);
-
-																if($section['uid'] == $question['test_section']){ ?>
-																	<a class="is_test">適用章節：</a>
-																	<a class="is_test_href" target="_blank" href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a>
-												<?php 			}
-															}
-														}
+												<?php } else{ ?>
+													<a class="is_test">適用章節：</a>
+													<a class="is_test_href" target="_blank" href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a>
+												<?php 	}
 												}?>
 											</div>
 										</div>
-									</li>
+									</li data-section-name="<?php echo $sectionName;?>">
 								<?php } }else {?>
 									<div class="noQuestion">
 										<img src="../img/oops.png">
@@ -389,8 +398,7 @@
 									foreach($questionList['singleChoiceQues'] as $i => $question){
 											$singleChoiceQuesBody = $question['body'];
 											$singleChoiceQuesOpt = $singleChoiceQuesBody['options'];?>
-									<li class="single_choice_wrap questionItem">
-										<input type="hidden" value="<?php echo $question['_id'];?>">
+									<li class="single_choice_wrap questionItem" data-exercise-id="<?php echo $question['_id'];?>" data-exercise-type="SINGLE_CHOICE">
 										<div class="question"><?php echo $singleChoiceQuesBody['question'];?><!-- <span class="questionType"> ( 單選 )</span> --></div>
 										<div class="single_choice_answer_wrap">
 											<?php foreach($singleChoiceQuesOpt as $j => $options){
@@ -447,8 +455,7 @@
 									foreach($questionList['multiChoiceQues'] as $i => $question){
 									$multiChoiceQuesBody = $question['body'];
 									$multiChoiceQuesOpt = $multiChoiceQuesBody['options']?>
-									<li class="multi_choice_wrap questionItem">
-										<input type="hidden" value="<?php echo $question['_id'];?>">
+									<li class="multi_choice_wrap questionItem" data-exercise-id="<?php echo $question['_id'];?>" data-exercise-type="MULTI_CHOICE">
 										<div class="question"><?php echo $multiChoiceQuesBody['question'];?><!-- <span class="questionType"> ( 多選 )</span> --></div>
 										<div class="multi_choice_answer_wrap">
 											<?php foreach($multiChoiceQuesOpt as $j => $options){
@@ -504,8 +511,7 @@
 							<?php if(!empty($questionList['seriesQues'])){
 									foreach($questionList['seriesQues'] as $i => $questionHeader){
 									$seriesQuesBody = $questionHeader['body'];?>
-									<li class="series_question_wrap questionItem">
-										<input type="hidden" value="<?php echo $question['_id'];?>">
+									<li class="series_question_wrap questionItem" data-exercise-id="<?php echo $question['_id'];?>" data-exercise-type="SERIES_QUESTIONS">
 										<div class="question"><?php echo $seriesQuesBody['description'];?><!-- <span class="questionType"> ( 題組 )</span> --></div>
 										<ul class="seriesNum">		
 											<?php foreach($seriesQuesBody['questions'] as $j => $question){ 
@@ -570,20 +576,26 @@
 				<input type="hidden" id="end_time" value="<?php echo $end_time;?>"/>
 				<input type="hidden" id="explanation" value="<?php echo $explanation;?>"/>
 			</div>
-			<?php require("../js/js_com.php"); ?>
+			
 		</div>
 
-		
+		<?php require("../js/js_com.php"); ?>
 		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+		<script>
+			window._questionList = <?php echo json_encode($questionList); ?>;
+		</script>
 		<script type="text/javascript" src="../js/addExercise.js"></script>
+		<script type="text/javascript" src="../js/jquery.clearsearch.js"></script>
 		<script type="text/javascript" src="../js/editExam.js"></script>
 		<script>
+
 		$(function() {
 			$('#single_choice, #true_false, #multi_choice, #series_question, #drop-question-list').sortable({
 				connectWith: '#drop-question-list',
 				dropOnEmpty: true,
-				helper: "clone",
 			}).disableSelection();
+
+
 		    // $( "#catalog" ).accordion();
 		    // $( ".questionItem" ).draggable({
 		    //   appendTo: "body",

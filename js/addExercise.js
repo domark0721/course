@@ -14,8 +14,17 @@ $(document).ready(function(){
     $(activeTab).fadeIn();
   }
 
-  showEditor($('.tab-list a').first());
+   // if has hash, default show the hash tab. if not, show first tab
+  var defaultTabHash = window.location.hash;
+  window.location.hash = '';
 
+  if (defaultTabHash) {
+      showEditor($('.tab-list a[href="' + defaultTabHash + '"]'));
+  } else {
+      showEditor($('.tab-list a').first());    
+  } 
+
+  // 點擊章節需要
   $('#is_test_false, #is_test_false_single, #is_test_false_multi').on('click', function(e){
     $('#section_'+$(this).attr('target')).removeClass('show').fadeOut();
   });

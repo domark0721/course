@@ -26,6 +26,9 @@
 			);
 		$mongoResult = $exercise->insert($mongoInitData);
 
+		$back_tag = '#true_false';
+		location($back_tag, $mongoResult, $course_id);
+
 	}else if($type=="SINGLE_CHOICE"){
 		$opt_content_1 = $_POST['single_opt_content_1'];
 		$opt_content_2 = $_POST['single_opt_content_2'];
@@ -71,6 +74,8 @@
 				)
 			);
 		$mongoResult = $exercise->insert($mongoInitData);
+		$back_tag = '#single_choice';
+		location($back_tag, $mongoResult, $course_id);
 
 	}else if($type=="MULTI_CHOICE"){
 		$opt_content_1 = $_POST['multi_opt_content_1'];
@@ -121,8 +126,11 @@
 				)
 			);		
 		$mongoResult = $exercise->insert($mongoInitData);
-	}else if($type=="SERIES_QUESTIONS"){
+		$back_tag = '#multi_choice';
+		location($back_tag, $mongoResult, $course_id);
 
+	}else if($type=="SERIES_QUESTIONS"){
+		// 尚未製作
 	}
 
 	function commonInfo() {
@@ -151,4 +159,19 @@
 				"create_date" => $create_date
 			);
 	}
+
+	function location($back_tag, $mongoResult, $course_id) {
+		// var_dump($course_id.$back_tag);
+		if($mongoResult['ok'] == 1){
+			echo '<script>alert("題目新增成功！");
+					window.location.href="../exam/addExercise.php?course_id=' . $course_id . $back_tag .'"</script>';
+		}
+		else{
+			echo '<script>alert("題目新增失敗！");
+					window.history.back()</script>';
+		}
+
+	}
+
+
 ?>
