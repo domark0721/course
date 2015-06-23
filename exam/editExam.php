@@ -315,8 +315,12 @@
 						</ol>
 					</div>
 					<div class="right-container">
-						<div class="search_wrap">
-							<input id="search_exercise" class="clearable" placeholder="輸入題目關鍵字"/>
+						<div class="search_wrap"> 
+							<input id="search_exercise" class="clearable" placeholder="搜尋題目"/>
+							<div class="search_condition">
+								<a id="search_section" class="search_opt">SECTION</a>
+								<a id="search_level" class="search_opt">LEVEL</a>
+							</div>
 						</div>
 						<div id="exerciseList" class="">
 							<div class="nav-wrap">
@@ -326,7 +330,6 @@
 											<li><a href="#single_choice">單選題</a></li>
 											<li><a href="#multi_choice">多選題</a></li>
 											<li><a href="#series_question">題組</a></li>
-											
 										</ul>
 									</div>
 							</div>
@@ -336,17 +339,20 @@
 									foreach($questionList['trueFalseQues'] as $i => $question){
 										$trueFalseQuesBody = $question['body'];
 										// for sectionName
+										$sectionName = "";
 										if(!($question['is_test'] == false)){
 											foreach($contentData['chapters'] as $i => $chapter){
 												foreach($chapter['sections'] as $j => $section){
-													$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
+													$sectionName_temp = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
 													$courseURL = sprintf("../courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
 																			,$courseData['course_id'], $i, $j);
 														if($section['uid'] == $question['test_section']){
+															$sectionName = $sectionName_temp;
 															break;
 														}
 													}
 												}
+											}
 										?>
 									<li class="true_false_wrap questionItem" data-exercise-id="<?php echo $question['_id'];?>" 
 																			 data-exercise-type="TRUE_FALSE" 
@@ -380,7 +386,7 @@
 													<a class="is_test">適用章節：</a>
 													<a class="is_test_href" target="_blank" href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a>
 												<?php 	}
-												}?>
+												 ?>
 											</div>
 										</div>
 									</li data-section-name="<?php echo $sectionName;?>">
@@ -396,10 +402,29 @@
 							<ul id="single_choice" class="tab-content questionNum">
 							<?php if(!empty($questionList['singleChoiceQues'])){
 									foreach($questionList['singleChoiceQues'] as $i => $question){
-											$singleChoiceQuesBody = $question['body'];
-											$singleChoiceQuesOpt = $singleChoiceQuesBody['options'];?>
-									<li class="single_choice_wrap questionItem" data-exercise-id="<?php echo $question['_id'];?>" data-exercise-type="SINGLE_CHOICE">
-										<div class="question"><?php echo $singleChoiceQuesBody['question'];?><!-- <span class="questionType"> ( 單選 )</span> --></div>
+										$singleChoiceQuesBody = $question['body'];
+										$singleChoiceQuesOpt = $singleChoiceQuesBody['options'];
+										// for sectionName
+										$sectionName = "";
+										if(!($question['is_test'] == false)){
+											foreach($contentData['chapters'] as $i => $chapter){
+												foreach($chapter['sections'] as $j => $section){
+													$sectionName_temp = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
+													$courseURL = sprintf("courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
+																			,$courseData['course_id'], $i, $j);
+													if($section['uid'] == $question['test_section']){
+														$sectionName = $sectionName_temp;
+														break;
+													}
+												}
+											}
+										}
+									?>
+									<li class="single_choice_wrap questionItem" data-exercise-id="<?php echo $question['_id'];?>" 
+																				data-exercise-type="SINGLE_CHOICE"
+																				data-section-uid="<?php echo $question['test_section'];?>" 
+																				data-section-name="<?php echo $sectionName;?>" >
+										<div class="question"><?php echo $singleChoiceQuesBody['question'];?></div>
 										<div class="single_choice_answer_wrap">
 											<?php foreach($singleChoiceQuesOpt as $j => $options){
 												if($options['is_answer'] == true){?>
@@ -423,21 +448,12 @@
 											</div>
 											<div class="for_section">
 												<?php if($question['is_test'] == false){ ?>
-													<a class="is_test">適用章節： <span>未指定</span></a>
-												<?php } else{
-														foreach($contentData['chapters'] as $i => $chapter){
-															foreach($chapter['sections'] as $j => $section){
-																$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
-																$courseURL = sprintf("courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
-																						,$courseData['course_id'], $i, $j);
-
-																if($section['uid'] == $question['test_section']){ ?>
-																	<a class="is_test">適用章節：</a>
-																	<a class="is_test_href" target="_blank" href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a>
-												<?php 			}
-															}
-														}
-												}?>
+														<a class="is_test">適用章節： <span>未指定</span></a>
+												<?php } else{ ?>
+														<a class="is_test">適用章節：</a>
+														<a class="is_test_href" target="_blank" href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a>
+												<?php 	} 
+												 ?>
 											</div>
 										</div>
 									</li>
@@ -453,10 +469,29 @@
 							<ul id="multi_choice" class="tab-content questionNum">
 							<?php if(!empty($questionList['multiChoiceQues'])){
 									foreach($questionList['multiChoiceQues'] as $i => $question){
-									$multiChoiceQuesBody = $question['body'];
-									$multiChoiceQuesOpt = $multiChoiceQuesBody['options']?>
-									<li class="multi_choice_wrap questionItem" data-exercise-id="<?php echo $question['_id'];?>" data-exercise-type="MULTI_CHOICE">
-										<div class="question"><?php echo $multiChoiceQuesBody['question'];?><!-- <span class="questionType"> ( 多選 )</span> --></div>
+										$multiChoiceQuesBody = $question['body'];
+										$multiChoiceQuesOpt = $multiChoiceQuesBody['options'];
+										// for sectionName
+										$sectionName = "";
+										if(!($question['is_test'] == false)){
+											foreach($contentData['chapters'] as $i => $chapter){
+												foreach($chapter['sections'] as $j => $section){
+													$sectionName_temp = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
+													$courseURL = sprintf("courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
+																			,$courseData['course_id'], $i, $j);
+													if($section['uid'] == $question['test_section']){
+														$sectionName = $sectionName_temp;
+														break;
+													}
+												}
+											}
+										}
+									?>
+									<li class="multi_choice_wrap questionItem" data-exercise-id="<?php echo $question['_id'];?>" 
+																			   data-exercise-type="MULTI_CHOICE"
+																			   data-section-uid="<?php echo $question['test_section'];?>" 
+																			   data-section-name="<?php echo $sectionName;?>" >
+										<div class="question"><?php echo $multiChoiceQuesBody['question'];?></div>
 										<div class="multi_choice_answer_wrap">
 											<?php foreach($multiChoiceQuesOpt as $j => $options){
 												if($options['is_answer'] == true){?>
@@ -481,20 +516,10 @@
 											<div class="for_section">
 												<?php if($question['is_test'] == false){ ?>
 													<a class="is_test">適用章節： <span>未指定</span></a>
-												<?php } else{
-														foreach($contentData['chapters'] as $i => $chapter){
-															foreach($chapter['sections'] as $j => $section){
-																$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
-																$courseURL = sprintf("courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
-																						,$courseData['course_id'], $i, $j);
-
-																if($section['uid'] == $question['test_section']){ ?>
-																	<a class="is_test">適用章節：</a>
-																	<a class="is_test_href" target="_blank" href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a>
-												<?php 			}
-															}
-														}
-												}?>
+												<?php } else{ ?>
+													<a class="is_test">適用章節：</a>
+													<a class="is_test_href" target="_blank" href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a>
+												<?php }?>
 											</div>
 										</div>
 									</li>
@@ -510,8 +535,26 @@
 							<ul id="series_question" class="tab-content questionNum">
 							<?php if(!empty($questionList['seriesQues'])){
 									foreach($questionList['seriesQues'] as $i => $questionHeader){
-									$seriesQuesBody = $questionHeader['body'];?>
-									<li class="series_question_wrap questionItem" data-exercise-id="<?php echo $question['_id'];?>" data-exercise-type="SERIES_QUESTIONS">
+										$seriesQuesBody = $questionHeader['body'];
+										// for sectionName
+										if(!($questionHeader['is_test'] == false)){ 
+											foreach($contentData['chapters'] as $i => $chapter){
+												foreach($chapter['sections'] as $j => $section){
+													$sectionName_temp = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
+													$courseURL = sprintf("courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
+																			,$courseData['course_id'], $i, $j);
+													if($section['uid'] == $question['test_section']){
+														$sectionName = $sectionName_temp;
+														break;
+													}
+												}
+											}
+										}
+									?>
+									<li class="series_question_wrap questionItem" data-exercise-id="<?php echo $question['_id'];?>" 
+																			      data-exercise-type="SERIES_QUESTIONS"
+																			      data-section-uid="<?php echo $question['test_section'];?>" 
+																			      data-section-name="<?php echo $sectionName;?>" >
 										<div class="question"><?php echo $seriesQuesBody['description'];?><!-- <span class="questionType"> ( 題組 )</span> --></div>
 										<ul class="seriesNum">		
 											<?php foreach($seriesQuesBody['questions'] as $j => $question){ 
@@ -538,20 +581,10 @@
 											<div class="for_section">
 												<?php if($questionHeader['is_test'] == false){ ?>
 													<a class="is_test">適用章節： <span>未指定</span></a>
-												<?php } else{
-														foreach($contentData['chapters'] as $i => $chapter){
-															foreach($chapter['sections'] as $j => $section){
-																$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
-																$courseURL = sprintf("courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
-																						,$courseData['course_id'], $i, $j);
-
-																if($section['uid'] == $question['test_section']){ ?>
-																	<a class="is_test">適用章節：</a>
-																	<a class="is_test_href" target="_blank" href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a>
-												<?php 			}
-															}
-														}
-												}?>
+												<?php } else{ ?>
+													<a class="is_test">適用章節：</a>
+													<a class="is_test_href" target="_blank" href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a>
+												<?php } ?>
 											</div>
 										</div>
 									</li>
