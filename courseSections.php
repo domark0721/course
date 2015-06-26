@@ -58,7 +58,7 @@
 						<div id="courseChapterBar">
 							<div id="leftChapter">
 							<?php if($chapter == 0 && $section == 0){ ?>
-									<a href="course.php?course_id=<?php $course_id; ?>#courseSchedule"><i class="fa fa-arrow-left"></i> 回課程目錄</a>
+									<a href="course.php?course_id=<?php echo $course_id; ?>#courseSchedule"><i class="fa fa-arrow-left"></i> 回課程目錄</a>
 							<?php } else if($chapter > 0 && $section == 0) {
 									$preChapter_LastSection = count($sectionData[($chapter-1)]['sections']);
 									$preChapter_LastSection_Name = $sectionData[($chapter-1)]['sections'][($preChapter_LastSection-1)]['name'];

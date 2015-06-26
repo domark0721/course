@@ -109,7 +109,7 @@
 									<select name="min" class="time_select">
 									<?php 
 										$time = explode(":", $exerciseData['time']);
-										for($i=0; $i<=5; $i++){ 
+										for($i=0; $i<=30; $i++){ 
 											if($time[0]==$i)
 												echo '<option value="' .$i. '" selected>' .$i. '</option>';
 											else
@@ -201,7 +201,7 @@
 									<select name="min" class="time_select">
 									<?php 
 										$time = explode(":", $exerciseData['time']);
-										for($i=0; $i<=5; $i++){ 
+										for($i=0; $i<=30; $i++){ 
 											if($time[0]==$i)
 												echo '<option value="' .$i. '" selected>' .$i. '</option>';
 											else
@@ -293,7 +293,7 @@
 									<select name="min" class="time_select">
 									<?php 
 										$time = explode(":", $exerciseData['time']);
-										for($i=0; $i<=5; $i++){ 
+										for($i=0; $i<=30; $i++){ 
 											if($time[0]==$i)
 												echo '<option value="' .$i. '" selected>' .$i. '</option>';
 											else

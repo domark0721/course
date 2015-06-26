@@ -43,7 +43,7 @@
 						divClass = settings.clearClass + '_div';
 
 					if (!$this.parent().hasClass(divClass)) {
-						$this.wrap('<div style="position: relative;" class="'
+						$this.wrap('<div style="position: relative; display: inline-block; width:100%;" class="'
 							+ divClass + '">' + $this.html() + '</div>');
 						$this.after('<a id="crossBtn" style="position: absolute; cursor: pointer; font-size: 20px;" class="'
 							+ settings.clearClass + '">' + settings.linkText + '</a>');
@@ -75,7 +75,7 @@
 					}
 
 					function update() {
-						var width = $this.outerWidth()*1.68, height = $this
+						var width = $this.outerWidth()*1.25, height = $this
 								.outerHeight();
 								// console.log(width);
 						btn.css({

@@ -16,7 +16,7 @@
 				<a id="save_exam" class="saveBtn">儲存並建立考卷</a>
 			</li>
 			<li class="headerBar-item-exam">
-				<a class="giveUpBtn" onclick="history.back()">離開</a>
+				<a id="exit_examMode" class="giveUpBtn">離開</a>
 			</li>
 			</ul>
 		</ul>

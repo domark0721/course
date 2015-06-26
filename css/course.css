@@ -324,14 +324,14 @@
 	padding: 6px 13px;
 	color: #fff;
 	border-radius: 3px;
-	background-color: rgba(173, 50, 50, 1);
+	background-color: rgba(121, 176, 61, 1);
 	cursor: pointer;
 	transition: all 0.3s;
 	text-decoration: none;
 }
 
 .enter_exam a:hover {
-	background-color: rgba(173, 50, 50, 0.7);
+	background-color: rgba(121, 176, 61, 0.7);
 }
 
 .exam_item .no_exam {

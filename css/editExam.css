@@ -98,6 +98,7 @@
 	overflow: scroll;
 	position: relative;
 	height: 93%;
+	/*z-index: 0;*/
 
 }
 
@@ -106,6 +107,7 @@
 	width: 40%;
 	height: 100%;
 	overflow: scroll;
+	/*z-index: 0;*/
 }
 
 #drop-question-list {
@@ -113,6 +115,7 @@
 	padding: 15px 15px 40px 50px;
 	margin: 0;
 }
+
 
 #drop-question-list .questionItem {
 	background-color: #fdfdfd;
@@ -124,7 +127,32 @@
 
 /* --------- right-container Start------------------------------- */
 .search_wrap {
-	margin: 1.5em 0 0.5em 0;
+	margin: 1.5em 0 0 0;
+	display: block;
+	text-align: center;
+}
+
+.search_condition {
+	display: block;
+	margin: 1em 0 0 2em;
+}
+
+.search_wrap a {
+	display: inline-block;
+	margin: 0 5px;
+	cursor: pointer;
+	transition: all .3s;
+}
+
+.search_opt {
+	padding: 5px 10px;
+	background-color: #909090;
+	color: #fff;
+	border-radius: 3px;
+}
+
+.search_wrap .search_opt:hover {
+	background-color: rgba(121, 176, 61, 1);
 }
 
 .search_wrap input {
@@ -134,11 +162,18 @@
 	padding: 5px 10px;
 	margin: 0 auto;
 	display: block;
-	width: 40%;
+	width: 64%;
 }
 
-.true_false_wrap.questionItem.ui-sortable-helper {
+.questionItem {
+	cursor: -webkit-grab;
+}
+
+.questionItem.ui-sortable-helper {
 	background-color: #fff;
+	padding: 5px 10px;
+	border-radius: 5px;
+	box-shadow: 2px 2px 2px #818181;
 }
 
 .questionNum {

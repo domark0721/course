@@ -10,8 +10,8 @@
 	$end_date = $_POST['end_date'];
 	$end_time = $_POST['end_time'];
 		$end_date = $end_date . " " . $end_time;
-	$level = 5;
-	$time = "50 : 00";
+	$level = $_POST['level'];
+	$time = $_POST['time'];
 	$explanation = $_POST['explanation'];
 
 	$questions = $_POST['exam_paper'];
@@ -22,7 +22,20 @@
 						VALUES ('$course_id', '$course_name', '$type','$start_date', '$start_time', '$end_date', '$end_time', '$level', '$explanation', '$time', '$questions')";
 	$mysqlResult = mysql_query($examData);
 
+	if($mysqlResult){
+		$response = array(
+			'status' => 'ok',
+			'error_message' => '',
+			'lastEditDate' => $lastEditDate
+		);	
+	}
+	else{
+		$response = array(
+			'status' => 'error',
+			'error_message' => $mongoResult['errmsg']
+		);
+	}
 
-	echo $course_id;
-	echo json_encode($exam_paper);
+	echo json_encode($response);
+	// echo json_encode($mongoResult);
 ?>

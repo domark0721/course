@@ -171,7 +171,6 @@ $(document).ready(function(){
       dataType: "json"
     });
      
-     // fix me :
     request.done(function( jData ) {
       if(jData.status=='ok'){
         alert('內容已儲存！');

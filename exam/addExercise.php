@@ -102,7 +102,7 @@
 								</div>
 								<label for="time">答題時間</label>
 									<select name="min" class="time_select">
-										<?php for($i=0; $i<=5; $i++){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
+										<?php for($i=0; $i<=30; $i++){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
 									</select>
 									<a class="time_char">分</a>
 									<select name="sec" class="time_select">
@@ -173,7 +173,7 @@
 								</div>
 								<label for="time">答題時間</label>
 									<select name="min" class="time_select">
-										<?php for($i=0; $i<=5; $i++){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
+										<?php for($i=0; $i<=30; $i++){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
 									</select>
 									<a class="time_char">分</a>
 									<select name="sec" class="time_select">
@@ -243,7 +243,7 @@
 								</div>
 								<label for="time">答題時間</label>
 									<select name="min" class="time_select">
-										<?php for($i=0; $i<=5; $i++){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
+										<?php for($i=0; $i<=30; $i++){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
 									</select>
 									<a class="time_char">分</a>
 									<select name="sec" class="time_select">

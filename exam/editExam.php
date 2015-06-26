@@ -110,13 +110,13 @@
 			<?php require("header_exam.php"); ?>
 			<div class="exam_status_wrap">
 				<div class="examInfo">
-				<a>平均難度：<span>★★★★★</span></a>
-				<a>時間：<span>40:50</span></a><br>
+				<a>平均難度：<span id="exam_level">0 / 5</span></a>
+				<a>總時間：<span id="exam_time">0分0秒</span></a><br>
 				</div>
 				<div class="numberInfo">
-					<a>題數：<span>25</span></a><a>是非：<span>10</span></a>
-					<a>單選：<span>5</span></a><a>多選：<span>8</span></a>
-					<a>題組：<span>9</span></a>
+					<a>總題數：<span id="total_num">0</span></a><a>是非：<span id="trueFalse_num">0</span></a>
+					<a>單選：<span id="single_num">0</span></a><a>多選：<span id="multi_num">0</span></a>
+					<a>題組：<span id="series_num">0</span></a>
 				</div>
 			</div>
 			<div class="editExamWrap">
@@ -139,7 +139,7 @@
 										<div class="tfQuestion"><?php echo $trueFalseQuesBody['question'];?></div>
 										<div class="question_editor_wrap">
 											<div class="questionInfo">
-												<a class="level">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
+												<a class="level" data-level="<?php echo $question['level'];?>">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
 												<a class="time">答題時間：<?php echo $question['time']; ?></a>
 												<div class="tags">
 												<?php
@@ -186,7 +186,7 @@
 										</div>
 										<div class="question_editor_wrap">
 											<div class="questionInfo">
-												<a class="level">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
+												<a class="level" data-level="<?php echo $question['level'];?>">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
 												<a class="time">答題時間：<?php echo $question['time']; ?></a>
 												<div class="tags">
 													<?php
@@ -233,7 +233,7 @@
 											</div>
 											<div class="question_editor_wrap">
 												<div class="questionInfo">
-													<a class="level">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
+													<a class="level" data-level="<?php echo $question['level'];?>">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
 													<a class="time">答題時間：<?php echo $question['time']; ?></a>
 													<div class="tags">
 													<?php
@@ -268,7 +268,7 @@
 									$seriesQuesHeader = $question['body'];
 								?>
 									<li class="series_question_wrap questionItem">
-										<div class="question"><?php echo $seriesQuesHeader['description'];?><!-- <span class="questionType"> ( 題組 )</span> --></div>
+										<div class="question"><?php echo $seriesQuesHeader['description'];?></div>
 										<ul class="seriesNum">		
 											<?php foreach($seriesQuesHeader['questions'] as $j => $question){ 
 													$questionOpt = $question['options']; ?>
@@ -287,7 +287,7 @@
 										</ul>
 										<div class="question_editor_wrap">
 											<div class="questionInfo">
-												<a class="level">難易度：<?php for($i=1; $i<=$questionHeader['level']; $i++) echo '★';?></a>
+												<a class="level" data-level="<?php echo $questionHeader['level'];?>">難易度：<?php for($i=1; $i<=$questionHeader['level']; $i++) echo '★';?></a>
 												<a class="time">答題時間：<?php echo $questionHeader['time']; ?></a>
 												<div class="tags"><a>演算法</a><a>Binary Tree</a></div>
 											</div>
@@ -318,6 +318,7 @@
 						<div class="search_wrap"> 
 							<input id="search_exercise" class="clearable" placeholder="搜尋題目"/>
 							<div class="search_condition">
+								<a id="search_tag" class="search_opt">TAG</a>
 								<a id="search_section" class="search_opt">SECTION</a>
 								<a id="search_level" class="search_opt">LEVEL</a>
 							</div>
@@ -368,8 +369,8 @@
 										<div class="tfQuestion"><?php echo $trueFalseQuesBody['question'];?></div>
 										<div class="question_editor_wrap">
 											<div class="questionInfo">
-												<a class="level">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
-												<a class="time">答題時間：<?php echo $question['time']; ?></a>
+												<a class="level" data-level="<?php echo $question['level'];?>">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
+												<a class="time" data-time="<?php echo $question['time']; ?>">答題時間：<?php echo $question['time']; ?></a>
 												<div class="tags">
 												<?php
 												if(!empty($question['tags'])){
@@ -435,8 +436,8 @@
 										</div>
 										<div class="question_editor_wrap">
 											<div class="questionInfo">
-												<a class="level">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
-												<a class="time">答題時間：<?php echo $question['time']; ?></a>
+												<a class="level" data-level="<?php echo $question['level'];?>">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
+												<a class="time" data-time="<?php echo $question['time']; ?>">答題時間：<?php echo $question['time']; ?></a>
 												<div class="tags">
 													<?php
 													if(!empty($question['tags'])){
@@ -502,8 +503,8 @@
 										</div>
 										<div class="question_editor_wrap">
 											<div class="questionInfo">
-												<a class="level">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
-												<a class="time">答題時間：<?php echo $question['time']; ?></a>
+												<a class="level" data-level="<?php echo $question['level'];?>">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
+												<a class="time" data-time="<?php echo $question['time']; ?>">答題時間：<?php echo $question['time']; ?></a>
 												<div class="tags">
 												<?php
 												if(!empty($question['tags'])){
@@ -551,9 +552,9 @@
 											}
 										}
 									?>
-									<li class="series_question_wrap questionItem" data-exercise-id="<?php echo $question['_id'];?>" 
+									<li class="series_question_wrap questionItem" data-exercise-id="<?php echo $questionHeader['_id'];?>" 
 																			      data-exercise-type="SERIES_QUESTIONS"
-																			      data-section-uid="<?php echo $question['test_section'];?>" 
+																			      data-section-uid="<?php echo $questionHeader['test_section'];?>" 
 																			      data-section-name="<?php echo $sectionName;?>" >
 										<div class="question"><?php echo $seriesQuesBody['description'];?><!-- <span class="questionType"> ( 題組 )</span> --></div>
 										<ul class="seriesNum">		
@@ -574,8 +575,8 @@
 										</ul>
 										<div class="question_editor_wrap">
 											<div class="questionInfo">
-												<a class="level">難易度：<?php for($i=1; $i<=$questionHeader['level']; $i++) echo '★';?></a>
-												<a class="time">答題時間：<?php echo $questionHeader['time']; ?></a>
+												<a class="level" data-level="<?php echo $questionHeader['level'];?>">難易度：<?php for($i=1; $i<=$questionHeader['level']; $i++) echo '★';?></a>
+												<a class="time" data-time="<?php echo $questionHeader['time']; ?>">答題時間：<?php echo $questionHeader['time']; ?></a>
 												<div class="tags"><a>演算法</a><a>Binary Tree</a></div>
 											</div>
 											<div class="for_section">
@@ -603,6 +604,8 @@
 				<input type="hidden" id="course_id" value="<?php echo $course_id;?>"/>
 				<input type="hidden" id="course_name" value="<?php echo $course_name;?>"/>
 				<input type="hidden" id="type" value="<?php echo $type;?>"/>
+				<input type="hidden" id="time" value=""/>
+				<input type="hidden" id="level" value=""/>
 				<input type="hidden" id="start_date" value="<?php echo $start_date;?>"/>
 				<input type="hidden" id="start_time" value="<?php echo $start_time;?>"/>
 				<input type="hidden" id="end_date" value="<?php echo $end_date;?>"/>
@@ -621,21 +624,16 @@
 		<script type="text/javascript" src="../js/jquery.clearsearch.js"></script>
 		<script type="text/javascript" src="../js/editExam.js"></script>
 		<script>
-
-		$(function() {
-			$('#single_choice, #true_false, #multi_choice, #series_question, #drop-question-list').sortable({
-				connectWith: '#drop-question-list',
-				dropOnEmpty: true,
-			}).disableSelection();
-
-
-		    // $( "#catalog" ).accordion();
+			 
 		    // $( ".questionItem" ).draggable({
 		    //   appendTo: "body",
-		    //   helper: "clone",
+		    //   helper:"original",
+		    //   revert: true,
 		    //   connectWith: "#drop-question-list",
-		    //   dropOnEmpty: true
+		    //   dropOnEmpty: true,
+
 		    // });
+
 		    // $( "#drop-question-list" ).droppable({
 		    //   activeClass: "ui-state-default",
 		    //   hoverClass: "ui-state-hover",
@@ -652,7 +650,7 @@
 		    //     $( this ).removeClass( "ui-state-default" );
 		    //   }
 		    // });
-		  });
+		  
 		</script>
 	</body>
 </html>

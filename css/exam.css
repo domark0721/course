@@ -100,20 +100,20 @@
 }
 
 .startBtn {
-	background-color: rgba(173, 50, 50, 1); 
+	background-color: rgba(121, 176, 61, 1);
 }
 
 .startBtn:hover {
-	background-color: rgba(173, 50, 50, 0.7); 
+	background-color: rgba(121, 176, 61, .7);	
 	transition: all .3s;
 }
 
 .giveUpBtn {
-	background-color: rgba(121, 176, 61, 1);
+	background-color: rgba(173, 50, 50, 1); 
 }
 
 .giveUpBtn:hover {
-	background-color: rgba(121, 176, 61, .7);
+	background-color: rgba(173, 50, 50, 0.7); 
 	transition: all .3s;
 }
 
