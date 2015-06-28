@@ -81,10 +81,10 @@
 }
 
 #nextBtn, .joinBtn{
-	margin-left: 2em;
-	background-color: rgba(52, 141, 216, 1);
+	margin-right: 2em;
+	background-color: rgba(121, 176, 61, 1);
 }
 
 #nextBtn:hover, .joinBtn:hover {
-	background-color: rgba(52, 141, 216, .8);
+	background-color: rgba(121, 176, 61, .8);
 }

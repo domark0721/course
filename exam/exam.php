@@ -58,59 +58,31 @@
 					<div class="header exam_wrap">
 						<div class="headerLogo"><a><img src="../img/logo.png"/></a></div>
 						<div class="courseName"><a>資料結構<span class="testName"> - Midterm</span></a></div>
-						<div class="studentInfo">
-							<a>考生：<?php echo $Member_NAME;?></a>
+						<div class="studentFunc">
+							<span class="studentInfo">
+								<div class="countDown">50分20秒</div>
+								<div class="studentName">考生：<?php echo $Member_NAME;?></div>
+							</span>	
+							<span class="submitExamBtn">送出考卷</span>
 						</div>
 					</div>
-				</div>
-				<div class="exercise_wrap examInfo_box">
-						<div class="examInfo_wrap">
-							<table class="examInfo">
-								<tr class="examInfo-row">
-									<th class="">科 目</th>
-									<td><?php echo $courseMetadata['course_name'];?></td>
-								</tr>
-								<tr class="examInfo-row">
-									<th class="">授課老師</th>
-									<td><?php echo $courseMetadata['teacher_name'];?></td>
-								</tr>
-								<tr class="examInfo-row">
-									<th class="">類 別</th>
-									<td><?php if($examMetadata['type'] == 'test') echo '小考';
-											  else if($examMetadata['type'] == 'mid') echo '期中考';
-											  else if($examMetadata['type'] == 'final') echo '期末考';?></td>
-								</tr>	
-								<tr class="examInfo-row">
-									<th class="">時 間</th>
-									<td><?php echo $examMetadata['time'];?></td>
-								</tr>	
-								<tr class="examInfo-row">
-									<th class="">說 明</th>
-									<td><?php echo $examMetadata['explanation'];?></td>
-								</tr>							
-							</table>
-						</div>
-						<div class="examCheck_wrap">
-							<a class="examCheckBtn startBtn">開始考試</a>
-							<a class="examCheckBtn giveUpBtn" onclick="history.back();">放 棄</a>
-						</div>
 				</div>
 				<div class="exercise_wrap exerciseList">
 					<!-- 是非 -->
 					<ul class="typeNum">
 					<?php if(!empty($trueFalseQues)){ ?>
 						<li> 
-							<div class="typeName">是非題 <span>(40%)</span></div>
+							<div class="typeName">是非題 <span class="score">(40%)</span></div>
 					<?php } ?>
 							<ul class="questionNum">
 								<?php foreach($trueFalseQues as $i => $question){
 										$trueFalseQuesBody = $question['body'];?>
-									<li class="true_false_wrap">
+									<li class="true_false_wrap" data-exercise-id="<?php echo $question["_id"];?>">
 										<div class="question"><?php echo $trueFalseQuesBody['question'];?></div>
 										<div class="true_false_answer_wrap">
-											<input id="answer_true<?php echo $i;?>" type="radio" name="answer" value="true">
+											<input id="answer_true<?php echo $i;?>" type="radio" name="tfAnswer<?php echo $i;?>" value="true">
 											<label for="answer_true<?php echo $i;?>">Ｏ</label>
-											<input id="answer_false<?php echo $i;?>" type="radio" name="answer" value="false">
+											<input id="answer_false<?php echo $i;?>" type="radio" name="tfAnswer<?php echo $i;?>" value="false">
 											<label for="answer_false<?php echo $i;?>">Ｘ</label>
 										</div>
 									</li>
@@ -129,7 +101,7 @@
 								<?php foreach($singleChoiceQues as $i => $question){
 										$singleChoiceQuesBody = $question['body'];
 										$singleChoiceQuesOpt = $singleChoiceQuesBody['options'];?>
-								<li class="single_choice_wrap">
+								<li class="single_choice_wrap" data-exercise-id="<?php echo $question["_id"];?>">
 									<div class="question"><?php echo $singleChoiceQuesBody['question'];?></div>
 									<div class="single_choice_answer_wrap">
 										<?php foreach($singleChoiceQuesOpt as $j => $options){?>
@@ -146,17 +118,17 @@
 					<!-- 多選 -->
 					<?php if(!empty($multiChoiceQues)){ ?>
 						<li>
-							<div class="typeName">複選題</div>
+							<div class="typeName">多選題</div>
 					<?php } ?>
 							<ul class="questionNum">
 								<?php foreach($multiChoiceQues as $i => $question){
 										$multiChoiceQuesBody = $question['body'];
 										$multiChoiceQuesOpt = $multiChoiceQuesBody['options']?>
-								<li class="multi_choice_wrap">
+								<li class="multi_choice_wrap" data-exercise-id="<?php echo $question["_id"];?>">
 									<div class="question"><?php echo $multiChoiceQuesBody['question'];?></div>
 									<div class="multi_choice_answer_wrap">
 											<?php foreach($multiChoiceQuesOpt as $j => $options){?>
-											<input id="multi_answer<?php echo $i ."_". $j;?>" type="checkbox" name="multi_opt<?php echo $i;?>" value="<?php echo $j;?>">
+											<input id="multi_answer<?php echo $i ."_". $j;?>" type="checkbox" name="multi_opt<?php echo $i;?>[]" value="<?php echo $j;?>">
 											<label for="multi_answer<?php echo $i ."_". $j;?>"><?php echo $options['content'];?></label>
 											<?php }?>
 									</div>
@@ -174,12 +146,12 @@
 							<ul class="questionNum">
 								<?php foreach($seriesQues as $i => $questionHeader){
 										$seriesQuesBody = $questionHeader['body'];?>
-								<li class="series_question_wrap">
+								<li class="series_question_wrap" data-exercise-id="<?php echo $questionHeader["_id"];?>">
 									<div class="question"><?php echo $seriesQuesBody['description'];?></div>
 									<ul class="seriesNum">		
 											<?php foreach($seriesQuesBody['questions'] as $j => $question){ 
 													$questionOpt = $question['options']; ?>
-										<li>	
+										<li class="series_question_sub_wrap">
 											<div class="series_question"><?php echo $question['question'];?></div>
 											<div class="series_question_answer_wrap">
 												<?php foreach($questionOpt as $k => $options){?>

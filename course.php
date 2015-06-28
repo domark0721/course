@@ -212,6 +212,12 @@
 					$sql = "SELECT * FROM exam WHERE course_id='$course_id'";
 					$result = mysql_query($sql);					if(mysql_num_rows($result)){
 						while($examData = mysql_fetch_assoc($result)) {
+						$time = explode(':', $examData['time']);
+						if($time[0]==0){
+							$displayTime = $time[1] . '分';
+						}else{
+							$displayTime = $time[0] . '時' . $time[1] . '分';
+						}
 				?>
 						<div class="exam_item">
 							<table class="exam_table">
@@ -219,9 +225,9 @@
 									<td class="exam_type"><a><?php if($examData['type']=="test")echo "小考";
 																	else if($examData['type']=="mid")echo "期中考";
 																	else if($examData['type']=="final")echo "期末考";?></a></td>
-									<td class="exam_time"><i class="fa fa-clock-o"></i> <?php echo $examData['time'];?></td>
+									<td class="exam_time"><i class="fa fa-clock-o"></i> <?php echo $displayTime;?></td>
 									<td class="exam_date"><i class="fa fa-table"></i> <?php echo $examData['start_date'];?> <i class="fa fa-chevron-right"></i> <?php echo $examData['end_date'];?></td>
-									<td class="enter_exam"><a href="exam/exam.php?id=<?php echo $examData['id'];?>">進入考試</a></td>
+									<td class="enter_exam"><a href="exam/examIndex.php?id=<?php echo $examData['id'];?>&course_id=<?php echo $course_id;?>">進入考試</a></td>
 								</tr>						
 							</table>
 						</div>							

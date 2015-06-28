@@ -1,5 +1,9 @@
 .headerOutside_wrap {
 	background-color: #000;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
 }
 
 .exam_wrap {
@@ -34,16 +38,41 @@
 	color: #78ac25;
 }
 
-.studentInfo {
+.studentFunc {
 	position: absolute;
-	float: right;
 	right: 0;
-	top: 25px;
-}
-
-.studentInfo a {
+	top: 10px;
 	color: #B8B8B8;
 	font-size: 15px;
+	display: table-row;
+}
+
+.studentFunc .studentInfo {
+	display: table-cell;
+	vertical-align: middle;
+	padding-right: 20px;
+}
+
+.studentFunc .submitExamBtn {
+	font-size: 22px;
+	border-radius: 5px;
+	background-color: rgba(121, 176, 61, 1);
+	color: #fff;
+	padding: 5px 10px;
+	cursor: pointer;
+	display: table-cell;
+	vertical-align: middle;
+	transition: all .3s;
+}
+
+.studentFunc .submitExamBtn:hover {
+	background-color: rgba(121, 176, 61, .75);
+}
+
+.countDown {
+	text-align: center;
+	font-size: 21px;
+	color: red;
 }
 
 .testName {
@@ -57,7 +86,7 @@
 }
 
 .examInfo_box {
-	margin-top: 20px;
+	margin-top: 3em;
 	border: 1px solid #b8b8b8;
 	border-radius: 10px;
 	background-color: #F5F5F5;
@@ -86,6 +115,10 @@
 .examCheck_wrap {
 	text-align: center;
 	padding: 15px 0;
+}
+
+.examCheck_wrap a {
+	text-decoration: none;
 }
 
 .examCheck_wrap .examCheckBtn {
@@ -123,7 +156,7 @@
 	font-size: 18px;
 }
 .exerciseList {
-	margin-top: 3em;
+	margin-top: 100px;
 }
 
 .questionsDisplay-wrap ul {

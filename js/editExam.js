@@ -7,7 +7,7 @@ $(document).ready(function(){
 	});
 $("#save_exam").prop('disabled', true);
 	$('#exit_examMode').on('click', function(e){
-		var result = confirm('將不會儲存任何的考卷資料！確定要離開嗎？');
+		var result = confirm('確定要離開嗎？');
 		if(result) {
 		   window.history.back();
 		}
@@ -118,11 +118,11 @@ $("#save_exam").prop('disabled', true);
 					$('#exam_time').html(total_hour+'時'+total_min+'分'+total_sec + '秒 ( ' +total_min_origin+'分'+total_sec+'秒' + ' ) ');
 				}
 				if(total_hour>0){
-					if(total_sec>0)$('#time').val(total_hour+' 時 ' +(parseInt(total_min)+1)+ ' 分');
-					else $('#time').val(total_min+ '分');
+					if(total_sec>0)$('#time').val(total_hour +':' +(parseInt(total_min)+1)+':00');
+					else $('#time').val('00:'+total_min+':00');
 				}else{
-					if(total_sec>0)$('#time').val((total_min+1)+ ' 分');
-					else $('#time').val(total_min+ ' 分');
+					if(total_sec>0)$('#time').val('00:' + (total_min+1)+':00');
+					else $('#time').val('00:'+total_min+':00');
 				}
 
 				var level = Math.round(total_level / total_num*10)/10;

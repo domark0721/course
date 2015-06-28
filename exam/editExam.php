@@ -114,8 +114,10 @@
 				<a>總時間：<span id="exam_time">0分0秒</span></a><br>
 				</div>
 				<div class="numberInfo">
-					<a>總題數：<span id="total_num">0</span></a><a>是非：<span id="trueFalse_num">0</span></a>
-					<a>單選：<span id="single_num">0</span></a><a>多選：<span id="multi_num">0</span></a>
+					<a>總題數：<span id="total_num">0</span></a>
+					<a>是非：<span id="trueFalse_num">0</span><input id="trueFalsePer" class="scorePercent"></a>
+					<a>單選：<span id="single_num">0</span></a>
+					<a>多選：<span id="multi_num">0</span></a>
 					<a>題組：<span id="series_num">0</span></a>
 				</div>
 			</div>
