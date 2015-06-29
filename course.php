@@ -7,7 +7,7 @@
 	session_start();
 	$_SESSION['url'] = $_SERVER['REQUEST_URI']; 
 	$course_id = $_GET['course_id'];
-	
+	$member_id = $_SESSION['member_id'];
 	//metadata from mysql
 	$sql = "SELECT * FROM course WHERE course_id='$course_id'";
 	$result = mysql_query($sql);
@@ -208,16 +208,35 @@
 				<!-- 測驗專區 -->
 				<div id="exam" class="tab-content content-wrap clearfix content-wrap-exam">
 					<div class="examList_container">
-				<?php 
-					$sql = "SELECT * FROM exam WHERE course_id='$course_id'";
-					$result = mysql_query($sql);					if(mysql_num_rows($result)){
+				<?php
+					$examList = []; // all exam
+					$examResultList = []; // already token exam
+
+					$sql = "SELECT * FROM exam WHERE course_id='$course_id'"; // all
+					$result = mysql_query($sql);					
+					if(mysql_num_rows($result)){
 						while($examData = mysql_fetch_assoc($result)) {
-						$time = explode(':', $examData['time']);
-						if($time[0]==0){
-							$displayTime = $time[1] . '分';
-						}else{
-							$displayTime = $time[0] . '時' . $time[1] . '分';
+							$examList[] =$examData;
 						}
+
+						$sql = "SELECT * FROM exam_result WHERE tester_id='$member_id'"; // already
+						$result = mysql_query($sql);					
+						if(mysql_num_rows($result)){
+							while($examResultData = mysql_fetch_assoc($result)) {
+								// use exam_result as key for easier matching
+								$examResultList[$examResultData["exam_id"]] = $examResultData;
+							}
+						}
+
+						for($i=0; $i<count($examList); $i++) {
+							$examData = $examList[$i];
+
+							$time = explode(':', $examData['time']);
+							if($time[0]==0){
+								$displayTime = $time[1] . '分';
+							}else{
+								$displayTime = $time[0] . '時' . $time[1] . '分';
+							}
 				?>
 						<div class="exam_item">
 							<table class="exam_table">
@@ -227,7 +246,21 @@
 																	else if($examData['type']=="final")echo "期末考";?></a></td>
 									<td class="exam_time"><i class="fa fa-clock-o"></i> <?php echo $displayTime;?></td>
 									<td class="exam_date"><i class="fa fa-table"></i> <?php echo $examData['start_date'];?> <i class="fa fa-chevron-right"></i> <?php echo $examData['end_date'];?></td>
-									<td class="enter_exam"><a href="exam/examIndex.php?id=<?php echo $examData['id'];?>&course_id=<?php echo $course_id;?>">進入考試</a></td>
+									
+									<?php 
+										if (empty($examResultList[$examData["id"]])) {
+									?>
+									<td class="exam_score"></td>
+									<td class="exam_btn enter_exam"><a href="exam/examIndex.php?course_id=<?php echo $course_id;?>&id=<?php echo $examData['id'];?>">進入考試</a></td>										
+									<?php
+										} else {
+											$examResult = $examResultList[$examData["id"]];
+									?>
+									<td class="exam_score">成績: <?php echo $examResult["score"]?></td>
+									<td class="exam_btn view_exam"><a href="exam/examResult.php?resultId=<?php echo $examResult["id"];?>">批改結果</a></td>										
+									<?php
+										}
+									?>
 								</tr>						
 							</table>
 						</div>							

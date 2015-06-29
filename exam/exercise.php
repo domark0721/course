@@ -71,7 +71,7 @@
 					<div class="content-wrap clearfix">
 						<div class="editorBarIcon"><i class="fa fa-leanpub"></i></div>
 						<div class="courseHeader">
-							<div class="topBanner_Title">題庫</div>
+							<div class="topBanner_Title">題庫列表</div>
 							<div class="topBanner_CourseName"><?php echo $courseMetadata['course_name']; ?></div>
 						</div>
 					</div>
@@ -80,8 +80,8 @@
 					<ul class="function_ul">
 						<li><a class="functionBtn newQuestion" href="addExercise.php?course_id=<?php echo $course_id; ?>"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;新增題目</a></li>
 						<li><a class="functionBtn newExam" href="addExam.php?course_id=<?php echo $course_id; ?>"><i class="fa fa-plus-square"></i>&nbsp;&nbsp;&nbsp;新增考試</a></li>
-						<li><a class="functionBtn newExam" href=""><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;&nbsp;考試一覽</a></li>
-						<li><a class="functionBtn return" onclick="history.back();"><i class="fa fa-chevron-left"></i>&nbsp;&nbsp;&nbsp;返回</a></li>
+						<li><a class="functionBtn examList" href="examList.php?course_id=<?php echo $course_id; ?>"><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;&nbsp;考試列表</a></li>
+						<li><a class="functionBtn return" href="../temode.php"><i class="fa fa-chevron-left"></i>&nbsp;&nbsp;&nbsp;返回</a></li>
 					</ul>
 				</div>		
 				<div id="exerciseList" class="questionsDisplay-wrap">

@@ -5,13 +5,16 @@
 	include_once('../api/isLogin.php');
 
 	session_start();
+	$member_id = $_SESSION['member_id'];
+	$exam_id = $_GET['id'];
 	//get the course Metadata from mysql
-	$sql = "SELECT * FROM course WHERE course_id='123'";
+	$course_id = $_GET['course_id'];
+	$sql = "SELECT * FROM course WHERE course_id='$course_id'";
 	$result = mysql_query($sql);
 	$courseMetadata = mysql_fetch_assoc($result);
 
-	$id = $_GET['id'];
 	//get the objectID of the question from mysql
+	$id = $_GET['id'];
 	$sql = "SELECT * FROM exam WHERE id='$id'";
 	$result = mysql_query($sql);
 	$examMetadata = mysql_fetch_assoc($result);
@@ -49,30 +52,41 @@
 	<head>
 		<?php require("../meta_com.php"); ?>
 		<link type="text/css" rel="stylesheet" href="../css/exam.css">
-		<title>測驗 - NUCourse</title>
+		<?php if($examMetadata['type']=='final') $examType = "期末考";
+				else if($examMetadata['type']=='mid') $examType = "期中考";
+				else if($examMetadata['type']=='test') $examType = "小考";?>
+		<title><?php echo $examMetadata['course_name']. ' ' . $examType;?> - NUCourse</title>
 	</head>
 	<body>
 		<div class="totalWrapper">
+			<?php require("header_exam.php");?>
 			<div class="container">
-				<div class="headerOutside_wrap">
-					<div class="header exam_wrap">
-						<div class="headerLogo"><a><img src="../img/logo.png"/></a></div>
-						<div class="courseName"><a>資料結構<span class="testName"> - Midterm</span></a></div>
-						<div class="studentFunc">
-							<span class="studentInfo">
-								<div class="countDown">50分20秒</div>
-								<div class="studentName">考生：<?php echo $Member_NAME;?></div>
-							</span>	
-							<span class="submitExamBtn">送出考卷</span>
-						</div>
-					</div>
+				<div class="spinner" style="display: none">
+				  <div class="spinner-container container1">
+				    <div class="circle1"></div>
+				    <div class="circle2"></div>
+				    <div class="circle3"></div>
+				    <div class="circle4"></div>
+				  </div>
+				  <div class="spinner-container container2">
+				    <div class="circle1"></div>
+				    <div class="circle2"></div>
+				    <div class="circle3"></div>
+				    <div class="circle4"></div>
+				  </div>
+				  <div class="spinner-container container3">
+				    <div class="circle1"></div>
+				    <div class="circle2"></div>
+				    <div class="circle3"></div>
+				    <div class="circle4"></div>
+				  </div>
 				</div>
 				<div class="exercise_wrap exerciseList">
 					<!-- 是非 -->
 					<ul class="typeNum">
 					<?php if(!empty($trueFalseQues)){ ?>
 						<li> 
-							<div class="typeName">是非題 <span class="score">(40%)</span></div>
+							<div class="typeName">是非題 <span class="score"></span></div>
 					<?php } ?>
 							<ul class="questionNum">
 								<?php foreach($trueFalseQues as $i => $question){
@@ -155,7 +169,7 @@
 											<div class="series_question"><?php echo $question['question'];?></div>
 											<div class="series_question_answer_wrap">
 												<?php foreach($questionOpt as $k => $options){?>
-												<input id="series_question<?php echo $i ."_". $j ."_". $k;?>" type="radio" name="series_opt<?php echo $j;?>" value="<?php echo $k;?>">
+												<input id="series_question<?php echo $i ."_". $j ."_". $k;?>" type="radio" name="series_opt<?php echo $i."_".$j;?>" value="<?php echo $k;?>">
 												<label for="series_question<?php echo $i ."_". $j ."_". $k;?>"><?php echo $options['content'];?></label>
 												<?php }?>
 											</div>
@@ -172,6 +186,9 @@
 				</div>
 			</div>
 			<?php require("../footer.php"); ?>
+			<input type="hidden" id="course_id" value="<?php echo $course_id;?>">
+			<input type="hidden" id="exam_id" value="<?php echo $exam_id;?>">
+			<input type="hidden" id="member_id" value="<?php echo $member_id;?>">
 		</div>
 		<?php require("../js/js_com.php"); ?>
 		<script src="../js/exam.js"></script>

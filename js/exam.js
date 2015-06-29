@@ -11,7 +11,7 @@ $(document).ready(function(){
 		$(".true_false_wrap").each(function(i, question){
 			var id = $(this).data("exercise-id");
 			var answer = $(this).find("input:radio[name=tfAnswer" + i + "]:checked").val();
-			answerList[id] = answer ? parseInt(answer) : -1;
+			answerList[id] = answer ? answer : -1;
 		});
 
 		// 選擇
@@ -31,11 +31,10 @@ $(document).ready(function(){
 		});
 
 		// 題組
-		$(".series_question_wrap").each(function(question){
+		$(".series_question_wrap").each(function(j, question){
 			var id = $(this).data("exercise-id");
-
 			var answers = $(this).find(".series_question_sub_wrap").map(function(i, subQuestion){
-				var subAnswer =  $(this).find("input:radio[name=series_opt" + i + "]:checked").val();
+				var subAnswer =  $(this).find("input:radio[name=series_opt" + j + '_' + i + "]:checked").val();
 				return subAnswer ? parseInt(subAnswer) : -1;
 			})
 
@@ -43,14 +42,19 @@ $(document).ready(function(){
 		});
 
 		console.log(answerList);
+
+		var course_id = $('#course_id').val();
+		var exam_id = $('#exam_id').val();
+		var member_id = $('#member_id').val();
 		// submit exam
 	    var request = $.ajax({
 	      url: "../api/submit_student_exam.php",
 	      type: "POST",
 	      // FIXME: hard code id, get id from hidden input
 	      data: { 
-	      			course_id : 123,
-	      			exam_id : 24,
+	      			course_id : course_id,
+	      			exam_id : exam_id,
+	      			member_id : member_id,
 	      			answer : answerList
 	      		},
 	      dataType: "json"
@@ -58,13 +62,12 @@ $(document).ready(function(){
     	request.done(function(jData){
 
     		//TODO: get response result and and redirect to examFinish(where will display score and answer)
-
-			// if(jData.status=='ok'){
-			// 	alert('考卷已建立完成！');
-			// }
-			// else{
-			// 	alert('考卷儲存失敗！');
-			// }
+			if(jData.status=='ok'){
+				window.location = "examResult.php?resultId=" + jData.result_id;
+			}
+			else{
+				alert('考卷送出失敗');
+			}
 		})
 	})
 });

@@ -34,6 +34,10 @@
 	}
 	// var_dump($courseData['description']);
 	// exit;
+
+// 	SELECT * from attendent as a
+// LEFT JOIN member as b ON a.member_id = b.member_id
+// where course_id="123"
 ?>
 <!doctype html>
 <html>

@@ -107,7 +107,7 @@
 	</head>
 	<body>
 		<div class="totalWrapper">
-			<?php require("header_exam.php"); ?>
+			<?php require("header_editExam.php"); ?>
 			<div class="exam_status_wrap">
 				<div class="examInfo">
 				<a>平均難度：<span id="exam_level">0 / 5</span></a>

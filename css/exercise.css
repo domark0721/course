@@ -32,18 +32,14 @@
     text-decoration: none;
 }
 
-.newQuestion {
+
+.newQuestion, .newExam, .examList {
     color: rgba(52, 141, 216, 1);
     border: 1px solid rgba(52, 141, 216, 1);
 }
 
-.newExam {
-    color: rgba(52, 141, 216, 1);
-    border: 1px solid rgba(52, 141, 216, 1);
 
-}
-
-.newQuestion:hover, .newExam:hover {
+.newQuestion:hover, .newExam:hover ,.examList:hover {
     color: #fff;
     background-color: rgba(52, 141, 216, 0.8);
     transition: all .3s;

@@ -1,24 +1,21 @@
-<header class="headerBar" >
-	<div class="content-wrap">
-		<div id="headerLogo"><a href="http://127.0.0.1/www/course/index.php"><img src="http://127.0.0.1/www/course/img/logo.png"/></a></div>
-		<div class="examTitle_wrap">
-			<div class="courseName"><?php echo $course_name; ?></div>
-			<div class="examType">
-				<?php
-					if($type == 'test') echo ' - 小考';
-					else if($type == 'mid') echo ' - 期中考';
-					else if($type == 'final')echo ' - 期末考';
-				?>
+<header class="headerBar">
+	<div class="headerOutside_wrap">
+		<div class="header exam_wrap">
+			<div class="headerLogo"><a><img src="../img/logo.png"/></a></div>
+			<div class="courseName">
+				<a><?php echo $examMetadata['course_name'];?>
+					<span class="testName"> - 
+					<?php echo $examType;?>
+					</span>
+				</a>
+			</div>
+			<div class="studentFunc">
+				<span class="studentInfo">
+					<div class="countDown">50分20秒</div>
+					<div class="studentName">考生：<?php echo $Member_NAME;?></div>
+				</span>	
+				<span class="submitExamBtn">送出考卷</span>
 			</div>
 		</div>
-		<ul id="headerBar-nav">
-			<li class="headerBar-item-exam">
-				<a id="save_exam" class="saveBtn">儲存並建立考卷</a>
-			</li>
-			<li class="headerBar-item-exam">
-				<a id="exit_examMode" class="giveUpBtn">離開</a>
-			</li>
-			</ul>
-		</ul>
 	</div>
 </header>

@@ -4,21 +4,21 @@
 	include_once("../mysql.php");
 	include_once('../api/isLogin.php');
 
-	var_dump($_POST['answer']);
-	$postAnswer = $_POST['answer'];
-
 	session_start();
+	$course_id = $_POST['course_id'];
+	$exam_id = $_POST['exam_id'];
+	$member_id = $_POST['member_id'];
+	$postAnswer = $_POST['answer'];
+	
 	//FIXME: get student id from login session, for later to save exam result in DB
-
-
-
-	//get the course Metadata from mysql=================================FIXME:
-	$sql = "SELECT * FROM course WHERE course_id='123'";
+	
+	//get the course Metadata from mysql
+	$sql = "SELECT * FROM course WHERE course_id='$course_id'";
 	$result = mysql_query($sql);
 	$courseMetadata = mysql_fetch_assoc($result);
-
-	$id = $_POST['exam_id'];
+	
 	//get the objectID of the question from mysql
+	$id = $_POST['exam_id'];
 	$sql = "SELECT * FROM exam WHERE id='$id'";
 	$result = mysql_query($sql);
 	$examMetadata = mysql_fetch_assoc($result);
@@ -30,9 +30,10 @@
 
 	// query exercise from mongodb
 	foreach($questionArray as $question){
+		$subQuestion_num = 0;
+		$correctSubSeriesNum = 0;
 		$mongoQuery = array('_id' => new MongoId($question));
 		$mon = $exercise -> find($mongoQuery);
-		// var_dump($mon);
 
 		foreach($mon as $data){
 			// get user answer of that question by id
@@ -82,22 +83,51 @@
 				}
 
 			}else if($data['type'] == "SERIES_QUESTIONS"){
-				// TODO
+				// var_dump($data);
+				$answers = [];
+				foreach($data['body']['questions'] as $sub_question){
+					foreach ($sub_question['options'] as $key => $question) {
+						if($question['is_answer']){
+							$answers[] = $key;
+							break;
+						}	
+					}
+				}
+				$subQuestion_num = count($answers); //count how many subquestion number
+				foreach($studentAnswer as $key => $studentAnswer_sub){
+					if($studentAnswer_sub == $answers[$key]){ 
+						$correctSubSeriesNum ++;					
+					}
+				}
+				$thisSeriesCorrectPercent = $correctSubSeriesNum / $subQuestion_num;
+				$correctQestionNum += $thisSeriesCorrectPercent;
 			}
 
 		}
 	}
-
+	// var_dump($correctQestionNum);
 	// calculate total score
 	$questionNum = count($questionArray);
 	$scoreOfEachQuestion = 100 / $questionNum;
 
 	$totalScore = $scoreOfEachQuestion * $correctQestionNum;
+	$student_answer = json_encode($postAnswer);
 
 	// save to exam result DB
-	// course_id, exam_id, student_id, score, .... , answer_snap host
+	$sql = "INSERT INTO exam_result(course_id, exam_id, tester_id, correct_num, total_num, score, answer_snapshot) 
+						VALUES ('$course_id', '$exam_id', '$member_id', '$correctQestionNum', '$questionNum', '$totalScore', '$student_answer')";
+	$result = mysql_query($sql);
+	$exam_result_id = mysql_insert_id();
 
 	// echo result back to exam.php 
 	// return status, exam_result id
 
+	$response = array(
+			'status' => 'ok',
+			'error_message' => '',
+			'score' => $totalScore,
+			'result_id' => $exam_result_id
+		);
+
+	echo json_encode($response);
 ?>

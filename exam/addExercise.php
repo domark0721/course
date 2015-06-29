@@ -141,7 +141,7 @@
 							</div>
 							<div class="resultBtn">
 								<button class="panelBtn save" type="submit" >儲存此題</button>
-								<button class="panelBtn giveup" onclick="history.back()">離 開</button>
+								<a class="panelBtn giveup" href="exercise.php?course_id=<?php echo $course_id;?>">離 開</a>
 							</div>
 						</form>
 						<!-- 單選題 -->
@@ -211,7 +211,7 @@
 							</div>
 							<div class="resultBtn">
 								<button class="panelBtn save" type="submit" >儲存此題</button>
-								<button class="panelBtn giveup" onclick="history.back()">離 開</button>
+								<a class="panelBtn giveup" href="exercise.php?course_id=<?php echo $course_id;?>">離 開</a>
 							</div>
 						</form>
 						<!-- 多選題 -->
@@ -280,7 +280,7 @@
 							</div>
 							<div class="resultBtn">
 								<button class="panelBtn save" type="submit" >儲存此題</button>
-								<button class="panelBtn giveup" onclick="history.back()">離 開</button>
+								<a class="panelBtn giveup" href="exercise.php?course_id=<?php echo $course_id;?>">離 開</a>
 							</div>
 						</form>
 						<!-- 題組 -->
@@ -291,7 +291,7 @@
 							<input type="hidden" name="type" value="SERIES_QUESTIONS">
 							<div class="resultBtn">
 								<button class="panelBtn save" type="submit" >儲存此題</button>
-								<button class="panelBtn giveup" onclick="history.back()">離 開</button>
+								<a class="panelBtn giveup" href="exercise.php?course_id=<?php echo $course_id;?>">離 開</a>
 							</div>
 						</form>
 					</div>
