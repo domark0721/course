@@ -17,13 +17,9 @@
 
 	$courseMetadata_temp = array();
 	while($row = mysql_fetch_assoc($result)){
-		$courseMetadata_temp[] = $row;
-	}	
-
-	foreach($courseMetadata_temp as $tempData){
-		$courseMetadata = $tempData;
+		$courseMetadata = $row;
 		break;
-	}
+	}	
 
 	//course data from mongo
 	$mongoQuery = array('course_id' => (int)$course_id);

@@ -6,7 +6,7 @@
 
 	// session_start();
 	$member_id = $_SESSION['member_id'];
-	$result_id = $_GET['resultId'];
+	$result_id = $_GET['result_id'];
 	//get the course Metadata from mysql
 	$sql = "SELECT a.course_id, a.exam_id, a.correct_num, a.total_num, a.score, a.answer_snapshot, a.date, b.type, c.course_name, c.teacher_name
 				FROM exam_result as a
@@ -14,42 +14,9 @@
 				LEFT JOIN course as c ON a.course_id = c.course_id
 				WHERE a.id='$result_id'";
 
-
 	$result = mysql_query($sql);
 	$examResultMeta = mysql_fetch_assoc($result);
-	// //get the objectID of the question from mysql
-	// $id = $_GET['id'];
-	// $sql = "SELECT * FROM exam WHERE id='$id'";
-	// $result = mysql_query($sql);
-	// $examMetadata = mysql_fetch_assoc($result);
-
-	// $questionList = $examMetadata['questions'];
-	// $questionArray = explode(",", $questionList);
-
-	// //all question will save in below array
-	// $trueFalseQues = array();
-	// $singleChoiceQues = array();
-	// $multiChoiceQues = array();
-	// $seriesQues = array();
-
-	// // query exercise from mongodb
-	// foreach($questionArray as $question){
-	// 	$mongoQuery = array('_id' => new MongoId($question));
-	// 	$mon = $exercise -> find($mongoQuery);
-	// 	// var_dump($mon);
-
-	// 	foreach($mon as $data){
-	// 		if($data['type'] == "TRUE_FALSE"){
-	// 			$trueFalseQues[] = $data;
-	// 		}else if($data['type'] == "SINGLE_CHOICE"){
-	// 			$singleChoiceQues[] = $data;
-	// 		}else if($data['type'] == "MULTI_CHOICE"){
-	// 			$multiChoiceQues[] = $data;
-	// 		}else if($data['type'] == "SERIES_QUESTIONS"){
-	// 			$seriesQues[] = $data;
-	// 		}
-	// 	}
-	// }
+	$examMetadata['course_name'] = $examResultMeta['course_name']; //for different page
 ?>
 <!doctype html>
 <html>
@@ -92,8 +59,8 @@
 						</table>
 					</div>
 					<div class="examCheck_wrap">
-						<a class="examCheckBtn startBtn" href="exam.php?course_id=<?php echo $course_id;?>&id=<?php echo $exam_id;?>">批改結果</a>
-						<a class="examCheckBtn returnBtn" href="../course.php?course_id=<?php echo $examResultMeta['course_id'];?>#exam">返回課程</a>
+						<a class="examCheckBtn startBtn" href="examView.php?id=<?php echo $examResultMeta['exam_id'];?>">批改結果</a>
+						<a class="examCheckBtn giveUpBtn" href="../course.php?course_id=<?php echo $examResultMeta['course_id'];?>#exam">返回課程</a>
 					</div>
 				</div>
 			</div>

@@ -6,7 +6,6 @@
 
 	session_start();
 	$member_id = $_SESSION['member_id'];
-	$exam_id = $_GET['id'];
 	//get the course Metadata from mysql
 	$course_id = $_GET['course_id'];
 	$sql = "SELECT * FROM course WHERE course_id='$course_id'";
@@ -14,19 +13,13 @@
 	$courseMetadata = mysql_fetch_assoc($result);
 
 	//get the objectID of the question from mysql
-	$id = $_GET['id'];
-	$sql = "SELECT * FROM exam WHERE id='$id'";
+	$exam_id = $_GET['id'];
+	$sql = "SELECT * FROM exam WHERE id='$exam_id'";
 	$result = mysql_query($sql);
 	$examMetadata = mysql_fetch_assoc($result);
 
 	$questionList = $examMetadata['questions'];
 	$questionArray = explode(",", $questionList);
-
-	//all question will save in below array
-	$trueFalseQues = array();
-	$singleChoiceQues = array();
-	$multiChoiceQues = array();
-	$seriesQues = array();
 
 	// query exercise from mongodb
 	foreach($questionArray as $question){
@@ -61,26 +54,6 @@
 		<div class="totalWrapper">
 			<?php require("header_exam.php");?>
 			<div class="container">
-				<div class="spinner" style="display: none">
-				  <div class="spinner-container container1">
-				    <div class="circle1"></div>
-				    <div class="circle2"></div>
-				    <div class="circle3"></div>
-				    <div class="circle4"></div>
-				  </div>
-				  <div class="spinner-container container2">
-				    <div class="circle1"></div>
-				    <div class="circle2"></div>
-				    <div class="circle3"></div>
-				    <div class="circle4"></div>
-				  </div>
-				  <div class="spinner-container container3">
-				    <div class="circle1"></div>
-				    <div class="circle2"></div>
-				    <div class="circle3"></div>
-				    <div class="circle4"></div>
-				  </div>
-				</div>
 				<div class="exercise_wrap exerciseList">
 					<!-- 是非 -->
 					<ul class="typeNum">

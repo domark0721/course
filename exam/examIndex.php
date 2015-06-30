@@ -43,6 +43,10 @@
 			}
 		}
 	}
+
+	if($examMetadata['type'] == 'test') $examType = '小考';
+	else if($examMetadata['type'] == 'mid') $examType = '期中考';
+	else if($examMetadata['type'] == 'final') $examType = '期末考';
 ?>
 <!doctype html>
 <html>
@@ -68,9 +72,7 @@
 							</tr>
 							<tr class="examInfo-row">
 								<th class="">類 別</th>
-								<td><?php if($examMetadata['type'] == 'test') echo '小考';
-										  else if($examMetadata['type'] == 'mid') echo '期中考';
-										  else if($examMetadata['type'] == 'final') echo '期末考';?></td>
+								<td><?php echo $examType;?></td>
 							</tr>	
 							<tr class="examInfo-row">
 								<th class="">時 間</th>

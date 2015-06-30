@@ -9,9 +9,18 @@
 	$_SESSION['url'] = $_SERVER['REQUEST_URI']; 
 	$member_id = $_SESSION['member_id'];
 	$course_id = $_GET['course_id'];
-	// $course_id = 123;
 
 	//metadata from mysql
+	$sql = "SELECT * FROM course WHERE course_id='$course_id'";
+	$result = mysql_query($sql);
+
+	$courseMetadata_temp = array();
+	while($row = mysql_fetch_assoc($result)){
+		$courseMetadata = $row;
+		break;
+	}	
+
+	//exam table 
 	$sql = "SELECT * FROM exam WHERE course_id='$course_id'";
 	$result = mysql_query($sql);
 
@@ -45,46 +54,58 @@
 						</div>
 					</div>
 				</div>
-
-				<div class="examList-wrap">
-					<div class="examList_container">
-				<?php
-
-					if(!empty($examList)){
-
-						for($i=0; $i<count($examList); $i++) {
-							$examData = $examList[$i];
-
-							$time = explode(':', $examData['time']);
-							if($time[0]==0){
-								$displayTime = $time[1] . '分';
-							}else{
-								$displayTime = $time[0] . '時' . $time[1] . '分';
-							}
-					?>
-						<div class="exam_item">
-							<table class="exam_table">
-								<tr class="examInfo-row">
-									<td class="exam_type"><a><?php if($examData['type']=="test")echo "小考";
-																	else if($examData['type']=="mid")echo "期中考";
-																	else if($examData['type']=="final")echo "期末考";?></a></td>
-									<td class="exam_time"><i class="fa fa-clock-o"></i> <?php echo $displayTime;?></td>
-									<td class="exam_date"><i class="fa fa-table"></i> <?php echo $examData['start_date'];?> <i class="fa fa-chevron-right"></i> <?php echo $examData['end_date'];?></td>
-									<td class="exam_score"></td>
-									<td class="exam_btn enter_exam"><a href="exam/examIndex.php?course_id=<?php echo $course_id;?>&id=<?php echo $examData['id'];?>">編輯考試</a></td>
-								</tr>						
-							</table>
-						</div>							
-						
-				<?php }}else{ ?>
-						<div class="exam_item">
-							<a class="no_exam">--- 該課程尚無考試 ---</a>
-						</div>															
-				<?php }?>
+				<div class="content-wrap">
+					<div id="right_wrap">
+						<div class="function_wrap">
+							<ul class="function_ul">
+								<li><a class="functionBtn blueFunc" href="addExam.php?course_id=<?php echo $course_id; ?>"><i class="fa fa-plus-square"></i>&nbsp;&nbsp;&nbsp;新增考試</a></li>
+								<li><a class="functionBtn redFunc" href="../temode.php"><i class="fa fa-chevron-left"></i>&nbsp;&nbsp;&nbsp;返 回</a></li>
+							</ul>
+						</div>
 					</div>
-					<div class="resultBtn">
-						<button class="panelBtn giveup" onclick="history.back()">離 開</button>
-					</div>	
+					<div id="left_wrap">
+						<div class="examList-wrap">
+							<div class="examNum">考試數量: <?php echo count($examList);?></div>
+						</div>
+						<div class="examList-wrap">
+							<div class="examList_container">
+							<?php
+								if(!empty($examList)){
+
+									for($i=0; $i<count($examList); $i++) {
+										$examData = $examList[$i];
+
+										$time = explode(':', $examData['time']);
+										if($time[0]==0){
+											$displayTime = $time[1] . '分';
+										}else{
+											$displayTime = $time[0] . '時' . $time[1] . '分';
+										}
+							?>
+								<div class="exam_item">
+									<table class="exam_table">
+										<tr class="examInfo-row">
+											<td class="exam_type"><a><?php if($examData['type']=="test")echo "小考";
+																			else if($examData['type']=="mid")echo "期中考";
+																			else if($examData['type']=="final")echo "期末考";?></a></td>
+											<td class="exam_time"><i class="fa fa-clock-o"></i> <?php echo $displayTime;?></td>
+											<td class="exam_date"><i class="fa fa-table"></i> <?php echo $examData['start_date'];?> <i class="fa fa-chevron-right"></i> <?php echo $examData['end_date'];?></td>
+											<td class="exam_btn enter_exam"><a href="">編輯考試</a></td>
+										</tr>						
+									</table>
+								</div>							
+								
+						<?php }}else{ ?>
+								<div class="exam_item">
+									<a class="no_exam">--- 該課程尚無考試 ---</a>
+								</div>															
+						<?php }?>
+							</div>
+		<!-- 					<div class="resultBtn">
+								<a class="panelBtn giveup" href="../temode.php">返 回</a>
+							</div>	 -->
+						</div>
+					</div>
 				</div>
 			</div>
 			<?php require("../footer.php"); ?>

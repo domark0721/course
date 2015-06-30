@@ -114,7 +114,7 @@
 	$student_answer = json_encode($postAnswer);
 
 	// save to exam result DB
-	$sql = "INSERT INTO exam_result(course_id, exam_id, tester_id, correct_num, total_num, score, answer_snapshot) 
+	$sql = "INSERT INTO exam_result(course_id, exam_id, member_id, correct_num, total_num, score, answer_snapshot) 
 						VALUES ('$course_id', '$exam_id', '$member_id', '$correctQestionNum', '$questionNum', '$totalScore', '$student_answer')";
 	$result = mysql_query($sql);
 	$exam_result_id = mysql_insert_id();

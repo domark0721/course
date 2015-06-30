@@ -3,6 +3,7 @@ $(document).ready(function(){
 	$('.typeList li').on('click', function(e){
 		e.preventDefault();
 		showForm($(e.target));
+		$('.btnDisppeard').hide();
 	});
 
 	function showForm(target){

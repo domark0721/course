@@ -219,7 +219,7 @@
 							$examList[] =$examData;
 						}
 
-						$sql = "SELECT * FROM exam_result WHERE tester_id='$member_id'"; // already
+						$sql = "SELECT * FROM exam_result WHERE member_id='$member_id'"; // already
 						$result = mysql_query($sql);					
 						if(mysql_num_rows($result)){
 							while($examResultData = mysql_fetch_assoc($result)) {
@@ -257,7 +257,7 @@
 											$examResult = $examResultList[$examData["id"]];
 									?>
 									<td class="exam_score">成績: <?php echo $examResult["score"]?></td>
-									<td class="exam_btn view_exam"><a href="exam/examResult.php?resultId=<?php echo $examResult["id"];?>">批改結果</a></td>										
+									<td class="exam_btn view_exam"><a href="exam/examResult.php?result_id=<?php echo $examResult["id"];?>">觀看內容</a></td>										
 									<?php
 										}
 									?>

@@ -33,25 +33,24 @@
 }
 
 
-.newQuestion, .newExam, .examList {
+.functionBtn.blueFunc {
     color: rgba(52, 141, 216, 1);
     border: 1px solid rgba(52, 141, 216, 1);
 }
 
 
-.newQuestion:hover, .newExam:hover ,.examList:hover {
+.functionBtn.blueFunc:hover {
     color: #fff;
     background-color: rgba(52, 141, 216, 0.8);
     transition: all .3s;
 }
 
-.return {
+.functionBtn.redFunc {
     color: rgba(173, 50, 50, 0.85);
     border: 1px solid rgba(173, 50, 50, 1);
-
 }
 
-.return:hover {
+.functionBtn.redFunc:hover {
     color: #fff;
     background-color: rgba(173, 50, 50, 1);
     transition: all .3s;

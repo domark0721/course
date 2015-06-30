@@ -78,10 +78,8 @@
 				</div>
 				<div class="function_wrap">
 					<ul class="function_ul">
-						<li><a class="functionBtn newQuestion" href="addExercise.php?course_id=<?php echo $course_id; ?>"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;新增題目</a></li>
-						<li><a class="functionBtn newExam" href="addExam.php?course_id=<?php echo $course_id; ?>"><i class="fa fa-plus-square"></i>&nbsp;&nbsp;&nbsp;新增考試</a></li>
-						<li><a class="functionBtn examList" href="examList.php?course_id=<?php echo $course_id; ?>"><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;&nbsp;考試列表</a></li>
-						<li><a class="functionBtn return" href="../temode.php"><i class="fa fa-chevron-left"></i>&nbsp;&nbsp;&nbsp;返回</a></li>
+						<li><a class="functionBtn blueFunc" href="addExercise.php?course_id=<?php echo $course_id; ?>"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;新增題目</a></li>
+						<li><a class="functionBtn redFunc" href="../temode.php"><i class="fa fa-chevron-left"></i>&nbsp;&nbsp;&nbsp;返回</a></li>
 					</ul>
 				</div>		
 				<div id="exerciseList" class="questionsDisplay-wrap">

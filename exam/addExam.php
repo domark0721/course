@@ -140,7 +140,7 @@
 						<input type="hidden" name="course_id" value="<?php echo $course_id;?>">
 						<div class="funcBtns_wrap">
 							<button class="next" type="submit">下一步</button>
-							<button class="giveup" onclick="history.back()">取消</button>
+							<button class="giveup" onclick="history.back()">返 回</button>
 						</div>
 					</form>
 					<!-- 手動 -->
@@ -187,11 +187,13 @@
 						<input type="hidden" name="course_id" value="<?php echo $course_id;?>">
 						<div class="funcBtns_wrap">
 							<button class="next" type="submit">下一步</button>
-							<button class="giveup" onclick="history.back()">取消</button>
+							<button class="giveup" onclick="history.back()">返 回</button>
 						</div>
 					</form>
-				</div>		
-			
+					<div class="funcBtns_wrap btnDisppeard">	
+						<button class="giveup" onclick="history.back()">返 回</button>
+					</div>
+				</div>
 			</div>
 			<?php require("../footer.php"); ?>
 		</div>

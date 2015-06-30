@@ -63,10 +63,10 @@ $(document).ready(function(){
 
     		//TODO: get response result and and redirect to examFinish(where will display score and answer)
 			if(jData.status=='ok'){
-				window.location = "examResult.php?resultId=" + jData.result_id;
+				window.location = "examResult.php?result_id=" + jData.result_id;
 			}
 			else{
-				alert('考卷送出失敗');
+				alert('繳交失敗!');
 			}
 		})
 	})
