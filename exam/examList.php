@@ -58,7 +58,7 @@
 					<div id="right_wrap">
 						<div class="function_wrap">
 							<ul class="function_ul">
-								<li><a class="functionBtn blueFunc" href="addExam.php?course_id=<?php echo $course_id; ?>"><i class="fa fa-plus-square"></i>&nbsp;&nbsp;&nbsp;新增考試</a></li>
+								<li><a class="functionBtn blueFunc" href="addExam.php?course_id=<?php echo $course_id; ?>"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;新增考試</a></li>
 								<li><a class="functionBtn redFunc" href="../temode.php"><i class="fa fa-chevron-left"></i>&nbsp;&nbsp;&nbsp;返 回</a></li>
 							</ul>
 						</div>

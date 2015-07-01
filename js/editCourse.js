@@ -48,23 +48,27 @@ $(document).ready(function(){
 
   /******** add new chapter Start ********/
   $('.addChapterBtn').on('click', function(e){
-    $chapterList = $(this).next('.chapterList');
-    // $chapterList = $btnNext.children('.chapter:last-child');
-    // console.log($chapterList);
-    var ChapterCount = $(".chapter").length;
-    var emptyChapter = '<li class="chapter">';
-    emptyChapter += '<div class="chapterItem">';
-    emptyChapter += '<i class="fa fa-bookmark-o"></i>';
-    emptyChapter += '<span class="chapterNo"> CH'+ (ChapterCount+1)+': </span>';
-    emptyChapter += '<span class="chapterName">新章節</span>';
-    emptyChapter += '<span class="chapter-btns">';
-    emptyChapter += '<a class="addSectionBtn" data-chapter-id="'+ (ChapterCount+1) +'"><i class="fa fa-plus-circle"></i></a>';
-    emptyChapter += '<a class="deleteChapterBtn"><i class="fa fa-trash-o"></i></a></span></div>';
-    emptyChapter += '<ul class="sectionList"></ul></li>';
-    // emptyChapter += '';
+    var chapterNewName = prompt("請輸入章節名稱");
+    
+    if(chapterNewName != null){
+      $chapterList = $(this).next('.chapterList');
+      // $chapterList = $btnNext.children('.chapter:last-child');
+      // console.log($chapterList);
+      var ChapterCount = $(".chapter").length;
+      var emptyChapter = '<li class="chapter">';
+      emptyChapter += '<div class="chapterItem">';
+      emptyChapter += '<i class="fa fa-bookmark-o"></i>';
+      emptyChapter += '<span class="chapterNo"> CH'+ (ChapterCount+1)+': </span>';
+      emptyChapter += '<span class="chapterName">'+ chapterNewName +'</span>';
+      emptyChapter += '<span class="chapter-btns">';
+      emptyChapter += '<a class="addSectionBtn" data-chapter-id="'+ (ChapterCount+1) +'"><i class="fa fa-plus-circle"></i></a>';
+      emptyChapter += '<a class="deleteChapterBtn"><i class="fa fa-trash-o"></i></a></span></div>';
+      emptyChapter += '<ul class="sectionList"></ul></li>';
+      // emptyChapter += '';
 
-    $chapterList.append(emptyChapter);
-    bindChapterItem();
+      $chapterList.append(emptyChapter);
+      bindChapterItem();
+    }
   });
   /******** add new chapter End ********/
   

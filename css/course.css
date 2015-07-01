@@ -68,16 +68,114 @@
 	border-bottom: 3px solid #5BAE01;
 }*/
 
+/* ==== add new annouce start ==== */
+.announceFunc-wrap {
+	text-align: right;
+	width: 96%;
+	margin-bottom: 25px;	
+}
+
+.announceFunc-wrap .btn a {
+	padding: 7px 18px;
+	background-color: rgba(52, 141, 216, 1);
+	color: #fff;
+	font-size: 18px;
+	border-radius: 3px;
+	cursor: pointer;
+	transition: all .3s;
+}
+
+.announceFunc-wrap .btn a:hover {
+	background-color: rgba(52, 141, 216, 0.8);
+}
+
 .announce-wrap {
 	max-width: 960px; 
 	width: 90%;
 	margin: 2em auto 0 auto;
-	background-color: #fff;
-	border-radius: 5px;	
 }
 
-#announceList-container{
+.announce-form {
+	border: 1px solid #B8B8B8;
+	border-radius: 5px;
+	width: 70%;
+	margin: 0 auto 35px auto;
+	padding: 26px 48px;
+	display: none;
+}
+
+.announce-form label{
+	font-size: 18px;
+	width: 6%;
+	display: inline-block;
+	font-weight: bold;
+	padding: 10px 14px 10px 0;
+}
+
+.announce-form input {
+	font-size: 18px;
+	border-radius: 8px;
+	border: 1px solid #888;
+	padding: 5px 10px;
+}
+
+#announce_title {
+	width: 88%;
+}
+
+#announce_content {
+	width: 97%;
+	height: 105px;
+	margin-bottom: 15px;
+	border: 1px solid #888;
+	border-radius: 10px;
+	font-size: 18px;
+	padding: 8px 10px;
+}
+
+.warning {
+	font-size: 18px;
+	color: red;
+	text-align: center;
+}
+
+.announce_btn_wrap {
+	text-align: center;
+	margin: 22px 0 8px 0;
+}
+
+.announce_btn_wrap span{
+	padding: 7px 20px;
+	font-size: 18px;
+	color: #fff;
+	cursor: pointer;
+	border-radius: 3px;
+	transition: all .3s;
+}
+
+#save_announce {
+	background-color: rgba(121, 176, 61, 1);
+	margin-right: 44px;
+}
+
+#save_announce:hover {
+	background-color: rgba(121, 176, 61, 0.7);
+}
+
+#close_announce {
+	background-color: rgba(173, 50, 50, 1);
+}
+
+#close_announce:hover{
+	background-color: rgba(173, 50, 50, 0.7);
+}
+
+/* ==== add new annouce end ==== */
+
+.announceList-container{
 	margin: 1em;
+	background-color: #fff;
+	border-radius: 5px;	
 }
 
 .announceItem {
@@ -325,7 +423,7 @@
 	  font-size: 18px;
 }
 
-.exam_btn a{
+.exam_btn a, .exam_btn span{
 	padding: 6px 13px;
 	color: #fff;
 	border-radius: 3px;
@@ -334,12 +432,17 @@
 	text-decoration: none;
 }
 
-.enter_exam a {
+.enter_exam a, .exam_btn span {
 	background-color: rgba(121, 176, 61, 1);
 }
 
-.enter_exam a:hover {
+.enter_exam a:hover, .enter_exam span:hover {
 	background-color: rgba(121, 176, 61, 0.7);
+}
+
+.invalid_exam span {
+	background-color: #b8b8b8;
+	cursor: default;
 }
 
 .view_exam a {

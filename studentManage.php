@@ -80,7 +80,7 @@
 									$score = '---';
 								}
 								
-								$joinDate = explode(' ', $studentData['date']);
+								$joinDate = explode(' ', $studentData['create_date']);
 
 					?>
 						<div class="student_item">

@@ -48,7 +48,16 @@
 }
 
 .studentFunc.examIndex {
-	top: 22px;
+	top: 11px;
+}
+
+
+.studentFunc .banner_score{
+	display: table-cell;
+	vertical-align: middle;
+	color: red;
+	font-size: 33px;
+	padding-right: 20px;
 }
 
 .studentFunc .studentInfo {
@@ -57,30 +66,20 @@
 	padding-right: 20px;
 }
 
-.studentFunc .submitExamBtn {
+.studentFunc .viewBtn {
 	font-size: 22px;
 	border-radius: 5px;
-	background-color: rgba(121, 176, 61, 1);
+	background-color: rgba(173, 50, 50, 1);
 	color: #fff;
-	padding: 5px 10px;
+	padding: 7px 26px;
 	cursor: pointer;
 	display: table-cell;
 	vertical-align: middle;
 	transition: all .3s;
 }
 
-.studentFunc .submitExamBtn:hover {
-	background-color: rgba(121, 176, 61, .75);
-}
-
-.countDown {
-	text-align: center;
-	font-size: 21px;
-	color: red;
-}
-
-.testName {
-	text-align: center;
+.studentFunc .viewBtn:hover {
+	background-color: rgba(173, 50, 50, .9);
 }
 
 .exercise_wrap, .score_wrap {
@@ -90,7 +89,8 @@
 }
 
 .examInfo_box {
-	margin-top: 100px;
+	margin-top: 40px;
+	margin-bottom: 40px;
 	border: 1px solid #b8b8b8;
 	border-radius: 10px;
 	background-color: #F5F5F5;
@@ -116,51 +116,10 @@
 	margin: 0 10px;
 }
 
-.examCheck_wrap {
-	text-align: center;
-	padding: 15px 0;
-}
+/* exam info. */
 
-.examCheck_wrap a {
-	text-decoration: none;
-}
-
-.examCheck_wrap .examCheckBtn {
-	display: inline-block;
-	width: 6em;
-	font-size: 18px;
-	padding: 8px 17px;
-	border-radius: 5px;
-	margin: 0 20px;
-	color: #fff;
-	cursor: pointer;
-}
-
-.startBtn {
-	background-color: rgba(121, 176, 61, 1);
-}
-
-.startBtn:hover {
-	background-color: rgba(121, 176, 61, .7);	
-	transition: all .3s;
-}
-
-.giveUpBtn {
-	background-color: rgba(173, 50, 50, 1); 
-}
-
-.giveUpBtn:hover {
-	background-color: rgba(173, 50, 50, 0.7); 
-	transition: all .3s;
-}
-
-.returnBtn {
-	background-color: rgba(52, 141, 216, 1);; 
-}
-
-.returnBtn:hover {
-	background-color: rgba(52, 141, 216, 0.7);;
-	transition: all .3s;
+.totalScoreTitle {
+	font-size: 30px;
 }
 
 /* question css start */
@@ -168,8 +127,9 @@
 .question {
 	font-size: 18px;
 }
+
 .exerciseList {
-	margin-top: 25px;
+	
 }
 
 .questionsDisplay-wrap ul {
@@ -227,6 +187,26 @@
 .errorOpt {
 	border: 1px solid red;
 }
+
+/* exercise_result_wrap */
+.exercise_result_wrap {
+	border: 1px solid #d4d4d4;
+	border-radius: 10px;
+	padding: 15px;
+	margin-bottom: 10px;
+	width: 70%;
+	color: #7C7C7C;
+}
+
+.exercise_result_wrap span:not(:first-child) {
+	margin-left: 1.5em;
+}
+
+.exercise_method {
+	margin-top: 10px;
+}
+/* exercise_result_wrap */
+
 /****** true false CSS Start *******/
 .true_false_wrap, 
 .single_choice_wrap,

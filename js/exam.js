@@ -4,7 +4,41 @@
 
 $(document).ready(function(){
 
+	var examTime = $("#examTime").val();
+
+	var startTime = moment();
+	var endTime = moment().add(examTime, 'seconds');
+
+	setInterval(countDown, 1000);
+
+	function countDown() {
+		startTime.add(1, 'seconds');
+
+		var diffSec = endTime.diff(startTime, 'seconds');
+
+		if (diffSec == 0) {
+			alert("考試時間結束!");
+			submitExam();
+		} else {
+			$(".countDown").html( Math.floor(diffSec / 60) + "分" + diffSec % 60 + "秒");
+		}
+	}
+
+	// 待解決refresh 送出考卷等問題
+	// $(window).on("beforeunload",function(e){
+	// 	return "確定要離開考試？"
+	// });
+
+	// $(window).on("unload",function(e){
+	// 	e.preventDefault();
+	// 	submitExam();
+	// });
+
 	$(".submitExamBtn").on("click", function(e){
+		submitExam();
+	})
+
+	function submitExam() {
 
 		var answerList = {};
 		// 是非
@@ -41,8 +75,6 @@ $(document).ready(function(){
 			answerList[id] = answers.toArray();
 		});
 
-		console.log(answerList);
-
 		var course_id = $('#course_id').val();
 		var exam_id = $('#exam_id').val();
 		var member_id = $('#member_id').val();
@@ -69,5 +101,5 @@ $(document).ready(function(){
 				alert('繳交失敗!');
 			}
 		})
-	})
+	}
 });

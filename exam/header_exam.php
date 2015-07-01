@@ -11,7 +11,7 @@
 			</div>
 			<div class="studentFunc">
 				<span class="studentInfo">
-					<div class="countDown">50分20秒</div>
+					<div class="countDown"></div>
 					<div class="studentName">考生：<?php echo $Member_NAME;?></div>
 				</span>	
 				<span class="submitExamBtn">送出考卷</span>

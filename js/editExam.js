@@ -1,10 +1,25 @@
 $(document).ready(function(){
+	
+	$('.deleteQuestionBtn').on('click', function() {
+		$questionItem = $(this).parent('.questionItem');
+
+		var type = $questionItem.data('exercise-type');
+
+		if (type == "TRUE_FALSE") {
+			// append back to true false list
+			$("#true_false").prepend($questionItem);
+		}
+		// FIX ME: other types
+	});
+
+
 	$('#save_exam').on('click', function(){
 		var leftQuestion_num = $('.left-container .questionItem').length;
 		if(leftQuestion_num == 0){
 			alert('考卷是空的是要怎麼存？')
 		}else saveExam();
 	});
+
 $("#save_exam").prop('disabled', true);
 	$('#exit_examMode').on('click', function(e){
 		var result = confirm('確定要離開嗎？');

@@ -9,19 +9,19 @@
 	$exam_id = $_GET['id'];
 	
 	//get examResult from mysql
-	$sql = "SELECT b.course_name, a.exam_id, a.member_id, a.answer_snapshot , c.type, c.questions
+	$sql = "SELECT b.course_name ,a.score , a.correct_num, a.total_num, a.exam_id, a.member_id, a.answer_snapshot , c.type, c.questions, a.date
 			FROM exam_result as a
 			LEFT JOIN course as b ON a.course_id=b.course_id
 			LEFT JOIN exam as c ON a.exam_id=c.id
 			WHERE exam_id='$exam_id' AND member_id='$member_id'";
 	$result = mysql_query($sql);
-	$examResultData = mysql_fetch_assoc($result);
+	$examResultMeta = mysql_fetch_assoc($result);
 
 	//studentAnswer
-	$studentAnswerSnapShot = json_decode($examResultData['answer_snapshot'], true);
+	$studentAnswerSnapShot = json_decode($examResultMeta['answer_snapshot'], true);
 	// var_dump($studentAnswerSnapShot);
 
-	$questionList = $examResultData['questions'];
+	$questionList = $examResultMeta['questions'];
 	$questionArray = explode(",", $questionList);
 
 	// query exercise from mongodb
@@ -42,22 +42,48 @@
 			}
 		}
 	}
-	
+
 ?>
 <!doctype html>
 <html>
 	<head>
 		<?php require("../meta_com.php"); ?>
 		<link type="text/css" rel="stylesheet" href="../css/examView.css">
-		<?php if($examResultData['type']=='final') $examType = "期末考";
-				else if($examResultData['type']=='mid') $examType = "期中考";
-				else if($examResultData['type']=='test') $examType = "小考";?>
-		<title><?php echo $examResultData['course_name']. ' ' . $examType;?> - NUCourse</title>
+		<?php if($examResultMeta['type']=='final') $examType = "期末考";
+				else if($examResultMeta['type']=='mid') $examType = "期中考";
+				else if($examResultMeta['type']=='test') $examType = "小考";?>
+		<title><?php echo $examResultMeta['course_name']. ' ' . $examType;?> - NUCourse</title>
 	</head>
 	<body>
 		<div class="totalWrapper">
 			<?php require("header_examView.php");?>
 			<div class="container">
+				<div class="exercise_wrap examInfo_box">
+					<div class="examInfo_wrap">
+						<table class="examInfo">
+							<tr class="examInfo-row">
+								<th class="">總題數</th>
+								<td><?php echo $examResultMeta['total_num'];?></td>
+							</tr>
+							<tr class="examInfo-row">
+								<th class="">答對題數</th>
+								<td><?php echo $examResultMeta['correct_num'];?></td>
+							</tr>
+							<tr class="examInfo-row">
+								<th class="">每題配分</th>
+								<td><?php echo 100/$examResultMeta['total_num'];?></td>
+							</tr>	
+							<tr class="examInfo-row">
+								<th class="">答對率</th>
+								<td><?php echo sprintf("%.2f%%", ($examResultMeta['correct_num']/$examResultMeta['total_num']) * 100);?></td>
+							</tr>	
+							<tr class="examInfo-row">
+								<th class="">交卷時間</th>
+								<td><?php echo $examResultMeta['date'];?></td>
+							</tr>				
+						</table>
+					</div>
+				</div>
 				<div class="exercise_wrap exerciseList">
 					<!-- 是非 -->
 					<ul class="typeNum">
@@ -83,6 +109,11 @@
 											<label class="<?php if($correct==0 && $correct_tf_answer == "true") echo "errorOpt" ?>" for="answer_true<?php echo $i;?>">Ｏ</label>
 											<input id="answer_false<?php echo $i;?>" type="radio" name="tfAnswer<?php echo $i;?>" value="false" <?php if($studentAnswer=="false") echo 'checked';?> disabled>
 											<label class="<?php if($correct==0 && $correct_tf_answer =="false") echo "errorOpt" ?>" for="answer_false<?php echo $i;?>">Ｘ</label>
+										</div>
+										<div class="exercise_result_wrap">
+											<span>作答結果: <?php if($correct==1) echo "正確"; else echo "錯誤";?></span>
+											<span>難易度: <?php for($temp=1; $temp<=$question['level']; $temp++) echo '★';?></span>
+											<div class="exercise_method">說明: 無</div>
 										</div>
 									</li>
 								<?php } ?>
@@ -117,9 +148,14 @@
 									<div class="question"><?php echo $singleChoiceQuesBody['question'];?></div>
 									<div class="single_choice_answer_wrap">
 										<?php foreach($singleChoiceQuesOpt as $j => $options){ ?>
-										<input id="single_answer<?php echo $i ."_". $j;?>" type="radio" name="single_opt<?php echo $i;?>" value="<?php echo $j;?>" <?php if($studentAnswer == $j) echo "checked";?> disabled>
+										<input id="single_answer<?php echo $i ."_". $j;?>" type="radio" name="single_opt<?php echo $i;?>" value="<?php echo $j;?>" <?php if($studentAnswer === $j) echo "checked";?> disabled>
 										<label class="<?php if($correct == 0 && $correct_single_answer == $j) echo "errorOpt" ;?>" for="single_answer<?php echo $i ."_". $j;?>"><?php echo $options['content'];?></label>
 										<?php }	?>
+									</div>
+									<div class="exercise_result_wrap">
+											<span>作答結果: <?php if($correct==1) echo "正確"; else echo "錯誤";?></span>
+											<span>難易度: <?php for($temp=1; $temp<=$question['level']; $temp++) echo '★';?></span>
+											<div class="exercise_method">說明: 無</div>
 									</div>
 								</li>
 								<?php }?>
@@ -157,6 +193,11 @@
 											<label class="<?php for($a=0; $a<count($correct_multi_answer); $a++){ if($correct == 0 && $correct_multi_answer[$a] == $j) echo "errorOpt";} ?>" for="multi_answer<?php echo $i ."_". $j;?>"><?php echo $options['content'];?></label>
 											<?php }?>
 									</div>
+									<div class="exercise_result_wrap">
+											<span>作答結果: <?php if($correct==1) echo "正確"; else echo "錯誤";?></span>
+											<span>難易度: <?php for($temp=1; $temp<=$question['level']; $temp++) echo '★';?></span>
+											<div class="exercise_method">說明: 無</div>
+									</div>
 								</li>
 								<?php }?>
 							</ul>
@@ -170,21 +211,38 @@
 					<?php } ?>
 							<ul class="questionNum">
 								<?php foreach($seriesQues as $i => $questionHeader){
-
+										$questionID = (string)$questionHeader['_id'];
+										$studentAnswer = $studentAnswerSnapShot[$questionID];
+										
 										$seriesQuesBody = $questionHeader['body'];?>
 								<li class="series_question_wrap" data-exercise-id="<?php echo $questionHeader["_id"];?>">
 									<div class="question"><?php echo $seriesQuesBody['description'];?></div>
 									<ul class="seriesNum">		
 											<?php foreach($seriesQuesBody['questions'] as $j => $question){ 
-													$questionOpt = $question['options']; ?>
+													$questionOpt = $question['options']; 
+													
+													for($m=0; $m<count($questionOpt); $m++){
+														if($questionOpt[$m]['is_answer'] == true){
+															$correct_series_sub_answer = $m;
+														}
+													}
+													if($correct_series_sub_answer === $studentAnswer[$j]) $correct = 1;
+													else $correct = 0;
+													?>
 										<li class="series_question_sub_wrap">
 											<div class="series_question"><?php echo $question['question'];?></div>
 											<div class="series_question_answer_wrap">
 												<?php foreach($questionOpt as $k => $options){?>
-												<input id="series_question<?php echo $i ."_". $j ."_". $k;?>" type="radio" name="series_opt<?php echo $i."_".$j;?>" value="<?php echo $k;?>">
-												<label for="series_question<?php echo $i ."_". $j ."_". $k;?>"><?php echo $options['content'];?></label>
+												<input id="series_question<?php echo $i ."_". $j ."_". $k;?>" type="radio" name="series_opt<?php echo $i."_".$j;?>" value="<?php echo $k;?>" <?php if($studentAnswer[$j] === $k) echo "checked";?> disabled>
+												<label class="<?php if($correct == 0 && $correct_series_sub_answer == $k) echo "errorOpt" ;?>" for="series_question<?php echo $i ."_". $j ."_". $k;?>"><?php echo $options['content'];?></label>
 												<?php }?>
 											</div>
+											<div class="exercise_result_wrap">
+												<span>作答結果: <?php if($correct==1) echo "正確"; else echo "錯誤";?></span>
+												<!-- <span>難易度: <?php for($temp=1; $temp<=$question['level']; $temp++) echo '★';?></span> -->
+											<div class="exercise_method">說明: 無</div>
+										</div>
+
 										</li>
 										
 								<?php }?>
@@ -195,6 +253,7 @@
 					<?php if(!empty($seriesQues)){ ?>
 						</li>
 					<?php } ?>
+
 				</div>
 			</div>
 			<?php require("../footer.php"); ?>

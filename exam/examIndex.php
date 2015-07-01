@@ -94,13 +94,12 @@
 					</div>
 					<div class="examCheck_wrap">
 						<a class="examCheckBtn startBtn" href="exam.php?course_id=<?php echo $course_id;?>&id=<?php echo $exam_id;?>">開始考試</a>
-						<a class="examCheckBtn giveUpBtn" href="../course.php?course_id=<?php echo $course_id;?>#exam">放 棄</a>
+						<a class="examCheckBtn giveUpBtn" href="../course.php?course_id=<?php echo $course_id;?>#exam">返 回</a>
 					</div>
 				</div>
 			</div>
 			<?php require("../footer.php"); ?>
 		</div>
 		<?php require("../js/js_com.php"); ?>
-		<script src="../js/exam.js"></script>
 	</body>
 </html>

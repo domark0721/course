@@ -39,6 +39,10 @@
 			}
 		}
 	}
+
+	// calculate exam time in seconds
+	$timeArray = explode(":", $examMetadata["time"]);
+	$examTime = $timeArray[0] * 3600 + $timeArray[1] * 60 + $timeArray[2]; 
 ?>
 <!doctype html>
 <html>
@@ -162,8 +166,11 @@
 			<input type="hidden" id="course_id" value="<?php echo $course_id;?>">
 			<input type="hidden" id="exam_id" value="<?php echo $exam_id;?>">
 			<input type="hidden" id="member_id" value="<?php echo $member_id;?>">
+			<input type="hidden" id="examTime" value="<?php echo $examTime;?>">
+
 		</div>
 		<?php require("../js/js_com.php"); ?>
+		<script src="../js/lib/moment.min.js"></script>
 		<script src="../js/exam.js"></script>
 	</body>
 </html>

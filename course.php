@@ -5,7 +5,8 @@
 	include_once("mysql.php");
 
 	session_start();
-	$_SESSION['url'] = $_SERVER['REQUEST_URI']; 
+	$_SESSION['url'] = $_SERVER['REQUEST_URI'];
+	$mode = $_SESSION['mode'];
 	$course_id = $_GET['course_id'];
 	$member_id = $_SESSION['member_id'];
 	//metadata from mysql
@@ -24,6 +25,7 @@
 	}
 
 	$contentData = $courseData['content'];
+	$currentTime = time();
 ?>
 <!doctype html>
 <html>
@@ -62,28 +64,44 @@
 				</div>
 				<!-- 公告 -->
 				<div id="announceList" class="tab-content announce-wrap">
-					<div id="announceList-container">
-						<div class="announceItem">
-							<div class="announceTitle"><i class="fa fa-bullhorn"> 最新課程已經更新</i></div>
-							<div class="announceDate">2015-05-18</div>
-							<div class="announceContent">由於之前課程教材有錯誤，目前課程已經更新。</div>
-						</div>
-						<div class="announceItem">
-							<div class="announceTitle"><i class="fa fa-bullhorn"> 最新課程已經更新</i></div>
-							<div class="announceDate">2015-05-18</div>
-							<div class="announceContent">由於之前課程教材有錯誤，目前課程已經更新。</div>
-						</div>
-						<div class="announceItem">
-							<div class="announceTitle"><i class="fa fa-bullhorn"> 最新課程已經更新</i></div>
-							<div class="announceDate">2015-05-18</div>
-							<div class="announceContent">由於之前課程教材有錯誤，目前課程已經更新。</div>
-						</div>	
-						<div class="announceItem">
-							<div class="announceTitle"><i class="fa fa-bullhorn"> 最新課程已經更新</i></div>
-							<div class="announceDate">2015-05-18</div>
-							<div class="announceContent">由於之前課程教材有錯誤，目前課程已經更新。</div>
-						</div>				
+					<?php 
+						// $sql = "SELECT * FROM course WHERE course_id='$course_id'";
+						// $result = mysql_query($sql);
+						// $courseMetadata = mysql_fetch_assoc($result);
+					?>
+					<div class="announceFunc-wrap">
+						<div id="new_announceBtn" class="btn"><a><i class="fa fa-plus"></i>&nbsp;&nbsp;新增公告</a></div>
 					</div>
+					<div id="announce-form" class="announce-form">
+						<label for="announce_title">標題</label>
+						<input  id="announce_title" type="text" maxlength="30" size="30"><br>
+						<label for="announce_content">內容</label><br>
+						<textarea id="announce_content"></textarea>
+						<div class="warning"></div>
+						<div class="announce_btn_wrap">
+							<span id="save_announce">送出公告</span>
+							<span id="close_announce">關 閉</span>
+						</div>
+					</div>
+					<?php 
+						$sql = "SELECT * FROM announce WHERE course_id='$course_id' ORDER BY create_date DESC";
+						$result = mysql_query($sql);
+						while($announceData = mysql_fetch_assoc($result)) {
+							$announceList[] =$announceData;
+						}
+						
+							
+					?>
+						<div class="announceList-container">
+							<?php foreach ($announceList as $key => $announce) { ?>
+							<div class="announceItem">
+								<div class="announceTitle"><i class="fa fa-bullhorn"> <?php echo $announce['title'];?> </i></div>
+								<div class="announceDate"><?php echo $announce['create_date'];?></div>
+								<div class="announceContent"><?php echo $announce['content'];?></div>
+							</div>
+							<?php } ?>
+						</div>
+
 				</div>
 
 				<!-- 課程資訊 -->
@@ -248,20 +266,48 @@
 									<td class="exam_date"><i class="fa fa-table"></i> <?php echo $examData['start_date'];?> <i class="fa fa-chevron-right"></i> <?php echo $examData['end_date'];?></td>
 									
 									<?php 
-										if (empty($examResultList[$examData["id"]])) {
+										$examStartTime = strtotime($examData['start_date']);
+										$examEndTime = strtotime($examData['end_date']);
+
+										if ($currentTime < $examStartTime) {
+										// 還沒開始
 									?>
-									<td class="exam_score"></td>
-									<td class="exam_btn enter_exam"><a href="exam/examIndex.php?course_id=<?php echo $course_id;?>&id=<?php echo $examData['id'];?>">進入考試</a></td>										
-									<?php
-										} else {
-											$examResult = $examResultList[$examData["id"]];
+											<td class="exam_score"></td>
+											<td class="exam_btn invalid_exam"><span>尚未開始</span></td>
+									<?php					
+										}
+										else if ($currentTime > $examStartTime) {
+										// 已開始
+
+											if (empty($examResultList[$examData["id"]])) {
+											// 沒考
+												if ($currentTime < $examEndTime) {
+													// 進行中,可考試
 									?>
-									<td class="exam_score">成績: <?php echo $examResult["score"]?></td>
-									<td class="exam_btn view_exam"><a href="exam/examResult.php?result_id=<?php echo $examResult["id"];?>">觀看內容</a></td>										
+													<td class="exam_score"></td>
+													<td class="exam_btn enter_exam"><a href="exam/examIndex.php?course_id=<?php echo $course_id;?>&id=<?php echo $examData['id'];?>">進入考試</a></td>										
+
 									<?php
+												} else {
+													// 已結束, 未考試
+									?>
+													<td class="exam_score"></td>
+													<td class="exam_btn invalid_exam"><span>逾期未考</span></td>										
+									<?php
+												}
+
+											} else {
+											// 有考, 不論結束沒, 都可查看內容
+												$examResult = $examResultList[$examData["id"]];
+									?>
+												<td class="exam_score">成績: <?php echo $examResult["score"]?></td>
+												<td class="exam_btn view_exam"><a href="exam/examResult.php?result_id=<?php echo $examResult["id"];?>">觀看內容</a></td>										
+									<?php
+											}
+
 										}
 									?>
-								</tr>						
+								</tr>
 							</table>
 						</div>							
 						
@@ -273,9 +319,12 @@
 					</div>
 				</div>
 			</div>
+			<input type="hidden" id="course_id" value="<?php echo $course_id; ?>">
+			<input type="hidden" id="member_id" value="<?php echo $member_id; ?>">
 			<?php require("footer.php"); ?>
 		</div>
 		<?php require("js/js_com.php"); ?>
 		<script src="js/switch.js"></script>
+		<script src="js/course.js"></script>
 	</body>
 </html>

@@ -392,7 +392,8 @@
 												 ?>
 											</div>
 										</div>
-									</li data-section-name="<?php echo $sectionName;?>">
+										<span class="deleteQuestionBtn"><i class="fa fa-times-circle"></i></span>
+									</li">
 								<?php } }else {?>
 									<div class="noQuestion">
 										<img src="../img/oops.png">

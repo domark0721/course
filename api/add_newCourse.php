@@ -26,9 +26,7 @@
 		"textbooks" => "尚未填寫內容",
 		"references" => "尚未填寫內容",
 	    "content" => array( 
-	    					"chapters" => [array(
-	    							"name" => "尚未命名", "sections" => []
-	    										)]
+	    					"chapters" => []
 	    					)
 	);
 

@@ -136,6 +136,12 @@
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, .5);
 }
 
+#drop-question-list .questionItem .deleteQuestionBtn{
+	display: inline-block;
+}
+
+
+
 /* --------- right-container Start------------------------------- */
 .search_wrap {
 	margin: 1.5em 0 0 0;
@@ -178,6 +184,17 @@
 
 .questionItem {
 	cursor: -webkit-grab;
+	position: relative;
+}
+
+.deleteQuestionBtn {
+	position: absolute;
+	top: 0;
+	right: 0;
+	color: red;	
+	padding: 10px;
+	cursor: pointer;
+	display: none;
 }
 
 .questionItem.ui-sortable-helper {

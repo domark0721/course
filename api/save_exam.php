@@ -1,4 +1,5 @@
 <?php
+	include_once('api/auth.php');
 	require ("../mysql.php");
 
 	$course_id = $_POST['course_id'];
