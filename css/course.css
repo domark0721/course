@@ -158,16 +158,33 @@
 	margin-right: 44px;
 }
 
-#save_announce:hover {
+.editAnnounceBtn {
+	background-color: rgba(121, 176, 61, 1);
+	margin-right: 10px;
+}
+
+#save_announce:hover, .editAnnounceBtn:hover  {
 	background-color: rgba(121, 176, 61, 0.7);
 }
 
-#close_announce {
+#close_announce , .deleteAnnounceBtn {
 	background-color: rgba(173, 50, 50, 1);
 }
 
-#close_announce:hover{
+#close_announce:hover, .deleteAnnounceBtn:hover {
 	background-color: rgba(173, 50, 50, 0.7);
+}
+
+.announceTool {
+	text-align: right;
+}
+
+.announceTool span{
+	padding: 5px 10px;
+	cursor: pointer;
+	color: #fff;
+	border-radius: 3px;
+	transition: all .3s;
 }
 
 /* ==== add new annouce end ==== */

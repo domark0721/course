@@ -3,6 +3,6 @@
 
 	}
 	else{
-		Header("Location: http://127.0.0.1/www/course/login.php");
+		Header("Location: /www/course/login.php");
 	}
 ?>

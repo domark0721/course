@@ -31,7 +31,7 @@
 <!doctype html>
 <html>
 	<head>
-		<?php require("meta_com.php") ?>
+		<?php require("../meta_com.php") ?>
 		<link type="text/css" rel="stylesheet" href="css/exercise.css">
 		<title>題庫 - NUCourse</title>
 	</head>

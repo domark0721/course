@@ -20,8 +20,8 @@ $(document).ready(function(){
 		}else saveExam();
 	});
 
-$("#save_exam").prop('disabled', true);
-	$('#exit_examMode').on('click', function(e){
+	$("#save_exam").prop('disabled', true);
+		$('#exit_examMode').on('click', function(e){
 		var result = confirm('確定要離開嗎？');
 		if(result) {
 		   window.history.back();

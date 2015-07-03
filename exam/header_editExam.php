@@ -1,6 +1,6 @@
 <header class="headerBar" >
 	<div class="content-wrap">
-		<div id="headerLogo"><a href="http://127.0.0.1/www/course/index.php"><img src="http://127.0.0.1/www/course/img/logo.png"/></a></div>
+		<div id="headerLogo"><a href="/www/course/index.php"><img src="/www/course/img/logo.png"/></a></div>
 		<div class="examTitle_wrap">
 			<div class="courseName"><?php echo $course_name; ?></div>
 			<div class="examType">

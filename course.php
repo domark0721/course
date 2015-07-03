@@ -65,13 +65,12 @@
 				<!-- 公告 -->
 				<div id="announceList" class="tab-content announce-wrap">
 					<?php 
-						// $sql = "SELECT * FROM course WHERE course_id='$course_id'";
-						// $result = mysql_query($sql);
-						// $courseMetadata = mysql_fetch_assoc($result);
+						if($mode == "te" && $member_id == $courseMetadata['teacher_id'] ){
 					?>
 					<div class="announceFunc-wrap">
 						<div id="new_announceBtn" class="btn"><a><i class="fa fa-plus"></i>&nbsp;&nbsp;新增公告</a></div>
 					</div>
+					<?php } ?>
 					<div id="announce-form" class="announce-form">
 						<label for="announce_title">標題</label>
 						<input  id="announce_title" type="text" maxlength="30" size="30"><br>
@@ -98,6 +97,12 @@
 								<div class="announceTitle"><i class="fa fa-bullhorn"> <?php echo $announce['title'];?> </i></div>
 								<div class="announceDate"><?php echo $announce['create_date'];?></div>
 								<div class="announceContent"><?php echo $announce['content'];?></div>
+							<?php if($mode == "te" && $member_id == $courseMetadata['teacher_id'] ){ ?>
+								<div class="announceTool">
+									<span class="editAnnounceBtn">編輯</span>
+									<span class="deleteAnnounceBtn" data-announce-id="<?php echo $announce['id'];?>">刪除</span>
+								</div>
+							<?php } ?>
 							</div>
 							<?php } ?>
 						</div>
