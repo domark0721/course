@@ -9,11 +9,22 @@
 
 	$sql = "INSERT INTO announce(course_id, member_id, title, content) VALUES ('$course_id', '$member_id', '$title', '$content')";
 	$mysqlResult = mysql_query($sql);
+	$annouce_id = mysql_insert_id();
+	
+	$sql = "SELECT create_date FROM announce WHERE id='$annouce_id'";
+	$mysqlResult = mysql_query($sql);
+	
+	while($row = mysql_fetch_assoc($mysqlResult)){
+		$announce = $row;
+	}
+	// var_dump($announce);
 
 	if($mysqlResult){
 		$response = array(
 			'status' => 'ok',
-			'error_message' => ''
+			'error_message' => '',
+			'annouce_id' => $annouce_id,
+			'annouce_date' => $announce['create_date']
 		);	
 	}
 	else{

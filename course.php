@@ -86,13 +86,12 @@
 						$sql = "SELECT * FROM announce WHERE course_id='$course_id' ORDER BY create_date DESC";
 						$result = mysql_query($sql);
 						while($announceData = mysql_fetch_assoc($result)) {
-							$announceList[] =$announceData;
-						}
-						
-							
+							$announceList[] = $announceData;
+						}	
 					?>
-						<div class="announceList-container">
-							<?php foreach ($announceList as $key => $announce) { ?>
+					<div class="announceList-container">
+					<?php if(count($announceList)){
+							foreach ($announceList as $key => $announce) { ?>
 							<div class="announceItem">
 								<div class="announceTitle"><i class="fa fa-bullhorn"> <?php echo $announce['title'];?> </i></div>
 								<div class="announceDate"><?php echo $announce['create_date'];?></div>
@@ -104,9 +103,12 @@
 								</div>
 							<?php } ?>
 							</div>
-							<?php } ?>
-						</div>
-
+					<?php }}else{ ?>
+							<div class="announceItem noAnnounce">
+								<div>--- 尚無公告 ---</div>
+							</div>
+						<?php } ?>
+					</div>
 				</div>
 
 				<!-- 課程資訊 -->
@@ -201,31 +203,35 @@
 					<nav id="schedule-nav">
 						<ul class="schedule-nav-fix">
 							<?php
+
 								foreach($contentData['chapters'] as $i => $chapter){
 									$courseName = sprintf("CH%d: %s", $i+1, $chapter['name'] ); ?>
 									<li><a href="#chpater-<?php echo $i; ?>"><?php echo $courseName; ?></a></li>
 							<?php } ?>
 						</ul>
 					</nav>
-					<div class="schedule-wrap">
-						<div id="schedule-container">
-						<?php
-							foreach($contentData['chapters'] as $i => $chapter){
-								$courseName = sprintf("CH%d: %s", $i+1, $chapter['name'] ); ?>
-								<div class="scheduleItem">
-								<div class="chapterTitle" id="chapter-<?php echo $i; ?>"><i class="fa fa-bookmark-o"></i> <?php echo $courseName; ?></div>
+					<?php if(count($contentData['chapters'])){ ?>
+						<div class="schedule-wrap">
+							<?php foreach($contentData['chapters'] as $i => $chapter){
+									$courseName = sprintf("CH%d: %s", $i+1, $chapter['name'] ); ?>
+									<div class="scheduleItem">
+									<div class="chapterTitle" id="chapter-<?php echo $i; ?>"><i class="fa fa-bookmark-o"></i> <?php echo $courseName; ?></div>
 
-							<?php foreach($chapter['sections'] as $j => $section){
-									$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
-									$courseURL = sprintf("courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
-															,$courseData['course_id'], $i, $j); ?>
+								<?php foreach($chapter['sections'] as $j => $section){
+										$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
+										$courseURL = sprintf("courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
+																,$courseData['course_id'], $i, $j); ?>
 
-									<div class="subChapter"><a href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a></div>
-								<?php } ?>
-								</div>
-						<?php } ?>										
+										<div class="subChapter"><a href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a></div>
+									<?php } ?>
+									</div>
+							<?php } ?>
 						</div>
-					</div>
+					<?php }else { ?>
+						<div class="schedule-wrap no_schedule">
+							<div>--- 目前尚無課程 ---</div>
+						</div>
+					<?php } ?>
 				</div>
 
 				<!-- 測驗專區 -->
@@ -318,12 +324,16 @@
 						
 				<?php }}else{ ?>
 						<div class="exam_item">
-							<a class="no_exam">--- 該課程尚無考試 ---</a>
+							<a class="no_exam">--- 尚無考試 ---</a>
 						</div>															
 				<?php }?>				
 					</div>
 				</div>
+				<div class="statusSilde">
+
+				</div>
 			</div>
+
 			<input type="hidden" id="course_id" value="<?php echo $course_id; ?>">
 			<input type="hidden" id="member_id" value="<?php echo $member_id; ?>">
 			<?php require("footer.php"); ?>

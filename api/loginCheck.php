@@ -36,4 +36,5 @@
 		Header("Location: /www/course/login.php");
 	}
 
+
 ?>

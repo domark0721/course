@@ -1,7 +1,10 @@
 $(document).ready(function(){
-
+	
+	deleteAnnouce();
+	$('.test').slideUp();
 	$('#new_announceBtn').on('click', function(){
-		$('#announce-form').fadeIn();
+		// $('#announce-form').fadeIn();
+		$('#announce-form').animate({'opacity': 'show', 'paddingBottom': 28 ,'paddingTop': 28, 'paddingLeft': 30, 'paddingRight': 30}, 600);
 	});
 
 
@@ -39,13 +42,30 @@ $(document).ready(function(){
 			     // fix me :
 			    request.done(function( jData ) {
 			      if(jData.status=='ok'){
-				        alert('公告已經已新增！');
-				        console.log(jData);
-				        location.reload();
+			        // alert('公告已經已新增！');
+			        var announContent = '<div class="announceItem">';
+			        	announContent += '<div class="announceTitle"><i class="fa fa-bullhorn">'+ title +'</i></div>';
+			        	announContent += '<div class="announceDate">'+ jData.annouce_date +'</div>';
+			        	announContent += '<div class="announceContent">' + content + '</div>';
+			        	announContent += '<div class="announceTool">';
+			        	announContent += '<span class="editAnnounceBtn">編輯</span>';
+			        	announContent += '<span class="deleteAnnounceBtn" data-announce-id="'+ jData.annouce_id +'">刪除</span>';
+			        	announContent += '</div></div>';
+			        
+			        $(announContent).hide().prependTo('.announceList-container').hide().fadeIn('slow');
+			        deleteAnnouce();
+
+			        $('.statusSilde').html('公告新增成功!').hide().fadeIn().addClass('greenStyle').delay(3000).slideUp(500).queue(function(){
+			        																		$(this).removeClass('greenStyle');
+			        																		$(this).dequeue();
+			       																 });
+			        // location.reload();
 			      }
 			      else{
-			        	alert('公告新增失敗！');
-			      }
+			        $('.statusSilde').html('公告新增失敗!').hide().fadeIn().addClass('redStyle').delay(3000).slideUp(500).queue(function(){
+			        																		$(this).removeClass('redStyle');
+			        																		$(this).dequeue();
+			       																 });			      }
 			    });
 			}else {
 				var warning="";
@@ -60,16 +80,18 @@ $(document).ready(function(){
 		$('#announce-form').fadeOut();
 	});
 
-	$('.deleteAnnounceBtn').on('click', function(){
-		var check = confirm("刪除此公告？");
-		
-		if(check){
-			var announce_id = $(this).data('announce-id');
-			$announceItem = $(this).parents('.announceItem');
-			deleteAnnounce($announceItem, announce_id);
-		}
+	function deleteAnnouce(){
+		$('.deleteAnnounceBtn').on('click', function(){
+			var check = confirm("刪除此公告？");
+			
+			if(check){
+				var announce_id = $(this).data('announce-id');
+				$announceItem = $(this).parents('.announceItem');
+				deleteAnnounce($announceItem, announce_id);
+			}
 
-	});
+		});
+	}
 
 	function deleteAnnounce($announceItem, announce_id) {
 		console.log($announceItem);
@@ -85,14 +107,19 @@ $(document).ready(function(){
 		     // fix me :
 			    request.done(function( jData ) {
 			      if(jData.status=='ok'){
-				        alert('該公告已刪除');
-				        console.log(jData);
+				        $('.statusSilde').html('已刪除公告!').hide().fadeIn().addClass('greenStyle').delay(3000).slideUp(500).queue(function(){
+			        																		$(this).removeClass('greenStyle');
+			        																		$(this).dequeue();
+			       																 });
 				        $announceItem.fadeOut("300", function() {
 				        	$(this).remove();
 				   		});
 			      }
 			      else{
-			        	alert('公告刪除失敗！');
+			        	$('.statusSilde').html('刪除公告失敗!').hide().fadeIn().addClass('redStyle').delay(3000).slideUp(500).queue(function(){
+			        																		$(this).removeClass('redStyle');
+			        																		$(this).dequeue();
+			       																 });
 			      }
 				});
 

@@ -100,7 +100,7 @@
 	border-radius: 5px;
 	width: 70%;
 	margin: 0 auto 35px auto;
-	padding: 26px 48px;
+	/*padding: 26px 48px;*/
 	display: none;
 }
 
@@ -221,6 +221,13 @@
 .announceContent {
 	padding: 6px 12px 6px 36px;
 	font-size: 16px;
+}
+
+.announceItem.noAnnounce {
+	padding: 2em 0 2em 0;
+	font-size: 18px;
+	text-align: center;
+	color: #999;
 }
 
 /* courseInfo */
@@ -384,7 +391,16 @@
 .subChapter a:hover {
 	color: rgba(0, 0, 0, .7);
 }
-
+.schedule-wrap.no_schedule {
+	background-color: #fff;
+	font-size: 18px;
+	color: #999;
+	text-align: center;
+	padding: 2em 0;
+	border-radius: 5px;
+	margin-left: 9%;
+	width: 79%;
+}
 /* exam */
 
 .content-wrap-exam {
@@ -474,4 +490,30 @@
 	display: block;
 	text-align: center;
 	color: #999;
+}
+
+.greenStyle {
+	position: fixed;
+	bottom: 3%;
+	right: 10%;
+	z-index: 100;
+	background-color: rgba(90, 176, 61, 0.81);
+	color: white;
+	width: 11%;
+	border-radius: 5px;
+	padding: 12px 22px;
+	font-size: 18px;
+}
+
+.redStyle {
+	position: fixed;
+	bottom: 3%;
+	right: 10%;
+	z-index: 100;
+	background-color: rgba(176, 61, 61, 0.81);
+	color: white;
+	width: 11%;
+	border-radius: 5px;
+	padding: 12px 22px;
+	font-size: 18px;
 }
