@@ -8,7 +8,7 @@
 	$member_id = $_SESSION['member_id'];
 	$result_id = $_GET['result_id'];
 	//get the course Metadata from mysql
-	$sql = "SELECT a.course_id, a.exam_id, a.correct_num, a.total_num, a.score, a.answer_snapshot, a.date, b.type, c.course_name, c.teacher_name
+	$sql = "SELECT a.id, a.course_id, a.exam_id, a.correct_num, a.total_num, a.score, a.answer_snapshot, a.date, b.type, c.course_name, c.teacher_name
 				FROM exam_result as a
 				LEFT JOIN exam as b ON a.exam_id = b.id
 				LEFT JOIN course as c ON a.course_id = c.course_id
@@ -16,6 +16,7 @@
 
 	$result = mysql_query($sql);
 	$examResultMeta = mysql_fetch_assoc($result);
+	// var_dump($examResultMeta);
 	$examMetadata['course_name'] = $examResultMeta['course_name']; //for different page
 ?>
 <!doctype html>
@@ -65,11 +66,6 @@
 				</div>
 			</div>
 			<?php require("../footer.php"); ?>
-			<input type="hidden" id="course_id" value="<?php echo $course_id;?>">
-			<input type="hidden" id="exam_id" value="<?php echo $exam_id;?>">
-			<input type="hidden" id="member_id" value="<?php echo $member_id;?>">
 		</div>
-		<?php require("../js/js_com.php"); ?>
-		<script src="../js/exam.js"></script>
 	</body>
 </html>

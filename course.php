@@ -98,7 +98,6 @@
 								<div class="announceContent"><?php echo $announce['content'];?></div>
 							<?php if($mode == "te" && $member_id == $courseMetadata['teacher_id'] ){ ?>
 								<div class="announceTool">
-									<span class="editAnnounceBtn">編輯</span>
 									<span class="deleteAnnounceBtn" data-announce-id="<?php echo $announce['id'];?>">刪除</span>
 								</div>
 							<?php } ?>

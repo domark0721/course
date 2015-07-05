@@ -109,6 +109,7 @@
 		<div class="totalWrapper">
 			<?php require("header_editExam.php"); ?>
 			<div class="exam_status_wrap">
+				<span class="newQuestionBtn"><i class="fa fa-plus"></i> &nbsp;&nbsp;新增題目</span>
 				<div class="examInfo">
 				<a>平均難度：<span id="exam_level">0 / 5</span></a>
 				<a>總時間：<span id="exam_time">0分0秒</span></a><br>
@@ -316,6 +317,7 @@
 								<?php } }?>
 						</ol>
 					</div>
+					<!-- 題庫 -->
 					<div class="right-container">
 						<div class="search_wrap"> 
 							<input id="search_exercise" class="clearable" placeholder="搜尋題目"/>
@@ -393,7 +395,7 @@
 											</div>
 										</div>
 										<span class="deleteQuestionBtn"><i class="fa fa-times-circle"></i></span>
-									</li">
+									</li>
 								<?php } }else {?>
 									<div class="noQuestion">
 										<img src="../img/oops.png">
@@ -401,7 +403,7 @@
 									</div>
 								<?php }?>
 							</ul>
-
+							
 							<!-- ************* 單選題 ************* -->
 							<ul id="single_choice" class="tab-content questionNum">
 							<?php if(!empty($questionList['singleChoiceQues'])){
@@ -460,6 +462,7 @@
 												 ?>
 											</div>
 										</div>
+										<span class="deleteQuestionBtn"><i class="fa fa-times-circle"></i></span>
 									</li>
 								<?php } }else {?>
 									<div class="noQuestion">
@@ -526,6 +529,7 @@
 												<?php }?>
 											</div>
 										</div>
+										<span class="deleteQuestionBtn"><i class="fa fa-times-circle"></i></span>
 									</li>
 								<?php } }else {?>
 									<div class="noQuestion">
@@ -591,6 +595,7 @@
 												<?php } ?>
 											</div>
 										</div>
+										<span class="deleteQuestionBtn"><i class="fa fa-times-circle"></i></span>
 									</li>
 								<?php } }else {?>
 									<div class="noQuestion">
@@ -615,7 +620,10 @@
 				<input type="hidden" id="end_time" value="<?php echo $end_time;?>"/>
 				<input type="hidden" id="explanation" value="<?php echo $explanation;?>"/>
 			</div>
-			
+			<div class="addExerciseBox_wrap">
+				
+			</div>
+			<div class="overlay"> </div>
 		</div>
 
 		<?php require("../js/js_com.php"); ?>

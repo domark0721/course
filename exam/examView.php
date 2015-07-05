@@ -71,7 +71,7 @@
 							</tr>
 							<tr class="examInfo-row">
 								<th class="">每題配分</th>
-								<td><?php echo 100/$examResultMeta['total_num'];?></td>
+								<td><?php echo round(100/$examResultMeta['total_num'],2);?></td>
 							</tr>	
 							<tr class="examInfo-row">
 								<th class="">答對率</th>
@@ -256,10 +256,6 @@
 
 				</div>
 			</div>
-			<?php require("../footer.php"); ?>
-			<input type="hidden" id="course_id" value="<?php echo $course_id;?>">
-			<input type="hidden" id="exam_id" value="<?php echo $exam_id;?>">
-			<input type="hidden" id="member_id" value="<?php echo $member_id;?>">
 		</div>
 		<?php require("../js/js_com.php"); ?>
 		<script src="../js/exam.js"></script>

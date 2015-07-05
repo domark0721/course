@@ -9,6 +9,7 @@
 	$exam_id = $_POST['exam_id'];
 	$member_id = $_POST['member_id'];
 	$postAnswer = $_POST['answer'];
+	$exam_result_id =$_POST['exam_result_id'];
 	
 	//FIXME: get student id from login session, for later to save exam result in DB
 	
@@ -110,12 +111,12 @@
 	$questionNum = count($questionArray);
 	$scoreOfEachQuestion = 100 / $questionNum;
 
-	$totalScore = $scoreOfEachQuestion * $correctQestionNum;
+	$totalScore = round($scoreOfEachQuestion * $correctQestionNum, 2);
 	$student_answer = json_encode($postAnswer);
 
 	// save to exam result DB
-	$sql = "INSERT INTO exam_result(course_id, exam_id, member_id, correct_num, total_num, score, answer_snapshot) 
-						VALUES ('$course_id', '$exam_id', '$member_id', '$correctQestionNum', '$questionNum', '$totalScore', '$student_answer')";
+	$sql = "UPDATE exam_result SET correct_num='$correctQestionNum', total_num='$questionNum', score='$totalScore', answer_snapshot='$student_answer'
+						WHERE id='$exam_result_id'";
 	$result = mysql_query($sql);
 	$exam_result_id = mysql_insert_id();
 
@@ -125,8 +126,7 @@
 	$response = array(
 			'status' => 'ok',
 			'error_message' => '',
-			'score' => $totalScore,
-			'result_id' => $exam_result_id
+			'score' => $totalScore
 		);
 
 	echo json_encode($response);

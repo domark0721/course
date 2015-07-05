@@ -7,16 +7,26 @@ $(document).ready(function(){
 
 		if (type == "TRUE_FALSE") {
 			// append back to true false list
-			$("#true_false").prepend($questionItem);
+			$("#true_false").prepend($questionItem.hide().fadeIn());
+		}else if(type == "SINGLE_CHOICE"){
+			$("#single_choice").prepend($questionItem.hide().fadeIn());
+		}else if(type == "MULTI_CHOICE"){
+			$("#multi_choice").prepend($questionItem.hide().fadeIn());
+		}else if(type == "SERIES_QUESTIONS"){
+			$("#series_question").prepend($questionItem.hide().fadeIn());
 		}
 		// FIX ME: other types
 	});
 
 
+	$('.newQuestionBtn').on('click', function(){
+		$('.overlay').addClass('overlay_fix').hide().fadeIn();
+	});
+
 	$('#save_exam').on('click', function(){
 		var leftQuestion_num = $('.left-container .questionItem').length;
 		if(leftQuestion_num == 0){
-			alert('考卷是空的是要怎麼存？')
+			alert('空的考卷無法給學生考試哦！')
 		}else saveExam();
 	});
 

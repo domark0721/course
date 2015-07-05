@@ -6,43 +6,60 @@
 
 	session_start();
 	$member_id = $_SESSION['member_id'];
-	//get the course Metadata from mysql
-	$course_id = $_GET['course_id'];
-	$sql = "SELECT * FROM course WHERE course_id='$course_id'";
-	$result = mysql_query($sql);
-	$courseMetadata = mysql_fetch_assoc($result);
-
-	//get the objectID of the question from mysql
 	$exam_id = $_GET['id'];
-	$sql = "SELECT * FROM exam WHERE id='$exam_id'";
-	$result = mysql_query($sql);
-	$examMetadata = mysql_fetch_assoc($result);
+	
+	//check this exam if it's done;
+	$sql = "SELECT * FROM exam_result WHERE exam_id='$exam_id' AND member_id='$member_id'";
+	$exam_history = mysql_query($sql);
+	$examResultData = mysql_fetch_assoc($exam_history);
 
-	$questionList = $examMetadata['questions'];
-	$questionArray = explode(",", $questionList);
+	if(!$examResultData){
+		//get the course Metadata from mysql
+		$course_id = $_GET['course_id'];
+		$sql = "SELECT * FROM course WHERE course_id='$course_id'";
+		$result = mysql_query($sql);
+		$courseMetadata = mysql_fetch_assoc($result);
 
-	// query exercise from mongodb
-	foreach($questionArray as $question){
-		$mongoQuery = array('_id' => new MongoId($question));
-		$mon = $exercise -> find($mongoQuery);
-		// var_dump($mon);
+		//get the objectID of the question from mysql
+		$sql = "SELECT * FROM exam WHERE id='$exam_id'";
+		$result = mysql_query($sql);
+		$examMetadata = mysql_fetch_assoc($result);
 
-		foreach($mon as $data){
-			if($data['type'] == "TRUE_FALSE"){
-				$trueFalseQues[] = $data;
-			}else if($data['type'] == "SINGLE_CHOICE"){
-				$singleChoiceQues[] = $data;
-			}else if($data['type'] == "MULTI_CHOICE"){
-				$multiChoiceQues[] = $data;
-			}else if($data['type'] == "SERIES_QUESTIONS"){
-				$seriesQues[] = $data;
+		$questionList = $examMetadata['questions'];
+		$questionArray = explode(",", $questionList);
+
+
+		// insert the empty examResult
+		$sql = "INSERT INTO exam_result(course_id, exam_id, member_id, correct_num, total_num, score) 
+							VALUES ('$course_id', '$exam_id', '$member_id', '0', '0', '0')";
+		$result = mysql_query($sql);
+		$exam_result_id = mysql_insert_id();
+
+		// query exercise from mongodb
+		foreach($questionArray as $question){
+			$mongoQuery = array('_id' => new MongoId($question));
+			$mon = $exercise -> find($mongoQuery);
+			// var_dump($mon);
+
+			foreach($mon as $data){
+				if($data['type'] == "TRUE_FALSE"){
+					$trueFalseQues[] = $data;
+				}else if($data['type'] == "SINGLE_CHOICE"){
+					$singleChoiceQues[] = $data;
+				}else if($data['type'] == "MULTI_CHOICE"){
+					$multiChoiceQues[] = $data;
+				}else if($data['type'] == "SERIES_QUESTIONS"){
+					$seriesQues[] = $data;
+				}
 			}
 		}
-	}
 
-	// calculate exam time in seconds
-	$timeArray = explode(":", $examMetadata["time"]);
-	$examTime = $timeArray[0] * 3600 + $timeArray[1] * 60 + $timeArray[2]; 
+		// calculate exam time in seconds
+		$timeArray = explode(":", $examMetadata["time"]);
+		$examTime = $timeArray[0] * 3600 + $timeArray[1] * 60 + $timeArray[2];
+	}else{
+		header("Location: examResult.php?result_id=".$examResultData['id']);
+	}
 ?>
 <!doctype html>
 <html>
@@ -167,6 +184,7 @@
 			<input type="hidden" id="exam_id" value="<?php echo $exam_id;?>">
 			<input type="hidden" id="member_id" value="<?php echo $member_id;?>">
 			<input type="hidden" id="examTime" value="<?php echo $examTime;?>">
+			<input type="hidden" id="exam_result_id" value="<?php echo $exam_result_id;?>">
 
 		</div>
 		<?php require("../js/js_com.php"); ?>

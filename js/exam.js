@@ -4,6 +4,8 @@
 
 $(document).ready(function(){
 
+	beforeunload();
+	
 	var examTime = $("#examTime").val();
 
 	var startTime = moment();
@@ -17,6 +19,7 @@ $(document).ready(function(){
 		var diffSec = endTime.diff(startTime, 'seconds');
 
 		if (diffSec == 0) {
+			$(window).unbind();
 			alert("考試時間結束!");
 			submitExam();
 		} else {
@@ -24,19 +27,29 @@ $(document).ready(function(){
 		}
 	}
 
-	// 待解決refresh 送出考卷等問題
-	// $(window).on("beforeunload",function(e){
-	// 	return "確定要離開考試？"
-	// });
-
-	// $(window).on("unload",function(e){
-	// 	e.preventDefault();
-	// 	submitExam();
-	// });
-
 	$(".submitExamBtn").on("click", function(e){
+		$(window).unbind();
+		var result = confirm("確定送出考卷？");
+		
+		if(result){
+			submitExam();
+		}else{
+			beforeunload();
+		}
+	});
+
+	// 待解決refresh 送出考卷等問題
+	function beforeunload(){
+		$(window).on("beforeunload",function(e){
+			return "若未送出考卷，將以零分計算，確定要離開考試？";
+		});
+	}
+
+	$(window).on("unload",function(e){
 		submitExam();
-	})
+		alert('hi');
+	});
+
 
 	function submitExam() {
 
@@ -78,6 +91,7 @@ $(document).ready(function(){
 		var course_id = $('#course_id').val();
 		var exam_id = $('#exam_id').val();
 		var member_id = $('#member_id').val();
+		var exam_result_id = $('#exam_result_id').val();
 		// submit exam
 	    var request = $.ajax({
 	      url: "../api/submit_student_exam.php",
@@ -87,7 +101,8 @@ $(document).ready(function(){
 	      			course_id : course_id,
 	      			exam_id : exam_id,
 	      			member_id : member_id,
-	      			answer : answerList
+	      			answer : answerList,
+	      			exam_result_id : exam_result_id
 	      		},
 	      dataType: "json"
     	})
@@ -95,11 +110,13 @@ $(document).ready(function(){
 
     		//TODO: get response result and and redirect to examFinish(where will display score and answer)
 			if(jData.status=='ok'){
-				window.location = "examResult.php?result_id=" + jData.result_id;
+				window.location = "examResult.php?result_id=" + exam_result_id;
 			}
 			else{
 				alert('繳交失敗!');
 			}
 		})
+
 	}
+
 });

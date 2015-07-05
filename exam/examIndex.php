@@ -5,48 +5,56 @@
 	include_once('../api/isLogin.php');
 
 	session_start();
+	$member_id = $_SESSION['member_id'];
 	$course_id = $_GET['course_id'];
-	//get the course Metadata from mysql
-	$sql = "SELECT * FROM course WHERE course_id='$course_id'";
-	$result = mysql_query($sql);
-	$courseMetadata = mysql_fetch_assoc($result);
-
-	$course_id = $_GET['course_id'];
-
-	//get the objectID of the question from mysql
 	$exam_id = $_GET['id'];
-	$sql = "SELECT * FROM exam WHERE id='$exam_id'";
-	$result = mysql_query($sql);
-	$examMetadata = mysql_fetch_assoc($result);
+	//check this exam if it's done;
+	$sql = "SELECT * FROM exam_result WHERE exam_id='$exam_id' AND member_id='$member_id'";
+	$exam_history = mysql_query($sql);
+	$examResultData = mysql_fetch_assoc($exam_history);
 
-	//all question will save in below array
-	$trueFalseQues = array();
-	$singleChoiceQues = array();
-	$multiChoiceQues = array();
-	$seriesQues = array();
+	if(!$examResultData){
+		//get the course Metadata from mysql
+		$sql = "SELECT * FROM course WHERE course_id='$course_id'";
+		$result = mysql_query($sql);
+		$courseMetadata = mysql_fetch_assoc($result);
+		//get the objectID of the question from mysql
+		
+		$sql = "SELECT * FROM exam WHERE id='$exam_id'";
+		$result = mysql_query($sql);
+		$examMetadata = mysql_fetch_assoc($result);
 
-	// query exercise from mongodb
-	foreach($questionArray as $question){
-		$mongoQuery = array('_id' => new MongoId($question));
-		$mon = $exercise -> find($mongoQuery);
-		// var_dump($mon);
+		//all question will save in below array
+		$trueFalseQues = array();
+		$singleChoiceQues = array();
+		$multiChoiceQues = array();
+		$seriesQues = array();
 
-		foreach($mon as $data){
-			if($data['type'] == "TRUE_FALSE"){
-				$trueFalseQues[] = $data;
-			}else if($data['type'] == "SINGLE_CHOICE"){
-				$singleChoiceQues[] = $data;
-			}else if($data['type'] == "MULTI_CHOICE"){
-				$multiChoiceQues[] = $data;
-			}else if($data['type'] == "SERIES_QUESTIONS"){
-				$seriesQues[] = $data;
+		// query exercise from mongodb
+		foreach($questionArray as $question){
+			$mongoQuery = array('_id' => new MongoId($question));
+			$mon = $exercise -> find($mongoQuery);
+			// var_dump($mon);
+
+			foreach($mon as $data){
+				if($data['type'] == "TRUE_FALSE"){
+					$trueFalseQues[] = $data;
+				}else if($data['type'] == "SINGLE_CHOICE"){
+					$singleChoiceQues[] = $data;
+				}else if($data['type'] == "MULTI_CHOICE"){
+					$multiChoiceQues[] = $data;
+				}else if($data['type'] == "SERIES_QUESTIONS"){
+					$seriesQues[] = $data;
+				}
 			}
 		}
-	}
 
-	if($examMetadata['type'] == 'test') $examType = '小考';
-	else if($examMetadata['type'] == 'mid') $examType = '期中考';
-	else if($examMetadata['type'] == 'final') $examType = '期末考';
+		if($examMetadata['type'] == 'test') $examType = '小考';
+		else if($examMetadata['type'] == 'mid') $examType = '期中考';
+		else if($examMetadata['type'] == 'final') $examType = '期末考';
+	}else {
+		header("Location: examResult.php?result_id=".$examResultData['id']);
+	}
 ?>
 <!doctype html>
 <html>
