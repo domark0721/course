@@ -159,8 +159,6 @@
 	display: inline-block;
 }
 
-
-
 /* --------- right-container Start------------------------------- */
 .search_wrap {
 	margin: 1.5em 0 0 0;
@@ -419,16 +417,3 @@
 
 /* --------- right-container End ------------------------------- */
 
-
-.overlay_fix {
-	width: auto;
-	height: auto;
-	z-index: 100;
-	position: fixed;
-	display: block;
-	bottom: 0;
-	right: 0;
-	top: 0;
-	left: 0;
-	background: rgba(0, 0, 0, 0.51);
-}

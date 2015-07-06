@@ -19,10 +19,6 @@ $(document).ready(function(){
 	});
 
 
-	$('.newQuestionBtn').on('click', function(){
-		$('.overlay').addClass('overlay_fix').hide().fadeIn();
-	});
-
 	$('#save_exam').on('click', function(){
 		var leftQuestion_num = $('.left-container .questionItem').length;
 		if(leftQuestion_num == 0){

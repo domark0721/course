@@ -6,8 +6,7 @@
 
 	session_start();
 	$_SESSION['url'] = $_SERVER['REQUEST_URI'];
-
-	
+	$author_id = $_SESSION['member_id'];
 
 	// get POST data from addExam page (exam name....)
 	$course_id = $_POST['course_id'];
@@ -102,14 +101,17 @@
 	<head>
 		<?php require("exam_meta.php") ?>
 		<!-- <link type="text/css" rel="stylesheet" href="../css/exercise.css"> -->
+		<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css">
+		<link href="../css/jquery.tagit.css" rel="stylesheet" type="text/css">
 		<link type="text/css" rel="stylesheet" href="../css/editExam.css">
+		<link type="text/css" rel="stylesheet" href="../css/editExam_add.css">
 		<title>考卷編輯系統 - NUCourse</title>
 	</head>
 	<body>
 		<div class="totalWrapper">
 			<?php require("header_editExam.php"); ?>
 			<div class="exam_status_wrap">
-				<span class="newQuestionBtn"><i class="fa fa-plus"></i> &nbsp;&nbsp;新增題目</span>
+				<span class="newQuestionBtn"><i class="fa fa-plus"></i>&nbsp;&nbsp;新增題目</span>
 				<div class="examInfo">
 				<a>平均難度：<span id="exam_level">0 / 5</span></a>
 				<a>總時間：<span id="exam_time">0分0秒</span></a><br>
@@ -620,20 +622,244 @@
 				<input type="hidden" id="end_time" value="<?php echo $end_time;?>"/>
 				<input type="hidden" id="explanation" value="<?php echo $explanation;?>"/>
 			</div>
-			<div class="addExerciseBox_wrap">
+			<div class="addExerciseBox_wrap" style="display:;">
+				<div class="nav-wrap">
+						<div class="add_userControl">
+							<ul class="add_tab-list">
+								<li><a href="#add_true_false">是非題</a></li>
+								<li><a href="#add_single_choice">單選題</a></li>
+								<li><a href="#add_multi_choice">多選題</a></li>
+								<li><a href="#add_series_question">題組</a></li>
+							</ul>
+						</div>
+					</div>
+
+				<div class="addExercise_wrap">
+					<!-- 是非題 -->
+					<form id="add_true_false" class="add_tab-content">
+						<div class="question_content_wrap">
+							<label for="question">題目</label>
+								<textarea class="question_textarea" name="question"></textarea>
+							<label for="TF_answer">本題解答</label>
+							<div class="opt">
+								<input id="true" value="true" type="radio" name="answer">
+								<label for="true" name="TF_answer">Ｏ</label>
+								<input id="false" value="false" type="radio" name="answer">
+								<label for="false" name="TF_answer">Ｘ</label>
+							</div>
+							<div class="tags_wrap">
+								<label for="tags">標籤</label>
+								<input type="text" class="tagsInput" name="tags" value="">
+							</div>
+							<label for="level">難易度</label>
+							<div class="opt">
+								<?php for($i=1; $i<=5; $i++){ ?>								
+									<input id="truefalse_level<?php echo $i;?>" value="<?php echo $i;?>" type="radio" name="level">
+										<label for="truefalse_level<?php echo $i;?>" name="level"><?php for($j=1; $j<=$i; $j++){?>★<?php }?></label>
+								<?php } ?>
+							</div>
+							<label for="time">答題時間</label>
+								<select name="min" class="time_select min">
+									<?php for($i=0; $i<=30; $i++){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
+								</select>
+								<a class="time_char">分</a>
+								<select name="sec" class="time_select sec">
+									<?php for($i=0; $i<=50; $i+=10){ ?><option value="<?php echo $i;?>"><?php echo $i;?></option> <?php }?>
+								</select>
+								<a class="time_char">秒</a>
+							<label for="is_test">選為隨堂練習</label>
+							<div class="opt">
+								<input id="is_test_false" target="trueFalse" value="false" type="radio" name="is_test" checked>
+								<label for="is_test_false" name="is_test">否</label>
+								<input id="is_test_true" target="trueFalse" value="true" type="radio" name="is_test">
+								<label for="is_test_true" name="is_test">是</label>
+							</div>
+							
+							<div id="section_trueFalse" class="chapter_select">
+								<label for="section">適用章節</label>
+								<select class="testSection_select" name="section">
+								<?php
+								foreach($contentData['chapters'] as $i => $chapter){
+									$courseName = sprintf("CH%d: %s", $i+1, $chapter['name'] ); ?>
+									<optgroup label='<?php echo $courseName; ?>'>
+								<?php foreach($chapter['sections'] as $j => $section){
+										$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']); ?>
+										<option value="<?php echo $section['uid'];?>"><?php echo $sectionName;?></option>
+									<?php } ?>
+									</optgroup>
+									
+								<?php } ?>	
+								</select>
+							</div>
+						</div>
+						<div class="resultBtn_wrap">
+							<a class="resultBtn save tfSave">新增此題</a>
+							<a class="resultBtn closeBox">關 閉</a>
+						</div>
+					</form>
+					<!-- 單選題 -->
+					<form id="add_single_choice" class="add_tab-content">
+						<div class="question_content_wrap">
+							<label for="question">題目</label>
+								<textarea class="question_textarea" name="question"></textarea>
+							<label for="single_opt_content">選項內容</label>
+							<div class="opt_content">
+								<?php for($i=1; $i<=4; $i++){ ?>
+									<div><span>(<?php echo $i;?>)</span><textarea name="single_opt_content_<?php echo $i;?>"></textarea></div>
+								<?php }?>
+							</div>
+							<label for="single_answer">本題解答</label>
+							<div class="opt">
+								<?php for($i=1; $i<=4; $i++){ ?>
+								<input id="single_opt<?php echo $i;?>" value="<?php echo $i;?>" type="radio" name="answer">
+								<label for="single_opt<?php echo $i;?>" name="single_answer">(<?php echo $i;?>)</label>
+								<?php }?>
+							</div>
+							<label for="tags">標籤</label>
+								<input class="tagsInput" name="tags">
+							<label for="level">難易度</label>
+							<div class="opt">
+								<?php for($i=1; $i<=5; $i++){ ?>								
+									<input id="single_level<?php echo $i;?>" value="<?php echo $i;?>" type="radio" name="level">
+										<label for="single_level<?php echo $i;?>" name="level"><?php for($j=1; $j<=$i; $j++){?>★<?php }?></label>
+								<?php } ?>							
+							</div>
+							<label for="time">答題時間</label>
+								<select name="min" class="time_select">
+									<?php for($i=0; $i<=30; $i++){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
+								</select>
+								<a class="time_char">分</a>
+								<select name="sec" class="time_select">
+									<?php for($i=0; $i<=50; $i+=10){ ?><option value="<?php echo $i;?>"><?php echo $i;?></option> <?php }?>
+								</select>
+								<a class="time_char">秒</a>
+							<label for="is_test">選為隨堂練習</label>
+							<div class="opt">
+								<input id="is_test_false_single" target="single" value="false" type="radio" name="is_test" checked>
+								<label for="is_test_false_single" name="is_test">否</label>
+								<input id="is_test_true_single" target="single" value="true" type="radio" name="is_test">
+								<label for="is_test_true_single" name="is_test">是</label>
+							</div>
+							
+							<div id="section_single"  class="chapter_select">
+								<label for="section">適用章節</label>
+								<select class="testSection_select" name="section">
+								<?php
+								foreach($contentData['chapters'] as $i => $chapter){
+									$courseName = sprintf("CH%d: %s", $i+1, $chapter['name'] ); ?>
+									<optgroup label='<?php echo $courseName; ?>'>
+								<?php foreach($chapter['sections'] as $j => $section){
+										$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']); ?>
+										<option value="<?php echo $section['uid'];?>"><?php echo $sectionName;?></option>
+									<?php } ?>
+									</optgroup>
+								<?php } ?>	
+								</select>
+							</div>
+							
+						</div>
+						<div class="resultBtn_wrap">
+							<a class="resultBtn save">新增此題</a>
+							<a class="resultBtn closeBox">關 閉</a>
+						</div>
+					</form>
+					<!-- 多選題 -->
+					<form id="add_multi_choice" class="add_tab-content">
+						<div class="question_content_wrap">
+							<label for="question">題目</label>
+								<textarea class="question_textarea" name="question"></textarea>
+							<label for="single_opt_content">選項內容</label>
+							<div class="opt_content">
+								<?php for($i=1; $i<=5; $i++){ ?>
+									<div><span>(<?php echo $i;?>)</span><textarea name="multi_opt_content_<?php echo $i;?>"></textarea></div>
+								<?php } ?>
+							</div>
+							<label for="single_answer">本題解答</label>
+							<div class="opt">
+								<?php for($i=1; $i<=5; $i++){ ?>
+									<input id="multi_opt<?php echo $i;?>" value="<?php echo $i;?>" type="checkbox" name="answer[]">
+									<label for="multi_opt<?php echo $i;?>" name="single_answer">(<?php echo $i;?>)</label>
+								<?php } ?>
+							</div>
+							<label for="tags">標籤</label>
+								<input class="tagsInput" name="tags">
+							<label for="level">難易度</label>
+							<div class="opt">
+								<?php for($i=1; $i<=5; $i++){ ?>								
+									<input id="multi_level<?php echo $i;?>" value="<?php echo $i;?>" type="radio" name="level">
+										<label for="multi_level<?php echo $i;?>" name="level"><?php for($j=1; $j<=$i; $j++){?>★<?php }?></label>
+								<?php } ?>
+							</div>
+							<label for="time">答題時間</label>
+								<select name="min" class="time_select">
+									<?php for($i=0; $i<=30; $i++){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
+								</select>
+								<a class="time_char">分</a>
+								<select name="sec" class="time_select">
+									<?php for($i=0; $i<=50; $i+=10){ ?><option value="<?php echo $i;?>"><?php echo $i;?></option> <?php }?>
+								</select>
+								<a class="time_char">秒</a>
+							<label for="is_test">選為隨堂練習</label>
+							<div class="opt">
+								<input id="is_test_false_multi" target="multi" value="false" type="radio" name="is_test" checked>
+								<label for="is_test_false_multi" name="is_test">否</label>
+								<input id="is_test_true_multi" target="multi" value="true" type="radio" name="is_test">
+								<label for="is_test_true_multi" name="is_test">是</label>
+							</div>
+							<div id="section_multi"  class="chapter_select">
+								<label for="section">適用章節</label>
+								<select class="testSection_select" name="section">
+								<?php
+								foreach($contentData['chapters'] as $i => $chapter){
+									$courseName = sprintf("CH%d: %s", $i+1, $chapter['name'] ); ?>
+									<optgroup label='<?php echo $courseName; ?>'>
+								<?php foreach($chapter['sections'] as $j => $section){
+										$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']); ?>
+										<option value="<?php echo $section['uid'];?>"><?php echo $sectionName;?></option>
+									<?php } ?>
+									</optgroup>
+								<?php } ?>	
+								</select>
+							</div>
+							
+						</div>
+						<div class="resultBtn_wrap">
+							<a class="resultBtn save">新增此題</a>
+							<a class="resultBtn closeBox">關 閉</a>
+						</div>
+					</form>
+					<!-- 題組 -->
+					<form id="add_series_question" class="add_tab-content">
 				
+						<div class="resultBtn_wrap">
+							<a class="resultBtn save">新增此題</a>
+							<a class="resultBtn closeBox">關 閉</a>
+						</div>
+					</form>
+					<input id="author_id" type="hidden" name="author_id" value="<?php echo $author_id;?>">
+				</div>
+			</div>
+			<div class="exerciseTemp" style="display:none;">
 			</div>
 			<div class="overlay"> </div>
 		</div>
-
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>		
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/tag-it.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		        $(".tagsInput").tagit(); 
+		</script>
 		<?php require("../js/js_com.php"); ?>
+		<script src="../js/lib/moment.min.js"></script>
 		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 		<script>
 			window._questionList = <?php echo json_encode($questionList); ?>;
 		</script>
-		<script type="text/javascript" src="../js/addExercise.js"></script>
+		<script type="text/javascript" src="../js/editExam_switch.js"></script>
 		<script type="text/javascript" src="../js/jquery.clearsearch.js"></script>
 		<script type="text/javascript" src="../js/editExam.js"></script>
+		<script type="text/javascript" src="../js/editExam_add.js"></script>
 		<script>
 			 
 		    // $( ".questionItem" ).draggable({
