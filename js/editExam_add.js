@@ -12,8 +12,8 @@ $(document).ready(function(){
 
 	$('.resultBtn.save.tfSave').on('click', function(){
 		
-		$('.spinner_wrap.tfSave').fadeIn();
-		$('.resultBtn_wrap.tfSave').hide();
+		$('.spinner_wrap').fadeIn();
+		$('.addExerciseTitle, .add_userControl, .addExercise_wrap').hide();
 		var course_id = $('#course_id').val();
 		var author_id = $('#author_id').val();
 
@@ -63,8 +63,8 @@ $(document).ready(function(){
 			        																		$(this).removeClass('greenStyle');
 			        																		$(this).dequeue();
 			       																 });
-				$('.spinner_wrap.tfSave').show(0).delay(1500).hide(0);
-				$('.resultBtn_wrap.tfSave').delay(1500).fadeIn();
+				$('.spinner_wrap').show(0).delay(1100).hide(0);
+				$('.addExerciseTitle, .add_userControl, .addExercise_wrap').delay(1500).fadeIn();
 				$('#true_false').prepend($(jData.questionHtml).hide().fadeIn());
 				deleteQuestion();
 				// clear all field
@@ -78,16 +78,16 @@ $(document).ready(function(){
 			        																		$(this).removeClass('redStyle');
 			        																		$(this).dequeue();
 			       																 });
-				$('.spinner_wrap').show(0).delay(1200).hide(0);
-				$('.resultBtn_wrap').delay(1500).fadeIn();
+				$('.spinner_wrap').show(0).delay(1100).hide(0);
+				$('.addExerciseTitle, .add_userControl, .addExercise_wrap').delay(1500).fadeIn();
 			}
 		})
 	});
 
 	$('.resultBtn.save.single').on('click', function(){
 		
-		$('.spinner_wrap.single').fadeIn();
-		$('.resultBtn_wrap.single').hide();
+		$('.spinner_wrap').fadeIn();
+		$('.addExerciseTitle, .add_userControl, .addExercise_wrap').hide();
 		var course_id = $('#course_id').val();
 		var author_id = $('#author_id').val();
 
@@ -145,8 +145,8 @@ $(document).ready(function(){
 			        																		$(this).removeClass('greenStyle');
 			        																		$(this).dequeue();
 			       																 });
-				$('.spinner_wrap.single').show(0).delay(1200).hide(0);
-				$('.resultBtn_wrap.single').delay(1500).fadeIn();
+				$('.spinner_wrap').show(0).delay(1100).hide(0);
+				$('.addExerciseTitle, .add_userControl, .addExercise_wrap').delay(1500).fadeIn();
 				$('#single_choice').prepend($(jData.questionHtml).hide().fadeIn());
 				deleteQuestion();
 				// clear all field
@@ -160,16 +160,16 @@ $(document).ready(function(){
 			        																		$(this).removeClass('redStyle');
 			        																		$(this).dequeue();
 			       																 });
-				$('.spinner_wrap.single').show(0).delay(1500).hide(0);
-				$('.resultBtn_wrap.single').delay(1500).fadeIn();
+				$('.spinner_wrap').show(0).delay(1100).hide(0);
+				$('.addExerciseTitle, .add_userControl, .addExercise_wrap').delay(1500).fadeIn();
 			}
 		})
 	});
 
 	$('.resultBtn.save.multi').on('click', function(){
 		
-		$('.spinner_wrap.multi').fadeIn();
-		$('.resultBtn_wrap.multi').hide();
+		$('.spinner_wrap').fadeIn();
+		$('.addExerciseTitle, .add_userControl, .addExercise_wrap').hide();
 		var course_id = $('#course_id').val();
 		var author_id = $('#author_id').val();
 
@@ -231,8 +231,8 @@ $(document).ready(function(){
 			        																		$(this).removeClass('greenStyle');
 			        																		$(this).dequeue();
 			       																 });
-				$('.spinner_wrap.multi').show(0).delay(1200).hide(0);
-				$('.resultBtn_wrap.multi').delay(1500).fadeIn();
+				$('.spinner_wrap').show(0).delay(1100).hide(0);
+				$('.addExerciseTitle, .add_userControl, .addExercise_wrap').delay(1500).fadeIn();
 				console.log(jData);
 				console.log(jData.questionHtml);
 				$('#multi_choice').prepend($(jData.questionHtml).hide().fadeIn());
@@ -248,8 +248,8 @@ $(document).ready(function(){
 			        																		$(this).removeClass('redStyle');
 			        																		$(this).dequeue();
 			       																 });
-				$('.spinner_wrap.multi').show(0).delay(1500).hide(0);
-				$('.resultBtn_wrap.multi').delay(1500).fadeIn();
+				$('.spinner_wrap').show(0).delay(1100).hide(0);
+				$('.addExerciseTitle, .add_userControl, .addExercise_wrap').delay(1500).fadeIn();
 			}
 		})
 	});

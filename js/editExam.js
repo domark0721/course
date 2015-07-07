@@ -14,10 +14,69 @@ function deleteQuestion(){
 			}else if(type == "SERIES_QUESTIONS"){
 				$("#series_question").prepend($questionItem.hide().fadeIn());
 			}
-			// FIX ME: other types
+			calculate();
 		});
 	}	
+
+function calculate(){
+	var trueFalse_num = $('.left-container .true_false_wrap').length;
+	var single_num = $('.left-container .single_choice_wrap').length;
+	var multi_num = $('.left-container .multi_choice_wrap').length;
+	var series_num = $('.left-container .series_question_wrap').length;
+	var total_num = trueFalse_num + single_num + multi_num + series_num;
+	$('#trueFalse_num').html(trueFalse_num);
+	$('#single_num').html(single_num);
+	$('#multi_num').html(multi_num);
+	$('#series_num').html(series_num);
+	$('#total_num').html(total_num);
+
+	/* ---- time & level transform ----*/
+	var total_level = 0;
+	var total_min = 0;
+	var total_sec = 0;
+	var total_hour = 0;
+	$('.left-container .questionItem').each(function(){
+			var level_tmp = $(this).find('.level').data('level');
+				total_level +=  parseInt(level_tmp);
+			var time_tmp =	$(this).find('.time').data('time');
+				time_tmpArr = time_tmp.split(':');
+			var min_tmp = parseInt(time_tmpArr[0]);
+			var sec_tmp = parseInt(time_tmpArr[1]);
+				total_min += min_tmp;
+				total_sec += sec_tmp;
+				// console.log(total_min);
+	});
+	if(total_sec >=60) {
+		toMin = Math.floor(total_sec/60);
+		total_sec = total_sec%60;
+		total_min += toMin;
+	}
+	$('#exam_time').html(total_min+'分'+total_sec+'秒');
 	
+	if(total_min >= 60){
+		var total_min_origin = total_min;
+		total_hour = Math.floor(total_min/60);
+		total_min = total_min%60;
+		if(total_min<10){
+			total_min = '0' + total_min.toString();
+		}
+		$('#exam_time').html(total_hour+'時'+total_min+'分'+total_sec + '秒 ( ' +total_min_origin+'分'+total_sec+'秒' + ' ) ');
+	}
+	if(total_hour>0){
+		if(total_sec>0)$('#time').val(total_hour +':' +(parseInt(total_min)+1)+':00');
+		else $('#time').val('00:'+total_min+':00');
+	}else{
+		if(total_sec>0)$('#time').val('00:' + (total_min+1)+':00');
+		else $('#time').val('00:'+total_min+':00');
+	}
+
+	var level = Math.round(total_level / total_num*10)/10;
+	if(isNaN(level)){
+		level = 0;				}
+	$('#exam_level').html(level+" / 5");
+	$('#level').val(Math.round(level));
+	/* ---- time & level transform End ----*/	
+}
 $(document).ready(function(){
 	
 	deleteQuestion();
@@ -25,7 +84,10 @@ $(document).ready(function(){
 	$('#save_exam').on('click', function(){
 		var leftQuestion_num = $('.left-container .questionItem').length;
 		if(leftQuestion_num == 0){
-			alert('空的考卷無法給學生考試哦！')
+			$('.statusSilde').html('空的考卷無法考試哦!').hide().fadeIn().addClass('redStyle').delay(3000).slideUp(500).queue(function(){
+			        																		$(this).removeClass('redStyle');
+			        																		$(this).dequeue();
+			       																 });
 		}else saveExam();
 	});
 
@@ -98,63 +160,7 @@ $(document).ready(function(){
 			revertDuration: 200,
 			helper: "clone",
 			stop: function(event, ui){
-				var trueFalse_num = $('.left-container .true_false_wrap').length;
-				var single_num = $('.left-container .single_choice_wrap').length;
-				var multi_num = $('.left-container .multi_choice_wrap').length;
-				var series_num = $('.left-container .series_question_wrap').length;
-				var total_num = trueFalse_num + single_num + multi_num + series_num;
-				$('#trueFalse_num').html(trueFalse_num);
-				$('#single_num').html(single_num);
-				$('#multi_num').html(multi_num);
-				$('#series_num').html(series_num);
-				$('#total_num').html(total_num);
-
-				/* ---- time & level transform ----*/
-				var total_level = 0;
-				var total_min = 0;
-				var total_sec = 0;
-				var total_hour = 0;
-				$('.left-container .questionItem').each(function(){
-						var level_tmp = $(this).find('.level').data('level');
-							total_level +=  parseInt(level_tmp);
-						var time_tmp =	$(this).find('.time').data('time');
-							time_tmpArr = time_tmp.split(':');
-						var min_tmp = parseInt(time_tmpArr[0]);
-						var sec_tmp = parseInt(time_tmpArr[1]);
-							total_min += min_tmp;
-							total_sec += sec_tmp;
-							// console.log(total_min);
-				});
-				if(total_sec >=60) {
-					toMin = Math.floor(total_sec/60);
-					total_sec = total_sec%60;
-					total_min += toMin;
-				}
-				$('#exam_time').html(total_min+'分'+total_sec+'秒');
-				
-				if(total_min >= 60){
-					var total_min_origin = total_min;
-					total_hour = Math.floor(total_min/60);
-					total_min = total_min%60;
-					if(total_min<10){
-						total_min = '0' + total_min.toString();
-					}
-					$('#exam_time').html(total_hour+'時'+total_min+'分'+total_sec + '秒 ( ' +total_min_origin+'分'+total_sec+'秒' + ' ) ');
-				}
-				if(total_hour>0){
-					if(total_sec>0)$('#time').val(total_hour +':' +(parseInt(total_min)+1)+':00');
-					else $('#time').val('00:'+total_min+':00');
-				}else{
-					if(total_sec>0)$('#time').val('00:' + (total_min+1)+':00');
-					else $('#time').val('00:'+total_min+':00');
-				}
-
-				var level = Math.round(total_level / total_num*10)/10;
-				if(isNaN(level)){
-					level = 0;				}
-				$('#exam_level').html(level+" / 5");
-				$('#level').val(Math.round(level));
-				/* ---- time & level transform End ----*/
+				calculate();
 			}
 		})
 		// .disableSelection();
@@ -162,7 +168,7 @@ $(document).ready(function(){
 
 	//get mongo_id of every question 
 	function saveExam(){
-
+		$('.overlay').addClass('overlay_fix').hide().fadeIn();
 		$("#save_exam").prop('disabled', false);
 		var course_id = $('#course_id').val();
 		var course_name = $('#course_name').val();
@@ -203,10 +209,20 @@ $(document).ready(function(){
     	})
     	request.done(function(jData){
 			if(jData.status=='ok'){
-				alert('考卷已建立完成！');
+				$('.statusSildeSave').html('考卷已建立完成!將於三秒後跳轉...').hide().fadeIn().addClass('greenStyle').delay(3000).slideUp(500).queue(function(){
+			        																		$(this).removeClass('greenStyle');
+			        																		$(this).dequeue();
+				setTimeout(function() {
+				  window.location.replace("examList.php?course_id="+ course_id);
+				}, 0);			       																 
+			});
+
 			}
 			else{
-				alert('考卷儲存失敗！');
+				$('.statusSildeSave').html('考卷儲存失敗!').hide().fadeIn().addClass('redStyle').delay(3000).slideUp(500).queue(function(){
+			        																		$(this).removeClass('redStyle');
+			        																		$(this).dequeue();
+			       																 });
 			}
 		})
 	}
