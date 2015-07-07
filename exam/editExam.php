@@ -575,7 +575,7 @@
 				<input type="hidden" id="end_time" value="<?php echo $end_time;?>"/>
 				<input type="hidden" id="explanation" value="<?php echo $explanation;?>"/>
 			</div>
-			<div class="addExerciseBox_wrap" style="display:;">
+			<div class="addExerciseBox_wrap" style="display:none;">
 				<div class="addExerciseTitle">新增題目</div>
 				<div class="add_userControl">
 					<ul class="add_tab-list">
