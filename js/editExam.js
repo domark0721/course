@@ -1,23 +1,26 @@
+function deleteQuestion(){
+		$('.deleteQuestionBtn').on('click', function() {
+			$questionItem = $(this).parent('.questionItem');
+
+			var type = $questionItem.data('exercise-type');
+
+			if (type == "TRUE_FALSE") {
+				// append back to true false list
+				$("#true_false").prepend($questionItem.hide().fadeIn());
+			}else if(type == "SINGLE_CHOICE"){
+				$("#single_choice").prepend($questionItem.hide().fadeIn());
+			}else if(type == "MULTI_CHOICE"){
+				$("#multi_choice").prepend($questionItem.hide().fadeIn());
+			}else if(type == "SERIES_QUESTIONS"){
+				$("#series_question").prepend($questionItem.hide().fadeIn());
+			}
+			// FIX ME: other types
+		});
+	}	
+	
 $(document).ready(function(){
 	
-	$('.deleteQuestionBtn').on('click', function() {
-		$questionItem = $(this).parent('.questionItem');
-
-		var type = $questionItem.data('exercise-type');
-
-		if (type == "TRUE_FALSE") {
-			// append back to true false list
-			$("#true_false").prepend($questionItem.hide().fadeIn());
-		}else if(type == "SINGLE_CHOICE"){
-			$("#single_choice").prepend($questionItem.hide().fadeIn());
-		}else if(type == "MULTI_CHOICE"){
-			$("#multi_choice").prepend($questionItem.hide().fadeIn());
-		}else if(type == "SERIES_QUESTIONS"){
-			$("#series_question").prepend($questionItem.hide().fadeIn());
-		}
-		// FIX ME: other types
-	});
-
+	deleteQuestion();
 
 	$('#save_exam').on('click', function(){
 		var leftQuestion_num = $('.left-container .questionItem').length;

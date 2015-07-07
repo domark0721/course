@@ -45,7 +45,7 @@
 
 	// get all questions of the course from mongo
 	$mongoQuery = array('course_id' => (int)$course_id);
-	$mon = $exercise -> find($mongoQuery);
+	$mon = $exercise -> find($mongoQuery) -> sort(array('create_date' => -1));
 
 	// group questions by type
 	$trueFalseQues = array();
@@ -95,6 +95,18 @@
 		break;
 	}
 	$contentData = $courseData['content'];
+	
+	//all sectionName
+	foreach($contentData['chapters'] as $i => $chapter){
+		foreach($chapter['sections'] as $j => $section){
+			$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
+			$courseURL = sprintf("../courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
+																			,$courseData['course_id'], $i, $j);
+			$sectionNameArray[$section['uid']] = $sectionName;						
+			$courseURLArray[$section['uid']] = $courseURL;
+		}
+	}
+
 ?>
 <!doctype html>
 <html>
@@ -333,9 +345,9 @@
 							<div class="nav-wrap">
 									<div class="userControl">
 										<ul class="tab-list">
+											<li><a href="#multi_choice">多選題</a></li>
 											<li><a href="#true_false">是非題</a></li>
 											<li><a href="#single_choice">單選題</a></li>
-											<li><a href="#multi_choice">多選題</a></li>
 											<li><a href="#series_question">題組</a></li>
 										</ul>
 									</div>
@@ -345,21 +357,6 @@
 							<?php if(!empty($questionList['trueFalseQues'])){
 									foreach($questionList['trueFalseQues'] as $i => $question){
 										$trueFalseQuesBody = $question['body'];
-										// for sectionName
-										$sectionName = "";
-										if(!($question['is_test'] == false)){
-											foreach($contentData['chapters'] as $i => $chapter){
-												foreach($chapter['sections'] as $j => $section){
-													$sectionName_temp = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
-													$courseURL = sprintf("../courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
-																			,$courseData['course_id'], $i, $j);
-														if($section['uid'] == $question['test_section']){
-															$sectionName = $sectionName_temp;
-															break;
-														}
-													}
-												}
-											}
 										?>
 									<li class="true_false_wrap questionItem" data-exercise-id="<?php echo $question['_id'];?>" 
 																			 data-exercise-type="TRUE_FALSE" 
@@ -391,7 +388,7 @@
 													<a class="is_test">適用章節： <span>未指定</span></a>
 												<?php } else{ ?>
 													<a class="is_test">適用章節：</a>
-													<a class="is_test_href" target="_blank" href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a>
+													<a class="is_test_href" target="_blank" href="<?php echo $courseURLArray[$question['test_section']];?>"><?php echo $sectionNameArray[$question['test_section']];?></a>
 												<?php 	}
 												 ?>
 											</div>
@@ -412,21 +409,6 @@
 									foreach($questionList['singleChoiceQues'] as $i => $question){
 										$singleChoiceQuesBody = $question['body'];
 										$singleChoiceQuesOpt = $singleChoiceQuesBody['options'];
-										// for sectionName
-										$sectionName = "";
-										if(!($question['is_test'] == false)){
-											foreach($contentData['chapters'] as $i => $chapter){
-												foreach($chapter['sections'] as $j => $section){
-													$sectionName_temp = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
-													$courseURL = sprintf("courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
-																			,$courseData['course_id'], $i, $j);
-													if($section['uid'] == $question['test_section']){
-														$sectionName = $sectionName_temp;
-														break;
-													}
-												}
-											}
-										}
 									?>
 									<li class="single_choice_wrap questionItem" data-exercise-id="<?php echo $question['_id'];?>" 
 																				data-exercise-type="SINGLE_CHOICE"
@@ -459,7 +441,7 @@
 														<a class="is_test">適用章節： <span>未指定</span></a>
 												<?php } else{ ?>
 														<a class="is_test">適用章節：</a>
-														<a class="is_test_href" target="_blank" href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a>
+														<a class="is_test_href" target="_blank" href="<?php echo $courseURLArray[$question['test_section']];?>"><?php echo $sectionNameArray[$question['test_section']];?></a>
 												<?php 	} 
 												 ?>
 											</div>
@@ -480,21 +462,6 @@
 									foreach($questionList['multiChoiceQues'] as $i => $question){
 										$multiChoiceQuesBody = $question['body'];
 										$multiChoiceQuesOpt = $multiChoiceQuesBody['options'];
-										// for sectionName
-										$sectionName = "";
-										if(!($question['is_test'] == false)){
-											foreach($contentData['chapters'] as $i => $chapter){
-												foreach($chapter['sections'] as $j => $section){
-													$sectionName_temp = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
-													$courseURL = sprintf("courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
-																			,$courseData['course_id'], $i, $j);
-													if($section['uid'] == $question['test_section']){
-														$sectionName = $sectionName_temp;
-														break;
-													}
-												}
-											}
-										}
 									?>
 									<li class="multi_choice_wrap questionItem" data-exercise-id="<?php echo $question['_id'];?>" 
 																			   data-exercise-type="MULTI_CHOICE"
@@ -527,7 +494,7 @@
 													<a class="is_test">適用章節： <span>未指定</span></a>
 												<?php } else{ ?>
 													<a class="is_test">適用章節：</a>
-													<a class="is_test_href" target="_blank" href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a>
+													<a class="is_test_href" target="_blank" href="<?php echo $courseURLArray[$question['test_section']];?>"><?php echo $sectionNameArray[$question['test_section']];?></a>
 												<?php }?>
 											</div>
 										</div>
@@ -546,21 +513,7 @@
 							<?php if(!empty($questionList['seriesQues'])){
 									foreach($questionList['seriesQues'] as $i => $questionHeader){
 										$seriesQuesBody = $questionHeader['body'];
-										// for sectionName
-										if(!($questionHeader['is_test'] == false)){ 
-											foreach($contentData['chapters'] as $i => $chapter){
-												foreach($chapter['sections'] as $j => $section){
-													$sectionName_temp = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
-													$courseURL = sprintf("courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
-																			,$courseData['course_id'], $i, $j);
-													if($section['uid'] == $question['test_section']){
-														$sectionName = $sectionName_temp;
-														break;
-													}
-												}
-											}
-										}
-									?>
+							?>
 									<li class="series_question_wrap questionItem" data-exercise-id="<?php echo $questionHeader['_id'];?>" 
 																			      data-exercise-type="SERIES_QUESTIONS"
 																			      data-section-uid="<?php echo $questionHeader['test_section'];?>" 
@@ -593,7 +546,7 @@
 													<a class="is_test">適用章節： <span>未指定</span></a>
 												<?php } else{ ?>
 													<a class="is_test">適用章節：</a>
-													<a class="is_test_href" target="_blank" href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a>
+													<a class="is_test_href" target="_blank" href="<?php echo $courseURLArray[$question['test_section']];?>"><?php echo $sectionNameArray[$question['test_section']];?></a>
 												<?php } ?>
 											</div>
 										</div>
@@ -623,16 +576,15 @@
 				<input type="hidden" id="explanation" value="<?php echo $explanation;?>"/>
 			</div>
 			<div class="addExerciseBox_wrap" style="display:;">
-				<div class="nav-wrap">
-						<div class="add_userControl">
-							<ul class="add_tab-list">
-								<li><a href="#add_true_false">是非題</a></li>
-								<li><a href="#add_single_choice">單選題</a></li>
-								<li><a href="#add_multi_choice">多選題</a></li>
-								<li><a href="#add_series_question">題組</a></li>
-							</ul>
-						</div>
-					</div>
+				<div class="addExerciseTitle">新增題目</div>
+				<div class="add_userControl">
+					<ul class="add_tab-list">
+						<li><a href="#add_multi_choice">多選題</a></li>
+						<li><a href="#add_true_false">是非題</a></li>
+						<li><a href="#add_single_choice">單選題</a></li>
+						<li><a href="#add_series_question">題組</a></li>
+					</ul>
+				</div>
 
 				<div class="addExercise_wrap">
 					<!-- 是非題 -->
@@ -692,9 +644,15 @@
 								</select>
 							</div>
 						</div>
-						<div class="resultBtn_wrap">
+						<div class="resultBtn_wrap tfSave">
 							<a class="resultBtn save tfSave">新增此題</a>
 							<a class="resultBtn closeBox">關 閉</a>
+						</div>
+						<div class="spinner_wrap tfSave" style="display:none;">
+							<div class="spinner" >
+							  <div class="cube1"></div>
+							  <div class="cube2"></div>
+							</div>
 						</div>
 					</form>
 					<!-- 單選題 -->
@@ -725,11 +683,11 @@
 								<?php } ?>							
 							</div>
 							<label for="time">答題時間</label>
-								<select name="min" class="time_select">
+								<select name="min" class="time_select min">
 									<?php for($i=0; $i<=30; $i++){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
 								</select>
 								<a class="time_char">分</a>
-								<select name="sec" class="time_select">
+								<select name="sec" class="time_select sec">
 									<?php for($i=0; $i<=50; $i+=10){ ?><option value="<?php echo $i;?>"><?php echo $i;?></option> <?php }?>
 								</select>
 								<a class="time_char">秒</a>
@@ -758,9 +716,15 @@
 							</div>
 							
 						</div>
-						<div class="resultBtn_wrap">
-							<a class="resultBtn save">新增此題</a>
+						<div class="resultBtn_wrap single">
+							<a class="resultBtn save single">新增此題</a>
 							<a class="resultBtn closeBox">關 閉</a>
+						</div>
+						<div class="spinner_wrap single" style="display:none;">
+							<div class="spinner" >
+							  <div class="cube1"></div>
+							  <div class="cube2"></div>
+							</div>
 						</div>
 					</form>
 					<!-- 多選題 -->
@@ -791,11 +755,11 @@
 								<?php } ?>
 							</div>
 							<label for="time">答題時間</label>
-								<select name="min" class="time_select">
+								<select name="min" class="time_select min">
 									<?php for($i=0; $i<=30; $i++){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
 								</select>
 								<a class="time_char">分</a>
-								<select name="sec" class="time_select">
+								<select name="sec" class="time_select sec">
 									<?php for($i=0; $i<=50; $i+=10){ ?><option value="<?php echo $i;?>"><?php echo $i;?></option> <?php }?>
 								</select>
 								<a class="time_char">秒</a>
@@ -823,9 +787,15 @@
 							</div>
 							
 						</div>
-						<div class="resultBtn_wrap">
-							<a class="resultBtn save">新增此題</a>
+						<div class="resultBtn_wrap multi">
+							<a class="resultBtn save multi">新增此題</a>
 							<a class="resultBtn closeBox">關 閉</a>
+						</div>
+						<div class="spinner_wrap multi" style="display:none;">
+							<div class="spinner" >
+							  <div class="cube1"></div>
+							  <div class="cube2"></div>
+							</div>
 						</div>
 					</form>
 					<!-- 題組 -->
@@ -836,12 +806,24 @@
 							<a class="resultBtn closeBox">關 閉</a>
 						</div>
 					</form>
-					<input id="author_id" type="hidden" name="author_id" value="<?php echo $author_id;?>">
+					<input id="author_id" type="hidden" value="<?php echo $author_id;?>">
+					<?php
+						$sectionNameArray_Iterator = new ArrayIterator($sectionNameArray);
+						$courseURLArray_Iterator = new ArrayIterator($courseURLArray);
+						$combine = new MultipleIterator;
+						$combine->attachIterator($sectionNameArray_Iterator);
+						$combine->attachIterator($courseURLArray_Iterator);
+						foreach($combine as $key => $Item){ ?>
+						<input id="key<?php echo $key[0];?>" type="hidden" data-section-name="<?php echo $Item[0];?>" data-course-url="<?php echo $Item[1];?>">
+					<?php } ?>
 				</div>
 			</div>
 			<div class="exerciseTemp" style="display:none;">
 			</div>
 			<div class="overlay"> </div>
+			<div class="statusSilde"></div>
+			<div class="TRUE_FALSE_TEMP" style="display:none;">
+			</div>
 		</div>
 		
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>		
