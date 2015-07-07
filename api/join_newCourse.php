@@ -10,9 +10,8 @@
 	// var_dump($attendentCourse);
 	// exit;
 	$mysqlResult = mysql_query($attendentCourse);
-	var_dump($mysqlResult);
 	if($mysqlResult == TRUE){
-		echo '<script>window.location.href="../joinSuccess.php";
+		echo '<script>window.location.href="../joinSuccess.php?course_id='.$course_id.'";
 		  	 </script>';
 	}
 	else{

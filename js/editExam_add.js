@@ -233,8 +233,6 @@ $(document).ready(function(){
 			       																 });
 				$('.spinner_wrap').show(0).delay(1100).hide(0);
 				$('.addExerciseTitle, .add_userControl, .addExercise_wrap').delay(1500).fadeIn();
-				console.log(jData);
-				console.log(jData.questionHtml);
 				$('#multi_choice').prepend($(jData.questionHtml).hide().fadeIn());
 				deleteQuestion();
 				// clear all field

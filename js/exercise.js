@@ -9,7 +9,8 @@ $(document).ready(function(){
 
     function delete_exercise(target) {
     	var exercise_mongo_id = target.data('exercise-id');
-    	console.log(exercise_mongo_id);
+    	var $questionItem = target.parents('.questionItem');
+    	// console.log(questionItem);
 	    // ajax call save api (pass mongo_id as POST data)
 	    var request = $.ajax({
 	      url: "../api/delete_exercise.php",
@@ -18,21 +19,24 @@ $(document).ready(function(){
 	      dataType: "json"
 	    });
 	     
-	     // fix me :
 	    request.done(function( jData ) {
 	      if(jData.status=='ok'){
-	        alert('題目已被刪除！');
-	        console.log(jData);
-	        location.reload();
-	      }
-	      else{
-	        alert('題目刪除失敗！');
+	        $('.statusSilde').html('題目已被刪除!').hide().fadeIn().addClass('greenStyle').delay(3000).slideUp(500).queue(function(){
+			        																		$(this).removeClass('greenStyle');
+			        																		$(this).dequeue();
+			       																 });
+	        $questionItem.fadeOut("300", function(){
+	        	$(this).remove();
+	        });
+	        // console.log(jData);
+	        // location.reload();
+	      }else{
+	        $('.statusSilde').html('題目刪除失敗!').hide().fadeIn().addClass('redStyle').delay(3000).slideUp(500).queue(function(){
+			        																		$(this).removeClass('redStyle');
+			        																		$(this).dequeue();
+			       																 });
 	      }
 	    });
-	     
-	    request.fail(function( jqXHR, textStatus ) {
-	      alert( "Request failed: " + textStatus );
-	    });  	
     }
 
 });

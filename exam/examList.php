@@ -91,6 +91,7 @@
 											<td class="exam_time"><i class="fa fa-clock-o"></i> <?php echo $displayTime;?></td>
 											<td class="exam_date"><i class="fa fa-table"></i> <?php echo $examData['start_date'];?> <i class="fa fa-chevron-right"></i> <?php echo $examData['end_date'];?></td>
 											<td class="exam_btn enter_exam"><a href="">編輯考試</a></td>
+											<td class="exam_btn delete_exam" data-exam-id="<?php echo $examData['id']; ?>"><span>刪除</span></td>											
 										</tr>						
 									</table>
 								</div>							
@@ -101,13 +102,11 @@
 								</div>															
 						<?php }?>
 							</div>
-		<!-- 					<div class="resultBtn">
-								<a class="panelBtn giveup" href="../temode.php">返 回</a>
-							</div>	 -->
 						</div>
 					</div>
 				</div>
 			</div>
+			<div class="statusSilde"></div>
 			<?php require("../footer.php"); ?>
 		</div>
 		
@@ -118,7 +117,7 @@
 		        $(".tagsInput").tagit();
 		</script>
 		<?php require("../js/js_com.php"); ?>
-		<script type="text/javascript" src="../js/addExercise.js"></script>
+		<script type="text/javascript" src="../js/examList.js"></script>
 		
 		
 	</body>

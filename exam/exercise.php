@@ -53,6 +53,17 @@
 	}
 
 	$contentData = $courseData['content'];
+
+	//all sectionName
+	foreach($contentData['chapters'] as $i => $chapter){
+		foreach($chapter['sections'] as $j => $section){
+			$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
+			$courseURL = sprintf("../courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
+																			,$courseData['course_id'], $i, $j);
+			$sectionNameArray[$section['uid']] = $sectionName;						
+			$courseURLArray[$section['uid']] = $courseURL;
+		}
+	}
 ?>
 <!doctype html>
 <html>
@@ -98,7 +109,7 @@
 					<?php if(!empty($trueFalseQues)){
 							foreach($trueFalseQues as $i => $question){
 								$trueFalseQuesBody = $question['body'];?>
-							<li class="true_false_wrap">
+							<li class="true_false_wrap questionItem">
 									<div class="true_false_answer_wrap">
 										<?php if($trueFalseQuesBody['answer'] == true){ ?>
 											<a class="trueFalseAnswer">Ｏ</a>
@@ -123,20 +134,10 @@
 										<div class="for_section">
 											<?php if($question['is_test'] == false){ ?>
 												<a class="is_test">適用章節： <span>未指定</span></a>
-											<?php } else{
-													foreach($contentData['chapters'] as $i => $chapter){
-														foreach($chapter['sections'] as $j => $section){
-															$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
-															$courseURL = sprintf("../courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
-																					,$courseData['course_id'], $i, $j);
-
-															if($section['uid'] == $question['test_section']){ ?>
-																<a class="is_test">適用章節：</a>
-																<a class="is_test_href" target="_blank" href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a>
-											<?php 			}
-														}
-													}
-											}?>
+											<?php } else{ ?>
+												<a class="is_test">適用章節：</a>
+												<a class="is_test_href" target="_blank" href="<?php echo $courseURLArray[$question['test_section']];?>"><?php echo $sectionNameArray[$question['test_section']];?></a>
+											<?php }?>
 										</div>
 										<div class="questionFunc">
 											<a class="editQuesBtn" href="editExercise.php?id=<?php echo $question['_id'];?>&course_id=<?php echo $course_id;?>">編輯</a>
@@ -158,7 +159,7 @@
 							foreach($singleChoiceQues as $i => $question){
 									$singleChoiceQuesBody = $question['body'];
 									$singleChoiceQuesOpt = $singleChoiceQuesBody['options'];?>
-							<li class="single_choice_wrap">
+							<li class="single_choice_wrap questionItem">
 								<div class="question"><?php echo $singleChoiceQuesBody['question'];?><!-- <span class="questionType"> ( 單選 )</span> --></div>
 								<div class="single_choice_answer_wrap">
 									<?php foreach($singleChoiceQuesOpt as $j => $options){
@@ -183,25 +184,15 @@
 									</div>
 									<div class="for_section">
 										<?php if($question['is_test'] == false){ ?>
-											<a class="is_test">適用章節： <span>未指定</span></a>
-										<?php } else{
-												foreach($contentData['chapters'] as $i => $chapter){
-													foreach($chapter['sections'] as $j => $section){
-														$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
-														$courseURL = sprintf("courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
-																				,$courseData['course_id'], $i, $j);
-
-														if($section['uid'] == $question['test_section']){ ?>
-															<a class="is_test">適用章節：</a>
-															<a class="is_test_href" target="_blank" href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a>
-										<?php 			}
-													}
-												}
-										}?>
+												<a class="is_test">適用章節： <span>未指定</span></a>
+											<?php } else{ ?>
+												<a class="is_test">適用章節：</a>
+												<a class="is_test_href" target="_blank" href="<?php echo $courseURLArray[$question['test_section']];?>"><?php echo $sectionNameArray[$question['test_section']];?></a>
+											<?php }?>
 									</div>
 									<div class="questionFunc">
 										<a class="editQuesBtn" href="editExercise.php?id=<?php echo $question['_id'];?>&course_id=<?php echo $course_id;?>">編輯</a>
-										<a class="deletQuesBtn" data-excercise-id="<?php echo $question['_id'];?>">刪除</a>
+										<a class="deletQuesBtn" data-exercise-id="<?php echo $question['_id'];?>">刪除</a>
 									</div>
 								</div>
 							</li>
@@ -219,7 +210,7 @@
 							foreach($multiChoiceQues as $i => $question){
 							$multiChoiceQuesBody = $question['body'];
 							$multiChoiceQuesOpt = $multiChoiceQuesBody['options']?>
-							<li class="multi_choice_wrap">
+							<li class="multi_choice_wrap questionItem">
 									<div class="question"><?php echo $multiChoiceQuesBody['question'];?><!-- <span class="questionType"> ( 多選 )</span> --></div>
 									<div class="multi_choice_answer_wrap">
 										<?php foreach($multiChoiceQuesOpt as $j => $options){
@@ -245,24 +236,14 @@
 										<div class="for_section">
 											<?php if($question['is_test'] == false){ ?>
 												<a class="is_test">適用章節： <span>未指定</span></a>
-											<?php } else{
-													foreach($contentData['chapters'] as $i => $chapter){
-														foreach($chapter['sections'] as $j => $section){
-															$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
-															$courseURL = sprintf("courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
-																					,$courseData['course_id'], $i, $j);
-
-															if($section['uid'] == $question['test_section']){ ?>
-																<a class="is_test">適用章節：</a>
-																<a class="is_test_href" target="_blank" href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a>
-											<?php 			}
-														}
-													}
-											}?>
+											<?php } else{ ?>
+												<a class="is_test">適用章節：</a>
+												<a class="is_test_href" target="_blank" href="<?php echo $courseURLArray[$question['test_section']];?>"><?php echo $sectionNameArray[$question['test_section']];?></a>
+											<?php }?>
 										</div>
 										<div class="questionFunc">
 											<a class="editQuesBtn" href="editExercise.php?id=<?php echo $question['_id'];?>&course_id=<?php echo $course_id;?>">編輯</a>
-											<a class="deletQuesBtn"  data-excercise-id="<?php echo $question['_id'];?>">刪除</a>
+											<a class="deletQuesBtn"  data-exercise-id="<?php echo $question['_id'];?>">刪除</a>
 										</div>
 									</div>
 							</li>
@@ -279,7 +260,7 @@
 						<?php if(!empty($seriesQues)){
 								foreach($seriesQues as $i => $questionHeader){
 								$seriesQuesBody = $questionHeader['body'];?>
-								<li class="series_question_wrap">
+								<li class="series_question_wrap questionItem">
 									<div class="question"><?php echo $seriesQuesBody['description'];?><!-- <span class="questionType"> ( 題組 )</span> --></div>
 									<ul class="seriesNum">		
 										<?php foreach($seriesQuesBody['questions'] as $j => $question){ 
@@ -336,6 +317,7 @@
 					</ul>
 				</div>
 			</div>
+			<div class="statusSilde"></div>
 			<?php require("../footer.php") ?>
 		</div>
 		

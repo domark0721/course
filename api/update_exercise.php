@@ -23,6 +23,7 @@
 				)
 			));
 		$mongoResult = $exercise->update($mongo_id,$updateCol);
+		header('Location: ../exam/exercise.php?course_id='.$course_id.'#true_false');
 	}else if($type=="SINGLE_CHOICE"){
 		$opt_content_1 = $_POST['single_opt_content_1'];
 		$opt_content_2 = $_POST['single_opt_content_2'];
@@ -64,7 +65,7 @@
 				)
 			));
 		$mongoResult = $exercise->update($mongo_id, $updateCol);
-		var_dump($mongoResult);
+		header('Location: ../exam/exercise.php?course_id='.$course_id.'#single_choice');
 	}else if($type=="MULTI_CHOICE"){
 		$opt_content_1 = $_POST['multi_opt_content_1'];
 		$opt_content_2 = $_POST['multi_opt_content_2'];
@@ -110,6 +111,7 @@
 				)
 			));		
 		$mongoResult = $exercise->update($mongo_id, $updateCol);
+		header('Location: ../exam/exercise.php?course_id='.$course_id.'#multi_choice');
 	}else if($type=="SERIES_QUESTIONS"){
 
 	}

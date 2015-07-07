@@ -112,7 +112,7 @@
 
 .exam_date {
 	color: #3F3E3E;
-	width: 55%;
+	width: 47%;
 }
 
 .exam_score {
@@ -121,7 +121,7 @@
 	  font-size: 18px;
 }
 
-.exam_btn a{
+.exam_btn a, .exam_btn span{
 	padding: 6px 13px;
 	color: #fff;
 	border-radius: 3px;
@@ -136,6 +136,14 @@
 
 .enter_exam a:hover {
 	background-color: rgba(121, 176, 61, 0.7);
+}
+
+.delete_exam span{
+	background-color: rgba(173, 50, 50, 1);
+}
+
+.delete_exam span:hover{
+	background-color: rgba(173, 50, 50, 0.7);
 }
 
 .view_exam a {
@@ -155,4 +163,25 @@
 .panelBtn {
 	width: 15%;
 	margin-top: 15px;
+}
+
+/*  status Bar */
+.statusSilde {
+	position: fixed;
+	bottom: 3%;
+	right: 10%;
+	z-index: 100;
+	width: 11%;
+	border-radius: 5px;
+	padding: 12px 22px;
+	font-size: 18px;
+	color: white;
+}
+
+.greenStyle {
+	background-color: rgba(90, 176, 61, 0.81);
+}
+
+.redStyle {
+	background-color: rgba(176, 61, 61, 0.81);
 }
