@@ -345,9 +345,9 @@
 							<div class="nav-wrap">
 									<div class="userControl">
 										<ul class="tab-list">
-											<li><a href="#multi_choice">多選題</a></li>
 											<li><a href="#true_false">是非題</a></li>
 											<li><a href="#single_choice">單選題</a></li>
+											<li><a href="#multi_choice">多選題</a></li>
 											<li><a href="#series_question">題組</a></li>
 										</ul>
 									</div>
@@ -579,9 +579,9 @@
 				<div class="addExerciseTitle">新增題目</div>
 				<div class="add_userControl">
 					<ul class="add_tab-list">
-						<li><a href="#add_multi_choice">多選題</a></li>
 						<li><a href="#add_true_false">是非題</a></li>
 						<li><a href="#add_single_choice">單選題</a></li>
+						<li><a href="#add_multi_choice">多選題</a></li>
 						<li><a href="#add_series_question">題組</a></li>
 					</ul>
 				</div>
