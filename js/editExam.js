@@ -5,8 +5,9 @@ function deleteQuestion(){
 			var type = $questionItem.data('exercise-type');
 
 			if (type == "TRUE_FALSE") {
-				// append back to true false list
 				$("#true_false").prepend($questionItem.hide().fadeIn());
+			}else if(type == "SHORT_ANSWER"){
+				$("#short_answer").prepend($questionItem.hide().fadeIn());
 			}else if(type == "SINGLE_CHOICE"){
 				$("#single_choice").prepend($questionItem.hide().fadeIn());
 			}else if(type == "MULTI_CHOICE"){
@@ -20,11 +21,13 @@ function deleteQuestion(){
 
 function calculate(){
 	var trueFalse_num = $('.left-container .true_false_wrap').length;
+	var shortAnswer_num = $('.left-container .short_answer_wrap').length;
 	var single_num = $('.left-container .single_choice_wrap').length;
 	var multi_num = $('.left-container .multi_choice_wrap').length;
 	var series_num = $('.left-container .series_question_wrap').length;
-	var total_num = trueFalse_num + single_num + multi_num + series_num;
+	var total_num = trueFalse_num + shortAnswer_num +  single_num + multi_num + series_num;
 	$('#trueFalse_num').html(trueFalse_num);
+	$('#shortAnswer_num').html(shortAnswer_num);
 	$('#single_num').html(single_num);
 	$('#multi_num').html(multi_num);
 	$('#series_num').html(series_num);
@@ -80,7 +83,7 @@ function calculate(){
 $(document).ready(function(){
 	
 	deleteQuestion();
-
+	beforeunload();
 	$('#save_exam').on('click', function(){
 		var leftQuestion_num = $('.left-container .questionItem').length;
 		if(leftQuestion_num == 0){
@@ -88,14 +91,33 @@ $(document).ready(function(){
 			        																		$(this).removeClass('redStyle');
 			        																		$(this).dequeue();
 			       																 });
-		}else saveExam();
+		}else {
+			$(window).unbind();
+			saveExam();
+		}
 	});
+
+	function beforeunload(){
+		$(window).on("beforeunload",function(e){
+			if($('.left-container .questionItem').length > 0){
+				return "本考卷尚未儲存，離開頁面將不會儲存!";
+			}else{
+				return "";
+			}
+			
+		});
+	}
 
 	$("#save_exam").prop('disabled', true);
 		$('#exit_examMode').on('click', function(e){
 		var result = confirm('確定要離開嗎？');
+		var course_id = $('#course_id').val();
 		if(result) {
-		   window.history.back();
+			$(window).unbind();
+		  	 // window.history.back();
+		  	  window.location.replace("examList.php?course_id="+ course_id);
+		}else{
+			beforeunload();
 		}
 	});
 
@@ -140,10 +162,6 @@ $(document).ready(function(){
 		});	
 	});
 
-	// $('.left-container').bind("DOMSubtreeModified",function(e){
- //  		alert('changed');
-	// });
-
 	$(".left-container .questionItem").each(function(){
 		var level = $(this).find('.level');
 		console.log(level);
@@ -151,7 +169,7 @@ $(document).ready(function(){
 
 	//drag the exercise
 	$(function() {
-		$('#single_choice, #true_false, #multi_choice, #series_question, #drop-question-list').sortable({
+		$('#short_answer, #single_choice, #true_false, #multi_choice, #series_question, #drop-question-list').sortable({
 			connectWith: '#drop-question-list',
 			// connectWith: '.connected',
 			dropOnEmpty: true,
@@ -238,6 +256,12 @@ $(document).ready(function(){
 				searchList.push(question._id.$id);
 			}
 		}
+		for( var i=0; i< questionList.shortAnswerQues.length ; i++){
+			var question = questionList.shortAnswerQues[i];
+			if(question.level == num){
+				searchList.push(question._id.$id);
+			}
+		}
 		for( var i=0; i< questionList.singleChoiceQues.length ; i++){
 			var question = questionList.singleChoiceQues[i];
 			if(question.level == num){
@@ -266,6 +290,12 @@ $(document).ready(function(){
 
 		for( var i=0; i< questionList.trueFalseQues.length ; i++){
 			var question = questionList.trueFalseQues[i];
+			if(question.tags.toLowerCase().indexOf(queryStringLower) >= 0 ){
+				searchList.push(question._id.$id);
+			}
+		}
+		for( var i=0; i< questionList.shortAnswerQues.length ; i++){
+			var question = questionList.shortAnswerQues[i];
 			if(question.tags.toLowerCase().indexOf(queryStringLower) >= 0 ){
 				searchList.push(question._id.$id);
 			}
@@ -303,6 +333,17 @@ $(document).ready(function(){
 			for( var j=0; j< exercise_trueFalse.length; j++){
 				var temp_trueFalse = exercise_trueFalse[j];
 				if( (temp_trueFalse.exercise_id == question._id.$id) && (temp_trueFalse.section_name.toLowerCase().indexOf(queryStringLower) >=0) ){
+					searchList.push(question._id.$id);
+					break;
+				}
+			}
+		}
+
+		for( var i=0; i< questionList.shortAnswerQues.length ; i++){
+			var question = questionList.shortAnswerQues[i];
+			for( var j=0; j< exercise_shortAnswer.length; j++){
+				var temp_shortAnswer = exercise_shortAnswer[j];
+				if( (temp_shortAnswer.exercise_id == question._id.$id) && (temp_shortAnswer.section_name.toLowerCase().indexOf(queryStringLower) >=0) ){
 					searchList.push(question._id.$id);
 					break;
 				}
@@ -373,6 +414,27 @@ $(document).ready(function(){
 			}
 		}
 
+		// search short answer
+		for( var i=0; i< questionList.shortAnswerQues.length ; i++){
+			var question = questionList.shortAnswerQues[i];
+			// console.log(question);
+			
+			if (question.body.question.toLowerCase().indexOf(queryStringLower) >= 0 ) {
+				searchList.push(question._id.$id);
+			}
+			else if (question.tags.toLowerCase().indexOf(queryStringLower) >= 0 ) {
+				searchList.push(question._id.$id);
+			}else {
+				for( var j=0; j< exercise_shortAnswer.length; j++){
+					var temp_shortAnswer = exercise_shortAnswer[j];
+					if( (temp_shortAnswer.exercise_id == question._id.$id) && (temp_shortAnswer.section_name.toLowerCase().indexOf(queryStringLower) >=0) ){
+						searchList.push(question._id.$id);
+						break;
+					}
+				}
+			}
+		}	
+
 		// search single choice
 		for( var i =0; i< questionList.singleChoiceQues.length ; i++){
 			var question = questionList.singleChoiceQues[i];
@@ -440,6 +502,17 @@ $(document).ready(function(){
 		// trueFalse info for searching section name
 		exercise_trueFalse = $(".right-container .questionItem").map(function(){
 			if($(this).data('exercise-type') == "TRUE_FALSE"){
+				var exercise_sec = {
+					exercise_id : $(this).data('exercise-id'),
+					section_uid : $(this).data('section-uid'),
+					section_name : $(this).data('section-name')
+				}
+			}
+			return exercise_sec;
+		});
+
+		exercise_shortAnswer = $(".right-container .questionItem").map(function(){
+			if($(this).data('exercise-type') == "SHORT_ANSWER"){
 				var exercise_sec = {
 					exercise_id : $(this).data('exercise-id'),
 					section_uid : $(this).data('section-uid'),

@@ -102,7 +102,9 @@
 							</div>
 							<div class="sectionVideo">
 								<label for="sectionVideo">章節影片</label>
-								<input type="file" name="sectionVideo" class="section-video">
+								<form enctype="multipart/form-data" action="api/videoUpload.php" method="POST">
+									<input type="file" name="uploadFile" class="section-video">
+								</form>
 								<div id="video">
 									<video controls >
 									<source src="<?php echo "videos/" . $section['video'];?>" type="video/mp4">

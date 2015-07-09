@@ -65,6 +65,7 @@
 						<div class="userControl">
 							<ul class="tab-list">
 								<li><a href="#true_false">是非題</a></li>
+								<li><a href="#short_answer">簡答</a></li>
 								<li><a href="#single_choice">單選題</a></li>
 								<li><a href="#multi_choice">多選題</a></li>
 								<li><a href="#series_question">題組</a></li>
@@ -134,6 +135,68 @@
 								<input type="hidden" name="course_id" value="<?php echo $course_id;?>">
 								<input type="hidden" name="create_date" value="<?php echo date('Y-m-d H:i:s');?>">
 								<input type="hidden" name="type" value="TRUE_FALSE">
+							</div>
+							<div class="resultBtn">
+								<button class="panelBtn save" type="submit" >儲存此題</button>
+								<a class="panelBtn giveup" href="exercise.php?course_id=<?php echo $course_id;?>">離 開</a>
+							</div>
+						</form>
+						<!-- 簡答 -->
+						<form id="short_answer" class="tab-content" action="../api/save_addExercise.php" method="POST">
+							<div class="question_content_wrap">
+								<label for="question">題目</label>
+									<textarea class="question_textarea" name="question"></textarea>
+								<label for="short_answer">本題解答</label>
+									<textarea class="short_answer" name="short_answer"></textarea>
+								<div class="tags_wrap">
+									<label for="tags">標籤</label>
+									<input type="text" class="tagsInput" name="tags" value="">
+								</div>
+								<label for="level">難易度</label>
+								<div class="opt">
+									<?php for($i=1; $i<=5; $i++){ ?>								
+										<input id="shortAnswer_level<?php echo $i;?>" value="<?php echo $i;?>" type="radio" name="level">
+											<label for="shortAnswer_level<?php echo $i;?>" name="level"><?php for($j=1; $j<=$i; $j++){?>★<?php }?></label>
+									<?php } ?>
+								</div>
+								<label for="time">答題時間</label>
+									<select name="min" class="time_select">
+										<?php for($i=0; $i<=30; $i++){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
+									</select>
+									<a class="time_char">分</a>
+									<select name="sec" class="time_select">
+										<?php for($i=0; $i<=50; $i+=10){ ?><option value="<?php echo $i;?>"><?php echo $i;?></option> <?php }?>
+									</select>
+									<a class="time_char">秒</a>
+								<label for="is_test">選為隨堂練習</label>
+								<div class="opt">
+									<input id="is_test_false_short" target="shortAnswer" value="false" type="radio" name="is_test" checked>
+									<label for="is_test_false_short" name="is_test">否</label>
+									<input id="is_test_true_short" target="shortAnswer" value="true" type="radio" name="is_test">
+									<label for="is_test_true_short" name="is_test">是</label>
+								</div>
+								
+								<div id="section_shortAnswer" class="chapter_select">
+									<label for="section">適用章節</label>
+									<select class="testSection_select" name="section">
+									<?php
+									foreach($contentData['chapters'] as $i => $chapter){
+										$courseName = sprintf("CH%d: %s", $i+1, $chapter['name'] ); ?>
+										<optgroup label='<?php echo $courseName; ?>'>
+									<?php foreach($chapter['sections'] as $j => $section){
+											$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']); ?>
+											<option value="<?php echo $section['uid'];?>"><?php echo $sectionName;?></option>
+										<?php } ?>
+										</optgroup>
+										
+									<?php } ?>	
+									</select>
+								</div>
+
+								<input type="hidden" name="author_id" value="<?php echo $member_id;?>">
+								<input type="hidden" name="course_id" value="<?php echo $course_id;?>">
+								<input type="hidden" name="create_date" value="<?php echo date('Y-m-d H:i:s');?>">
+								<input type="hidden" name="type" value="SHORT_ANSWER">
 							</div>
 							<div class="resultBtn">
 								<button class="panelBtn save" type="submit" >儲存此題</button>

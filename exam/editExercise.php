@@ -68,17 +68,6 @@
 				</div>
 
 				<div class="editSetting-wrap">
-<!-- 					<div class="nav-wrap">
-						<div class="userControl">
-							<ul class="tab-list">
-								<li><a href="#true_false">是非題</a></li>
-								<li><a href="#single_choice">單選題</a></li>
-								<li><a href="#multi_choice">多選題</a></li>
-								<li><a href="#series_question">題組</a></li>
-							</ul>
-						</div>
-					</div>
- -->
 					<div class="addExercise_wrap">
 						<!-- 是非題 -->
 						<?php if($exerciseData['type']== "TRUE_FALSE"){?>
@@ -158,6 +147,85 @@
 								<input type="hidden" name="course_id" value="<?php echo $course_id;?>">
 								<input type="hidden" name="mongo_id" value="<?php echo $mongo_id;?>">
 								<input type="hidden" name="type" value="TRUE_FALSE">
+							</div>
+							<div class="resultBtn">
+								<button class="panelBtn save" type="submit" >儲存此題</button>
+								<button class="panelBtn giveup" onclick="history.back()">離 開</button>
+							</div>
+						</form>
+						<!-- 簡答題 -->
+						<?php }else if($exerciseData['type']== "SHORT_ANSWER"){?>
+						<form id="true_false" class="" action="../api/update_exercise.php" method="POST">
+							<div class="question_content_wrap">
+								<div class="typeName">本題為<span>簡答</span></div>
+								<label for="question">題目</label>
+									<textarea class="question_textarea" name="question"><?php echo $exerciseContent['question'];?></textarea>
+								<label for="short_answer">本題解答</label>
+									<textarea class="short_answer" name="short_answer"><?php echo $exerciseContent['answer'];?></textarea>
+								<div class="tags_wrap">
+									<label for="tags">標籤</label>
+									<input type="text" class="tagsInput" name="tags" value="<?php echo $exerciseData['tags'];?>">
+								</div>
+								<label for="level">難易度</label>
+								<div class="opt">
+									<?php for($l=1; $l<=5; $l++){ ?>
+										<input id="truefalse_level<?php echo $l;?>" value="<?php echo $l;?>" type="radio" name="level" <?php if($exerciseData['level']== $l) echo "checked";?>>
+											<label for="truefalse_level<?php echo $l;?>" name="level"><?php for($m=1; $m<=$l; $m++){?>★<?php }?></label>
+									<?php } ?>
+								</div>
+								<label for="time">答題時間</label>
+									<select name="min" class="time_select">
+									<?php 
+										$time = explode(":", $exerciseData['time']);
+										for($i=0; $i<=30; $i++){ 
+											if($time[0]==$i)
+												echo '<option value="' .$i. '" selected>' .$i. '</option>';
+											else
+												echo '<option value="' .$i. '">' .$i. '</option>';
+									}?>
+									</select>
+									<a class="time_char">分</a>
+									<select name="sec" class="time_select">
+									<?php 
+										for($i=0; $i<=50; $i+=10){ 
+											if($time[1]==$i)
+												echo '<option value="' .$i. '" selected>' .$i. '</option>';
+											else
+												echo '<option value="' .$i. '">' .$i. '</option>';
+									}?>
+									</select>
+									<a class="time_char">秒</a>
+								<label for="is_test">選為隨堂練習</label>
+								<div class="opt">
+									<input id="is_test_false" target="trueFalse" value="false" type="radio" name="is_test" <?php if($exerciseData['is_test']==false) echo "checked";?>>
+									<label for="is_test_false" name="is_test">否</label>
+									<input id="is_test_true" target="trueFalse" value="true" type="radio" name="is_test" <?php if($exerciseData['is_test']==true) echo "checked";?>>
+									<label for="is_test_true" name="is_test">是</label>
+								</div>
+								
+								<div id="section_trueFalse" class="chapter_select <?php if($exerciseData['is_test']==true) echo "show";?>">
+									<label for="section">適用章節</label>
+									<select class="testSection_select" name="section">
+									<?php
+									foreach($contentData['chapters'] as $i => $chapter){
+										$courseName = sprintf("CH%d: %s", $i+1, $chapter['name'] ); ?>
+										<optgroup label='<?php echo $courseName; ?>'>
+									<?php foreach($chapter['sections'] as $j => $section){
+											$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
+												if($section['uid'] == $exerciseData['test_section']){?>
+													<option value="<?php echo $section['uid'];?>" selected><?php echo $sectionName;?></option>
+										<?php }else{ ?>
+													<option value="<?php echo $section['uid'];?>"><?php echo $sectionName;?></option>
+									<?php } } ?>
+										</optgroup>
+									<?php } ?>	
+									</select>
+								</div>
+								
+								<input type="hidden" name="author_id" value="<?php echo $member_id;?>">
+								<input type="hidden" name="course_id" value="<?php echo $course_id;?>">
+								<input type="hidden" name="mongo_id" value="<?php echo $mongo_id;?>">
+								<input type="hidden" name="type" value="SHORT_ANSWER">
 							</div>
 							<div class="resultBtn">
 								<button class="panelBtn save" type="submit" >儲存此題</button>

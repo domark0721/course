@@ -29,6 +29,28 @@
 		$back_tag = '#true_false';
 		location($back_tag, $mongoResult, $course_id);
 
+	}else if($type=="SHORT_ANSWER"){
+		$short_answer = $_POST['short_answer'];
+		$commonArray = commonInfo();
+		$mongoInitData = array(
+			"author_id" => (int)$author_id,
+			"course_id" => (int)$course_id,
+			"type" => $type,
+			"tags" => $commonArray[tags],
+			"level" => (int)$commonArray[level],
+			"time" => $commonArray[min].":".$commonArray[sec],
+			"create_date" => $commonArray[create_date],
+			"is_test" => $commonArray[is_test],
+			"test_section" => $commonArray[test_section],
+			"body" => array(
+				"question" => $commonArray[question],
+				"answer" => $short_answer,
+				)
+			);
+		$mongoResult = $exercise->insert($mongoInitData);
+
+		$back_tag = '#short_answer';
+		location($back_tag, $mongoResult, $course_id);
 	}else if($type=="SINGLE_CHOICE"){
 		$opt_content_1 = $_POST['single_opt_content_1'];
 		$opt_content_2 = $_POST['single_opt_content_2'];

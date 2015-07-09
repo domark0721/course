@@ -24,6 +24,22 @@
 			));
 		$mongoResult = $exercise->update($mongo_id,$updateCol);
 		header('Location: ../exam/exercise.php?course_id='.$course_id.'#true_false');
+	}else if($type=="SHORT_ANSWER"){
+		$answer = $_POST['short_answer'];
+		$commonArray = commonInfo();
+		$updateCol = array( '$set' => array(
+			"tags" => $commonArray[tags],
+			"level" => (int)$commonArray[level],
+			"time" => $commonArray[min].":".$commonArray[sec],
+			"is_test" => $commonArray[is_test],
+			"test_section" => $commonArray[test_section],
+			"body" => array(
+				"question" => $commonArray[question],
+				"answer" => $answer,
+				)
+			));
+		$mongoResult = $exercise->update($mongo_id,$updateCol);
+		header('Location: ../exam/exercise.php?course_id='.$course_id.'#true_false');
 	}else if($type=="SINGLE_CHOICE"){
 		$opt_content_1 = $_POST['single_opt_content_1'];
 		$opt_content_2 = $_POST['single_opt_content_2'];

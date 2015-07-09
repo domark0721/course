@@ -33,6 +33,8 @@
 		foreach($mon as $data){
 			if($data['type'] == "TRUE_FALSE"){
 				$trueFalseQues[] = $data;
+			}else if($data['type'] == "SHORT_ANSWER"){
+				$shortAnswerQues[] = $data;
 			}else if($data['type'] == "SINGLE_CHOICE"){
 				$singleChoiceQues[] = $data;
 			}else if($data['type'] == "MULTI_CHOICE"){
@@ -119,6 +121,46 @@
 								<?php } ?>
 							</ul>
 					<?php if(!empty($trueFalseQues)){ ?>
+						</li>
+					<?php } ?>
+
+					<!-- 簡答 -->
+					<ul class="typeNum">
+					<?php if(!empty($shortAnswerQues)){ ?>
+						<li> 
+							<div class="typeName">是非題 <span class="score"></span></div>
+					<?php } ?>
+							<ul class="questionNum">
+								<?php foreach($shortAnswerQues as $i => $question){
+										$questionID = (string)$question['_id'];
+										$studentAnswer = $studentAnswerSnapShot[$questionID];
+
+										$shortAnswerQuesBody = $question['body'];
+										$correct_short_answer = $shortAnswerQuesBody['answer'];
+
+										if($correct_short_answer == $studentAnswer) $correct = 1;
+										else $correct = 0;
+										 ?>
+									<li class="short_answer_wrap" data-exercise-id="<?php echo $question["_id"];?>">
+										<div class="question"><?php echo $shortAnswerQuesBody['question'];?></div>
+										<div class="short_answer_answer_wrap">
+										<?php if($correct ==1){?>
+											<a><?php echo $shortAnswerQuesBody['answer'];?></a>
+										<?php } else if($correct==0){ ?>
+											<a class="errorShortAnswer"><?php echo $studentAnswer;?></a>
+											<span> -> </span>
+											<a class="correctShortAnswer"><?php echo $shortAnswerQuesBody['answer'];?></a>
+										<?php }?>
+										</div>
+										<div class="exercise_result_wrap">
+											<span>作答結果: <?php if($correct==1) echo "正確"; else echo "錯誤";?></span>
+											<span>難易度: <?php for($temp=1; $temp<=$question['level']; $temp++) echo '★';?></span>
+											<div class="exercise_method">說明: 無</div>
+										</div>
+									</li>
+								<?php } ?>
+							</ul>
+					<?php if(!empty($shortAnswerQues)){ ?>
 						</li>
 					<?php } ?>
 
@@ -257,7 +299,5 @@
 				</div>
 			</div>
 		</div>
-		<?php require("../js/js_com.php"); ?>
-		<script src="../js/exam.js"></script>
 	</body>
 </html>

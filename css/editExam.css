@@ -238,7 +238,8 @@
 }
 
 /****** true false CSS Start *******/
-.true_false_wrap, 
+.true_false_wrap,
+.short_answer_wrap,
 .single_choice_wrap,
 .multi_choice_wrap,
 .series_question_wrap {
@@ -348,6 +349,22 @@
 }
 
 /****** true false CSS End *******/
+
+/* ---------- short answer CSS start ---------- */
+.short_answer_answer_wrap {
+    margin: 12px 0;
+}
+
+.short_answer_answer_wrap a {
+    padding: 4px 9px;
+    font-size: 18px;
+    background-color: #F0BA2F;
+    border-radius: 3px;
+    border: 1px solid #b8b8b8;
+    cursor: default;
+}
+
+/* ---------- short answer CSS end ---------- */
 
 /****** single choice CSS Start *******/
 

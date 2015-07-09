@@ -72,8 +72,9 @@
 	margin-left: 20px;
 }
 
-/****** true false CSS Start *******/
-.true_false_wrap, 
+/* ---------- true false CSS Start ---------- */
+.true_false_wrap,
+.short_answer_wrap,
 .single_choice_wrap,
 .multi_choice_wrap,
 .series_question_wrap {
@@ -242,9 +243,25 @@
     background-color: #F0BA2F;
 }
 
-/****** true false CSS End *******/
+/* ---------- true false CSS End ---------- */
 
-/****** single choice CSS Start *******/
+/* ---------- short answer CSS start ---------- */
+.short_answer_answer_wrap {
+    margin: 25px 0;
+}
+
+.short_answer_answer_wrap a {
+    padding: 4px 9px;
+    font-size: 18px;
+    background-color: #F0BA2F;
+    border-radius: 3px;
+    border: 1px solid #b8b8b8;
+    cursor: default;
+}
+
+/* ---------- short answer CSS end ---------- */
+
+/* ---------- single choice CSS Start ----------*/
 
 .single_choice_answer_wrap,
 .multi_choice_answer_wrap,
@@ -271,16 +288,16 @@
     background-color: #F0BA2F !important;
 }
 
-/****** single choice CSS End *******/
+/* ---------- single choice CSS End ---------- */
 
-/****** multi choice CSS Start *******/
+/* ---------- multi choice CSS Start ---------- */
 .multi_choice_answer_wrap {
 	margin: 15px 0 10px 0;
 	padding-right: 15px;
 	width: auto;
 }
 
-/****** multi choice CSS End *******/
+/* ---------- multi choice CSS End ---------- */
 
 /****** series CSS Start *******/
 .series_question {

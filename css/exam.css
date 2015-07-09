@@ -225,7 +225,8 @@
 }
 
 /****** true false CSS Start *******/
-.true_false_wrap, 
+.true_false_wrap,
+.short_answer_wrap,
 .single_choice_wrap,
 .multi_choice_wrap,
 .series_question_wrap {
@@ -276,13 +277,32 @@
 
 /****** true false CSS End *******/
 
+/* --- short answer CSS start --- */
+
+.short_answer_answer_wrap {
+	margin: 15px 0 10px 0;
+	padding-right: 15px;
+	width: auto;
+}
+
+.short_answer_answer_wrap textarea {
+	width: 50%;
+	height: 20px;
+	margin-bottom: 15px;
+	border: 1px solid #888;
+	border-radius: 10px;
+	font-size: 18px;
+	padding: 10px;
+}
+
+/* --- short answer CSS end --- */
+
 /****** single choice CSS Start *******/
 .single_choice_answer_wrap {
 	margin: 15px 0 10px 0;
 	padding-right: 15px;
 	width: auto;
 }
-
 
 /****** single choice CSS End *******/
 

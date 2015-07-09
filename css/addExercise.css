@@ -47,7 +47,17 @@
 	border: 1px solid #888;
 	border-radius: 10px;
 	font-size: 18px;
-	padding: 5px 10px;
+	padding:10px;
+}
+
+.short_answer {
+	width: 90%;
+	height: 50px;
+	margin-bottom: 15px;
+	border: 1px solid #888;
+	border-radius: 10px;
+	font-size: 18px;
+	padding: 10px;
 }
 
 .opt label{

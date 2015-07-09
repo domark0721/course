@@ -188,6 +188,17 @@
 	border: 1px solid red;
 }
 
+.errorShortAnswer {
+	border: 1px solid red !important;
+}
+
+.correctShortAnswer {
+	font-size: 18px;
+	color: #fff;
+	background-color: red !important;
+	border: 0px !important;
+}
+
 /* exercise_result_wrap */
 .exercise_result_wrap {
 	border: 1px solid #d4d4d4;
@@ -258,6 +269,22 @@
 }
 
 /****** true false CSS End *******/
+
+/* ---------- short answer CSS start ---------- */
+.short_answer_answer_wrap {
+    margin: 25px 0;
+}
+
+.short_answer_answer_wrap a {
+    padding: 4px 9px;
+    font-size: 18px;
+    background-color: #F0BA2F;
+    border-radius: 3px;
+    border: 1px solid #b8b8b8;
+    cursor: default;
+}
+
+/* ---------- short answer CSS end ---------- */
 
 /****** single choice CSS Start *******/
 .single_choice_answer_wrap {

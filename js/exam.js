@@ -61,6 +61,13 @@ $(document).ready(function(){
 			answerList[id] = answer ? answer : -1;
 		});
 
+		// 簡答
+		$(".short_answer_wrap").each(function(i, question){
+			var id = $(this).data("exercise-id");
+			var answer = $.trim($(this).find("textarea[name=shortAnswerAns" + i +"]").val());
+			answerList[id] = answer ? answer : -1;
+		});
+
 		// 選擇
 		$(".single_choice_wrap").each(function(i, question){
 			var id = $(this).data("exercise-id");

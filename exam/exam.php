@@ -44,6 +44,8 @@
 			foreach($mon as $data){
 				if($data['type'] == "TRUE_FALSE"){
 					$trueFalseQues[] = $data;
+				}else if($data['type'] == "SHORT_ANSWER"){
+					$shortAnswerQues[] = $data;
 				}else if($data['type'] == "SINGLE_CHOICE"){
 					$singleChoiceQues[] = $data;
 				}else if($data['type'] == "MULTI_CHOICE"){
@@ -97,6 +99,27 @@
 								<?php } ?>
 							</ul>
 					<?php if(!empty($trueFalseQues)){ ?>
+						</li>
+					<?php } ?>
+
+					<!-- 簡答 -->
+					<ul class="typeNum">
+					<?php if(!empty($shortAnswerQues)){ ?>
+						<li> 
+							<div class="typeName">是非題 <span class="score"></span></div>
+					<?php } ?>
+							<ul class="questionNum">
+								<?php foreach($shortAnswerQues as $i => $question){
+										$shortAnswerQuesBody = $question['body'];?>
+									<li class="short_answer_wrap" data-exercise-id="<?php echo $question["_id"];?>">
+										<div class="question"><?php echo $shortAnswerQuesBody['question'];?></div>
+										<div class="short_answer_answer_wrap">
+											<textarea name="shortAnswerAns<?php echo $i;?>"></textarea>
+										</div>
+									</li>
+								<?php } ?>
+							</ul>
+					<?php if(!empty($shortAnswerQues)){ ?>
 						</li>
 					<?php } ?>
 

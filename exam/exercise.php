@@ -26,14 +26,12 @@
 	$mongoQuery = array('course_id' => (int)$course_id);
 	$mon = $exercise -> find($mongoQuery);
 	
-	$trueFalseQues = array();
-	$singleChoiceQues = array();
-	$multiChoiceQues = array();
-	$seriesQues = array();
 
 	foreach($mon as $data){
 		if($data['type'] == "TRUE_FALSE"){
 			$trueFalseQues[] = $data;
+		}else if($data['type'] == "SHORT_ANSWER"){
+			$shortAnswerQues[] = $data;
 		}else if($data['type'] == "SINGLE_CHOICE"){
 			$singleChoiceQues[] = $data;
 		}else if($data['type'] == "MULTI_CHOICE"){
@@ -98,6 +96,7 @@
 							<div class="userControl">
 								<ul class="tab-list">
 									<li><a href="#true_false">是非題</a></li>
+									<li><a href="#short_answer">簡答</a></li>
 									<li><a href="#single_choice">單選題</a></li>
 									<li><a href="#multi_choice">多選題</a></li>
 									<li><a href="#series_question">題組</a></li>
@@ -152,7 +151,51 @@
 							</div>
 						<?php }?>
 					</ul>
-
+					
+					<!-- ************* 簡答題 ************* -->
+					<ul id="short_answer" class="tab-content questionNum">
+					<?php if(!empty($shortAnswerQues)){
+							foreach($shortAnswerQues as $i => $question){
+								$shortAnswerQuesBody = $question['body'];?>
+							<li class="short_answer_wrap questionItem">
+									<div class="question"><?php echo $shortAnswerQuesBody['question'];?></div>
+									<div class="short_answer_answer_wrap">
+										<a><?php echo $shortAnswerQuesBody['answer'];?></a>
+									</div>
+									<div class="question_editor_wrap">
+										<div class="questionInfo">
+											<a class="level">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
+											<a class="time">答題時間：<?php echo $question['time']; ?></a>
+											<div class="tags">
+											<?php
+											if(!empty($question['tags'])){
+												$tags = explode("," ,$question['tags']);
+												foreach($tags as $tag){ ?>
+													<a><?php echo $tag;?></a>
+										<?php }}?>
+											</div>
+										</div>
+										<div class="for_section">
+											<?php if($question['is_test'] == false){ ?>
+												<a class="is_test">適用章節： <span>未指定</span></a>
+											<?php } else{ ?>
+												<a class="is_test">適用章節：</a>
+												<a class="is_test_href" target="_blank" href="<?php echo $courseURLArray[$question['test_section']];?>"><?php echo $sectionNameArray[$question['test_section']];?></a>
+											<?php }?>
+										</div>
+										<div class="questionFunc">
+											<a class="editQuesBtn" href="editExercise.php?id=<?php echo $question['_id'];?>&course_id=<?php echo $course_id;?>">編輯</a>
+											<a class="deletQuesBtn" data-exercise-id="<?php echo $question['_id'];?>">刪除</a>
+										</div>
+									</div>
+							</li>
+						<?php } }else {?>
+							<div class="noQuestion">
+								<img src="../img/oops.png">
+								<a>此題形沒有資料 :(</a>
+							</div>
+						<?php }?>
+					</ul>
 					<!-- ************* 單選題 ************* -->
 					<ul id="single_choice" class="tab-content questionNum">
 					<?php if(!empty($singleChoiceQues)){

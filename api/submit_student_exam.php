@@ -51,6 +51,14 @@
 					$correctQestionNum ++;
 				}
 				
+			}else if($data['type'] == "SHORT_ANSWER"){
+				// 簡答
+				$answer = $data["body"]["answer"];
+
+				if ($studentAnswer != -1 && $studentAnswer === $answer) {
+					$correctQestionNum ++;
+				}
+				
 			}else if($data['type'] == "SINGLE_CHOICE"){
 				// 單選
 

@@ -76,6 +76,49 @@
 		$back_tag = '#true_false';
 		location($back_tag, $mongoResult, $course_id, $truefalseHtml);
 
+	}else if($type=="SHORT_ANSWER"){
+		$answer = $_POST['answer'];
+		$commonArray = commonInfo();
+		$mongoInitData = array(
+			"author_id" => (int)$author_id,
+			"course_id" => (int)$course_id,
+			"type" => $type,
+			"tags" => $commonArray[tags],
+			"level" => $commonArray[level],
+			"time" => $commonArray[min].":".$commonArray[sec],
+			"create_date" => $commonArray[create_date],
+			"is_test" => $commonArray[is_test],
+			"test_section" => $commonArray[test_section],
+			"body" => array(
+				"question" => $commonArray[question],
+				"answer" => $answer,
+				)
+			);
+		$mongoResult = $exercise->insert($mongoInitData);
+		$exercise_id = $mongoInitData['_id'];
+
+		//common filed
+		$levelStart = levelStartGern($commonArray[level]);
+		$time = timeGern($commonArray[min],$commonArray[sec]);
+		$tagsHTML = tagGern($commonArray[tags]);
+		$sectionHTML = sectionGern($commonArray[is_test], $courseURLArray[$commonArray[test_section]],$sectionNameArray[$commonArray[test_section]]);
+
+		// combine all html
+		$shortAnswerHtml = "";
+		$shortAnswerHtml .= '<li class="short_answer_wrap questionItem" data-exercise-id="' . $exercise_id .'" data-exercise-type="SHORT_ANSWER" data-section-uid="'. $commonArray[test_section] .'" data-section-name="' .$sectionNameArray[$commonArray[test_section]] . '">';
+		$shortAnswerHtml .= '<div class="short_answer_answer_wrap">';
+		$shortAnswerHtml .= '<a>'. $answer .'</a>';
+		$shortAnswerHtml .= '</div><div class="Question">'. $commonArray[question] .'</div>';
+		$shortAnswerHtml .= '<div class="question_editor_wrap"><div class="questionInfo">';
+		$shortAnswerHtml .= '<a class="level" data-level="' . $commonArray[level] . '">難易度：' . $levelStart . '</a>';
+		$shortAnswerHtml .= '<a class="time" data-time="'.$time.'">答題時間：'. $time .'</a>';	
+		$shortAnswerHtml .= '<div class="tags">'.$tagsHTML.'</div></div>';
+		$shortAnswerHtml .= '<div class="for_section">'. $sectionHTML. '</div></div>';
+		$shortAnswerHtml .= '<span class="deleteQuestionBtn"><i class="fa fa-times-circle"></i></span></li>';
+		
+		$back_tag = '#short_answer';
+		location($back_tag, $mongoResult, $course_id, $shortAnswerHtml);
+
 	}else if($type=="SINGLE_CHOICE"){
 		for($a=1 ;$a<=4; $a++){
 			$opt_content[$a] = $_POST['single_opt_content_' . $a .''];

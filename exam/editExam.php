@@ -48,14 +48,11 @@
 	$mon = $exercise -> find($mongoQuery) -> sort(array('create_date' => -1));
 
 	// group questions by type
-	$trueFalseQues = array();
-	$singleChoiceQues = array();
-	$multiChoiceQues = array();
-	$seriesQues = array();
-
 	foreach($mon as $data){
 		if($data['type'] == "TRUE_FALSE"){
 			$trueFalseQues[] = $data;
+		}else if($data['type'] == "SHORT_ANSWER"){
+			$shortAnswerQues[] = $data;
 		}else if($data['type'] == "SINGLE_CHOICE"){
 			$singleChoiceQues[] = $data;
 		}else if($data['type'] == "MULTI_CHOICE"){
@@ -71,6 +68,7 @@
 
 	if ($generate_type == 'manualMode') {
 		$questionList['trueFalseQues'] = $trueFalseQues;
+		$questionList['shortAnswerQues'] = $shortAnswerQues;
 		$questionList['singleChoiceQues'] = $singleChoiceQues;
 		$questionList['multiChoiceQues'] = $multiChoiceQues;
 		$questionList['seriesQues'] = $seriesQues;
@@ -131,6 +129,7 @@
 				<div class="numberInfo">
 					<a>總題數：<span id="total_num">0</span></a>
 					<a>是非：<span id="trueFalse_num">0</span><input id="trueFalsePer" class="scorePercent"></a>
+					<a>簡答：<span id="shortAnswer_num">0</span></a>
 					<a>單選：<span id="single_num">0</span></a>
 					<a>多選：<span id="multi_num">0</span></a>
 					<a>題組：<span id="series_num">0</span></a>
@@ -146,46 +145,86 @@
 							if($type == "TRUE_FALSE"){
 								$trueFalseQuesBody = $question['body'];?>
 								<li class="true_false_wrap questionItem">
-										<div class="true_false_answer_wrap">
-											<?php if($trueFalseQuesBody['answer'] == true){ ?>
-												<a class="trueFalseAnswer">Ｏ</a>
-											<?php }else if($trueFalseQuesBody['answer'] == false){ ?>
-												<a class="trueFalseAnswer">Ｘ</a>
-											<?php } ?>
-										</div>
-										<div class="tfQuestion"><?php echo $trueFalseQuesBody['question'];?></div>
-										<div class="question_editor_wrap">
-											<div class="questionInfo">
-												<a class="level" data-level="<?php echo $question['level'];?>">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
-												<a class="time">答題時間：<?php echo $question['time']; ?></a>
-												<div class="tags">
-												<?php
-												if(!empty($question['tags'])){
-													$tags = explode("," ,$question['tags']);
-													foreach($tags as $tag){ ?>
-														<a><?php echo $tag;?></a>
-											<?php }}?>
-												</div>
+									<div class="true_false_answer_wrap">
+										<?php if($trueFalseQuesBody['answer'] == true){ ?>
+											<a class="trueFalseAnswer">Ｏ</a>
+										<?php }else if($trueFalseQuesBody['answer'] == false){ ?>
+											<a class="trueFalseAnswer">Ｘ</a>
+										<?php } ?>
+									</div>
+									<div class="tfQuestion"><?php echo $trueFalseQuesBody['question'];?></div>
+									<div class="question_editor_wrap">
+										<div class="questionInfo">
+											<a class="level" data-level="<?php echo $question['level'];?>">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
+											<a class="time">答題時間：<?php echo $question['time']; ?></a>
+											<div class="tags">
+											<?php
+											if(!empty($question['tags'])){
+												$tags = explode("," ,$question['tags']);
+												foreach($tags as $tag){ ?>
+													<a><?php echo $tag;?></a>
+										<?php }}?>
 											</div>
-											<div class="for_section">
-												<?php if($question['is_test'] == false){ ?>
-													<a class="is_test">適用章節： <span>未指定</span></a>
-												<?php } else{
-														foreach($contentData['chapters'] as $i => $chapter){
-															foreach($chapter['sections'] as $j => $section){
-																$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
-																$courseURL = sprintf("../courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
-																						,$courseData['course_id'], $i, $j);
+										</div>
+										<div class="for_section">
+											<?php if($question['is_test'] == false){ ?>
+												<a class="is_test">適用章節： <span>未指定</span></a>
+											<?php } else{
+													foreach($contentData['chapters'] as $i => $chapter){
+														foreach($chapter['sections'] as $j => $section){
+															$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
+															$courseURL = sprintf("../courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
+																					,$courseData['course_id'], $i, $j);
 
-																if($section['uid'] == $question['test_section']){ ?>
-																	<a class="is_test">適用章節：</a>
-																	<a class="is_test_href" target="_blank" href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a>
-												<?php 			}
-															}
+															if($section['uid'] == $question['test_section']){ ?>
+																<a class="is_test">適用章節：</a>
+																<a class="is_test_href" target="_blank" href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a>
+											<?php 			}
 														}
-												}?>
+													}
+											}?>
+										</div>
+									</div>
+								</li>
+						<? }else if($type == "SHORT_ANSWER"){
+								$shortAnswerQuesBody = $question['body'];?>
+								<li class="short_answer_wrap questionItem">
+									<div class="question"><?php echo $shortAnswerQuesBody['question'];?></div>
+									<div class="short_answer_answer_wrap">
+										<a><?php echo $shortAnswerQuesBody['answer'];?></a>
+									</div>
+									<div class="question_editor_wrap">
+										<div class="questionInfo">
+											<a class="level" data-level="<?php echo $question['level'];?>">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
+											<a class="time">答題時間：<?php echo $question['time']; ?></a>
+											<div class="tags">
+											<?php
+											if(!empty($question['tags'])){
+												$tags = explode("," ,$question['tags']);
+												foreach($tags as $tag){ ?>
+													<a><?php echo $tag;?></a>
+										<?php }}?>
 											</div>
 										</div>
+										<div class="for_section">
+											<?php if($question['is_test'] == false){ ?>
+												<a class="is_test">適用章節： <span>未指定</span></a>
+											<?php } else{
+													foreach($contentData['chapters'] as $i => $chapter){
+														foreach($chapter['sections'] as $j => $section){
+															$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
+															$courseURL = sprintf("../courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
+																					,$courseData['course_id'], $i, $j);
+
+															if($section['uid'] == $question['test_section']){ ?>
+																<a class="is_test">適用章節：</a>
+																<a class="is_test_href" target="_blank" href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a>
+											<?php 			}
+														}
+													}
+											}?>
+										</div>
+									</div>
 								</li>
 							<?php } else if($type == 'SINGLE_CHOICE'){
 											$singleChoiceQuesBody = $question['body'];
@@ -346,6 +385,7 @@
 									<div class="userControl">
 										<ul class="tab-list">
 											<li><a href="#true_false">是非題</a></li>
+											<li><a href="#short_answer">簡答</a></li>
 											<li><a href="#single_choice">單選題</a></li>
 											<li><a href="#multi_choice">多選題</a></li>
 											<li><a href="#series_question">題組</a></li>
@@ -402,7 +442,52 @@
 									</div>
 								<?php }?>
 							</ul>
-							
+							<!-- ************* 簡答題 ************* -->
+							<ul id="short_answer" class="tab-content questionNum">
+							<?php if(!empty($questionList['shortAnswerQues'])){
+									foreach($questionList['shortAnswerQues'] as $i => $question){
+										$shortAnswerQuesBody = $question['body'];
+										?>
+									<li class="short_answer_wrap questionItem" data-exercise-id="<?php echo $question['_id'];?>" 
+																			 data-exercise-type="SHORT_ANSWER" 
+																			 data-section-uid="<?php echo $question['test_section'];?>" 
+																			 data-section-name="<?php echo $sectionName;?>">
+										<div class="question"><?php echo $shortAnswerQuesBody['question'];?></div>
+										<div class="short_answer_answer_wrap">
+											<a><?php echo $shortAnswerQuesBody['answer'];?></a>
+										</div>
+										<div class="question_editor_wrap">
+											<div class="questionInfo">
+												<a class="level" data-level="<?php echo $question['level'];?>">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
+												<a class="time" data-time="<?php echo $question['time']; ?>">答題時間：<?php echo $question['time']; ?></a>
+												<div class="tags">
+												<?php
+												if(!empty($question['tags'])){
+													$tags = explode("," ,$question['tags']);
+													foreach($tags as $tag){ ?>
+														<a><?php echo $tag;?></a>
+											<?php }}?>
+												</div>
+											</div>
+											<div class="for_section">
+												<?php if($question['is_test'] == false){ ?>
+													<a class="is_test">適用章節： <span>未指定</span></a>
+												<?php } else{ ?>
+													<a class="is_test">適用章節：</a>
+													<a class="is_test_href" target="_blank" href="<?php echo $courseURLArray[$question['test_section']];?>"><?php echo $sectionNameArray[$question['test_section']];?></a>
+												<?php 	}
+												 ?>
+											</div>
+										</div>
+										<span class="deleteQuestionBtn"><i class="fa fa-times-circle"></i></span>
+									</li>
+								<?php } }else {?>
+									<div class="noQuestion">
+										<img src="../img/oops.png">
+										<a>此題形沒有資料 :(</a>
+									</div>
+								<?php }?>
+							</ul>
 							<!-- ************* 單選題 ************* -->
 							<ul id="single_choice" class="tab-content questionNum">
 							<?php if(!empty($questionList['singleChoiceQues'])){
@@ -579,6 +664,7 @@
 				<div class="addExerciseTitle">新增題目</div>
 				<div class="add_userControl">
 					<ul class="add_tab-list">
+						<li><a href="#add_short_answer">簡答</a></li>
 						<li><a href="#add_true_false">是非題</a></li>
 						<li><a href="#add_single_choice">單選題</a></li>
 						<li><a href="#add_multi_choice">多選題</a></li>
@@ -652,6 +738,64 @@
 						</div>
 						<div class="resultBtn_wrap tfSave">
 							<a class="resultBtn save tfSave">新增此題</a>
+							<a class="resultBtn closeBox">關 閉</a>
+						</div>
+						
+					</form>
+					<!-- 簡答題 -->
+					<form id="add_short_answer" class="add_tab-content">
+						<div class="question_content_wrap">
+							<label for="question">題目</label>
+								<textarea class="question_textarea" name="question"></textarea>
+							<label for="short_answer">本題解答</label>
+									<textarea class="short_answer" name="short_answer"></textarea>
+							<div class="tags_wrap">
+								<label for="tags">標籤</label>
+								<input type="text" class="tagsInput" name="tags" value="">
+							</div>
+							<label for="level">難易度</label>
+							<div class="opt">
+								<?php for($i=1; $i<=5; $i++){ ?>								
+									<input id="shortAnswer_level<?php echo $i;?>" value="<?php echo $i;?>" type="radio" name="level">
+										<label for="shortAnswer_level<?php echo $i;?>" name="level"><?php for($j=1; $j<=$i; $j++){?>★<?php }?></label>
+								<?php } ?>
+							</div>
+							<label for="time">答題時間</label>
+								<select name="min" class="time_select min">
+									<?php for($i=0; $i<=30; $i++){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
+								</select>
+								<a class="time_char">分</a>
+								<select name="sec" class="time_select sec">
+									<?php for($i=0; $i<=50; $i+=10){ ?><option value="<?php echo $i;?>"><?php echo $i;?></option> <?php }?>
+								</select>
+								<a class="time_char">秒</a>
+							<label for="is_test">選為隨堂練習</label>
+							<div class="opt">
+								<input id="is_test_false_short" target="shortAnswer" value="false" type="radio" name="is_test" checked>
+								<label for="is_test_false_short" name="is_test">否</label>
+								<input id="is_test_true_short" target="shortAnswer" value="true" type="radio" name="is_test">
+								<label for="is_test_true_short" name="is_test">是</label>
+							</div>
+							
+							<div id="section_shortAnswer" class="chapter_select">
+								<label for="section">適用章節</label>
+								<select class="testSection_select" name="section">
+								<?php
+								foreach($contentData['chapters'] as $i => $chapter){
+									$courseName = sprintf("CH%d: %s", $i+1, $chapter['name'] ); ?>
+									<optgroup label='<?php echo $courseName; ?>'>
+								<?php foreach($chapter['sections'] as $j => $section){
+										$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']); ?>
+										<option value="<?php echo $section['uid'];?>"><?php echo $sectionName;?></option>
+									<?php } ?>
+									</optgroup>
+									
+								<?php } ?>	
+								</select>
+							</div>
+						</div>
+						<div class="resultBtn_wrap shortAnswer">
+							<a class="resultBtn save shortAnswer">新增此題</a>
 							<a class="resultBtn closeBox">關 閉</a>
 						</div>
 						
