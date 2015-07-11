@@ -22,17 +22,19 @@
 			<?php require("header.php"); ?>
 			<div class="container">
 				<div class="content-wrap">
-					<form id="loginForm" class="stackForm" action="api/loginCheck.php" method="POST">
+					<form id="loginForm" class="stackForm">
 						<label for="account" required>帳號</label>
-						<input type="text" name="account"><br>
+							<input id="account" type="text" name="account"><br>
 						<label for="password" required>密碼</label>
-						<input type="password" name="password"><br>
-						<button class="submitBtn" type="submit" >登入</button>
+							<input id="password" type="password" name="password"><br>
+						<div class="loginStatus"> </div>
+						<button class="submitBtn">登入</button>
 					</form>
 				</div>
 			</div>
 			<?php require("footer.php"); ?>
 		</div>
-		
 	</body>
+	<?php require("js/js_com.php"); ?>
+	<script type="text/javaScript" src="js/login_register.js"></script>
 </html>

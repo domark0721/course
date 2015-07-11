@@ -5,21 +5,39 @@
 	$name = $_POST['name'];
 	$password = $_POST['password'];
 
-	//insert new member to mysqlbd
-	$newMember = "INSERT INTO member(account, password, name)VALUES('$account', '$password', '$name')" ;
+	//query id from member table
+	$sql = "SELECT * FROM member WHERE account='$account'";
+	$result = mysql_query($sql);
+	$row = mysql_fetch_assoc($result); //save as array
 
-	// echo $newMember;
-	if(mysql_query($newMember, $con )){
-		// echo "register success";
-		// session_start();
-		// $_SESSION['isLogin'] = true;
-		// $_SESSION['account'] = $account;
-		// $_SESSION['name'] = $name;
-		// $_SESSION['mode'] = "st";
-		Header("Location: ../login.php");
-	}
-	else{
-		// echo "register fail";
-		Header("Location: ../register.php");
+	if(!$row['account'] == $account){
+		//insert new member to mysqlbd
+		$newMember = "INSERT INTO member(account, password, name)VALUES('$account', '$password', '$name')" ;
+
+		// echo $newMember;
+		if(mysql_query($newMember, $con )){
+			// echo "register success";
+			$url = "login.php";
+			$result = array(
+				'status' => 'ok',
+				'url' => $url
+			);
+			echo json_encode($result);
+		}
+		else{
+			// echo "register fail";
+			$result = array(
+				'status' => 'fail'
+			);
+
+			echo json_encode($result);
+		}
+	}else{
+		$result = array(
+			'status' => 'fail',
+			'errorMsg' => '帳號已被註冊!'
+		);
+
+		echo json_encode($result);
 	}
 ?>

@@ -24,17 +24,33 @@
 		$_SESSION['account'] = $row['account'];
 		$_SESSION['name'] = $row['name'];
 		$_SESSION['mode'] = "st";
+		
 		// echo "login success!";
-		if(isset($_SESSION['url']))
+		if(isset($_SESSION['url'])){
 			$url = $_SESSION['url'];
-		else
+			$result = array(
+				'status' => 'ok',
+				'url' => $url
+			);
+		}
+		else{
 			$url = "/www/course/stmode.php";
-		Header("Location: $url");
+			$result = array(
+				'status' => 'ok',
+				'url' => $url
+			);
+		}
+		echo json_encode($result);
 	}
 	else{
 		// echo "login fail!";
-		Header("Location: /www/course/login.php");
-	}
+		$url = "/www/course/login.php";
+		$result = array(
+			'status' => 'fail',
+			'url' => $url
+		);
 
+		echo json_encode($result);
+	}
 
 ?>

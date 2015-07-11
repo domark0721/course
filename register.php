@@ -15,25 +15,34 @@
 			<div class="container">
 				<div class="content-wrap">
 					<div class="formCard">
-							<form id="registerForm" class="stackForm" action="api/registercheck.php" method="POST" >
-								<label for="name">姓名</label>
-								<input type="text" name="name" required><br>
-								<label for="account">新帳號</label>
-								<input type="text" name="account" required><br>
-								<label for="password">新密碼</label>
-								<input type="password" name="password" required><br>
-								<label for="password_check">確認密碼</label>
-								<input type="password" name="password_check" required><br>
-								<button class="registerBtn" type="submit" >註冊</button>
-								<div class="loginMsg"></div>
-							</form>
+						<form id="registerForm" class="stackForm">
+							<div class="hidetag">
+							<label for="name">姓名</label>
+								<input id="userName" type="text" name="name"><br>
+							<label for="account">新帳號</label>
+								<input id="account" type="text" name="account"><br>
+							<label for="password">新密碼</label>
+								<input id="npwd" type="password" name="password"><br>
+							<label for="password_check">確認密碼</label>
+								<input id="checkpwd" type="password" name="password_check"><br>
+							<div class="loginStatus"> </div>
+							<button class="registerBtn" type="submit" >註冊</button>
+							</div>
+							<div class="registerStatus"> </div>
+							<div class="spinner_wrap" style="display:none;">
+								<div class="spinner">
+									<div class="bounce1"></div>
+									<div class="bounce2"></div>
+									<div class="bounce3"></div>
+								</div>
+							</div>	
+						</form>					
 					</div>
 				</div>
 			</div>
 			<?php require("footer.php"); ?>
 		</div>
-		<script type="text/javascript">
-
-		</script>
+		<?php require("js/js_com.php"); ?>
+		<script type="text/javaScript" src="js/login_register.js"></script>
 	</body>
 </html>
