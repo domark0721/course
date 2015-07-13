@@ -114,9 +114,9 @@
 								$trueFalseQuesBody = $question['body'];?>
 							<li class="true_false_wrap questionItem">
 									<div class="true_false_answer_wrap">
-										<?php if($trueFalseQuesBody['answer'] == true){ ?>
+										<?php if($trueFalseQuesBody['answer'] == 'true'){ ?>
 											<a class="trueFalseAnswer">Ｏ</a>
-										<?php }else if($trueFalseQuesBody['answer'] == false){ ?>
+										<?php }else if($trueFalseQuesBody['answer'] == 'false'){ ?>
 											<a class="trueFalseAnswer">Ｘ</a>
 										<?php } ?>
 									</div>

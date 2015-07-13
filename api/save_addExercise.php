@@ -182,7 +182,7 @@
 	}
 
 	function location($back_tag, $mongoResult, $course_id) {
-		var_dump($course_id.$back_tag);
+		// var_dump($course_id.$back_tag);
 		if($mongoResult['ok'] == 1){
 			echo '<script>alert("題目新增成功！");
 					window.location.href="../exam/addExercise.php?course_id=' . $course_id . $back_tag .'"</script>';
