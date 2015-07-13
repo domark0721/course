@@ -198,3 +198,14 @@
 }
 
 
+.noCourse {
+	width: 70%;
+	background-color: #fff;
+	border: 0px solid #EDEDED;
+	margin-bottom: 15px;
+	box-shadow: 3px 3px 3px #BEBEBE;
+	padding: 4% 17px;
+	color: #B8B8B8;
+	font-size: 18px;
+	text-align: center;
+}

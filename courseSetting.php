@@ -13,15 +13,7 @@
 	$sql = "SELECT * FROM course WHERE course_id='$course_id'";
 	$result = mysql_query($sql);
 
-	$courseMetadata_temp = array();
-	while($row = mysql_fetch_assoc($result)){
-		$courseMetadata_temp[] = $row;
-	}	
-
-	foreach($courseMetadata_temp as $tempData){
-		$courseMetadata = $tempData;
-		break;
-	}
+	$courseMetadata = mysql_fetch_assoc($result);
 
 	//course data from mongo
 	$mongoQuery = array('course_id' => (int)$course_id);

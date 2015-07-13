@@ -1,3 +1,8 @@
+.status {
+	color: red;
+	font-size: 18px;
+}
+
 .newCourseForm-wrap {
 	max-width: 720px;
 	width: 90%;

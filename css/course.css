@@ -490,12 +490,6 @@
 	background-color: rgba(52, 141, 216, 0.7);
 }
 
-.exam_item .no_exam {
-	display: block;
-	text-align: center;
-	color: #999;
-}
-
 .greenStyle {
 	position: fixed;
 	bottom: 3%;

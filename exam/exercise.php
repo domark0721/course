@@ -87,7 +87,11 @@
 				</div>
 				<div class="function_wrap">
 					<ul class="function_ul">
-						<li><a class="functionBtn blueFunc" href="addExercise.php?course_id=<?php echo $course_id; ?>"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;新增題目</a></li>
+						<li><a class="functionBtn blueFunc" href="addExercise.php?course_id=<?php echo $course_id; ?>#true_false"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;是非題</a></li>
+						<li><a class="functionBtn blueFunc" href="addExercise.php?course_id=<?php echo $course_id; ?>#short_answer"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;簡答題</a></li>
+						<li><a class="functionBtn blueFunc" href="addExercise.php?course_id=<?php echo $course_id; ?>#single_choice"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;單選題</a></li>
+						<li><a class="functionBtn blueFunc" href="addExercise.php?course_id=<?php echo $course_id; ?>#multi_choice"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;複選題</a></li>
+						<li><a class="functionBtn blueFunc" href="addExercise.php?course_id=<?php echo $course_id; ?>#series_question"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;題組</a></li>
 						<li><a class="functionBtn redFunc" href="../temode.php"><i class="fa fa-chevron-left"></i>&nbsp;&nbsp;&nbsp;返回</a></li>
 					</ul>
 				</div>		

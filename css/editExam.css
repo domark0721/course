@@ -52,6 +52,19 @@
 	width: 58%;
 }
 
+.examSetting {
+	float: right;
+	background-color: rgba(144, 144, 144, 1);
+	color: #fff;
+	padding: 8px 13px;
+	cursor: pointer;
+	border-radius: 3px;
+	position: absolute;
+	right: 9.5em;
+	top: 15px;
+	transition: all .3s;
+}
+
 .newQuestionBtn {
 	float: right;
 	background-color: rgba(52, 141, 216, 1);
@@ -63,6 +76,11 @@
 	right: 31px;
 	top: 15px;
 	transition: all .3s;
+}
+
+.examSetting:hover {
+	color: rgba(144, 144, 144, 1);
+	background-color: #f5f5f5;
 }
 
 .newQuestionBtn:hover {

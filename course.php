@@ -322,8 +322,8 @@
 						</div>							
 						
 				<?php }}else{ ?>
-						<div class="exam_item">
-							<a class="no_exam">--- 尚無考試 ---</a>
+						<div class="schedule-wrap no_schedule">
+							<div>--- 尚無考試 ---</div>
 						</div>															
 				<?php }?>				
 					</div>

@@ -40,6 +40,21 @@
 }
 /* ---------- tab ---------- */
 
+.examSetting_wrap {
+	z-index: 150;
+	position: fixed;
+	display: block;
+	right: 24%;
+	top: 9%;
+	width: 50%;
+	height: 75%;
+	background-color: #ededed;
+	border-radius: 4px;
+	padding: 23px 29px;
+	box-shadow: 4px 4px 4px #474747;
+	overflow: scroll;
+}
+
 /* ---------- new exercise ---------- */
 .addExerciseBox_wrap {
 	z-index: 150;
@@ -248,8 +263,12 @@ ul.tagit {
   width: 70px;
   text-align: center;
 }
-
-.spinner > div {
+.spinnerSaveExam {
+	margin: 5% auto 0;
+	width: 70px;
+	text-align: center;
+}
+.spinner > div, .spinnerSaveExam > div{
   width: 18px;
   height: 18px;
   background-color: #333;
@@ -263,12 +282,12 @@ ul.tagit {
   animation-fill-mode: both;
 }
 
-.spinner .bounce1 {
+.spinner .bounce1, .spinnerSaveExam .bounce1 {
   -webkit-animation-delay: -0.32s;
   animation-delay: -0.32s;
 }
 
-.spinner .bounce2 {
+.spinner .bounce2, .spinnerSaveExam .bounce2 {
   -webkit-animation-delay: -0.16s;
   animation-delay: -0.16s;
 }
@@ -298,8 +317,7 @@ ul.tagit {
 	width: 26%;
 	height: 10%;
 	border-radius: 5px;
-	padding: 3% 22px 0 22px;
-	font-size: 18px;
+	padding: 3% 22px 2% 22px;
 	color: white;
 	text-align: center;
 	font-size: 30px;

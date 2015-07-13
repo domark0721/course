@@ -17,7 +17,8 @@
 
 	$questions = $_POST['exam_paper'];
 	$questions = implode(",", $questions);
-
+	// var_dump($questions);
+	
 	// save to mysql
 	$examData = "INSERT INTO exam (course_id, course_name, type, start_date, start_time, end_date, end_time, level, explanation, time, questions) 
 						VALUES ('$course_id', '$course_name', '$type','$start_date', '$start_time', '$end_date', '$end_time', '$level', '$explanation', '$time', '$questions')";
@@ -26,8 +27,7 @@
 	if($mysqlResult){
 		$response = array(
 			'status' => 'ok',
-			'error_message' => '',
-			'lastEditDate' => $lastEditDate
+			'error_message' => ''
 		);	
 	}
 	else{

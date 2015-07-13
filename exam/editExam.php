@@ -121,6 +121,7 @@
 		<div class="totalWrapper">
 			<?php require("header_editExam.php"); ?>
 			<div class="exam_status_wrap">
+				<span class="examSetting"><i class="fa fa-plus"></i>&nbsp;&nbsp;設定</span>
 				<span class="newQuestionBtn"><i class="fa fa-plus"></i>&nbsp;&nbsp;新增題目</span>
 				<div class="examInfo">
 				<a>平均難度：<span id="exam_level">0 / 5</span></a>
@@ -398,10 +399,10 @@
 									foreach($questionList['trueFalseQues'] as $i => $question){
 										$trueFalseQuesBody = $question['body'];
 										?>
-									<li class="true_false_wrap questionItem" data-exercise-id="<?php echo $question['_id'];?>" 
+									<li class="true_false_wrap questionItem notSelect" data-exercise-id="<?php echo $question['_id'];?>" 
 																			 data-exercise-type="TRUE_FALSE" 
 																			 data-section-uid="<?php echo $question['test_section'];?>" 
-																			 data-section-name="<?php echo $sectionName;?>">
+																			 data-section-name="<?php echo $sectionNameArray[$question['test_section']];?>">
 										<div class="true_false_answer_wrap">
 											<?php if($trueFalseQuesBody['answer'] == true){ ?>
 												<a class="trueFalseAnswer">Ｏ</a>
@@ -448,10 +449,10 @@
 									foreach($questionList['shortAnswerQues'] as $i => $question){
 										$shortAnswerQuesBody = $question['body'];
 										?>
-									<li class="short_answer_wrap questionItem" data-exercise-id="<?php echo $question['_id'];?>" 
+									<li class="short_answer_wrap questionItem notSelect" data-exercise-id="<?php echo $question['_id'];?>" 
 																			 data-exercise-type="SHORT_ANSWER" 
 																			 data-section-uid="<?php echo $question['test_section'];?>" 
-																			 data-section-name="<?php echo $sectionName;?>">
+																			 data-section-name="<?php echo $sectionNameArray[$question['test_section']];?>">
 										<div class="question"><?php echo $shortAnswerQuesBody['question'];?></div>
 										<div class="short_answer_answer_wrap">
 											<a><?php echo $shortAnswerQuesBody['answer'];?></a>
@@ -495,10 +496,10 @@
 										$singleChoiceQuesBody = $question['body'];
 										$singleChoiceQuesOpt = $singleChoiceQuesBody['options'];
 									?>
-									<li class="single_choice_wrap questionItem" data-exercise-id="<?php echo $question['_id'];?>" 
+									<li class="single_choice_wrap questionItem notSelect" data-exercise-id="<?php echo $question['_id'];?>" 
 																				data-exercise-type="SINGLE_CHOICE"
 																				data-section-uid="<?php echo $question['test_section'];?>" 
-																				data-section-name="<?php echo $sectionName;?>" >
+																				data-section-name="<?php echo $sectionNameArray[$question['test_section']];?>" >
 										<div class="question"><?php echo $singleChoiceQuesBody['question'];?></div>
 										<div class="single_choice_answer_wrap">
 											<?php foreach($singleChoiceQuesOpt as $j => $options){
@@ -548,10 +549,10 @@
 										$multiChoiceQuesBody = $question['body'];
 										$multiChoiceQuesOpt = $multiChoiceQuesBody['options'];
 									?>
-									<li class="multi_choice_wrap questionItem" data-exercise-id="<?php echo $question['_id'];?>" 
+									<li class="multi_choice_wrap questionItem notSelect" data-exercise-id="<?php echo $question['_id'];?>" 
 																			   data-exercise-type="MULTI_CHOICE"
 																			   data-section-uid="<?php echo $question['test_section'];?>" 
-																			   data-section-name="<?php echo $sectionName;?>" >
+																			   data-section-name="<?php echo $sectionNameArray[$question['test_section']];?>" >
 										<div class="question"><?php echo $multiChoiceQuesBody['question'];?></div>
 										<div class="multi_choice_answer_wrap">
 											<?php foreach($multiChoiceQuesOpt as $j => $options){
@@ -599,7 +600,7 @@
 									foreach($questionList['seriesQues'] as $i => $questionHeader){
 										$seriesQuesBody = $questionHeader['body'];
 							?>
-									<li class="series_question_wrap questionItem" data-exercise-id="<?php echo $questionHeader['_id'];?>" 
+									<li class="series_question_wrap questionItem notSelect" data-exercise-id="<?php echo $questionHeader['_id'];?>" 
 																			      data-exercise-type="SERIES_QUESTIONS"
 																			      data-section-uid="<?php echo $questionHeader['test_section'];?>" 
 																			      data-section-name="<?php echo $sectionName;?>" >
@@ -659,6 +660,8 @@
 				<input type="hidden" id="end_date" value="<?php echo $end_date;?>"/>
 				<input type="hidden" id="end_time" value="<?php echo $end_time;?>"/>
 				<input type="hidden" id="explanation" value="<?php echo $explanation;?>"/>
+			</div>
+			<div class="examSetting_wrap" style="display:none;">
 			</div>
 			<div class="addExerciseBox_wrap" style="display:none;">
 				<div class="addExerciseTitle">新增題目</div>
@@ -954,8 +957,14 @@
 			<div class="exerciseTemp" style="display:none;">
 			</div>
 			<div class="overlay"> </div>
-			<div class="statusSilde"></div>
-			<div class="statusSildeSave"></div>
+			<div class="statusSilde" style="display:none;"></div>
+			<div class="statusSildeSave" style="display:none;">
+				<div class="spinnerSaveExam">
+				  <div class="bounce1"></div>
+				  <div class="bounce2"></div>
+				  <div class="bounce3"></div>
+				</div>
+			</div>
 			<div class="TRUE_FALSE_TEMP" style="display:none;">
 			</div>
 		</div>

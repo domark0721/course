@@ -1,23 +1,25 @@
 function deleteQuestion(){
-		$('.deleteQuestionBtn').on('click', function() {
-			$questionItem = $(this).parent('.questionItem');
+	$('.deleteQuestionBtn').on('click', function() {
+		$questionItem = $(this).parent('.questionItem');
 
-			var type = $questionItem.data('exercise-type');
+		var type = $questionItem.data('exercise-type');
 
-			if (type == "TRUE_FALSE") {
-				$("#true_false").prepend($questionItem.hide().fadeIn());
-			}else if(type == "SHORT_ANSWER"){
-				$("#short_answer").prepend($questionItem.hide().fadeIn());
-			}else if(type == "SINGLE_CHOICE"){
-				$("#single_choice").prepend($questionItem.hide().fadeIn());
-			}else if(type == "MULTI_CHOICE"){
-				$("#multi_choice").prepend($questionItem.hide().fadeIn());
-			}else if(type == "SERIES_QUESTIONS"){
-				$("#series_question").prepend($questionItem.hide().fadeIn());
-			}
-			calculate();
-		});
-	}	
+		if (type == "TRUE_FALSE") {
+			$("#true_false").prepend($questionItem.addClass('notSelect').hide().fadeIn());
+		}else if(type == "SHORT_ANSWER"){
+			$("#short_answer").prepend($questionItem.addClass('notSelect').hide().fadeIn());
+		}else if(type == "SINGLE_CHOICE"){
+			$("#single_choice").prepend($questionItem.addClass('notSelect').hide().fadeIn());
+		}else if(type == "MULTI_CHOICE"){
+			$("#multi_choice").prepend($questionItem.addClass('notSelect').hide().fadeIn());
+		}else if(type == "SERIES_QUESTIONS"){
+			$("#series_question").prepend($questionItem.addClass('notSelect').hide().fadeIn());
+		}
+		calculate();
+		$questionItem.bind('click', notSelect);
+	});
+
+}	
 
 function calculate(){
 	var trueFalse_num = $('.left-container .true_false_wrap').length;
@@ -80,10 +82,20 @@ function calculate(){
 	$('#level').val(Math.round(level));
 	/* ---- time & level transform End ----*/	
 }
+function notSelect(){
+	$('.notSelect').on('click', function(){
+			var $questionItem = $(this).removeClass('notSelect');
+			var $questionItem = $(this);
+			$('#drop-question-list').prepend($questionItem.hide().fadeIn('fast'));
+			$questionItem.unbind('click');
+			calculate();
+	});
+}
 $(document).ready(function(){
-	
+	notSelect();
 	deleteQuestion();
 	beforeunload();
+
 	$('#save_exam').on('click', function(){
 		var leftQuestion_num = $('.left-container .questionItem').length;
 		if(leftQuestion_num == 0){
@@ -184,6 +196,8 @@ $(document).ready(function(){
 		// .disableSelection();
  	});
 
+
+
 	//get mongo_id of every question 
 	function saveExam(){
 		$('.overlay').addClass('overlay_fix').hide().fadeIn();
@@ -202,10 +216,11 @@ $(document).ready(function(){
 		var questionList = $('.left-container #drop-question-list .questionItem').map(function(){
 							question_id = $(this).data('exercise-id');
 							return question_id;
-							})
+							});
+
 		// if(questionList == NULL)
 		var exam_paper = questionList.toArray();
-		// console.log(questionList);
+		console.log(exam_paper);
 
 	    var request = $.ajax({
 	      url: "../api/save_exam.php",
@@ -227,7 +242,7 @@ $(document).ready(function(){
     	})
     	request.done(function(jData){
 			if(jData.status=='ok'){
-				$('.statusSildeSave').html('考卷已建立完成!將於三秒後跳轉...').hide().fadeIn().addClass('greenStyle').delay(3000).slideUp(500).queue(function(){
+				$('.statusSildeSave').prepend('考卷儲存中...').hide().fadeIn().addClass('greenStyle').delay(3000).slideUp(500).queue(function(){
 			        																		$(this).removeClass('greenStyle');
 			        																		$(this).dequeue();
 				setTimeout(function() {
@@ -241,6 +256,9 @@ $(document).ready(function(){
 			        																		$(this).removeClass('redStyle');
 			        																		$(this).dequeue();
 			       																 });
+				setTimeout(function() {
+					$('.resultBtn.closeBox').trigger('click');
+				}, 0);
 			}
 		})
 	}

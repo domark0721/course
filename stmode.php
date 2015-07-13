@@ -62,8 +62,8 @@
 
 					<div id="attened_course" class="tab-content courseList">  
 <?php 
-	foreach($attened_course as $value){
-		// var_dump($value);
+	if(count($attened_course)){
+		foreach($attened_course as $value){
 ?>
 						<div class="courseItem clearfix">
 							<div class="itemLeft"><img src="img/user-course.jpg"></div>
@@ -79,11 +79,16 @@
 							</div>
 							<div class="itemRight"><a href="course.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;&nbsp;進入課程</a></div>
 						</div>
+<?php }}else{ ?>
+						<div class="noCourse">------ 該列表並無課程 ------</div>		
 <?php }?>
 					</div>
+
+
 					<div id="finish_course" class="tab-content courseList">  
-<?php 
-	foreach($finish_course as $value){
+<?php
+	if(count($finish_course)){
+		foreach($finish_course as $value){
 		// var_dump($value);
 ?>
 						<div class="courseItem clearfix">
@@ -100,12 +105,17 @@
 							</div>
 							<div class="itemRight"><a href="course.php?course_id=<?php echo $value['course_id']; ?>"><i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;&nbsp;進入課程</a></div>
 						</div>
+<?php }}else{ ?>
+						<div class="noCourse">------ 該列表並無課程 ------</div>	
 <?php }?>
 					</div>
+
+
+
 					<div id="favorite_course" class="tab-content courseList" style="display:none;">  
 <?php 
-	foreach($favorite_course as $value){
-		// var_dump($value);
+	if(count($favorite_course)){
+		foreach($favorite_course as $value){
 ?>
 						<div class="courseItem clearfix">
 							<div class="itemLeft"><img src="img/user-course.jpg"></div>
@@ -115,11 +125,11 @@
 							</div>
 							<div class="itemRight"><a href="course.php?course_id=<?php echo $value['course_id']?>"><i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;&nbsp;進入課程</a></div>
 						</div>
-<?php }?>
-								
-					</div>
 
-					
+<?php }}else{ ?>
+						<div class="noCourse">------ 該列表並無課程 ------</div>	
+<?php }?>
+					</div>
 				</div>
 			</div>
 			<?php require("footer.php"); ?>

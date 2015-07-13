@@ -60,7 +60,8 @@
 					</div>
 					<div id="statusEditing" class="tab-content courseList">
 <?php
-	foreach ($statusEditing as $value){
+	if(count($statusEditing)){
+		foreach ($statusEditing as $value){
 ?>
 						<div class="courseItem clearfix">
 							<div class="itemLeft"><img src="img/user-course.jpg"></div>
@@ -80,12 +81,16 @@
 								<a class="questionManage" href="exam/examList.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-file-text-o fa_plus"></i> 考試管理</a>
 							</div>
 						</div>
-<?php } ?>
+<?php }}else{ ?>
+						<div class="noCourse">------ 該列表並無課程 ------</div>		
+<?php }?>
+			
 					</div>
 
 					<div id="statusOn" class="tab-content courseList">
 <?php
-	foreach ($statusOn as $value){
+	if(count($statusOn)){
+		foreach ($statusOn as $value){
 ?>
 						<div class="courseItem clearfix">
 							<div class="itemLeft"><img src="img/user-course.jpg"></div>
@@ -103,16 +108,17 @@
 								<a class="questionManage" href="exercise.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-leanpub fa_plus"></i>題庫管理</a>
 								<a class="questionManage" href="exam/examList.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-file-text-o fa_plus"></i> 考試管理</a>
 							</div>
-		<!-- 					<div class="itemRight"><a href="#">進入課程</a></div>
-							<div class="itemRight"><a href="#">進入課程</a></div>
-							<div class="itemRight"><a href="#">進入課程</a></div> -->
 						</div>
-<?php } ?>
+<?php }}else{ ?>
+						<div class="noCourse">------ 該列表並無課程 ------</div>		
+<?php }?>
 					</div>
+
 
 					<div id="statusOff" class="tab-content courseList">
 <?php
-	foreach ($statusOff as $value){
+	if(count($statusOff)){
+		foreach ($statusOff as $value){
 ?>
 						<div class="courseItem clearfix">
 							<div class="itemLeft"><img src="img/user-course.jpg"></div>
@@ -131,7 +137,9 @@
 								<a class="questionManage" href="exam/examList.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-file-text-o fa_plus"></i> 考試管理</a>
 							</div>
 						</div>
-<?php } ?>
+<?php }}else{ ?>
+						<div class="noCourse">------ 該列表並無課程 ------</div>		
+<?php }?>
 					</div>					
 				</div>
 			</div>

@@ -1,13 +1,21 @@
 <?php
 	include_once('api/auth.php'); 
 	include_once("mongodb.php");
+	include_once("mysql.php");
 	include_once('api/isLogin.php');
 
 	session_start();
 	$_SESSION['url'] = $_SERVER['REQUEST_URI']; 
 	
 	$course_id = $_GET['course_id'];
-	// $course_id = 123;
+	
+	//metadata from mysql
+	$sql = "SELECT * FROM course WHERE course_id='$course_id'";
+	$result = mysql_query($sql);
+
+	$courseMetadata = mysql_fetch_assoc($result);
+	// var_dump($courseMetadata);
+
 	$mongoQuery = array('course_id' => (int)$course_id);
 	$mon = $collection -> find($mongoQuery);
 
@@ -38,8 +46,8 @@
 								<img src="img/user-course.jpg">
 							</div>
 							<div id="courseHeader">
-								<div id="courseName">資料結構</div>
-								<div id="courseTeacher">Mark Tsai</div>
+								<div id="courseName"><?php echo $courseMetadata['course_name'];?></div>
+								<div id="courseTeacher"><?php echo $courseMetadata['teacher_name'];?></div>
 							</div>
 						</div>				
 					</div>

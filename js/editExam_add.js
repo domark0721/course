@@ -5,15 +5,28 @@ $(document).ready(function(){
 		$('.addExerciseBox_wrap').fadeIn();
 	});
 
+	$('.examSetting').on('click', function(){
+		$('.overlay').addClass('overlay_fix').hide().fadeIn();
+		$('.examSetting_wrap').fadeIn();
+	});
+
 	$('.resultBtn.closeBox').on('click', function(){
-		$('.overlay').removeClass('overlay_fix').fadeOut(400);
 		$('.addExerciseBox_wrap').fadeOut(300);
+		$('.examSetting_wrap').fadeOut(300);
+
+		$('.overlay_fix').fadeOut('slow', function(){
+			$(this).removeClass('overlay_fix');
+		});
 	});
 
 	$(document).keyup(function(e) {
 	  if (e.keyCode == 27) {// esc
 	  	$('.resultBtn.closeBox').trigger('click');
 	  }  
+	});
+
+	$('.overlay').on('click', function(){
+		$('.resultBtn.closeBox').trigger('click');
 	});
 	
 	$('.resultBtn.save.tfSave').on('click', function(){
