@@ -22,49 +22,49 @@
 						</div>
 					</div>
 				</div>
-				<div id="section-hotcourse" class="content-wrap" style="display:none;">
+				<!-- <div id="section-hotcourse" class="content-wrap" style="display:none;">
 					<div class="indexLabel">熱門課程</div>
-						<div id="courselist-container">
-							<ul id="courselist">
-								<li class="courseItem">
-									<div class="courseCard">
-										<div class="courseImg"><img src="img/Big-Data.png"></div>
-										<div class="courseName"><i class="fa fa-book"></i> 資料結構</div>
-									</div>
-								</li>
-								<li class="courseItem">
-									<div class="courseCard">
-										<div class="courseImg"><img src="img/Big-Data.png"></div>
-										<div class="courseName"><i class="fa fa-book"></i> 資料結構</div>
-									</div>
-								</li>
-								<li class="courseItem">
-									<div class="courseCard">
-										<div class="courseImg"><img src="img/Big-Data.png"></div>
-										<div class="courseName"><i class="fa fa-book"></i> 資料結構</div>
-									</div>
-								</li>	
-								<li class="courseItem">
-									<div class="courseCard">
-										<div class="courseImg"><img src="img/Big-Data.png"></div>
-										<div class="courseName"><i class="fa fa-book"></i> 資料結構</div>
-									</div>
-								</li>
-								<li class="courseItem">
-									<div class="courseCard">
-										<div class="courseImg"><img src="img/Big-Data.png"></div>
-										<div class="courseName"><i class="fa fa-book"></i> 資料結構</div>
-									</div>
-								</li>
-								<li class="courseItem">
-									<div class="courseCard">
-										<div class="courseImg"><img src="img/Big-Data.png"></div>
-										<div class="courseName"><i class="fa fa-book"></i> 資料結構</div>
-									</div>
-								</li>
-							</ul>
-						</div>
-				</div>
+					<div id="courselist-container">
+						<ul id="courselist">
+							<li class="courseItem">
+								<div class="courseCard">
+									<div class="courseImg"><img src="img/Big-Data.png"></div>
+									<div class="courseName"><i class="fa fa-book"></i> 資料結構</div>
+								</div>
+							</li>
+							<li class="courseItem">
+								<div class="courseCard">
+									<div class="courseImg"><img src="img/Big-Data.png"></div>
+									<div class="courseName"><i class="fa fa-book"></i> 資料結構</div>
+								</div>
+							</li>
+							<li class="courseItem">
+								<div class="courseCard">
+									<div class="courseImg"><img src="img/Big-Data.png"></div>
+									<div class="courseName"><i class="fa fa-book"></i> 資料結構</div>
+								</div>
+							</li>	
+							<li class="courseItem">
+								<div class="courseCard">
+									<div class="courseImg"><img src="img/Big-Data.png"></div>
+									<div class="courseName"><i class="fa fa-book"></i> 資料結構</div>
+								</div>
+							</li>
+							<li class="courseItem">
+								<div class="courseCard">
+									<div class="courseImg"><img src="img/Big-Data.png"></div>
+									<div class="courseName"><i class="fa fa-book"></i> 資料結構</div>
+								</div>
+							</li>
+							<li class="courseItem">
+								<div class="courseCard">
+									<div class="courseImg"><img src="img/Big-Data.png"></div>
+									<div class="courseName"><i class="fa fa-book"></i> 資料結構</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div> -->
 			</div>
 			<?php require("footer.php"); ?>
 		</div>

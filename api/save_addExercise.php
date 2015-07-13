@@ -163,14 +163,13 @@
 		$is_test = $_POST['is_test'];
 		$section = $_POST['section'];
 		$create_date = $_POST['create_date'];
-		if($is_test == false){
+		if($is_test == "false"){
 			$is_test = false;
 			$test_section = 0;
 		}else{
 			$is_test = true;
 			$test_section = $section;
 		}
-
 		return array(
 				"question" => $question, 
 				"tags" => $tags, 
@@ -183,7 +182,7 @@
 	}
 
 	function location($back_tag, $mongoResult, $course_id) {
-		// var_dump($course_id.$back_tag);
+		var_dump($course_id.$back_tag);
 		if($mongoResult['ok'] == 1){
 			echo '<script>alert("題目新增成功！");
 					window.location.href="../exam/addExercise.php?course_id=' . $course_id . $back_tag .'"</script>';
