@@ -32,11 +32,12 @@ $(document).ready(function(){
     $('.sectionItem').on('click', function(e){
       e.preventDefault();
       // console.log('hey');
-      showEditBlock($(e.target));
+      showEditBlock($(this));
     });
   }
 
   function showEditBlock(target){
+    // console.log(target);
     $('.sectionItem').removeClass('active');
     target.addClass('active');
 
@@ -45,6 +46,25 @@ $(document).ready(function(){
     $('.sectionEditWrap').hide();
     $(activeSectionEditBlock).fadeIn();
   }
+
+  //realtime edit left section Name
+  $('.section-name').on('change', function(){
+    var sectionNameTemp = $(this).val();
+    var sectionID = $(this).parents('.sectionEditWrap').attr('id');
+
+    $('.sectionList').find('.sectionItem').each(function(index){
+      if($(this).attr('href')=='#'+sectionID){
+        $(this).find('.leftSectionName').html(sectionNameTemp);          
+      };
+    });
+  });
+
+  $('.editChapterName').on('click', function(){
+    var originNameObject = $(this).parent('.chapter-btns').prev();
+    var originName = originNameObject.html()
+    var chapterNewName = prompt("修改章節名稱", originName);
+    originNameObject.html(chapterNewName);
+  });
 
   /******** add new chapter Start ********/
   $('.addChapterBtn').on('click', function(e){

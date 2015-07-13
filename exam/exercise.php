@@ -24,7 +24,7 @@
 
 	//search question from mongodb in exercise collection
 	$mongoQuery = array('course_id' => (int)$course_id);
-	$mon = $exercise -> find($mongoQuery);
+	$mon = $exercise -> find($mongoQuery)->sort(array('create_date' => -1));
 	
 
 	foreach($mon as $data){

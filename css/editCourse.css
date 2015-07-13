@@ -140,7 +140,7 @@
 .chapter-btns {
 	position: absolute;
 	top: 0;
-	left: -65px;
+	left: -100px;
 	border: 1px solid #8e8e8e;
 	border-radius: 5px;
 	display: none;
@@ -151,7 +151,7 @@
 	border: 0px;
 }
 
-.addSectionBtn, .deleteChapterBtn, .deleteSectionBtn {
+.addSectionBtn, .editChapterName, .deleteChapterBtn, .deleteSectionBtn {
 	display: inline-block;
 	font-size: 20px;
 	color: #8E8E8E;
@@ -162,7 +162,7 @@
 	transition: all 0.3s;
 }
 
-.addSectionBtn:hover {
+.addSectionBtn:hover, .editChapterName:hover {
 	color: #79B03D;
 }
 

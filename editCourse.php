@@ -70,8 +70,9 @@
 										<span class="chapterNo"><?php echo $chapterNo;?></span>
 										<span class="chapterName"><?php echo $chapter['name']; ?></span>
 										<span class="chapter-btns">
-											<a class="addSectionBtn" data-chapter-id="<?php echo $i+1;?>"><i class="fa fa-plus-circle"></i></a>
 											<a class="deleteChapterBtn"><i class="fa fa-trash-o"></i></a>
+											<a class="addSectionBtn" data-chapter-id="<?php echo $i+1;?>"><i class="fa fa-plus-circle"></i></a>
+											<a class="editChapterName"><i class="fa fa-pencil"></i></a>
 										</span>
 									</div>
 									<ul class="sectionList">
@@ -82,7 +83,7 @@
 										<li class="section">
 											<a class="sectionItem" href="<?php echo '#editWrap' .($editWrapId++); ?>">
 												<span class="sectionNo"><?php echo $sectionNo;?></span>
-												<?php echo $section['name']; ?>
+												<span class="leftSectionName"><?php echo $section['name'];?></span>
 												<div class="chapter-btns">
 													<span class="deleteSectionBtn"><i class="fa fa-trash-o"></i></span>
 												</div>
