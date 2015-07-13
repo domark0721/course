@@ -81,8 +81,8 @@ $(document).ready(function(){
       emptyChapter += '<span class="chapterNo"> CH'+ (ChapterCount+1)+': </span>';
       emptyChapter += '<span class="chapterName">'+ chapterNewName +'</span>';
       emptyChapter += '<span class="chapter-btns">';
-      emptyChapter += '<a class="addSectionBtn" data-chapter-id="'+ (ChapterCount+1) +'"><i class="fa fa-plus-circle"></i></a>';
-      emptyChapter += '<a class="deleteChapterBtn"><i class="fa fa-trash-o"></i></a></span></div>';
+      emptyChapter += '<a class="deleteChapterBtn"><i class="fa fa-trash-o"></i></a><a class="addSectionBtn" data-chapter-id="'+ (ChapterCount+1) +'"><i class="fa fa-plus-circle"></i></a>';
+      emptyChapter += '<a class="editChapterName"><i class="fa fa-pencil"></i></a></span></div>';
       emptyChapter += '<ul class="sectionList"></ul></li>';
       // emptyChapter += '';
 
