@@ -2,6 +2,8 @@ $(document).ready(function(){
   
   bindChapterItem();
   bindSectionItem();
+  editChapterName();
+  sectionNameChange();
 
   tinyMCE.init({
     selector: ".sectionEditor",
@@ -48,28 +50,51 @@ $(document).ready(function(){
   }
 
   //realtime edit left section Name
-  $('.section-name').on('change', function(){
-    var sectionNameTemp = $(this).val();
-    var sectionID = $(this).parents('.sectionEditWrap').attr('id');
+  function sectionNameChange() {
+    $('.section-name').on('change', function(){
+      var sectionNameTemp = $(this).val();
+      var sectionID = $(this).parents('.sectionEditWrap').attr('id');
 
-    $('.sectionList').find('.sectionItem').each(function(index){
-      if($(this).attr('href')=='#'+sectionID){
-        $(this).find('.leftSectionName').html(sectionNameTemp);          
-      };
+      $('.sectionList').find('.sectionItem').each(function(index){
+        if($(this).attr('href')=='#'+sectionID){
+          $(this).find('.leftSectionName').html(sectionNameTemp);          
+        };
+      });
+      
     });
-  });
+  }
 
-  $('.editChapterName').on('click', function(){
-    var originNameObject = $(this).parent('.chapter-btns').prev();
-    var originName = originNameObject.html()
-    var chapterNewName = prompt("修改章節名稱", originName);
-    originNameObject.html(chapterNewName);
-  });
+  function editChapterName() {
+    $('.editChapterName').on('click', function(){
+      var originNameObject = $(this).parent('.chapter-btns').prev();
+      var originName = originNameObject.html()
+      
+      do{
+        if(chapterNewName===""){
+          var chapterNewName = prompt("修改章節名稱（請勿輸入空白值）", originName);
+          if(chapterNewName) originNameObject.html(chapterNewName);  
+        }
+        else {
+          var chapterNewName = prompt("修改章節名稱", originName);
+          if(chapterNewName) originNameObject.html(chapterNewName);       
+        }
+      }while(chapterNewName === "");
+      
+    });
+  }
 
   /******** add new chapter Start ********/
   $('.addChapterBtn').on('click', function(e){
-    var chapterNewName = prompt("請輸入章節名稱");
     
+    do{
+        if(chapterNewName===""){
+          var chapterNewName = prompt("修改章節名稱（請勿輸入空白值）");
+        }
+        else {
+          var chapterNewName = prompt("請輸入章節名稱");
+        }
+    }while(chapterNewName === "");
+
     if(chapterNewName != null){
       $chapterList = $(this).next('.chapterList');
       // $chapterList = $btnNext.children('.chapter:last-child');
@@ -88,6 +113,7 @@ $(document).ready(function(){
 
       $chapterList.append(emptyChapter);
       bindChapterItem();
+      editChapterName();
     }
   });
   /******** add new chapter End ********/
@@ -116,7 +142,7 @@ $(document).ready(function(){
         var emptySection = '<li class="section">';
         emptySection += '<a class="sectionItem" href="#editWrap'+ editWrapCount+'">';
         emptySection += '<span class="sectionNo">'+ sectionNo +'</span>';
-        emptySection += '新小節';
+        emptySection += '<span class="leftSectionName">新小節</span>';
         emptySection += '<div class="chapter-btns"><span class="deleteSectionBtn"><i class="fa fa-trash-o"></i></span></div></a></li>';
 
         $sectionList.append(emptySection);
@@ -135,6 +161,7 @@ $(document).ready(function(){
         $('#rightPanel').append(emptyEditor);
         tinyMCE.execCommand('mceAddEditor', false, 'tinyMce_'+editWrapCount);
         bindSectionItem();
+        sectionNameChange();
       });
   }
   /******** add new section End ********/

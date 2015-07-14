@@ -257,6 +257,11 @@ ul.tagit {
 	background-color: rgba(173, 50, 50, .7);
 }
 
+.formCheck {
+	color: red;
+	font-size: 18px;
+}
+
 /* loading */
 .spinner {
   margin: 30% auto 0;

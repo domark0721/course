@@ -1,6 +1,7 @@
 $(document).ready(function(){
     
     $('.deletQuesBtn').on('click', function(e){
+    	// console.log($(e.target).parents('.true_false_wrap').prev());
     	var result = confirm("刪除此題？");
 		if(result) {
 		    delete_exercise($(e.target));
@@ -37,6 +38,12 @@ $(document).ready(function(){
 			       																 });
 	      }
 	    });
+	    var exerciseWrap = target.parents('.true_false_wrap, .short_answer_wrap, .single_choice_wrap, .multi_choice_wrap, .series_question_wrap');
+	    var exerciseClass = exerciseWrap.attr('class').split(' ');
+	    var targetClass = '.' + exerciseClass[0];
+	    	// console.log(($(targetClass).length)-1);
+	    	// console.log(exerciseWrap.prev().children('.exerciseCount'));
+	    	exerciseWrap.prev().children('.exerciseCount').html($(targetClass).length-1);
     }
 
 });

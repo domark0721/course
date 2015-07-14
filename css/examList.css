@@ -112,7 +112,8 @@
 
 .exam_date {
 	color: #3F3E3E;
-	width: 47%;
+	/*width: 47%;*/
+	width: 60%;
 }
 
 .exam_score {

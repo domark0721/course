@@ -98,11 +98,11 @@
 									<?php } ?>
 								</div>
 								<label for="time">答題時間</label>
-									<select name="min" class="time_select">
+									<select name="min" class="time_select min">
 										<?php for($i=0; $i<=30; $i++){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
 									</select>
 									<a class="time_char">分</a>
-									<select name="sec" class="time_select">
+									<select name="sec" class="time_select sec">
 										<?php for($i=0; $i<=50; $i+=10){ ?><option value="<?php echo $i;?>"><?php echo $i;?></option> <?php }?>
 									</select>
 									<a class="time_char">秒</a>
@@ -137,6 +137,7 @@
 								<input type="hidden" name="type" value="TRUE_FALSE">
 							</div>
 							<div class="resultBtn">
+								<div class="formCheck"></div>
 								<button class="panelBtn save" type="submit" >儲存此題</button>
 								<a class="panelBtn giveup" href="exercise.php?course_id=<?php echo $course_id;?>">離 開</a>
 							</div>
@@ -160,11 +161,11 @@
 									<?php } ?>
 								</div>
 								<label for="time">答題時間</label>
-									<select name="min" class="time_select">
+									<select name="min" class="time_select min">
 										<?php for($i=0; $i<=30; $i++){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
 									</select>
 									<a class="time_char">分</a>
-									<select name="sec" class="time_select">
+									<select name="sec" class="time_select sec">
 										<?php for($i=0; $i<=50; $i+=10){ ?><option value="<?php echo $i;?>"><?php echo $i;?></option> <?php }?>
 									</select>
 									<a class="time_char">秒</a>
@@ -199,6 +200,7 @@
 								<input type="hidden" name="type" value="SHORT_ANSWER">
 							</div>
 							<div class="resultBtn">
+								<div class="formCheck"></div>
 								<button class="panelBtn save" type="submit" >儲存此題</button>
 								<a class="panelBtn giveup" href="exercise.php?course_id=<?php echo $course_id;?>">離 開</a>
 							</div>
@@ -231,11 +233,11 @@
 									<?php } ?>							
 								</div>
 								<label for="time">答題時間</label>
-									<select name="min" class="time_select">
+									<select name="min" class="time_select min">
 										<?php for($i=0; $i<=30; $i++){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
 									</select>
 									<a class="time_char">分</a>
-									<select name="sec" class="time_select">
+									<select name="sec" class="time_select sec">
 										<?php for($i=0; $i<=50; $i+=10){ ?><option value="<?php echo $i;?>"><?php echo $i;?></option> <?php }?>
 									</select>
 									<a class="time_char">秒</a>
@@ -269,6 +271,7 @@
 								<input type="hidden" name="type" value="SINGLE_CHOICE">
 							</div>
 							<div class="resultBtn">
+								<div class="formCheck"></div>
 								<button class="panelBtn save" type="submit" >儲存此題</button>
 								<a class="panelBtn giveup" href="exercise.php?course_id=<?php echo $course_id;?>">離 開</a>
 							</div>
@@ -301,11 +304,11 @@
 									<?php } ?>
 								</div>
 								<label for="time">答題時間</label>
-									<select name="min" class="time_select">
+									<select name="min" class="time_select min">
 										<?php for($i=0; $i<=30; $i++){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
 									</select>
 									<a class="time_char">分</a>
-									<select name="sec" class="time_select">
+									<select name="sec" class="time_select sec">
 										<?php for($i=0; $i<=50; $i+=10){ ?><option value="<?php echo $i;?>"><?php echo $i;?></option> <?php }?>
 									</select>
 									<a class="time_char">秒</a>
@@ -338,6 +341,7 @@
 								<input type="hidden" name="type" value="MULTI_CHOICE">
 							</div>
 							<div class="resultBtn">
+								<div class="formCheck"></div>
 								<button class="panelBtn save" type="submit" >儲存此題</button>
 								<a class="panelBtn giveup" href="exercise.php?course_id=<?php echo $course_id;?>">離 開</a>
 							</div>
@@ -349,6 +353,7 @@
 							<input type="hidden" name="course_id" value="<?php echo $course_id;?>">
 							<input type="hidden" name="type" value="SERIES_QUESTIONS">
 							<div class="resultBtn">
+								<div class="formCheck"></div>
 								<button class="panelBtn save" type="submit" >儲存此題</button>
 								<a class="panelBtn giveup" href="exercise.php?course_id=<?php echo $course_id;?>">離 開</a>
 							</div>

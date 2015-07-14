@@ -90,7 +90,7 @@
 																			else if($examData['type']=="final")echo "期末考";?></a></td>
 											<td class="exam_time"><i class="fa fa-clock-o"></i> <?php echo $displayTime;?></td>
 											<td class="exam_date"><i class="fa fa-table"></i> <?php echo $examData['start_date'];?> <i class="fa fa-chevron-right"></i> <?php echo $examData['end_date'];?></td>
-											<td class="exam_btn enter_exam"><a href="">編輯考試</a></td>
+											<!-- <td class="exam_btn enter_exam"><a href="">編輯考試</a></td> -->
 											<td class="exam_btn delete_exam" data-exam-id="<?php echo $examData['id']; ?>"><span>刪除</span></td>											
 										</tr>						
 									</table>

@@ -395,10 +395,10 @@
 							</div>
 							<!-- ************* 是非題 ************* -->
 							<ul id="true_false" class="tab-content questionNum">
-							<?php if(!empty($questionList['trueFalseQues'])){
+							<?php 
+								if(!empty($questionList['trueFalseQues'])){
 									foreach($questionList['trueFalseQues'] as $i => $question){
-										$trueFalseQuesBody = $question['body'];
-										?>
+										$trueFalseQuesBody = $question['body']; ?>
 									<li class="true_false_wrap questionItem notSelect" data-exercise-id="<?php echo $question['_id'];?>" 
 																			 data-exercise-type="TRUE_FALSE" 
 																			 data-section-uid="<?php echo $question['test_section'];?>" 
@@ -667,8 +667,8 @@
 				<div class="addExerciseTitle">新增題目</div>
 				<div class="add_userControl">
 					<ul class="add_tab-list">
-						<li><a href="#add_short_answer">簡答</a></li>
 						<li><a href="#add_true_false">是非題</a></li>
+						<li><a href="#add_short_answer">簡答</a></li>
 						<li><a href="#add_single_choice">單選題</a></li>
 						<li><a href="#add_multi_choice">多選題</a></li>
 						<li><a href="#add_series_question">題組</a></li>
@@ -740,6 +740,7 @@
 							</div>
 						</div>
 						<div class="resultBtn_wrap tfSave">
+							<div class="formCheck"></div>
 							<a class="resultBtn save tfSave">新增此題</a>
 							<a class="resultBtn closeBox">關 閉</a>
 						</div>
@@ -798,6 +799,7 @@
 							</div>
 						</div>
 						<div class="resultBtn_wrap shortAnswer">
+							<div class="formCheck"></div>
 							<a class="resultBtn save shortAnswer">新增此題</a>
 							<a class="resultBtn closeBox">關 閉</a>
 						</div>
@@ -865,7 +867,8 @@
 							
 						</div>
 						<div class="resultBtn_wrap single">
-							<a class="resultBtn save single">新增此題</a>
+				
+					<div class="formCheck"></div>			<a class="resultBtn save single">新增此題</a>
 							<a class="resultBtn closeBox">關 閉</a>
 						</div>
 					</form>
@@ -930,7 +933,8 @@
 							
 						</div>
 						<div class="resultBtn_wrap multi">
-							<a class="resultBtn save multi">新增此題</a>
+					
+						<div class="formCheck"></div>		<a class="resultBtn save multi">新增此題</a>
 							<a class="resultBtn closeBox">關 閉</a>
 						</div>
 					</form>
@@ -938,20 +942,23 @@
 					<form id="add_series_question" class="add_tab-content">
 				
 						<div class="resultBtn_wrap">
-							<a class="resultBtn save">新增此題</a>
+							<a c
+								<div class="formCheck"></div>lass="resultBtn save">新增此題</a>
 							<a class="resultBtn closeBox">關 閉</a>
 						</div>
 					</form>
 					<input id="author_id" type="hidden" value="<?php echo $author_id;?>">
 					<?php
-						$sectionNameArray_Iterator = new ArrayIterator($sectionNameArray);
-						$courseURLArray_Iterator = new ArrayIterator($courseURLArray);
-						$combine = new MultipleIterator;
-						$combine->attachIterator($sectionNameArray_Iterator);
-						$combine->attachIterator($courseURLArray_Iterator);
-						foreach($combine as $key => $Item){ ?>
-						<input id="key<?php echo $key[0];?>" type="hidden" data-section-name="<?php echo $Item[0];?>" data-course-url="<?php echo $Item[1];?>">
-					<?php } ?>
+						// $sectionNameArray_Iterator = new ArrayIterator($sectionNameArray);
+						// $courseURLArray_Iterator = new ArrayIterator($courseURLArray);
+						// $combine = new MultipleIterator;
+						// $combine->attachIterator($sectionNameArray_Iterator);
+						// $combine->attachIterator($courseURLArray_Iterator);
+						// foreach($combine as $key => $Item){ ?>
+						<!-- <input id="key<?php echo $key[0];?>" type="hidden" data-section-name="<?php echo $Item[0];?>" data-course-url="<?php echo $Item[1];?>"> -->
+					<?php 
+							// }
+					 ?>
 				</div>
 			</div>
 			<div class="exerciseTemp" style="display:none;">

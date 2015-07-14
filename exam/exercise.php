@@ -109,6 +109,7 @@
 					</div>
 					<!-- ************* 是非題 ************* -->
 					<ul id="true_false" class="tab-content questionNum">
+					<div>題數: <span class="exerciseCount"><?php echo count($trueFalseQues); ?></span></div>
 					<?php if(!empty($trueFalseQues)){
 							foreach($trueFalseQues as $i => $question){
 								$trueFalseQuesBody = $question['body'];?>
@@ -158,6 +159,7 @@
 					
 					<!-- ************* 簡答題 ************* -->
 					<ul id="short_answer" class="tab-content questionNum">
+					<div>題數: <span class="exerciseCount"><?php echo count($shortAnswerQues); ?></span></div>
 					<?php if(!empty($shortAnswerQues)){
 							foreach($shortAnswerQues as $i => $question){
 								$shortAnswerQuesBody = $question['body'];?>
@@ -202,6 +204,7 @@
 					</ul>
 					<!-- ************* 單選題 ************* -->
 					<ul id="single_choice" class="tab-content questionNum">
+					<div>題數: <span class="exerciseCount"><?php echo count($singleChoiceQues); ?></span></div>
 					<?php if(!empty($singleChoiceQues)){
 							foreach($singleChoiceQues as $i => $question){
 									$singleChoiceQuesBody = $question['body'];
@@ -253,6 +256,7 @@
 
 					<!-- ************* 多選題 ************* -->
 					<ul id="multi_choice" class="tab-content questionNum">
+					<div>題數: <span class="exerciseCount"><?php echo count($multiChoiceQues); ?></span></div>
 					<?php if(!empty($multiChoiceQues)){
 							foreach($multiChoiceQues as $i => $question){
 							$multiChoiceQuesBody = $question['body'];
@@ -304,6 +308,7 @@
 
 					<!-- ************* 題組 ************* -->
 					<ul id="series_question" class="tab-content questionNum">
+					<div>題數: <span class="exerciseCount"><?php echo count($series_question); ?></span></div>
 						<?php if(!empty($seriesQues)){
 								foreach($seriesQues as $i => $questionHeader){
 								$seriesQuesBody = $questionHeader['body'];?>
@@ -370,7 +375,7 @@
 		
 		<?php require("../js/js_com.php"); ?>
 		<script type="text/javascript" src="../js/addExercise.js"></script>
-		<script type="text/javascript" src="../js/Exercise.js"></script>
+		<script type="text/javascript" src="../js/exercise.js"></script>
 	</body>
 </html>
 

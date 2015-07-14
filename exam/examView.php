@@ -190,14 +190,14 @@
 									<div class="question"><?php echo $singleChoiceQuesBody['question'];?></div>
 									<div class="single_choice_answer_wrap">
 										<?php foreach($singleChoiceQuesOpt as $j => $options){ ?>
-										<input id="single_answer<?php echo $i ."_". $j;?>" type="radio" name="single_opt<?php echo $i;?>" value="<?php echo $j;?>" <?php if($studentAnswer === $j) echo "checked";?> disabled>
+										<input id="single_answer<?php echo $i ."_". $j;?>" type="radio" name="single_opt<?php echo $i;?>" value="<?php echo $j;?>" <?php if($studentAnswer == $j) echo "checked";?> disabled>
 										<label class="<?php if($correct == 0 && $correct_single_answer == $j) echo "errorOpt" ;?>" for="single_answer<?php echo $i ."_". $j;?>"><?php echo $options['content'];?></label>
 										<?php }	?>
 									</div>
 									<div class="exercise_result_wrap">
-											<span>作答結果: <?php if($correct==1) echo "正確"; else echo "錯誤";?></span>
-											<span>難易度: <?php for($temp=1; $temp<=$question['level']; $temp++) echo '★';?></span>
-											<div class="exercise_method">說明: 無</div>
+										<span>作答結果: <?php if($correct==1) echo "正確"; else echo "錯誤";?></span>
+										<span>難易度: <?php for($temp=1; $temp<=$question['level']; $temp++) echo '★';?></span>
+										<div class="exercise_method">說明: 無</div>
 									</div>
 								</li>
 								<?php }?>
@@ -268,14 +268,14 @@
 															$correct_series_sub_answer = $m;
 														}
 													}
-													if($correct_series_sub_answer === $studentAnswer[$j]) $correct = 1;
+													if($correct_series_sub_answer == $studentAnswer[$j]) $correct = 1;
 													else $correct = 0;
 													?>
 										<li class="series_question_sub_wrap">
 											<div class="series_question"><?php echo $question['question'];?></div>
 											<div class="series_question_answer_wrap">
 												<?php foreach($questionOpt as $k => $options){?>
-												<input id="series_question<?php echo $i ."_". $j ."_". $k;?>" type="radio" name="series_opt<?php echo $i."_".$j;?>" value="<?php echo $k;?>" <?php if($studentAnswer[$j] === $k) echo "checked";?> disabled>
+												<input id="series_question<?php echo $i ."_". $j ."_". $k;?>" type="radio" name="series_opt<?php echo $i."_".$j;?>" value="<?php echo $k;?>" <?php if($studentAnswer[$j] == $k) echo "checked";?> disabled>
 												<label class="<?php if($correct == 0 && $correct_series_sub_answer == $k) echo "errorOpt" ;?>" for="series_question<?php echo $i ."_". $j ."_". $k;?>"><?php echo $options['content'];?></label>
 												<?php }?>
 											</div>

@@ -15,27 +15,29 @@
 	$result = mysql_query($sql);
 
 	$courseMetadata_temp = array();
-	while($row = mysql_fetch_assoc($result)){
-		$courseMetadata_temp[] = $row;
-	}	
+	$courseMetadata = mysql_fetch_assoc($result);
 
-	foreach($courseMetadata_temp as $tempData){
-		$courseMetadata = $tempData;
-		break;
-	}
 
 
 	//search question number from mongodb in exercise collection
-	$mongoQuery = array('type' => 'TRUE_FALSE');
+	$mongoQuery = array('$and' => array(array('type' => 'TRUE_FALSE'),
+										array('course_id' => (int)$course_id) ));
 	$trueFalseNum = $exercise -> find($mongoQuery)->count();
 
-	$mongoQuery = array('type' => 'SINGLE_CHOICE');
+	$mongoQuery = array('$and' => array(array('type' => 'SHORT_ANSWER'),
+										array('course_id' => (int)$course_id) ));
+	$shortAnswerNum = $exercise -> find($mongoQuery)->count();
+
+	$mongoQuery = array('$and' => array(array('type' => 'SINGLE_CHOICE'),
+										array('course_id' => (int)$course_id) ));
 	$singleNum = $exercise -> find($mongoQuery)->count();
 
-	$mongoQuery = array('type' => 'MULTI_CHOICE');
+	$mongoQuery = array('$and' => array(array('type' => 'MULTI_CHOICE'),
+										array('course_id' => (int)$course_id) ));
 	$multiNum = $exercise -> find($mongoQuery)->count();
 
-	$mongoQuery = array('type' => 'SERIES_QUESTIONS');
+	$mongoQuery = array('$and' => array(array('type' => 'SERIES_QUESTIONS'),
+										array('course_id' => (int)$course_id) ));
 	$seriesNum = $exercise -> find($mongoQuery)->count();
 
 ?>
@@ -123,9 +125,12 @@
 							<label for="trueFalse">是非題</label>
 								<input type="number" value="0" min="0" max="<?php echo $trueFalseNum;?>" class="questionNum" name="trueFalse">
 								<a class="showNum">(目前有 <?php echo $trueFalseNum;?> 題)</a>
+							<label for="trueFalse">簡答題</label>
+								<input type="number" value="0" min="0" max="<?php echo $shortAnswerNum;?>" class="questionNum" name="trueFalse">
+								<a class="showNum">(目前有 <?php echo $shortAnswerNum;?> 題)</a>
 							<label for="singleChoice">單選題</label>
 								<input type="number" value="0" min="0" max="<?php echo $singleNum;?>" class="questionNum" name="singleChoice">
-								<a class="showNum">(目前有 <?php echo $singleNum;?> 題)</a><br>
+								<a class="showNum">(目前有 <?php echo $singleNum;?> 題)</a>
 							<label for="multiChoice">多選題</label>
 								<input type="number" value="0" min="0" max="<?php echo $multiNum;?>" class="questionNum" name="multiChoice">
 								<a class="showNum">(目前有 <?php echo $multiNum;?> 題)</a>

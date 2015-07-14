@@ -188,3 +188,8 @@ ul.tagit {
 	background-color: #388BDB;
 	margin-left: 10px
 }
+
+.formCheck {
+	font-size: 18px;
+	color: red;
+}
