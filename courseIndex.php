@@ -16,15 +16,8 @@
 	//metadata from mysql
 	$sql = "SELECT * FROM course WHERE course_id='$course_id'";
 	$result = mysql_query($sql);
+	$courseMetadata = mysql_fetch_assoc($result);
 
-	$courseMetadata_temp = array();
-	while($row = mysql_fetch_assoc($result)){
-		$courseMetadata_temp[] = $row;
-	}	
-
-	foreach($courseMetadata_temp as $courseMetadata){
-
-	}
 	//判斷如果status = 0 或 2時候不可以進入此頁面
 	// echo $courseMetadata['status'];
 
@@ -38,6 +31,11 @@
 	}
 
 	$contentData = $courseData['content'];
+
+	//check course if added favorite
+	$sql = "SELECT * FROM favorite WHERE course_id='$course_id' AND member_id ='$member_id'";
+	$result = mysql_query($sql);
+	$favorite = mysql_fetch_assoc($result);
 ?>
 <!doctype html>
 <html>
@@ -62,16 +60,20 @@
 								<div id="courseName"><?php echo $courseMetadata['course_name']; ?></div>
 								<div id="courseTeacher"><?php echo $courseMetadata['teacher_name']; ?></div>
 							</div>
-						<?php if($courseMetadata['status'] == 0){ ?>
+		<?php if($courseMetadata['status'] == 0){ ?>
 								<div><a id="closeJoinCourseBtn" class="closeAddCourse"><i class="fa fa-graduation-cap"></i>&nbsp;&nbsp;&nbsp;結束授課</a></div>
-						<?php } else { 
-									if($existObj['exist'] != 1){ ?>
-										<div><a id="joinCourseBtn" class="addCourse" href="joinCourse.php?course_id=<?php echo $course_id;?>"><i class="fa fa-graduation-cap"></i>&nbsp;&nbsp;&nbsp;修習本課程</a></div>
-							<?php } else { ?>
-										<div><a id="alreadyJoinCourseBtn" class="alreadyAddCourse"><i class="fa fa-graduation-cap"></i>&nbsp;&nbsp;&nbsp;已加入課程</a></div>
-						<?php }
-							}  ?>
-							<div><a id="favoriteCourseBtn" class="addCourse"><i class="fa fa-star"></i>&nbsp;&nbsp;&nbsp;收藏課程</a></div>
+		<?php } else { 
+					if($existObj['exist'] != 1){ ?>
+								<div><a id="joinCourseBtn" class="addCourse" href="joinCourse.php?course_id=<?php echo $course_id;?>"><i class="fa fa-graduation-cap"></i>&nbsp;&nbsp;&nbsp;修習本課程</a></div>
+					<?php } else { ?>
+								<div><a id="alreadyJoinCourseBtn" class="alreadyAddCourse"><i class="fa fa-graduation-cap"></i>&nbsp;&nbsp;&nbsp;已加入課程</a></div>
+					<?php }
+				}  ?>
+		<?php if($favorite == false){ ?>
+						<div><a id="favoriteCourseBtn" class="addCourse"><i class="fa fa-star">&nbsp;&nbsp;&nbsp;</i><span class="favoriteSpan">收藏課程</span></a><img class="loading" src="img/loader.gif"/></div>
+		<?php }else{ ?>
+						<div><a id="deleteFavoriteBtn" class="alreadyFavorite"><i class="fa fa-star">&nbsp;&nbsp;&nbsp;</i><span class="favoriteSpan">已收藏</span></a><img class="loading" src="img/loader.gif"/></div>
+		<?php } ?>
 						</div>				
 					</div>
 				</div>
@@ -163,9 +165,11 @@
 					</div>
 				</div>
 			</div>
+			<input id="course_id" type="hidden" value="<?php echo $course_id;?>">
+			<input id="member_id" type="hidden" value="<?php echo $member_id;?>">
 			<?php require("footer.php"); ?>
 		</div>
 		<?php require("js/js_com.php"); ?>
-		<!-- <script src="js/switch.js"></script> -->
+		<script src="js/courseIndex.js"></script>
 	</body>
 </html>

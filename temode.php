@@ -53,8 +53,8 @@
 					<a id="newCourse" class="newCourseBtn" href="newCourse.php"><i class="fa fa-plus fa_newCourse"></i>開新課程</a>
 					<div class="userControl">
 						<ul class="tab-list">
-							<li><a href="#statusEditing">編輯中的課程</a></li>
 							<li><a href="#statusOn">正在授課</a></li>
+							<li><a href="#statusEditing">編輯中的課程</a></li>
 							<li><a href="#statusOff">結束授課</a></li>
 						</ul>
 					</div>
