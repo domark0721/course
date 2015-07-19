@@ -97,7 +97,9 @@
 											
 						</ul>
 					</div>
-
+					<div class="noSelectSection_wrap">
+						<span class="noSelectSection">請點擊左側的章節或是新增一個章節</span>
+					</div>
 					<div id="rightPanel">
 					<?php
 					    $editWrapId = 0;
@@ -122,7 +124,7 @@
 								</div>
 							</div>
 							<div class="sectionEditorWrap">
-								<label for="sectionContent">章節內容</label>
+								<label for="sectionContent">文字教材內容</label>
 								<textarea id="tinyMce_<?php echo $editWrapId++;?>" class="sectionEditor section-content" style="width:100%"><?php echo $section['content'];?></textarea>
 							</div>
 							<input type="hidden" class="section-uid" value="<?php echo $section['uid']?>">

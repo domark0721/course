@@ -1,3 +1,61 @@
+{
+"author_id" : 3,
+"course_id" : 130,
+"type" : "SERIES_QUESTIONS",
+"level" : 4,
+"time" : "1:10",
+"tags" : "",
+"is_test" : false,
+"test_section" : "",
+"body" : {
+    "description" : "In 2009, the Taiwu Elementary School Folk Singers were invited to perform in Belgium, France, Germany, and Luxemburg. In 2011, they were voted as one of the world’s top five performance groups by audiences of Japan Broadcasting Corporation’s Amazing Voice program. Recalling the group’s first tour in Europe, Camake Valaule, a physical education teacher and the founder of the Taiwu Elementary School Folk Singers, admitted that he felt very nervous. He was worried that the audience would fall asleep since most of the 75-minute performance was a cappella ... ",
+    "questions" : [ 
+        {
+            "question" : "Which of the following is true about Taiwu Elementary School Folk Singers?",
+            "options" : [ 
+                {
+                    "content" : "The group was first established in 2009. ",
+                    "is_answer" : false
+                }, 
+                {
+                    "content" : "The group was founded by a PE teacher. ",
+                    "is_answer" : true
+                }, 
+                {
+                    "content" : "The singers usually sing popular folk songs.",
+                    "is_answer" : false
+                }, 
+                {
+                    "content" : "The singers learn to sing from their parents. ",
+                    "is_answer" : false
+                }
+            ]
+        }, 
+        {
+            "question" : "On his first trip to Europe, why did Camake think the audience might fall asleep? ",
+            "options" : [ 
+                {
+                    "content" : "The average age of the audience was between fifty and sixty.",
+                    "is_answer" : false
+                }, 
+                {
+                    "content" : "Most of the performance was not accompanied by any instrument.",
+                    "is_answer" : true
+                }, 
+                {
+                    "content" : "Nobody could understand the language and the meaning of the songs.",
+                    "is_answer" : false
+                }, 
+                {
+                    "content" : " The audience could not visualize the theme sung by the school children.",
+                    "is_answer" : false
+                }
+            ]
+        }
+    ]
+}
+}
+
 <?php
 	include_once('api/auth.php');
 	include_once('mysql.php');

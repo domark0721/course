@@ -35,6 +35,11 @@
 		$result = mysql_query($sql);
 		$exam_result_id = mysql_insert_id();
 
+		$trueFalseQues = array();
+		$shortAnswerQues = array();
+		$singleChoiceQues = array();
+		$multiChoiceQues = array();
+		$seriesQues = array();
 		// query exercise from mongodb
 		foreach($questionArray as $question){
 			$mongoQuery = array('_id' => new MongoId($question));

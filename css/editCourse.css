@@ -172,6 +172,17 @@
 /******** left Panel ********/
 
 /******** right Panel ********/
+.noSelectSection_wrap{
+	position: relative;}
+
+.noSelectSection {
+	font-size: 30px;
+	position: absolute;
+	top: 21%;
+	left: 36%;
+	color: #b8b8b8;
+	margin-top: 8%;
+}
 
 #rightPanel {
 	float: left;

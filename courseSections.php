@@ -128,7 +128,7 @@
 
 						$trueFalseQues = array(); $singleChoiceQues = array();
 						$multiChoiceQues = array(); $seriesQues = array();
-
+						
 						foreach($mon as $exercise){
 							// var_dump($exercise);
 							if($exercise['type'] == "TRUE_FALSE"){

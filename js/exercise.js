@@ -22,7 +22,7 @@ $(document).ready(function(){
 	     
 	    request.done(function( jData ) {
 	      if(jData.status=='ok'){
-	        $('.statusSilde').html('題目已被刪除!').hide().fadeIn().addClass('greenStyle').delay(3000).slideUp(500).queue(function(){
+	        $('.statusSilde').html('題目已被刪除!').hide().fadeIn().addClass('greenStyle').delay(2000).slideUp(500).queue(function(){
 			        																		$(this).removeClass('greenStyle');
 			        																		$(this).dequeue();
 			       																 });
@@ -32,7 +32,7 @@ $(document).ready(function(){
 	        // console.log(jData);
 	        // location.reload();
 	      }else{
-	        $('.statusSilde').html('題目刪除失敗!').hide().fadeIn().addClass('redStyle').delay(3000).slideUp(500).queue(function(){
+	        $('.statusSilde').html('題目刪除失敗!').hide().fadeIn().addClass('redStyle').delay(2000).slideUp(500).queue(function(){
 			        																		$(this).removeClass('redStyle');
 			        																		$(this).dequeue();
 			       																 });

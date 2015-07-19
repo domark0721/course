@@ -26,7 +26,12 @@
 	$mongoQuery = array('course_id' => (int)$course_id);
 	$mon = $exercise -> find($mongoQuery)->sort(array('create_date' => -1));
 	
-
+	$trueFalseQues = array();
+	$shortAnswerQues = array();
+	$singleChoiceQues = array();
+	$multiChoiceQues = array();
+	$seriesQues = array();
+	
 	foreach($mon as $data){
 		if($data['type'] == "TRUE_FALSE"){
 			$trueFalseQues[] = $data;

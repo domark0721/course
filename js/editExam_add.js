@@ -97,7 +97,7 @@ $(document).ready(function(){
 
 	    		//TODO: get response result and and redirect to examFinish(where will display score and answer)
 				if(jData.status=='ok'){
-					 $('.statusSilde').html('題目新增成功!').hide(0).delay(1500).fadeIn().addClass('greenStyle').delay(3000).slideUp(500).queue(function(){
+					 $('.statusSilde').html('題目新增成功!').hide(0).delay(1500).fadeIn().addClass('greenStyle').delay(2000).slideUp(500).queue(function(){
 				        																		$(this).removeClass('greenStyle');
 				        																		$(this).dequeue();
 				       																 });
@@ -115,7 +115,7 @@ $(document).ready(function(){
 					$('#add_true_false').find('.tagit-choice').remove();
 
 				}else{
-					$('.statusSilde').html('題目新增失敗!').hide(0).delay(1500).fadeIn().addClass('redStyle').delay(3000).slideUp(500).queue(function(){
+					$('.statusSilde').html('題目新增失敗!').hide(0).delay(1500).fadeIn().addClass('redStyle').delay(2000).slideUp(500).queue(function(){
 				        																		$(this).removeClass('redStyle');
 				        																		$(this).dequeue();
 				       																 });
@@ -192,7 +192,7 @@ $(document).ready(function(){
 
 	    		//TODO: get response result and and redirect to examFinish(where will display score and answer)
 				if(jData.status=='ok'){
-					 $('.statusSilde').html('題目新增成功!').hide(0).delay(1500).fadeIn().addClass('greenStyle').delay(3000).slideUp(500).queue(function(){
+					 $('.statusSilde').html('題目新增成功!').hide(0).delay(1500).fadeIn().addClass('greenStyle').delay(2000).slideUp(500).queue(function(){
 				        																		$(this).removeClass('greenStyle');
 				        																		$(this).dequeue();
 				       																 });
@@ -210,7 +210,7 @@ $(document).ready(function(){
 					$('#add_short_answer').find('.tagit-choice').remove();
 
 				}else{
-					$('.statusSilde').html('題目新增失敗!').hide(0).delay(1500).fadeIn().addClass('redStyle').delay(3000).slideUp(500).queue(function(){
+					$('.statusSilde').html('題目新增失敗!').hide(0).delay(1500).fadeIn().addClass('redStyle').delay(2000).slideUp(500).queue(function(){
 				        																		$(this).removeClass('redStyle');
 				        																		$(this).dequeue();
 				       																 });
@@ -311,7 +311,7 @@ $(document).ready(function(){
 
 	    		//TODO: get response result and and redirect to examFinish(where will display score and answer)
 				if(jData.status=='ok'){
-					 $('.statusSilde').html('題目新增成功!').hide(0).delay(1500).fadeIn().addClass('greenStyle').delay(3000).slideUp(500).queue(function(){
+					 $('.statusSilde').html('題目新增成功!').hide(0).delay(1500).fadeIn().addClass('greenStyle').delay(2000).slideUp(500).queue(function(){
 				        																		$(this).removeClass('greenStyle');
 				        																		$(this).dequeue();
 				       																 });
@@ -329,7 +329,7 @@ $(document).ready(function(){
 					$('#add_single_choice').find('.tagit-choice').remove();
 
 				}else{
-					$('.statusSilde').html('題目新增失敗!').hide(0).delay(1500).fadeIn().addClass('redStyle').delay(3000).slideUp(500).queue(function(){
+					$('.statusSilde').html('題目新增失敗!').hide(0).delay(1500).fadeIn().addClass('redStyle').delay(2000).slideUp(500).queue(function(){
 				        																		$(this).removeClass('redStyle');
 				        																		$(this).dequeue();
 				       																 });
@@ -437,7 +437,7 @@ $(document).ready(function(){
 
 	    		//TODO: get response result and and redirect to examFinish(where will display score and answer)
 				if(jData.status=='ok'){
-					 $('.statusSilde').html('題目新增成功!').hide(0).delay(1500).fadeIn().addClass('greenStyle').delay(3000).slideUp(500).queue(function(){
+					 $('.statusSilde').html('題目新增成功!').hide(0).delay(1500).fadeIn().addClass('greenStyle').delay(2000).slideUp(500).queue(function(){
 				        																		$(this).removeClass('greenStyle');
 				        																		$(this).dequeue();
 				       																 });
@@ -456,7 +456,7 @@ $(document).ready(function(){
 					$('#add_multi_choice').find('.tagit-choice').remove();
 
 				}else{
-					$('.statusSilde').html('題目新增失敗!').hide(0).delay(1500).fadeIn().addClass('redStyle').delay(3000).slideUp(500).queue(function(){
+					$('.statusSilde').html('題目新增失敗!').hide(0).delay(1500).fadeIn().addClass('redStyle').delay(2000).slideUp(500).queue(function(){
 				        																		$(this).removeClass('redStyle');
 				        																		$(this).dequeue();
 				       																 });

@@ -92,7 +92,7 @@
 					<div class="announceList-container">
 					<?php if(count($announceList)){
 							foreach ($announceList as $key => $announce) { ?>
-							<div class="announceItem">
+							<div class="announceItem announFlag">
 								<div class="announceTitle"><i class="fa fa-bullhorn"> <?php echo $announce['title'];?> </i></div>
 								<div class="announceDate"><?php echo $announce['create_date'];?></div>
 								<div class="announceContent"><?php echo $announce['content'];?></div>

@@ -47,6 +47,7 @@ $(document).ready(function(){
 
     $('.sectionEditWrap').hide();
     $(activeSectionEditBlock).fadeIn();
+    $('.noSelectSection_wrap').hide();
   }
 
   //realtime edit left section Name

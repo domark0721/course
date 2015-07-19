@@ -24,6 +24,12 @@
 	$questionList = $examResultMeta['questions'];
 	$questionArray = explode(",", $questionList);
 
+	$trueFalseQues = array();
+	$shortAnswerQues = array();
+	$singleChoiceQues = array();
+	$multiChoiceQues = array();
+	$seriesQues = array();
+	
 	// query exercise from mongodb
 	foreach($questionArray as $question){
 		$mongoQuery = array('_id' => new MongoId($question));

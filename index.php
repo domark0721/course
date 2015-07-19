@@ -6,11 +6,12 @@
 	<head>
 		<?php require("meta_com.php"); ?>
 		<link type="text/css" rel="stylesheet" href="css/index.css">
+		<link type="text/css" rel="stylesheet" href="css/header_index.css">
 		<title>NUCourse</title>
 	</head>
 	<body>
 		<div class="totalWrapper">
-			<?php require("header.php"); ?>
+			<?php require("header_index.php"); ?>
 			<div class="container">
 				<div id="section-search">
 				       <div class="content-wrap">

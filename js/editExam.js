@@ -1,9 +1,8 @@
 function deleteQuestion(){
 	$('.deleteQuestionBtn').on('click', function() {
+
 		$questionItem = $(this).parent('.questionItem');
-
 		var type = $questionItem.data('exercise-type');
-
 		if (type == "TRUE_FALSE") {
 			$("#true_false").prepend($questionItem.addClass('notSelect').hide().fadeIn());
 		}else if(type == "SHORT_ANSWER"){
@@ -82,6 +81,7 @@ function calculate(){
 	$('#level').val(Math.round(level));
 	/* ---- time & level transform End ----*/	
 }
+
 function notSelect(){
 	$('.notSelect').on('click', function(){
 			var $questionItem = $(this).removeClass('notSelect');
@@ -91,6 +91,14 @@ function notSelect(){
 			calculate();
 	});
 }
+
+function removeNotSelect(){
+	$('#drop-question-list .questionItem').each(function(){
+		$(this).removeClass('notSelect');
+		$(this).unbind('click');
+	});
+}
+
 $(document).ready(function(){
 	notSelect();
 	deleteQuestion();
@@ -99,7 +107,7 @@ $(document).ready(function(){
 	$('#save_exam').on('click', function(){
 		var leftQuestion_num = $('.left-container .questionItem').length;
 		if(leftQuestion_num == 0){
-			$('.statusSilde').html('空的考卷無法考試哦!').hide().fadeIn().addClass('redStyle').delay(3000).slideUp(500).queue(function(){
+			$('.statusSilde').html('空的考卷無法考試哦!').hide().fadeIn().addClass('redStyle').delay(2000).slideUp(500).queue(function(){
 			        																		$(this).removeClass('redStyle');
 			        																		$(this).dequeue();
 			       																 });
@@ -191,6 +199,7 @@ $(document).ready(function(){
 			helper: "clone",
 			stop: function(event, ui){
 				calculate();
+				removeNotSelect();
 			}
 		})
 		// .disableSelection();
@@ -242,7 +251,7 @@ $(document).ready(function(){
     	})
     	request.done(function(jData){
 			if(jData.status=='ok'){
-				$('.statusSildeSave').prepend('考卷儲存中...').hide().fadeIn().addClass('greenStyle').delay(3000).slideUp(500).queue(function(){
+				$('.statusSildeSave').prepend('考卷儲存中...').hide().fadeIn().addClass('greenStyle').delay(2000).slideUp(500).queue(function(){
 			        																		$(this).removeClass('greenStyle');
 			        																		$(this).dequeue();
 				setTimeout(function() {
@@ -252,7 +261,7 @@ $(document).ready(function(){
 
 			}
 			else{
-				$('.statusSildeSave').html('考卷儲存失敗!').hide().fadeIn().addClass('redStyle').delay(3000).slideUp(500).queue(function(){
+				$('.statusSildeSave').html('考卷儲存失敗!').hide().fadeIn().addClass('redStyle').delay(2000).slideUp(500).queue(function(){
 			        																		$(this).removeClass('redStyle');
 			        																		$(this).dequeue();
 			       																 });
@@ -433,25 +442,28 @@ $(document).ready(function(){
 		}
 
 		// search short answer
-		for( var i=0; i< questionList.shortAnswerQues.length ; i++){
-			var question = questionList.shortAnswerQues[i];
-			// console.log(question);
-			
-			if (question.body.question.toLowerCase().indexOf(queryStringLower) >= 0 ) {
-				searchList.push(question._id.$id);
-			}
-			else if (question.tags.toLowerCase().indexOf(queryStringLower) >= 0 ) {
-				searchList.push(question._id.$id);
-			}else {
-				for( var j=0; j< exercise_shortAnswer.length; j++){
-					var temp_shortAnswer = exercise_shortAnswer[j];
-					if( (temp_shortAnswer.exercise_id == question._id.$id) && (temp_shortAnswer.section_name.toLowerCase().indexOf(queryStringLower) >=0) ){
-						searchList.push(question._id.$id);
-						break;
+		console.log(questionList.shortAnswerQues.length);
+		if(questionList.shortAnswerQues.length != null){
+			for( var i=0; i< questionList.shortAnswerQues.length ; i++){
+				var question = questionList.shortAnswerQues[i];
+				// console.log(question);
+				
+				if (question.body.question.toLowerCase().indexOf(queryStringLower) >= 0 ) {
+					searchList.push(question._id.$id);
+				}
+				else if (question.tags.toLowerCase().indexOf(queryStringLower) >= 0 ) {
+					searchList.push(question._id.$id);
+				}else {
+					for( var j=0; j< exercise_shortAnswer.length; j++){
+						var temp_shortAnswer = exercise_shortAnswer[j];
+						if( (temp_shortAnswer.exercise_id == question._id.$id) && (temp_shortAnswer.section_name.toLowerCase().indexOf(queryStringLower) >=0) ){
+							searchList.push(question._id.$id);
+							break;
+						}
 					}
 				}
 			}
-		}	
+		}
 
 		// search single choice
 		for( var i =0; i< questionList.singleChoiceQues.length ; i++){

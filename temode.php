@@ -70,7 +70,7 @@
 								<div class="item-course-teacher">授課老師：<?php echo $value['teacher_name'];?></div>
 							</div>
 							<div class="middleBtns">
-								<a class="settingBtn" href="courseSetting.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-cog fa_plus"></i> 一般設定</a>					
+								<a class="settingBtn" href="courseSetting.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-cog fa_plus"></i>課程設定</a>					
 								<a class="manageStudentBtn" href="studentManage.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-book fa_plus"></i>學生管理</a>
 								<a class="enterBtn" href="course.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-chevron-circle-right fa_plus"></i>進入課程</a>
 							</div>
@@ -99,13 +99,13 @@
 								<div class="item-course-teacher">授課老師：<?php echo $value['teacher_name'];?></div>
 							</div>
 							<div class="middleBtns">
-								<a class="settingBtn" href="courseSetting.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-cog fa_plus"></i> 一般設定</a>				
+								<a class="settingBtn" href="courseSetting.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-cog fa_plus"></i>課程設定</a>				
 								<a class="manageStudentBtn" href="studentManage.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-book fa_plus"></i>學生管理</a>
 								<a class="enterBtn" href="course.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-chevron-circle-right fa_plus"></i>進入課程</a>	
 							</div>
 							<div class="rightBtns">
 								<a class="editCourseBtn" href="editCourse.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-pencil fa_plus"></i> 內容編寫</a>
-								<a class="questionManage" href="exercise.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-leanpub fa_plus"></i>題庫管理</a>
+								<a class="questionManage" href="exam/exercise.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-leanpub fa_plus"></i>題庫管理</a>
 								<a class="questionManage" href="exam/examList.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-file-text-o fa_plus"></i> 考試管理</a>
 							</div>
 						</div>
@@ -127,13 +127,13 @@
 								<div class="item-course-teacher">授課老師：<?php echo $value['teacher_name'];?></div>
 							</div>
 							<div class="middleBtns">
-								<a class="settingBtn" href="courseSetting.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-cog fa_plus"></i> 一般設定</a>
+								<a class="settingBtn" href="courseSetting.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-cog fa_plus"></i>課程設定</a>
 								<a class="manageStudentBtn" href="studentManage.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-book fa_plus"></i>學生管理</a>
 								<a class="enterBtn" href="course.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-chevron-circle-right fa_plus"></i>進入課程</a>
 							</div>
 							<div class="rightBtns">
 								<a class="editCourseBtn" href="editCourse.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-pencil fa_plus"></i> 內容編寫</a>
-								<a class="questionManage" href="exercise.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-leanpub fa_plus"></i>題庫管理</a>
+								<a class="questionManage" href="exam/exercise.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-leanpub fa_plus"></i>題庫管理</a>
 								<a class="questionManage" href="exam/examList.php?course_id=<?php echo $value['course_id'];?>"><i class="fa fa-file-text-o fa_plus"></i> 考試管理</a>
 							</div>
 						</div>

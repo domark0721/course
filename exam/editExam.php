@@ -48,6 +48,12 @@
 	$mon = $exercise -> find($mongoQuery) -> sort(array('create_date' => -1));
 
 	// group questions by type
+	$trueFalseQues = array();
+	$shortAnswerQues = array();
+	$singleChoiceQues = array();
+	$multiChoiceQues = array();
+	$seriesQues = array();
+	
 	foreach($mon as $data){
 		if($data['type'] == "TRUE_FALSE"){
 			$trueFalseQues[] = $data;
