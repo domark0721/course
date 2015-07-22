@@ -51,9 +51,9 @@ $(document).ready(function(){
 			        var announContent = '<div class="announceItem">';
 			        	announContent += '<div class="announceTitle"><i class="fa fa-bullhorn">'+ title +'</i></div>';
 			        	announContent += '<div class="announceDate">'+ jData.annouce_date +'</div>';
-			        	announContent += '<div class="announceContent">' + content + '</div>';
+			        	announContent += '<div class="announceContent">' + content.replace(/\r?\n/g, '<br />') + '</div>';
 			        	announContent += '<div class="announceTool">';
-			        	announContent += '<span class="editAnnounceBtn">編輯</span>';
+			        	// announContent += '<span class="editAnnounceBtn">編輯</span>';
 			        	announContent += '<span class="deleteAnnounceBtn" data-announce-id="'+ jData.annouce_id +'">刪除</span>';
 			        	announContent += '</div></div>';
 			        
@@ -65,6 +65,8 @@ $(document).ready(function(){
 			        																		$(this).dequeue();
 			       																 });
 			        // location.reload();
+			        $('#announce_title').val('');
+			        $('#announce_content').val('');
 			      }
 			      else{
 			        $('.statusSilde').html('公告新增失敗!').hide().fadeIn().addClass('redStyle').delay(2000).slideUp(500).queue(function(){

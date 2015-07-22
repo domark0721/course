@@ -59,7 +59,7 @@
 					<div class="content-wrap clearfix">
 						<div class="editorBarIcon"><i class="fa fa-file-text-o"></i></div>
 						<div class="courseHeader">
-							<div class="topBanner_Title">新增考試</div>
+							<div class="topBanner_Title">新增測驗</div>
 							<div class="topBanner_CourseName"><?php echo $courseMetadata['course_name']; ?></div>
 						</div>
 					</div>
@@ -74,10 +74,10 @@
 				<div class="addExam_wrap">
 					<!-- 自動 -->
 					<form id="auto_form" class="tab_form" action="editExam.php" method="POST">
-						<label class="label_style" for="course_name">考試科目</label>
+						<label class="label_style" for="course_name">測驗科目</label>
 							<a id="course_name" name="course_name"><?php echo $courseMetadata['course_name']; ?></a>
 							<input  name="course_name" value="<?php echo $courseMetadata['course_name']; ?>" type="hidden"><br>
-						<label class="label_style" for="examType">考試類別</label>
+						<label class="label_style" for="examType">測驗類別</label>
 						<div class="examType_wrap">
 							<input id="auto_examType1" value="test" type="radio" name="type">
 							<label for="auto_examType1">小考</label>
@@ -94,7 +94,7 @@
 						<?php } ?>
 							
 						</div><br>
-						<label class="label_style examDate" for="time">考試時程</label>
+						<label class="label_style examDate" for="time">測驗時程</label>
 						<div class="exam_time_wrap">
 							<label for="time">開始時間</label>
 								<input type="text" name="start_date" class="start_date" readonly>
@@ -150,10 +150,10 @@
 					</form>
 					<!-- 手動 -->
 					<form id="manual_form" class="tab_form" action="editExam.php" method="POST">
-						<label class="label_style" for="examName">考試科目</label>
+						<label class="label_style" for="examName">測驗科目</label>
 							<a id="course_name" name="course_name"><?php echo $courseMetadata['course_name']; ?></a>
 							<input  name="course_name" value="<?php echo $courseMetadata['course_name']; ?>" type="hidden"><br>
-						<label class="label_style" for="examType">考試類別</label>
+						<label class="label_style" for="examType">測驗類別</label>
 						<div class="examType_wrap">
 							<input id="manual_examType1" value="test" type="radio" name="type">
 							<label for="manual_examType1">小考</label>
@@ -162,7 +162,7 @@
 							<input id="manual_examType3" value="final" type="radio" name="type">
 							<label for="manual_examType3">期末考</label>
 						</div><br>
-						<label class="label_style examDate" for="time">考試時程</label>
+						<label class="label_style examDate" for="time">測驗時程</label>
 						<div class="exam_time_wrap">
 							<label for="time">開始時間</label>
 								<input type="text" name="start_date" class="start_date" readonly>

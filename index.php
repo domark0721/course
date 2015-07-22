@@ -12,7 +12,9 @@
 	<body>
 		<div class="totalWrapper">
 			<?php require("header_index.php"); ?>
-			<div class="container">
+			<div class="index-container">
+				<div class="index-bg">
+				</div>
 				<div id="section-search">
 				       <div class="content-wrap">
 						<div id="searchControl">
@@ -67,7 +69,16 @@
 					</div>
 				</div> -->
 			</div>
-			<?php require("footer.php"); ?>
+			<footer>
+				<div id="section-footer">
+					 <div class="content-wrap">
+					 	<div id="footerLabel">
+						 	<div><a href="https://www.flickr.com/photos/alejandropinto/10671406484">Photo</a> by Alejandro Pinto / CC <a href="https://creativecommons.org/licenses/by/2.0/">BY</a></div>
+							<div>&copy 2015 Mark Tsai@GAIS LAB .All Rights Reserved.</div>
+						</div>
+					 </div>
+				</div>
+			</footer>
 		</div>
 	</body>
 </html>

@@ -13,6 +13,7 @@ $(document).ready(function(){
 	$('.resultBtn.closeBox').on('click', function(){
 		$('.addExerciseBox_wrap').fadeOut(300);
 		$('.examSetting_wrap').fadeOut(300);
+		$('.examSetting_wrap').fadeOut(300);
 
 		$('.overlay_fix').fadeOut('slow', function(){
 			$(this).removeClass('overlay_fix');

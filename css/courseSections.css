@@ -26,6 +26,7 @@
 #videoBar{
 	width:100%;
 	background-color: #323131;
+	height: 34em;
 }
 
 #video {
@@ -38,7 +39,6 @@
 
 #video video {
 	width: 70%;
-	
 }
 
 #courseChapterBar {

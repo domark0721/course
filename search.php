@@ -47,7 +47,7 @@
 					if(!empty($keywords) && (!empty($courseListStatus1) || !empty($courseListStatus0))){
 						foreach($courseListStatus1 as $item){ ?>
 							<li class="courseItem courseCard clearfix">
-								<div class="courseImg"><img src="img/user-course.jpg" /> </div>
+								<div class="courseImg"><img src="<?php echo $item['pic']; ?>" /> </div>
 								<div class="courseInfo">
 									<div class="courseName"><?php echo $item['course_name'];?></div>
 									<div class="status1"><a>開放中</a></div>
@@ -63,7 +63,7 @@
 							</li>
 				<?php }	foreach($courseListStatus0 as $item){ ?>
 							<li class="courseItem courseCard clearfix">
-								<div class="courseImg"><img src="img/user-course.jpg" /> </div>
+								<div class="courseImg"><img src="<?php echo $item['pic']; ?>" /> </div>
 								<div class="courseInfo">
 									<div class="courseName"><?php echo $item['course_name'];?></div>
 									<div class="status0"><a>已結束</a></div>

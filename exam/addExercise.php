@@ -67,7 +67,7 @@
 								<li><a href="#true_false">是非題</a></li>
 								<li><a href="#short_answer">簡答</a></li>
 								<li><a href="#single_choice">單選題</a></li>
-								<li><a href="#multi_choice">多選題</a></li>
+								<li><a href="#multi_choice">複選題</a></li>
 								<li><a href="#series_question">題組</a></li>
 							</ul>
 						</div>

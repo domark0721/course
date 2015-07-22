@@ -156,7 +156,7 @@
 	}
 
 	function commonInfo() {
-		$question = $_POST['question'];
+		$question = nl2br($_POST['question']);
 		$tags = $_POST['tags'];
 		$level = $_POST['level'];
 		$min = $_POST['min']; $sec = $_POST['sec'];

@@ -40,20 +40,7 @@
 }
 /* ---------- tab ---------- */
 
-.examSetting_wrap {
-	z-index: 150;
-	position: fixed;
-	display: block;
-	right: 24%;
-	top: 9%;
-	width: 50%;
-	height: 75%;
-	background-color: #ededed;
-	border-radius: 4px;
-	padding: 23px 29px;
-	box-shadow: 4px 4px 4px #474747;
-	overflow: scroll;
-}
+
 
 /* ---------- new exercise ---------- */
 .addExerciseBox_wrap {

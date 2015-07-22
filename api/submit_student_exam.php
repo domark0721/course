@@ -28,7 +28,7 @@
 	$questionArray = explode(",", $questionList);
 
 	$correctQestionNum = 0;
-
+	
 	// query exercise from mongodb
 	foreach($questionArray as $question){
 		$subQuestion_num = 0;
@@ -55,8 +55,23 @@
 				// 簡答
 				$answer = $data["body"]["answer"];
 
-				if ($studentAnswer != -1 && $studentAnswer === $answer) {
-					$correctQestionNum ++;
+				if ($studentAnswer != -1){
+
+					// fuzzy matching
+					$fuzzyVaule = $examMetadata["fuzzy_match"];
+					if ($fuzzyVaule == 0) {
+						// 不支援fuzzy matching, 需全對才給分
+						if ($studentAnswer === $answer) {
+							$correctQestionNum ++;
+						}
+					} else {
+						// 支援fuzzy matching, 使用 agrep 做容錯比對
+						$agrepResult = shell_exec("echo \"$answer\" | /usr/local/bin/agrep -$fuzzyVaule \"$studentAnswer\"");
+
+						if (!empty($agrepResult) && trim($agrepResult) == $answer) {
+							$correctQestionNum ++;
+						}
+					}
 				}
 				
 			}else if($data['type'] == "SINGLE_CHOICE"){
@@ -77,18 +92,39 @@
 
 			}else if($data['type'] == "MULTI_CHOICE"){
 				// 多選
+				if ($studentAnswer != -1) {
+					$isMultiScore = $examMetadata['multi_score'];
 
-				$answers = [];
-				foreach ($data["body"]["options"] as $key => $option) {
-					if ($option["is_answer"]) {
-						$answers[] = $key;
+					$answers = [];
+					foreach ($data["body"]["options"] as $key => $option) {
+						if ($option["is_answer"]) {
+							$answers[] = $key;
+						}
 					}
-				}
-				// convert each answer from string to int
-				$studentAnswer = array_map('intval', $studentAnswer);
 
-				if ($studentAnswer != -1 && $studentAnswer === $answers) {
-					$correctQestionNum ++;
+					// convert each answer from string to int
+					$studentAnswer = array_map('intval', $studentAnswer);
+
+					if ($isMultiScore == 0) {
+						if ($studentAnswer === $answers) {
+							$correctQestionNum ++;
+						}					
+					} else {
+
+						$correntOptions = 0;
+						for ($i = 0; $i < 5 ; $i++) {
+							if (in_array($i, $answers)) {
+								if (in_array($i, $studentAnswer)) {
+									$correntOptions ++;
+								}
+							} else {
+								if (!in_array($i, $studentAnswer)) {
+									$correntOptions ++;
+								}
+							}
+						}
+						$correctQestionNum = $correctQestionNum + ($correntOptions / 5);
+					}					
 				}
 
 			}else if($data['type'] == "SERIES_QUESTIONS"){

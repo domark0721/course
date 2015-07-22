@@ -1,0 +1,77 @@
+.label_style {
+	padding: 10px 0 10px 0;
+	font-size: 18px;
+	margin: 7px 1em 1em 0;
+	font-weight: bold;
+	width: 17%;
+}
+
+.examSetting_wrap {
+	z-index: 150;
+	position: fixed;
+	display: block;
+	right: 24%;
+	top: 9%;
+	width: 50%;
+	height: 75%;
+	background-color: #ededed;
+	border-radius: 4px;
+	padding: 23px 29px;
+	box-shadow: 4px 4px 4px #474747;
+	overflow: scroll;
+}
+
+.examSetting_wrap label {
+	display: inline-block;
+}
+
+.fixedInfo {
+	display: inline-block;
+	font-size: 18px;
+	border-radius: 15px;
+	padding: 6px 20px;
+	background-color: rgba(91, 91, 91, 1);
+	color: #fff;
+	cursor: default;
+	box-shadow: 2px 2px 2px #454545;
+}
+
+.to {
+	font-size: 18px;
+	padding: 0 5px;
+}
+
+.fuzzy_match_wrap ,.multi_score_wrap{
+	display: inline-block;
+}
+
+.fuzzy_match {
+	margin-bottom: 15px;
+	border: 1px solid #888;
+	border-radius: 10px;
+	font-size: 20px;
+	padding: 5px 10px;
+	width: 3em;
+}
+
+.multi_score_wrap label {
+	margin: 0;
+	display: inline-block;
+	padding: 6px 20px;
+	background-color: #ddd;
+	border-radius: 15px;
+	margin-right: 15px;
+	font-weight: normal;
+	cursor: pointer;
+}
+
+.multi_score_wrap input[type='radio']{
+	display: none;
+}
+
+.multi_score_wrap input[type='radio']:checked + label {
+	background-color: rgba(121, 176, 61, 1);;
+	color: #fff;
+	transition: all .3s;
+	box-shadow: 2px 2px 2px #454545;
+}

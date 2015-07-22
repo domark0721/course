@@ -107,7 +107,7 @@
 									<li><a href="#true_false">是非題</a></li>
 									<li><a href="#short_answer">簡答</a></li>
 									<li><a href="#single_choice">單選題</a></li>
-									<li><a href="#multi_choice">多選題</a></li>
+									<li><a href="#multi_choice">複選題</a></li>
 									<li><a href="#series_question">題組</a></li>
 								</ul>
 							</div>
@@ -126,7 +126,7 @@
 											<a class="trueFalseAnswer">Ｘ</a>
 										<?php } ?>
 									</div>
-									<div class="tfQuestion"><?php echo $trueFalseQuesBody['question'];?></div>
+									<div class="tfQuestion"><?php echo nl2br($trueFalseQuesBody['question']);?></div>
 									<div class="question_editor_wrap">
 										<div class="questionInfo">
 											<a class="level">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
@@ -169,7 +169,7 @@
 							foreach($shortAnswerQues as $i => $question){
 								$shortAnswerQuesBody = $question['body'];?>
 							<li class="short_answer_wrap questionItem">
-									<div class="question"><?php echo $shortAnswerQuesBody['question'];?></div>
+									<div class="question"><?php echo nl2br($shortAnswerQuesBody['question']);?></div>
 									<div class="short_answer_answer_wrap">
 										<a><?php echo $shortAnswerQuesBody['answer'];?></a>
 									</div>
@@ -215,7 +215,7 @@
 									$singleChoiceQuesBody = $question['body'];
 									$singleChoiceQuesOpt = $singleChoiceQuesBody['options'];?>
 							<li class="single_choice_wrap questionItem">
-								<div class="question"><?php echo $singleChoiceQuesBody['question'];?><!-- <span class="questionType"> ( 單選 )</span> --></div>
+								<div class="question"><?php echo nl2br($singleChoiceQuesBody['question']);?><!-- <span class="questionType"> ( 單選 )</span> --></div>
 								<div class="single_choice_answer_wrap">
 									<?php foreach($singleChoiceQuesOpt as $j => $options){
 										if($options['is_answer'] == true){?>
@@ -267,7 +267,7 @@
 							$multiChoiceQuesBody = $question['body'];
 							$multiChoiceQuesOpt = $multiChoiceQuesBody['options']?>
 							<li class="multi_choice_wrap questionItem">
-									<div class="question"><?php echo $multiChoiceQuesBody['question'];?><!-- <span class="questionType"> ( 多選 )</span> --></div>
+									<div class="question"><?php echo nl2br($multiChoiceQuesBody['question']);?><!-- <span class="questionType"> ( 多選 )</span> --></div>
 									<div class="multi_choice_answer_wrap">
 										<?php foreach($multiChoiceQuesOpt as $j => $options){
 											if($options['is_answer'] == true){?>
@@ -318,12 +318,12 @@
 								foreach($seriesQues as $i => $questionHeader){
 								$seriesQuesBody = $questionHeader['body'];?>
 								<li class="series_question_wrap questionItem">
-									<div class="question"><?php echo $seriesQuesBody['description'];?><!-- <span class="questionType"> ( 題組 )</span> --></div>
+									<div class="question"><?php echo nl2br($seriesQuesBody['description']);?><!-- <span class="questionType"> ( 題組 )</span> --></div>
 									<ul class="seriesNum">		
 										<?php foreach($seriesQuesBody['questions'] as $j => $question){ 
 												$questionOpt = $question['options']; ?>
 										<li>	
-											<div class="series_question"><?php echo $question['question'];?></div>
+											<div class="series_question"><?php echo nl2br($question['question']);?></div>
 											<div class="series_question_answer_wrap">
 												<?php foreach($questionOpt as $k => $options){
 													if($options['is_answer'] == true){?>

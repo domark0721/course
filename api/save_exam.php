@@ -15,15 +15,17 @@
 	$time = $_POST['time'];
 	$explanation = $_POST['explanation'];
 
+	$fuzzy_match = $_POST['fuzzy_match'];
+	$multi_score = $_POST['multi_score'];
+
 	$questions = $_POST['exam_paper'];
 	$questions = implode(",", $questions);
 	// var_dump($questions);
 	
 	// save to mysql
-	$examData = "INSERT INTO exam (course_id, course_name, type, start_date, start_time, end_date, end_time, level, explanation, time, questions) 
-						VALUES ('$course_id', '$course_name', '$type','$start_date', '$start_time', '$end_date', '$end_time', '$level', '$explanation', '$time', '$questions')";
+	$examData = "INSERT INTO exam (course_id, course_name, type, start_date, start_time, end_date, end_time, level, fuzzy_match, multi_score, explanation, time, questions) 
+						VALUES ('$course_id', '$course_name', '$type','$start_date', '$start_time', '$end_date', '$end_time', '$level', '$fuzzy_match', '$multi_score', '$explanation', '$time', '$questions')";
 	$mysqlResult = mysql_query($examData);
-
 	if($mysqlResult){
 		$response = array(
 			'status' => 'ok',
@@ -33,7 +35,7 @@
 	else{
 		$response = array(
 			'status' => 'error',
-			'error_message' => $mongoResult['errmsg']
+			'error_message' => mysql_error()
 		);
 	}
 

@@ -2,7 +2,7 @@
 	<div class="content-wrap">
 		<div id="headerLogo"><a href="/www/course/index.php"><img src="/www/course/img/logo.png"/></a></div>
 		<ul id="headerBar-nav">
-			<li class="headerBar-item"><a href="/www/course/category.php"><i class="fa fa-list"></i> 課程分類</a></li>
+			<!-- <li class="headerBar-item"><a href="/www/course/category.php"><i class="fa fa-list"></i> 課程分類</a></li> -->
 			<?php if($IS_LOGIN){ 
 					if("st" == $_SESSION['mode']) { ;?>
 						<li id="mode" class="headerBar-item"><a href="/www/course/api/changeMode.php"><i class="fa fa-exchange"></i> 切換至老師模式</a></li>

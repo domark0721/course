@@ -78,9 +78,9 @@
 									<textarea class="question_textarea" name="question"><?php echo $exerciseContent['question'];?></textarea>
 								<label for="TF_answer">本題解答</label>
 								<div class="opt">
-									<input id="true" value="true" type="radio" name="answer" <?php if($exerciseContent['answer']==true) echo "checked";?>>
+									<input id="true" value="true" type="radio" name="answer" <?php if($exerciseContent['answer']=='true') echo "checked";?>>
 									<label for="true" name="TF_answer">Ｏ</label>
-									<input id="false" value="false" type="radio" name="answer" <?php if($exerciseContent['answer']==false) echo "checked";?>>
+									<input id="false" value="false" type="radio" name="answer" <?php if($exerciseContent['answer']=='false') echo "checked";?>>
 									<label for="false" name="TF_answer">Ｘ</label>
 								</div>
 								<div class="tags_wrap">

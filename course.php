@@ -43,7 +43,7 @@
 					<div id="courseBarPosition" class="clearfix">
 						<div class="content-wrap">
 							<div id="coursePic">
-								<img src="img/user-course.jpg">
+								<img src="<?php echo $courseMetadata['pic']; ?>">
 							</div>
 							<div id="courseHeader">
 								<div id="courseName"><?php echo $courseMetadata['course_name']; ?></div>
@@ -295,7 +295,7 @@
 													// 進行中,可考試
 									?>
 													<td class="exam_score"></td>
-													<td class="exam_btn enter_exam"><a href="exam/examIndex.php?course_id=<?php echo $course_id;?>&id=<?php echo $examData['id'];?>">進入考試</a></td>										
+													<td class="exam_btn enter_exam"><a href="exam/examIndex.php?course_id=<?php echo $course_id;?>&id=<?php echo $examData['id'];?>">進入測驗</a></td>										
 
 									<?php
 												} else {

@@ -39,7 +39,7 @@
 		<link type="text/css" rel="stylesheet" href="../css/mode.css">
 		<link type="text/css" rel="stylesheet" href="../css/courseSetting.css">
 		<link type="text/css" rel="stylesheet" href="../css/examList.css">
-		<title>考試列表 - NUCourse</title>
+		<title>測驗列表 - NUCourse</title>
 	</head>	
 	<body>
 		<div class="totalWrapper">
@@ -49,7 +49,7 @@
 					<div class="content-wrap clearfix">
 						<div class="editorBarIcon"><i class="fa fa-file-text-o"></i></div>
 						<div class="courseHeader">
-							<div class="topBanner_Title">考試列表</div>
+							<div class="topBanner_Title">測驗列表</div>
 							<div class="topBanner_CourseName"><?php echo $courseMetadata['course_name']; ?></div>
 						</div>
 					</div>
@@ -58,14 +58,14 @@
 					<div id="right_wrap">
 						<div class="function_wrap">
 							<ul class="function_ul">
-								<li><a class="functionBtn blueFunc" href="addExam.php?course_id=<?php echo $course_id; ?>"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;新增考試</a></li>
+								<li><a class="functionBtn blueFunc" href="addExam.php?course_id=<?php echo $course_id; ?>"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;新增測驗</a></li>
 								<li><a class="functionBtn redFunc" href="../temode.php"><i class="fa fa-chevron-left"></i>&nbsp;&nbsp;&nbsp;返 回</a></li>
 							</ul>
 						</div>
 					</div>
 					<div id="left_wrap">
 						<div class="examList-wrap">
-							<div class="examNum">考試數量: <?php echo count($examList);?></div>
+							<div class="examNum">測驗數量: <?php echo count($examList);?></div>
 						</div>
 						<div class="examList-wrap">
 							<div class="examList_container">
@@ -98,7 +98,7 @@
 								
 						<?php }}else{ ?>
 								<div class="exam_item">
-									<a class="no_exam">--- 該課程尚無考試 ---</a>
+									<a class="no_exam">--- 該課程尚無測驗 ---</a>
 								</div>															
 						<?php }?>
 							</div>

@@ -121,14 +121,15 @@
 		<link href="../css/jquery.tagit.css" rel="stylesheet" type="text/css">
 		<link type="text/css" rel="stylesheet" href="../css/editExam.css">
 		<link type="text/css" rel="stylesheet" href="../css/editExam_add.css">
+		<link type="text/css" rel="stylesheet" href="../css/editExam_setting.css">
 		<title>考卷編輯系統 - NUCourse</title>
 	</head>
 	<body>
 		<div class="totalWrapper">
 			<?php require("header_editExam.php"); ?>
 			<div class="exam_status_wrap">
-				<span class="examSetting"><i class="fa fa-plus"></i>&nbsp;&nbsp;設定</span>
-				<span class="newQuestionBtn"><i class="fa fa-plus"></i>&nbsp;&nbsp;新增題目</span>
+				<span class="examSetting"><i class="fa fa-gear"></i>&nbsp;&nbsp;設定</span>
+				<span class="newQuestionBtn"><i class="fa fa-plus"></i>&nbsp;&nbsp;題目</span>
 				<div class="examInfo">
 				<a>平均難度：<span id="exam_level">0 / 5</span></a>
 				<a>總時間：<span id="exam_time">0分0秒</span></a><br>
@@ -416,7 +417,7 @@
 												<a class="trueFalseAnswer">Ｘ</a>
 											<?php } ?>
 										</div>
-										<div class="tfQuestion"><?php echo $trueFalseQuesBody['question'];?></div>
+										<div class="tfQuestion"><?php echo nl2br($trueFalseQuesBody['question']);?></div>
 										<div class="question_editor_wrap">
 											<div class="questionInfo">
 												<a class="level" data-level="<?php echo $question['level'];?>">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
@@ -459,7 +460,7 @@
 																			 data-exercise-type="SHORT_ANSWER" 
 																			 data-section-uid="<?php echo $question['test_section'];?>" 
 																			 data-section-name="<?php echo $sectionNameArray[$question['test_section']];?>">
-										<div class="question"><?php echo $shortAnswerQuesBody['question'];?></div>
+										<div class="question"><?php echo nl2br($shortAnswerQuesBody['question']);?></div>
 										<div class="short_answer_answer_wrap">
 											<a><?php echo $shortAnswerQuesBody['answer'];?></a>
 										</div>
@@ -506,7 +507,7 @@
 																				data-exercise-type="SINGLE_CHOICE"
 																				data-section-uid="<?php echo $question['test_section'];?>" 
 																				data-section-name="<?php echo $sectionNameArray[$question['test_section']];?>" >
-										<div class="question"><?php echo $singleChoiceQuesBody['question'];?></div>
+										<div class="question"><?php echo nl2br($singleChoiceQuesBody['question']);?></div>
 										<div class="single_choice_answer_wrap">
 											<?php foreach($singleChoiceQuesOpt as $j => $options){
 												if($options['is_answer'] == true){?>
@@ -559,7 +560,7 @@
 																			   data-exercise-type="MULTI_CHOICE"
 																			   data-section-uid="<?php echo $question['test_section'];?>" 
 																			   data-section-name="<?php echo $sectionNameArray[$question['test_section']];?>" >
-										<div class="question"><?php echo $multiChoiceQuesBody['question'];?></div>
+										<div class="question"><?php echo nl2br($multiChoiceQuesBody['question']);?></div>
 										<div class="multi_choice_answer_wrap">
 											<?php foreach($multiChoiceQuesOpt as $j => $options){
 												if($options['is_answer'] == true){?>
@@ -610,12 +611,12 @@
 																			      data-exercise-type="SERIES_QUESTIONS"
 																			      data-section-uid="<?php echo $questionHeader['test_section'];?>" 
 																			      data-section-name="<?php echo $sectionName;?>" >
-										<div class="question"><?php echo $seriesQuesBody['description'];?><!-- <span class="questionType"> ( 題組 )</span> --></div>
+										<div class="question"><?php echo nl2br($seriesQuesBody['description']);?><!-- <span class="questionType"> ( 題組 )</span> --></div>
 										<ul class="seriesNum">		
 											<?php foreach($seriesQuesBody['questions'] as $j => $question){ 
 													$questionOpt = $question['options']; ?>
 											<li>	
-												<div class="series_question"><?php echo $question['question'];?></div>
+												<div class="series_question"><?php echo nl2br($question['question']);?></div>
 												<div class="series_question_answer_wrap">
 													<?php foreach($questionOpt as $k => $options){
 														if($options['is_answer'] == true){?>
@@ -667,7 +668,41 @@
 				<input type="hidden" id="end_time" value="<?php echo $end_time;?>"/>
 				<input type="hidden" id="explanation" value="<?php echo $explanation;?>"/>
 			</div>
-			<div class="examSetting_wrap" style="display:none;">
+			<div class="examSetting_wrap" style="display;">
+				<div class="addExerciseTitle">測驗設定</div>
+				<div class="addExercise_wrap">
+					<label class="label_style" for="course_name">測驗科目</label>
+					<a class="fixedInfo"><?php echo $course_name;?></a><br>
+					<label class="label_style" for="course_name">測驗類型</label>
+					<?php 
+						if($type=='test') $exam_Type = '小考';
+						else if($type=='mid') $exam_Type = '期中考';
+						else if($type=='final') $exam_Type = '期末考';
+					?>
+					<a class="fixedInfo" ><?php echo $exam_Type;?></a><br>
+					<label class="label_style" for="course_name">測驗時間</label>
+					<a class="fixedInfo"><?php echo $start_date .' '.$start_time;?></a>
+					<a class="to"> ~ </a>
+					<a class="fixedInfo"><?php echo $end_date .' '.$end_time;?></a><br>
+					<label class="label_style" for="course_name">簡答題模糊比對</label>
+					<div class="fuzzy_match_wrap">
+						<select name="fuzzy_match" class="fuzzy_match">
+							<?php for($i=0; $i<=5; $i++){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
+						</select>
+					</div><br>
+					<label class="label_style" for="course_name">複選題倒扣</label>
+					<div class="multi_score_wrap">
+						<input id="multi_score1" value="0" type="radio" name="multi_score" checked>
+							<label for="multi_score1">不倒扣</label>
+						<input id="multi_score2" value="1" type="radio" name="multi_score">
+							<label for="multi_score2">倒扣</label>
+					</div>
+					<div class="resultBtn_wrap examSettingFunc">
+						<div class="formCheck"></div>
+						<a class="resultBtn closeBox">關 閉</a>
+					</div>
+				</div>
+
 			</div>
 			<div class="addExerciseBox_wrap" style="display:none;">
 				<div class="addExerciseTitle">新增題目</div>
@@ -676,7 +711,7 @@
 						<li><a href="#add_true_false">是非題</a></li>
 						<li><a href="#add_short_answer">簡答</a></li>
 						<li><a href="#add_single_choice">單選題</a></li>
-						<li><a href="#add_multi_choice">多選題</a></li>
+						<li><a href="#add_multi_choice">複選題</a></li>
 						<li><a href="#add_series_question">題組</a></li>
 					</ul>
 				</div>
@@ -967,8 +1002,6 @@
 					 ?>
 				</div>
 			</div>
-			<div class="exerciseTemp" style="display:none;">
-			</div>
 			<div class="overlay"> </div>
 			<div class="statusSilde" style="display:none;"></div>
 			<div class="statusSildeSave" style="display:none;">
@@ -978,8 +1011,7 @@
 				  <div class="bounce3"></div>
 				</div>
 			</div>
-			<div class="TRUE_FALSE_TEMP" style="display:none;">
-			</div>
+
 		</div>
 		
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>		

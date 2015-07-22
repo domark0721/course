@@ -101,7 +101,7 @@
 						</table>
 					</div>
 					<div class="examCheck_wrap">
-						<a class="examCheckBtn startBtn" href="exam.php?course_id=<?php echo $course_id;?>&id=<?php echo $exam_id;?>">開始考試</a>
+						<a class="examCheckBtn startBtn" href="exam.php?course_id=<?php echo $course_id;?>&id=<?php echo $exam_id;?>">開始測驗</a>
 						<a class="examCheckBtn giveUpBtn" href="../course.php?course_id=<?php echo $course_id;?>#exam">返 回</a>
 					</div>
 				</div>

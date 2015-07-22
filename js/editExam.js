@@ -221,6 +221,8 @@ $(document).ready(function(){
 		var end_date = $('#end_date').val();
 		var end_time = $('#end_time').val();
 		var explanation = $('#explanation').val();
+		var fuzzy_match = $('.fuzzy_match').val();
+		var multi_score = $('.multi_score_wrap').find('input:radio[name=multi_score]:checked').val();
 
 		var questionList = $('.left-container #drop-question-list .questionItem').map(function(){
 							question_id = $(this).data('exercise-id');
@@ -245,7 +247,9 @@ $(document).ready(function(){
 	      			end_date : end_date,
 	      			end_time : end_time,
 	      			explanation : explanation,
-	      			exam_paper : exam_paper
+	      			exam_paper : exam_paper,
+	      			fuzzy_match : fuzzy_match,
+	      			multi_score : multi_score
 	      		},
 	      dataType: "json"
     	})

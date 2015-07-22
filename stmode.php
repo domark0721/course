@@ -55,7 +55,7 @@
 						<ul class="tab-list">
 							<li><a href="#attened_course">進行課程</a></li>
 							<li><a href="#finish_course">修畢課程</a></li>
-							<li><a href="#favorite_course">我的最愛</a></li>
+							<li><a href="#favorite_course">我的收藏</a></li>
 							<!-- <li><a>互動討論</a></li> -->
 						</ul>
 					</div>
@@ -66,7 +66,7 @@
 		foreach($attened_course as $value){
 ?>
 						<div class="courseItem clearfix">
-							<div class="itemLeft"><img src="img/user-course.jpg"></div>
+							<div class="itemLeft"><img src="<?php echo $value['pic'];?>"></div>
 							<div class="item-course-info"> 
 								<div class="item-course-name"><?php echo $value['course_name'];?></div>
 								<div class="item-course-teacher">授課老師：<?php echo $value['teacher_name'];?></div>
@@ -92,7 +92,7 @@
 		// var_dump($value);
 ?>
 						<div class="courseItem clearfix">
-							<div class="itemLeft"><img src="img/user-course.jpg"></div>
+							<div class="itemLeft"><img src="<?php echo $value['pic'];?>"></div>
 							<div class="item-course-info"> 
 								<div class="item-course-name"><?php echo $value['course_name'];?></div>
 								<div class="item-course-teacher">授課老師：<?php echo $value['teacher_name'];?></div>
@@ -118,7 +118,7 @@
 		foreach($favorite_course as $value){
 ?>
 						<div class="courseItem clearfix">
-							<div class="itemLeft"><img src="img/user-course.jpg"></div>
+							<div class="itemLeft"><img src="<?php echo $value['pic'];?>"></div>
 							<div class="item-course-info"> 
 								<div class="item-course-name"><?php echo $value['course_name']; ?></div>
 								<div class="item-course-teacher">授課老師：<?php echo $value['teacher_name']; ?></div>

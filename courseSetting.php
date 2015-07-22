@@ -35,7 +35,7 @@
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 		<link type="text/css" rel="stylesheet" href="css/mode.css">
 		<link type="text/css" rel="stylesheet" href="css/courseSetting.css">
-		<title>課程一般設定 - NUCourse</title>
+		<title>課程設定 - NUCourse</title>
 	</head>	
 	<body>
 		<div class="totalWrapper">
@@ -45,7 +45,7 @@
 					<div class="content-wrap clearfix">
 						<div class="editorBarIcon"><i class="fa fa-wrench"></i></div>
 						<div class="courseHeader">
-							<div class="topBanner_Title">課程一般設定</div>
+							<div class="topBanner_Title">課程設定</div>
 							<div class="topBanner_CourseName"><?php echo $courseMetadata['course_name']; ?></div>
 						</div>
 					</div>
@@ -89,7 +89,7 @@
 								</div>
 								<label for="pic">封面圖片</label>
 									<input type="file" name="pic">
-								<img src="img/user-course.jpg">
+								<img src="<?php echo $courseMetadata['pic']; ?>">
 							</div>
 
 							<div class="nav-wrap">

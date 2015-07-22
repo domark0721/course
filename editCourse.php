@@ -43,7 +43,7 @@
 					<div id="courseBarPosition" class="clearfix">
 						<div class="content-wrap">
 							<div id="coursePic">
-								<img src="img/user-course.jpg">
+								<img src="<?php echo $courseMetadata['pic'];?>">
 							</div>
 							<div id="courseHeader">
 								<div id="courseName"><?php echo $courseMetadata['course_name'];?></div>
@@ -118,7 +118,8 @@
 								</form>
 								<div id="video">
 									<video controls >
-									<source src="<?php echo "videos/" . $section['video'];?>" type="video/mp4">
+									<!-- <?php echo "videos/" . $section['video'];?>" -->
+									<source src="<?php echo $section['video'];?>" type="video/mp4">
 									Your browser does not support the video tag.
 									</video>
 								</div>

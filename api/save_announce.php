@@ -5,7 +5,7 @@
 	$course_id = $_POST['course_id'];
 	$member_id = $_POST['member_id'];
 	$title = $_POST['title'];
-	$content = $_POST['content'];
+	$content = nl2br($_POST['content']);
 
 	$sql = "INSERT INTO announce(course_id, member_id, title, content) VALUES ('$course_id', '$member_id', '$title', '$content')";
 	$mysqlResult = mysql_query($sql);
