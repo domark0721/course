@@ -660,7 +660,7 @@
 				<input type="hidden" id="course_id" value="<?php echo $course_id;?>"/>
 				<input type="hidden" id="course_name" value="<?php echo $course_name;?>"/>
 				<input type="hidden" id="type" value="<?php echo $type;?>"/>
-				<input type="hidden" id="time" value=""/>
+				<!-- <input type="hidden" id="time" value=""/> -->
 				<input type="hidden" id="level" value=""/>
 				<input type="hidden" id="start_date" value="<?php echo $start_date;?>"/>
 				<input type="hidden" id="start_time" value="<?php echo $start_time;?>"/>
@@ -668,34 +668,36 @@
 				<input type="hidden" id="end_time" value="<?php echo $end_time;?>"/>
 				<input type="hidden" id="explanation" value="<?php echo $explanation;?>"/>
 			</div>
-			<div class="examSetting_wrap" style="display;">
+			<div class="examSetting_wrap" style="display:none;">
 				<div class="addExerciseTitle">測驗設定</div>
 				<div class="addExercise_wrap">
-					<label class="label_style" for="course_name">測驗科目</label>
+					<label class="label_style">測驗科目</label>
 					<a class="fixedInfo"><?php echo $course_name;?></a><br>
-					<label class="label_style" for="course_name">測驗類型</label>
+					<label class="label_style">測驗類型</label>
 					<?php 
 						if($type=='test') $exam_Type = '小考';
 						else if($type=='mid') $exam_Type = '期中考';
 						else if($type=='final') $exam_Type = '期末考';
 					?>
 					<a class="fixedInfo" ><?php echo $exam_Type;?></a><br>
-					<label class="label_style" for="course_name">測驗時間</label>
+					<label class="label_style">測驗排程</label>
 					<a class="fixedInfo"><?php echo $start_date .' '.$start_time;?></a>
 					<a class="to"> ~ </a>
 					<a class="fixedInfo"><?php echo $end_date .' '.$end_time;?></a><br>
-					<label class="label_style" for="course_name">簡答題模糊比對</label>
+					<label class="label_style">測驗總時間</label>
+						<input class="test_time" value="20"><span class="test_timeMinWord">分</span><span class="reference_time_wrap">(建議高於<span class="reference_time">0</span>分)</span><br>
+					<label class="label_style">簡答題模糊比對</label>
 					<div class="fuzzy_match_wrap">
 						<select name="fuzzy_match" class="fuzzy_match">
 							<?php for($i=0; $i<=5; $i++){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
 						</select>
 					</div><br>
-					<label class="label_style" for="course_name">複選題倒扣</label>
+					<label class="label_style" for="course_name">複選題部分給分</label>
 					<div class="multi_score_wrap">
-						<input id="multi_score1" value="0" type="radio" name="multi_score" checked>
-							<label for="multi_score1">不倒扣</label>
-						<input id="multi_score2" value="1" type="radio" name="multi_score">
-							<label for="multi_score2">倒扣</label>
+						<input id="multi_score2" value="1" type="radio" name="multi_score" checked>
+							<label for="multi_score2">啟用</label>
+						<input id="multi_score1" value="0" type="radio" name="multi_score">
+							<label for="multi_score1">不啟用</label>
 					</div>
 					<div class="resultBtn_wrap examSettingFunc">
 						<div class="formCheck"></div>

@@ -40,8 +40,11 @@
 					<input type="submit" style="display: none;">
 				</form>
 				<hr>
-
+				
 				<div id="course_container" class="result_wrap">
+				<?php if(count($courseListStatus1)+count($courseListStatus0)){ ?>
+				<div class="courseNum">結果有 <?php echo count($courseListStatus1)+count($courseListStatus0); ?> 門課程</div>
+				<?php } ?>
 					<ul id="courselist">
 					<?php 
 					if(!empty($keywords) && (!empty($courseListStatus1) || !empty($courseListStatus0))){
@@ -81,7 +84,7 @@
 					}else { ?>
 					<div class="nodata">
 						<img src="img/oops.png">
-						<a>沒有資料 :(</a>
+						<a>沒有任何課程 :(</a>
 					</div>
 					<?php } ?>
 					</ul>

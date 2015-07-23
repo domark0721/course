@@ -28,6 +28,11 @@ hr {
 	margin: 0 auto;
 }
 
+.courseNum {
+	font-size: 18px;
+	color: rgb(114, 114, 114);
+}
+
 .courseItem {
 	margin: 15px 0;
 }

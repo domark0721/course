@@ -57,6 +57,7 @@ function calculate(){
 	}
 	$('#exam_time').html(total_min+'分'+total_sec+'秒');
 	
+
 	if(total_min >= 60){
 		var total_min_origin = total_min;
 		total_hour = Math.floor(total_min/60);
@@ -66,12 +67,30 @@ function calculate(){
 		}
 		$('#exam_time').html(total_hour+'時'+total_min+'分'+total_sec + '秒 ( ' +total_min_origin+'分'+total_sec+'秒' + ' ) ');
 	}
+
 	if(total_hour>0){
-		if(total_sec>0)$('#time').val(total_hour +':' +(parseInt(total_min)+1)+':00');
-		else $('#time').val('00:'+total_min+':00');
+		if(total_sec>0){
+			$('#time').val(total_hour +':' +(parseInt(total_min)+1)+':00');
+			$('.reference_time').html(total_min+1);
+			$('input.test_time').val(total_min+1+20);
+		}
+		else{
+			$('#time').val('00:'+total_min+':00');
+			$('.reference_time').html(total_min);
+			$('input.test_time').val(total_min+20);
+		}
+		
 	}else{
-		if(total_sec>0)$('#time').val('00:' + (total_min+1)+':00');
-		else $('#time').val('00:'+total_min+':00');
+		if(total_sec>0){
+			$('#time').val('00:' + (total_min+1)+':00');
+			$('.reference_time').html(total_min+1);
+			$('input.test_time').val(total_min+1+20);
+		}
+		else{
+			$('#time').val('00:'+total_min+':00');
+			$('.reference_time').html(total_min);
+			$('input.test_time').val(total_min+20);
+		}
 	}
 
 	var level = Math.round(total_level / total_num*10)/10;
@@ -214,7 +233,6 @@ $(document).ready(function(){
 		var course_id = $('#course_id').val();
 		var course_name = $('#course_name').val();
 		var type = $('#type').val();
-		var time = $('#time').val();
 		var level = $('#level').val();
 		var start_date = $('#start_date').val();
 		var start_time = $('#start_time').val();
@@ -228,7 +246,15 @@ $(document).ready(function(){
 							question_id = $(this).data('exercise-id');
 							return question_id;
 							});
-
+		var test_time_min = $('.test_time').val();
+		
+		var test_time_hrs = '00';
+		if(test_time_min > 60){
+			test_time_hrs = Math.floor(test_time_min/60);
+			test_time_min = test_time_min%60; 
+		}
+		var test_time = test_time_hrs + ':' + test_time_min + ':00';
+		console.log(test_time);
 		// if(questionList == NULL)
 		var exam_paper = questionList.toArray();
 		console.log(exam_paper);
@@ -240,7 +266,7 @@ $(document).ready(function(){
 	      			course_id : course_id,
 	      			course_name : course_name,
 	      			type : type,
-	      			time : time,
+	      			time : test_time,
 	      			level : level,
 	      			start_date : start_date,
 	      			start_time : start_time,
