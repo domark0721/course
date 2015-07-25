@@ -348,15 +348,82 @@
 						</form>
 						<!-- 題組 -->
 						<form id="series_question" class="tab-content" action="../api/save_addExercise.php" method="POST">
-							
-							<input type="hidden" name="author_id" value="<?php echo $member_id;?>">
-							<input type="hidden" name="course_id" value="<?php echo $course_id;?>">
-							<input type="hidden" name="type" value="SERIES_QUESTIONS">
+							<div class="question_content_wrap">
+								<label for="question">主題目內容</label>
+								<textarea class="question_textarea" name="question"></textarea>
+								<div class="addSubQestionBtn"><i class="fa fa-plus"></i> 新增小題</div>
+								<div class="series_subquestion_wrap">
+									<div class="series_subquestion">
+										<label for="question">小題題目</label>
+											<textarea class="question_textarea" name="question"></textarea>
+										<label for="single_opt_content">選項內容</label>
+										<div class="opt_content">
+											<?php for($i=1; $i<=4; $i++){ ?>
+												<div><span>(<?php echo $i;?>)</span><textarea name="single_opt_content_<?php echo $i;?>"></textarea></div>
+											<?php }?>
+										</div>
+										<label for="single_answer">本題解答</label>
+										<div class="opt">
+											<?php for($i=1; $i<=4; $i++){ ?>
+											<input id="single_opt<?php echo $i;?>" value="<?php echo $i;?>" type="radio" name="answer">
+											<label for="single_opt<?php echo $i;?>" name="single_answer">(<?php echo $i;?>)</label>
+											<?php }?>
+										</div>
+									</div>
+								</div>
+								<label for="tags">標籤</label>
+									<input class="tagsInput" name="tags">
+								<label for="level">難易度</label>
+								<div class="opt">
+									<?php for($i=1; $i<=5; $i++){ ?>
+										<input id="single_level<?php echo $i;?>" value="<?php echo $i;?>" type="radio" name="level">
+											<label for="single_level<?php echo $i;?>" name="level"><?php for($j=1; $j<=$i; $j++){?>★<?php }?></label>
+									<?php } ?>
+								</div>
+								<label for="time">答題時間</label>
+									<select name="min" class="time_select min">
+										<?php for($i=0; $i<=30; $i++){ ?> <option value="<?php echo $i;?>"><?php echo $i;?></option> <?php } ?>
+									</select>
+									<a class="time_char">分</a>
+									<select name="sec" class="time_select sec">
+										<?php for($i=0; $i<=50; $i+=10){ ?><option value="<?php echo $i;?>"><?php echo $i;?></option> <?php }?>
+									</select>
+									<a class="time_char">秒</a>
+								<label for="is_test">選為隨堂練習</label>
+								<div class="opt">
+									<input id="is_test_false_single" target="single" value="false" type="radio" name="is_test" checked>
+									<label for="is_test_false_single" name="is_test">否</label>
+									<input id="is_test_true_single" target="single" value="true" type="radio" name="is_test">
+									<label for="is_test_true_single" name="is_test">是</label>
+								</div>
+
+								<div id="section_single"  class="chapter_select">
+									<label for="section">適用章節</label>
+									<select class="testSection_select" name="section">
+									<?php
+									foreach($contentData['chapters'] as $i => $chapter){
+										$courseName = sprintf("CH%d: %s", $i+1, $chapter['name'] ); ?>
+										<optgroup label='<?php echo $courseName; ?>'>
+									<?php foreach($chapter['sections'] as $j => $section){
+											$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']); ?>
+											<option value="<?php echo $section['uid'];?>"><?php echo $sectionName;?></option>
+										<?php } ?>
+										</optgroup>
+									<?php } ?>
+									</select>
+								</div>
+
+								<input type="hidden" name="author_id" value="<?php echo $member_id;?>">
+								<input type="hidden" name="course_id" value="<?php echo $course_id;?>">
+								<input type="hidden" name="create_date" value="<?php echo date('Y-m-d H:i:s');?>">
+								<input type="hidden" name="type" value="SINGLE_CHOICE">
+							</div>
 							<div class="resultBtn">
 								<div class="formCheck"></div>
 								<button class="panelBtn save" type="submit" >儲存此題</button>
 								<a class="panelBtn giveup" href="exercise.php?course_id=<?php echo $course_id;?>">離 開</a>
 							</div>
+
 						</form>
 					</div>
 				</div>

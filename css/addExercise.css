@@ -193,3 +193,25 @@ ul.tagit {
 	font-size: 18px;
 	color: red;
 }
+
+.question_content_wrap .series_subquestion {
+	border: 1px solid #ddd;
+	margin: 10px 0;
+}
+
+.addSubQestionBtn {
+	display: inline-block;
+	border: 0px;
+	border-radius: 5px;
+	text-align: center;
+	padding: 10px 20px;
+	font-size: 18px;
+	color: #fff;
+	background-color: #555;
+	cursor: pointer;
+	transition: all 0.3s;
+}
+
+.addSubQuestion:hover {
+	background-color: #333;
+}
