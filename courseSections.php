@@ -153,16 +153,16 @@
 										<li class="true_false_wrap">
 											<div class="question"><?php echo $trueFalseQuesBody['question'];?></div>
 											<div class="true_false_answer_wrap">
-												<input id="answer_true<?php echo $i;?>" type="radio" name="answer" value="true">
+												<input id="answer_true<?php echo $i;?>" type="radio" name="answer_true<?php echo $i;?>" value="true">
 												<label for="answer_true<?php echo $i;?>">Ｏ</label>
-												<input id="answer_false<?php echo $i;?>" type="radio" name="answer" value="false">
+												<input id="answer_false<?php echo $i;?>" type="radio" name="answer_false<?php echo $i;?>" value="false">
 												<label for="answer_false<?php echo $i;?>">Ｘ</label>
 											</div>
 											<div class="true_false_answer_wrap correct_ans">
 												<div class="title">正確答案</div>	
-												<input id="answer_true_ans<?php echo $i;?>" type="radio" name="answer" value="true" <?php if($trueFalseQuesBody['answer'] == "true"){echo 'checked';}?> disabled>
+												<input id="answer_true_ans<?php echo $i;?>" type="radio" name="answer_true_ans<?php echo $i;?>" value="true" <?php if($trueFalseQuesBody['answer'] == "true"){echo 'checked';}?> disabled>
 												<label for="answer_true_ans<?php echo $i;?>">Ｏ</label>
-												<input id="answer_false_ans<?php echo $i;?>" type="radio" name="answer" value="false" <?php if($trueFalseQuesBody['answer'] == "false"){echo 'checked';}?> disabled>
+												<input id="answer_false_ans<?php echo $i;?>" type="radio" name="answer_false_ans<?php echo $i;?>" value="false" <?php if($trueFalseQuesBody['answer'] == "false"){echo 'checked';}?> disabled>
 												<label for="answer_false_ans<?php echo $i;?>">Ｘ</label>
 											</div>
 										</li>
