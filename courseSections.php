@@ -158,7 +158,7 @@
 												<input id="answer_false<?php echo $i;?>" type="radio" name="answer_false<?php echo $i;?>" value="false">
 												<label for="answer_false<?php echo $i;?>">Ｘ</label>
 											</div>
-											<div class="true_false_answer_wrap correct_ans">
+											<div class="correct_ans true_false_answer_wrap">
 												<div class="title">正確答案</div>	
 												<input id="answer_true_ans<?php echo $i;?>" type="radio" name="answer_true_ans<?php echo $i;?>" value="true" <?php if($trueFalseQuesBody['answer'] == "true"){echo 'checked';}?> disabled>
 												<label for="answer_true_ans<?php echo $i;?>">Ｏ</label>
