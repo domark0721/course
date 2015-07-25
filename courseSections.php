@@ -158,6 +158,13 @@
 												<input id="answer_false<?php echo $i;?>" type="radio" name="answer" value="false">
 												<label for="answer_false<?php echo $i;?>">Ｘ</label>
 											</div>
+											<div class="true_false_answer_wrap correct_ans">
+												<div class="title">正確答案</div>	
+												<input id="answer_true_ans<?php echo $i;?>" type="radio" name="answer" value="true" <?php if($trueFalseQuesBody['answer'] == "true"){echo 'checked';}?> disabled>
+												<label for="answer_true_ans<?php echo $i;?>">Ｏ</label>
+												<input id="answer_false_ans<?php echo $i;?>" type="radio" name="answer" value="false" <?php if($trueFalseQuesBody['answer'] == "false"){echo 'checked';}?> disabled>
+												<label for="answer_false_ans<?php echo $i;?>">Ｘ</label>
+											</div>
 										</li>
 									<?php } ?>
 								</ul>
@@ -185,8 +192,8 @@
 										<div class="single_choice_answer_wrap correct_ans">
 											<div class="title">正確答案</div>	
 											<?php foreach($singleChoiceQuesOpt as $j => $options){?>
-											<input id="single_answer<?php echo $i ."_". $j;?>" type="radio" name="single_opt<?php echo $i;?>" value="<?php echo $j;?>" <?php if($options['is_answer'] == true){ echo 'checked';}?> disabled>
-											<label for="single_answer<?php echo $i ."_". $j;?>"><?php echo $options['content'];?></label>
+											<input id="single_answer_ans<?php echo $i ."_". $j;?>" type="radio" name="single_opt<?php echo $i;?>" value="<?php echo $j;?>" <?php if($options['is_answer'] == true){ echo 'checked';}?> disabled>
+											<label for="single_answer_ans<?php echo $i ."_". $j;?>"><?php echo $options['content'];?></label>
 											<?php }	?>
 										</div>
 									</li>
@@ -243,6 +250,13 @@
 												<div class="series_question_answer_wrap">
 													<?php foreach($questionOpt as $k => $options){?>
 													<input id="series_question<?php echo $i ."_". $j ."_". $k;?>" type="radio" name="series_opt<?php echo $j;?>" value="<?php echo $k;?>">
+													<label for="series_question<?php echo $i ."_". $j ."_". $k;?>"><?php echo $options['content'];?></label>
+													<?php }?>
+												</div>
+												<div class="series_question_answer_wrap correct_ans">
+													<div class="title">正確答案</div>	
+													<?php foreach($questionOpt as $k => $options){?>
+													<input id="series_question<?php echo $i ."_". $j ."_". $k;?>" type="radio" name="series_opt<?php echo $j;?>" value="<?php echo $k;?>" <?php if($options['is_answer'] == true){ echo 'checked';}?> disabled>
 													<label for="series_question<?php echo $i ."_". $j ."_". $k;?>"><?php echo $options['content'];?></label>
 													<?php }?>
 												</div>
