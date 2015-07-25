@@ -195,7 +195,8 @@ ul.tagit {
 }
 
 .question_content_wrap .series_subquestion {
-	border: 1px solid #ddd;
+	border: 1px solid #aaa;
+	padding: 10px 20px;
 	margin: 10px 0;
 }
 
