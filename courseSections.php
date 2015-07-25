@@ -205,6 +205,12 @@
 												<label for="multi_answer<?php echo $i ."_". $j;?>"><?php echo $options['content'];?></label>
 												<?php }?>
 										</div>
+										<div class="multi_choice_answer_wrap correct_ans">
+												<?php foreach($multiChoiceQuesOpt as $j => $options){?>
+												<input id="multi_answer_ans_<?php echo $i ."_". $j;?>" type="checkbox" name="multi_answer_ans_<?php echo $i;?>" value="<?php echo $j;?>" <?php if($options['is_answer'] == true){ echo 'checked'};?> disabled>
+												<label for="multi_answer_ans_<?php echo $i ."_". $j;?>"><?php echo $options['content'];?></label>
+												<?php }?>
+										</div>
 									</li>
 									<?php }?>
 								</ul>

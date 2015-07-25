@@ -27,6 +27,9 @@ $(document).ready(function(){
         showTab($('.tab-list a').first());    
     }
 
+    $('.finishBtns').on('click', function(e) {
+        $('.correct_ans').show();
+    });
 	
 
     // showUnderline(this);

@@ -152,3 +152,7 @@
 	width: 90%;
 	margin: 0 auto;	
 }
+
+.correct_ans {
+	display: none;
+}
