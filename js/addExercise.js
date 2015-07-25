@@ -135,7 +135,7 @@ $(document).ready(function(){
       var multi_opt_content_4 = $(this).find('textarea[name=multi_opt_content_4]').val();
       var multi_opt_content_5 = $(this).find('textarea[name=multi_opt_content_5]').val();
       var answers = $(this).find('input:checkbox:checked[name="answer[]"]').map(function(){ 
-              return $(this).val(); 
+               return $(this).val(); 
             }).get();
       var level = $(this).find('input:radio[name=level]:checked').val();
       var min = $(this).find('.min').val();
@@ -181,29 +181,7 @@ $(document).ready(function(){
   // console.log($(this).is(":checked"));
 
   $('.addSubQestionBtn').on('click', function(e){
-      var html = '
-        <div class="series_subquestion">
-          <label for="question">小題題目</label>
-            <textarea class="question_textarea" name="question"></textarea>
-          <label for="single_opt_content">選項內容</label>
-          <div class="opt_content">
-              <div><span>1</span><textarea name="single_opt_content_1"></textarea></div>
-              <div><span>2</span><textarea name="single_opt_content_2"></textarea></div>
-              <div><span>3</span><textarea name="single_opt_content_3"></textarea></div>
-              <div><span>4</span><textarea name="single_opt_content_4"></textarea></div>
-          </div>
-          <label for="single_answer">本題解答</label>
-          <div class="opt">
-            <input id="single_opt1" value="1" type="radio" name="answer">
-            <label for="single_opt1" name="single_answer">(1)</label>
-            <input id="single_opt2" value="2" type="radio" name="answer">
-            <label for="single_opt2" name="single_answer">(2)</label>
-            <input id="single_opt3" value="3" type="radio" name="answer">
-            <label for="single_opt3" name="single_answer">(3)</label>
-            <input id="single_opt4" value="4" type="radio" name="answer">
-            <label for="single_opt4" name="single_answer">(4)</label>
-          </div>
-        </div>';
+      var html = '<div class="series_subquestion"><label for="question">小題題目</label><textarea class="question_textarea" name="question"></textarea><label for="single_opt_content">選項內容</label><div class="opt_content"><div><span>1</span><textarea name="single_opt_content_1"></textarea></div><div><span>2</span><textarea name="single_opt_content_2"></textarea></div><div><span>3</span><textarea name="single_opt_content_3"></textarea></div><div><span>4</span><textarea name="single_opt_content_4"></textarea></div></div><label for="single_answer">本題解答</label><div class="opt">  <input id="single_opt1" value="1" type="radio" name="answer"><label for="single_opt1" name="single_answer">(1)</label><input id="single_opt2" value="2" type="radio" name="answer"><label for="single_opt2" name="single_answer">(2)</label><input id="single_opt3" value="3" type="radio" name="answer"><label for="single_opt3" name="single_answer">(3)</label><input id="single_opt4" value="4" type="radio" name="answer"><label for="single_opt4" name="single_answer">(4)</label></div></div>';
       $('.series_subquestion_wrap').append(html);
   })
 
