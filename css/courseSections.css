@@ -159,6 +159,10 @@
 	padding: 6px 0 0 0;
 }
 
+.true_false_answer_wrap.correct_ans{
+	display: none;
+}
+
 .correct_ans .title{
 	color: #aaa;
 	margin-bottom: 10px;
