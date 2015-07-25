@@ -63,7 +63,7 @@
 									$preChapter_LastSection = count($sectionData[($chapter-1)]['sections']);
 									$preChapter_LastSection_Name = $sectionData[($chapter-1)]['sections'][($preChapter_LastSection-1)]['name'];
 									$preFullName = sprintf("%d-%d %s", $chapter, $preChapter_LastSection , $preChapter_LastSection_Name);?>
-									<a href="courseSections.php?course_id=<?php $course_id; ?>&chapter_id=<?php echo ($chapter-1); ?>&section_id=<?php echo ($preChapter_LastSection-1);?>"><i class="fa fa-arrow-left"></i> <?php echo $preFullName;?></a>
+									<a href="courseSections.php?course_id=<?php echo $course_id; ?>&chapter_id=<?php echo ($chapter-1); ?>&section_id=<?php echo ($preChapter_LastSection-1);?>"><i class="fa fa-arrow-left"></i> <?php echo $preFullName;?></a>
 							<?php }else if($chapter >= 0 && $section > 0){
 									$preSectionName = $sectionData[$chapter]['sections'][($section-1)]['name'];
 									$preFullName = sprintf("%d-%d %s", ($chapter+1), $section ,$preSectionName); ?>
