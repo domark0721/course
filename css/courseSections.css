@@ -155,4 +155,10 @@
 
 .correct_ans {
 	display: none;
+	border: 1px solid #ccc;
+}
+
+.correct_ans .title{
+	color: #aaa;
+	margin-bottom: 10px;
 }
