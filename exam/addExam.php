@@ -117,10 +117,10 @@
 								</select><span>分</span>
 							</div>
 						</div><br>
-						<label class="label_style" for="time">作答時間</label>
+<!-- 						<label class="label_style" for="time">作答時間</label>
 							<input type="number" value="10" min="10" class="time" name="time" ><a class="word_style"> 分</a>
 						<label class="line_distent" for="check_time">檢查時間</label>
-							<input type="number" value="0" min="0" class="time" name="check_time" ><a class="word_style"> 分</a>		
+							<input type="number" value="0" min="0" class="time" name="check_time" ><a class="word_style"> 分</a>		 -->
 						<div class="questionNum_wrap">
 							<label for="trueFalse">是非題</label>
 								<input type="number" value="0" min="0" max="<?php echo $trueFalseNum;?>" class="questionNum" name="trueFalse">

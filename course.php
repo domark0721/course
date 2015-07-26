@@ -205,7 +205,7 @@
 
 								foreach($contentData['chapters'] as $i => $chapter){
 									$courseName = sprintf("CH%d: %s", $i+1, $chapter['name'] ); ?>
-									<li><a href="#chpater-<?php echo $i; ?>"><?php echo $courseName; ?></a></li>
+									<li><a href="#chapter-<?php echo $i; ?>"><?php echo $courseName; ?></a></li>
 							<?php } ?>
 						</ul>
 					</nav>
