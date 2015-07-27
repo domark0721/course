@@ -165,11 +165,11 @@
 		$create_date = $_POST['create_date'];
 		if($is_test == "false"){
 			$is_test = false;
-			$test_section = 0;
 		}else{
 			$is_test = true;
-			$test_section = $section;
 		}
+		$test_section = !empty($section) ? $section : "0";
+
 		return array(
 				"question" => $question, 
 				"tags" => $tags, 
