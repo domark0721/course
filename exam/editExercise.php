@@ -155,7 +155,7 @@
 						</form>
 						<!-- 簡答題 -->
 						<?php }else if($exerciseData['type']== "SHORT_ANSWER"){?>
-						<form id="true_false" class="" action="../api/update_exercise.php" method="POST">
+						<form id="short_answer" class="" action="../api/update_exercise.php" method="POST">
 							<div class="question_content_wrap">
 								<div class="typeName">本題為<span>簡答</span></div>
 								<label for="question">題目</label>
