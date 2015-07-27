@@ -229,6 +229,9 @@ h3 {
 	display: block;
 }
 
+.section_wrap label input{
+	margin-right: 8px;
+}
 
 .funcBtns_wrap {
 	margin-top: 5%;

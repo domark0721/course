@@ -17,6 +17,6 @@ $(document).ready(function(){
 	}
 
 	$('.chapter_wrap .select_all_section_btn').on('click', function(e){
-		$(this).find('input').prop('checked', true);
+		$(this).parents('.chapter_wrap').find('input').prop('checked', true);
 	});
 });

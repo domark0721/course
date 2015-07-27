@@ -34,6 +34,7 @@
 		$singleChoice = $_POST['singleChoice'];
 		$multiChoice = $_POST['multiChoice'];
 		$seriesQues = $_POST['seriesQues'];
+		$chapterRange = explode(',', $_POST['chapter_range']);
 	}
 
 	$generate_type = 'manualMode';
