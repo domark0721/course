@@ -164,7 +164,7 @@
 									// $sectionNameArray[$section['uid']] = $sectionName;
 							?>
 									<div class="section_wrap">
-										<label><input type="checkbox" name="chapter_range[]" value="<?php echo $section['uid'];?>"><?php $sectionName?></label>
+										<label><input type="checkbox" name="chapter_range[]" value="<?php echo $section['uid'];?>"><?php echo $sectionName?></label>
 									</div>
 							<?php
 								}
