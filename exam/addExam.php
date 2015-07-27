@@ -96,14 +96,14 @@
 							<input id="auto_examType3" value="final" type="radio" name="type">
 							<label for="auto_examType3">期末考</label>
 						</div><br>
-						<label class="label_style" for="examName">難易度</label>
+<!-- 						<label class="label_style" for="examName">難易度</label>
 						<div class="examLevel_wrap">
 						<?php for($i=1; $i<=5; $i++){?>
 							<input id="auto_examLevel<?php echo $i?>" value="<?php echo $i?>" type="radio" name="level">
 							<label for="auto_examLevel<?php echo $i?>"><?php for($j=1; $j<=$i; $j++){ ?>★<?php }?></label>
 						<?php } ?>
 							
-						</div><br>
+						</div><br> -->
 						<label class="label_style examDate" for="time">測驗時程</label>
 						<div class="exam_time_wrap">
 							<label for="time">開始時間</label>
