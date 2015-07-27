@@ -1,12 +1,3 @@
-// 點擊章節需要
-function closeChapterSelect(){
-  $('#is_test_false, #is_test_false_short,  #is_test_false_single, #is_test_false_multi').on('click', function(e){
-    $('#section_'+$(this).attr('target')).fadeOut("slow", function() {
-      $('#section_'+$(this).attr('target')).removeClass('show').fadeOut();
-    });
-  });
-}
-
 $(document).ready(function(){
   
   $('.tab-list a').on('click', function(e){
@@ -48,14 +39,6 @@ $(document).ready(function(){
   }
 
   show_newQuestionEditor($('.add_tab-list a').first());    
-
-  closeChapterSelect();
-  // 點擊章節需要
-  $('#is_test_true, #is_test_true_short, #is_test_true_single, #is_test_true_multi').on('click', function(e){
-    $('#section_'+$(this).attr('target')).fadeIn("slow", function() {
-        $(this).addClass("loader");
-    });
-  });
 
   // console.log($(this).is(":checked"));
 

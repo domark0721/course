@@ -202,16 +202,6 @@ ul.tagit {
 	padding: 5px 10px;
 }
 
-.chapter_select {
-	display: none;
-	/*transition: all .3s;*/
-}
-
-.chapter_select.show{
-	display: block;
-	/*transition: all .3s;*/
-}
-
 .resultBtn_wrap {
 	margin-top: 10px;
 	text-align: center;

@@ -52,7 +52,7 @@
 		$levelStart = levelStartGern($commonArray[level]);
 		$time = timeGern($commonArray[min],$commonArray[sec]);
 		$tagsHTML = tagGern($commonArray[tags]);
-		$sectionHTML = sectionGern($commonArray[is_test], $courseURLArray[$commonArray[test_section]],$sectionNameArray[$commonArray[test_section]]);
+		$sectionHTML = sectionGern($commonArray[test_section], $courseURLArray[$commonArray[test_section]],$sectionNameArray[$commonArray[test_section]]);
 
 		// combine all html
 		$truefalseHtml = "";
@@ -101,7 +101,7 @@
 		$levelStart = levelStartGern($commonArray[level]);
 		$time = timeGern($commonArray[min],$commonArray[sec]);
 		$tagsHTML = tagGern($commonArray[tags]);
-		$sectionHTML = sectionGern($commonArray[is_test], $courseURLArray[$commonArray[test_section]],$sectionNameArray[$commonArray[test_section]]);
+		$sectionHTML = sectionGern($commonArray[test_section], $courseURLArray[$commonArray[test_section]],$sectionNameArray[$commonArray[test_section]]);
 
 		// combine all html
 		$shortAnswerHtml = "";
@@ -169,7 +169,7 @@
 		$levelStart = levelStartGern($commonArray[level]);
 		$time = timeGern($commonArray[min],$commonArray[sec]);
 		$tagsHTML = tagGern($commonArray[tags]);
-		$sectionHTML = sectionGern($commonArray[is_test], $courseURLArray[$commonArray[test_section]],$sectionNameArray[$commonArray[test_section]]);
+		$sectionHTML = sectionGern($commonArray[test_section], $courseURLArray[$commonArray[test_section]],$sectionNameArray[$commonArray[test_section]]);
 
 		// combine all html
 		$singleHtml = '';
@@ -249,7 +249,7 @@
 		$levelStart = levelStartGern($commonArray[level]);
 		$time = timeGern($commonArray[min],$commonArray[sec]);
 		$tagsHTML = tagGern($commonArray[tags]);
-		$sectionHTML = sectionGern($commonArray[is_test], $courseURLArray[$commonArray[test_section]],$sectionNameArray[$commonArray[test_section]]);
+		$sectionHTML = sectionGern($commonArray[test_section], $courseURLArray[$commonArray[test_section]],$sectionNameArray[$commonArray[test_section]]);
 		// combine all html
 		$multiHTML = '';
 		$multiHTML .= '<li class="multi_choice_wrap questionItem notSelect" data-exercise-id="' .$exercise_id. '" data-exercise-type="MULTI_CHOICE" data-section-uid="'. $commonArray[test_section] .'" data-section-name="' .$sectionNameArray[$commonArray[test_section]] . '">';
@@ -288,11 +288,10 @@
 		$create_date = $_POST['create_date'];
 		if($is_test == "false"){
 			$is_test = false;
-			$test_section = 0;
 		}else if($is_test == "true"){
 			$is_test = true;
-			$test_section = $section;
 		}
+		$test_section = !empty($section) ? $section : "0";
 
 		return array(
 				"question" => $question, 
@@ -328,8 +327,8 @@
 		}
 	}
 
-	function sectionGern($is_test, $courseURL, $courseName){
-		if($is_test == false){ 
+	function sectionGern($test_section, $courseURL, $courseName){
+		if($test_section == "0"){ 
 			$sectionHTML .= '<a class="is_test">適用章節： <span>未指定</span></a>';
 		} else{
 			$sectionHTML .= '<a class="is_test">適用章節：</a>';
