@@ -192,7 +192,7 @@
 										<div class="single_choice_answer_wrap correct_ans">
 											<div class="title">正確答案</div>	
 											<?php foreach($singleChoiceQuesOpt as $j => $options){?>
-											<input id="single_answer_ans<?php echo $i ."_". $j;?>" type="radio" name="single_opt<?php echo $i;?>" value="<?php echo $j;?>" <?php if($options['is_answer'] == true){ echo 'checked';}?> disabled>
+											<input id="single_answer_ans<?php echo $i ."_". $j;?>" type="radio" name="single_opt_ans<?php echo $i;?>" value="<?php echo $j;?>" <?php if($options['is_answer'] == true){ echo 'checked';}?> disabled>
 											<label for="single_answer_ans<?php echo $i ."_". $j;?>"><?php echo $options['content'];?></label>
 											<?php }	?>
 										</div>

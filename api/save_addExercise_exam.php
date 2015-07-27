@@ -56,7 +56,7 @@
 
 		// combine all html
 		$truefalseHtml = "";
-		$truefalseHtml .= '<li class="true_false_wrap questionItem" data-exercise-id="' . $exercise_id .'" data-exercise-type="TRUE_FALSE" data-section-uid="'. $commonArray[test_section] .'" data-section-name="' .$sectionNameArray[$commonArray[test_section]] . '">';
+		$truefalseHtml .= '<li class="true_false_wrap questionItem notSelect" data-exercise-id="' . $exercise_id .'" data-exercise-type="TRUE_FALSE" data-section-uid="'. $commonArray[test_section] .'" data-section-name="' .$sectionNameArray[$commonArray[test_section]] . '">';
 		$truefalseHtml .= '<div class="true_false_answer_wrap">';
 
 			if($answer == "true"){
@@ -105,7 +105,7 @@
 
 		// combine all html
 		$shortAnswerHtml = "";
-		$shortAnswerHtml .= '<li class="short_answer_wrap questionItem" data-exercise-id="' . $exercise_id .'" data-exercise-type="SHORT_ANSWER" data-section-uid="'. $commonArray[test_section] .'" data-section-name="' .$sectionNameArray[$commonArray[test_section]] . '">';
+		$shortAnswerHtml .= '<li class="short_answer_wrap questionItem notSelect" data-exercise-id="' . $exercise_id .'" data-exercise-type="SHORT_ANSWER" data-section-uid="'. $commonArray[test_section] .'" data-section-name="' .$sectionNameArray[$commonArray[test_section]] . '">';
 		$shortAnswerHtml .= '<div class="short_answer_answer_wrap">';
 		$shortAnswerHtml .= '<a>'. $answer .'</a>';
 		$shortAnswerHtml .= '</div><div class="Question">'. $commonArray[question] .'</div>';
@@ -173,7 +173,7 @@
 
 		// combine all html
 		$singleHtml = '';
-		$singleHtml .= '<li class="single_choice_wrap questionItem" data-exercise-id="'.$exercise_id.'" data-exercise-type="SINGLE_CHOICE" data-section-uid="'. $commonArray[test_section] .'" data-section-name="' .$sectionNameArray[$commonArray[test_section]] . '">';
+		$singleHtml .= '<li class="single_choice_wrap questionItem notSelect" data-exercise-id="'.$exercise_id.'" data-exercise-type="SINGLE_CHOICE" data-section-uid="'. $commonArray[test_section] .'" data-section-name="' .$sectionNameArray[$commonArray[test_section]] . '">';
 		$singleHtml .= '<div class="question">'.$commonArray[question].'</div>';
 		
 			$optHTML = '';
@@ -252,7 +252,7 @@
 		$sectionHTML = sectionGern($commonArray[is_test], $courseURLArray[$commonArray[test_section]],$sectionNameArray[$commonArray[test_section]]);
 		// combine all html
 		$multiHTML = '';
-		$multiHTML .= '<li class="multi_choice_wrap questionItem" data-exercise-id="' .$exercise_id. '" data-exercise-type="MULTI_CHOICE" data-section-uid="'. $commonArray[test_section] .'" data-section-name="' .$sectionNameArray[$commonArray[test_section]] . '">';
+		$multiHTML .= '<li class="multi_choice_wrap questionItem notSelect" data-exercise-id="' .$exercise_id. '" data-exercise-type="MULTI_CHOICE" data-section-uid="'. $commonArray[test_section] .'" data-section-name="' .$sectionNameArray[$commonArray[test_section]] . '">';
 		$multiHTML .= '<div class="question">' .$commonArray[question]. '</div>';
 			$optsHTML = '';
 			for($k=1 ;$k <=5 ; $k++){

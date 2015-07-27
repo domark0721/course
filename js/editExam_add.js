@@ -113,6 +113,7 @@ $(document).ready(function(){
 					$('#add_true_false')[0].reset();
 					closeChapterSelect();
 					$('#is_test_false').trigger('click');
+					notSelect();
 					$('#add_true_false').find('.tagit-choice').remove();
 
 				}else{
@@ -208,6 +209,7 @@ $(document).ready(function(){
 					$('#add_short_answer')[0].reset();
 					closeChapterSelect();
 					$('#is_test_false_short').trigger('click');
+					notSelect();
 					$('#add_short_answer').find('.tagit-choice').remove();
 
 				}else{
@@ -327,6 +329,7 @@ $(document).ready(function(){
 					$('#add_single_choice')[0].reset();
 					closeChapterSelect();
 					$('#is_test_false_single').trigger('click');
+					notSelect();
 					$('#add_single_choice').find('.tagit-choice').remove();
 
 				}else{
@@ -454,6 +457,7 @@ $(document).ready(function(){
 					$('#add_multi_choice')[0].reset();
 					closeChapterSelect();
 					$('#is_test_false_multi').trigger('click');
+					notSelect();
 					$('#add_multi_choice').find('.tagit-choice').remove();
 
 				}else{
