@@ -40,6 +40,16 @@
 										array('course_id' => (int)$course_id) ));
 	$seriesNum = $exercise -> find($mongoQuery)->count();
 
+	// get course chapter content from mongo
+	$mongoQuery = array('course_id' => (int)$course_id);
+	$mon = $collection -> find($mongoQuery);
+
+	foreach($mon as $data){
+		$courseData = $data;
+		break;
+	}
+	$contentData = $courseData['content'];
+
 ?>
 <!doctype html>
 <html>
@@ -138,6 +148,32 @@
 								<input type="number" value="0" min="0" max="<?php echo $seriesNum;?>" class="questionNum" name="seriesQues">
 								<a class="showNum">(目前有 <?php echo $seriesNum;?> 題)</a>	
 						</div><br>
+						<label class="label_style">章節範圍</label>
+						<div class="chapter_range_wrap">
+							<?php
+							foreach($contentData['chapters'] as $i => $chapter){
+							?>
+								<div class="chapter_wrap">
+									<div>
+										<span><?php echo sprintf("CH%d: %s", $i+1, $chapter['name'] );?></span>
+										<span class="select_all_section_btn">選取整章節</span>
+									</div>
+							<?php
+								foreach($chapter['sections'] as $j => $section){
+									$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
+									// $sectionNameArray[$section['uid']] = $sectionName;
+							?>
+									<div class="section_wrap">
+										<input type="checkbox" name="chapter_range[]" value="<?php echo $section['uid'];?>"><?php $sectionName?></input>
+									</div>
+							<?php
+								}
+							?>
+								</div>
+							<?php
+							}	
+							?>
+						</div>
 						<label class="label_style" for="explanation">說明</label>
 							<textarea class="explanation" name="explanation"> </textarea>
 						
