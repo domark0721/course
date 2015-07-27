@@ -46,11 +46,7 @@ $(document).ready(function(){
 
 		var test_section= "";
 		// var test_section = questionItem.find('.testSection_select');
-		if (is_test == "true"){
-			test_section = questionItem.find('.testSection_select option:selected').val();
-		}else{
-			test_section = "0";
-		}
+		test_section = questionItem.find('.testSection_select option:selected').val();
 		//formCheck
 		var formCheck = $(this).prev('.formCheck');
 
@@ -145,11 +141,7 @@ $(document).ready(function(){
 
 		var test_section= "";
 		// var test_section = questionItem.find('.testSection_select');
-		if (is_test == "true"){
-			test_section = questionItem.find('.testSection_select option:selected').val();
-		}else{
-			test_section = "0";
-		}
+		test_section = questionItem.find('.testSection_select option:selected').val();
 
 		var formCheck = $(this).prev('.formCheck');
 
@@ -244,11 +236,7 @@ $(document).ready(function(){
 
 		var test_section= "";
 		// var test_section = questionItem.find('.testSection_select');
-		if (is_test == "true"){
-			test_section = questionItem.find('.testSection_select option:selected').val();
-		}else{
-			test_section = "0";
-		}
+		test_section = questionItem.find('.testSection_select option:selected').val();
 
 		var formCheck = $(this).prev('.formCheck');
 		var runAjax = 1;
@@ -367,11 +355,7 @@ $(document).ready(function(){
 
 		var test_section= "";
 		// var test_section = questionItem.find('.testSection_select');
-		if (is_test == "true"){
-			test_section = questionItem.find('.testSection_select option:selected').val();
-		}else{
-			test_section = "0";
-		}
+		test_section = questionItem.find('.testSection_select option:selected').val();
 
 		var formCheck = $(this).prev('.formCheck');
 		var runAjax = 1;
