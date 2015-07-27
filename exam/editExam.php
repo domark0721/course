@@ -176,7 +176,7 @@
 											</div>
 										</div>
 										<div class="for_section">
-											<?php if($question['is_test'] == false){ ?>
+											<?php if($question['test_section'] == "0"){ ?>
 												<a class="is_test">適用章節： <span>未指定</span></a>
 											<?php } else{
 													foreach($contentData['chapters'] as $i => $chapter){
@@ -216,7 +216,7 @@
 											</div>
 										</div>
 										<div class="for_section">
-											<?php if($question['is_test'] == false){ ?>
+											<?php if($question['test_section'] == "0"){ ?>
 												<a class="is_test">適用章節： <span>未指定</span></a>
 											<?php } else{
 													foreach($contentData['chapters'] as $i => $chapter){
@@ -263,7 +263,7 @@
 												</div>
 											</div>
 											<div class="for_section">
-												<?php if($question['is_test'] == false){ ?>
+												<?php if($question['test_section'] == "0"){ ?>
 													<a class="is_test">適用章節： <span>未指定</span></a>
 												<?php } else{
 														foreach($contentData['chapters'] as $i => $chapter){
@@ -310,7 +310,7 @@
 													</div>
 												</div>
 												<div class="for_section">
-													<?php if($question['is_test'] == false){ ?>
+													<?php if($question['test_section'] == "0"){ ?>
 														<a class="is_test">適用章節： <span>未指定</span></a>
 													<?php } else{
 															foreach($contentData['chapters'] as $i => $chapter){
@@ -433,7 +433,7 @@
 												</div>
 											</div>
 											<div class="for_section">
-												<?php if($question['is_test'] == false){ ?>
+												<?php if($question['test_section'] == "0"){ ?>
 													<a class="is_test">適用章節： <span>未指定</span></a>
 												<?php } else{ ?>
 													<a class="is_test">適用章節：</a>
@@ -479,7 +479,7 @@
 												</div>
 											</div>
 											<div class="for_section">
-												<?php if($question['is_test'] == false){ ?>
+												<?php if($question['test_section'] == "0"){ ?>
 													<a class="is_test">適用章節： <span>未指定</span></a>
 												<?php } else{ ?>
 													<a class="is_test">適用章節：</a>
@@ -531,7 +531,7 @@
 												</div>
 											</div>
 											<div class="for_section">
-												<?php if($question['is_test'] == false){ ?>
+												<?php if($question['test_section'] == "0"){ ?>
 														<a class="is_test">適用章節： <span>未指定</span></a>
 												<?php } else{ ?>
 														<a class="is_test">適用章節：</a>
@@ -584,7 +584,7 @@
 												</div>
 											</div>
 											<div class="for_section">
-												<?php if($question['is_test'] == false){ ?>
+												<?php if($question['test_section'] == "0"){ ?>
 													<a class="is_test">適用章節： <span>未指定</span></a>
 												<?php } else{ ?>
 													<a class="is_test">適用章節：</a>
