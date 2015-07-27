@@ -189,6 +189,39 @@ h3 {
 	padding: 8px 10px;
 }
 
+.chapter_range_wrap {
+	border: 1px solid #B8B8B8;
+	border-radius: 11px;
+	padding: 0 20px;
+}
+
+
+.chapter_wrap {
+	padding: 20px 0;
+}
+
+.chapter_range_wrap .chapter_wrap:not(:last-child) {
+	border-bottom: 1px solid #B8B8B8;
+}
+
+.chapter_wrap .chapter_title{
+	margin: 6px 0;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.chapter_wrap .select_all_section_btn {
+	color: rgb(52, 141, 216);
+	font-size: 14px;
+	padding: 4px 8px;
+	cursor: pointer;
+}
+
+.section_wrap {
+	padding: 6px 0;
+}
+
+
 .funcBtns_wrap {
 	margin-top: 5%;
 	text-align: center;

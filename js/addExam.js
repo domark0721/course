@@ -15,4 +15,8 @@ $(document).ready(function(){
 		$('.tab_form').hide();
 		$(activeForm).fadeIn();
 	}
+
+	$('.chapter_wrap .select_all_section_btn').on('click', function(e){
+		$(this).find('input').prop('checked', true);
+	});
 });

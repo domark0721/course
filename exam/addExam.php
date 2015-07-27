@@ -154,7 +154,7 @@
 							foreach($contentData['chapters'] as $i => $chapter){
 							?>
 								<div class="chapter_wrap">
-									<div>
+									<div class="chapter_title">
 										<span><?php echo sprintf("CH%d: %s", $i+1, $chapter['name'] );?></span>
 										<span class="select_all_section_btn">選取整章節</span>
 									</div>
@@ -164,7 +164,7 @@
 									// $sectionNameArray[$section['uid']] = $sectionName;
 							?>
 									<div class="section_wrap">
-										<input type="checkbox" name="chapter_range[]" value="<?php echo $section['uid'];?>"><?php $sectionName?></input>
+										<label><input type="checkbox" name="chapter_range[]" value="<?php echo $section['uid'];?>"><?php $sectionName?></label>
 									</div>
 							<?php
 								}
