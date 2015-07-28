@@ -31,10 +31,11 @@
 		$time = $_POST['time'];
 		$check_time = $_POST['check_time'];
 		$trueFalseNum = $_POST['trueFalse'];
+		$shortAnswerNum = $_POST['shortAnswer'];
 		$singleChoiceNum = $_POST['singleChoice'];
 		$multiChoiceNum = $_POST['multiChoice'];
 		$seriesQuesNum = $_POST['seriesQues'];
-		$chapterRange = explode(',', $_POST['chapter_range']);
+		$chapterRange = $_POST['chapter_range'];
 	}
 
 	$generate_type = $generateType;
@@ -54,7 +55,7 @@
 	$singleChoiceQues = array();
 	$multiChoiceQues = array();
 	$seriesQues = array();
-	
+
 	foreach($mon as $data){
 		if($data['type'] == "TRUE_FALSE"){
 			$trueFalseQues[] = $data;
@@ -72,6 +73,12 @@
 	// start to generate exam:
 	$questionList = array();
 	$examList = array();
+	$countTrueFalse = 0;
+	$countShortAnswer = 0;
+	$countSingleChoice = 0;
+	$countMultiChoice = 0;
+	$countSeriesQues = 0;
+
 
 	if ($generate_type == 'manualMode') {
 		$questionList['trueFalseQues'] = $trueFalseQues;
@@ -96,10 +103,13 @@
 		shuffle($isValidTrueFalseQues);
 
 		if (count($isValidTrueFalseQues) <= $trueFalseNum) {
+			$countTrueFalse += count($isValidTrueFalseQues);
 			$examList = array_merge($examList, $isValidTrueFalseQues);
 		} else {
 			$pickedQues = array_slice($isValidTrueFalseQues, 0, $trueFalseNum);
 			$leftQues = array_slice($isValidTrueFalseQues, $trueFalseNum);
+
+			$countTrueFalse += count($pickedQues);
 
 			$examList = array_merge($examList, $pickedQues);
 			$leftTrueFalseQues = array_merge($leftTrueFalseQues, $leftQues);
@@ -162,11 +172,11 @@
 				</div>
 				<div class="numberInfo">
 					<a>總題數：<span id="total_num">0</span></a>
-					<a>是非：<span id="trueFalse_num">0</span><input id="trueFalsePer" class="scorePercent"></a>
-					<a>簡答：<span id="shortAnswer_num">0</span></a>
-					<a>單選：<span id="single_num">0</span></a>
-					<a>多選：<span id="multi_num">0</span></a>
-					<a>題組：<span id="series_num">0</span></a>
+					<a>是非：<span id="trueFalse_num"><?php echo $countTrueFalse;?></span><input id="trueFalsePer" class="scorePercent"></a>
+					<a>簡答：<span id="shortAnswer_num"><?php echo $countShortAnswer;?></span></a>
+					<a>單選：<span id="single_num"><?php echo $countSingleChoice;?></span></a>
+					<a>多選：<span id="multi_num"><?php echo $countMultiChoice;?></span></a>
+					<a>題組：<span id="series_num"><?php echo $countSeriesQues;?></span></a>
 				</div>
 			</div>
 			<div class="editExamWrap">

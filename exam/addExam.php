@@ -135,8 +135,8 @@
 							<label for="trueFalse">是非題</label>
 								<input type="number" value="0" min="0" max="<?php echo $trueFalseNum;?>" class="questionNum" name="trueFalse">
 								<a class="showNum">(目前有 <?php echo $trueFalseNum;?> 題)</a>
-							<label for="trueFalse">簡答題</label>
-								<input type="number" value="0" min="0" max="<?php echo $shortAnswerNum;?>" class="questionNum" name="trueFalse">
+							<label for="shortAnswer">簡答題</label>
+								<input type="number" value="0" min="0" max="<?php echo $shortAnswerNum;?>" class="questionNum" name="shortAnswer">
 								<a class="showNum">(目前有 <?php echo $shortAnswerNum;?> 題)</a>
 							<label for="singleChoice">單選題</label>
 								<input type="number" value="0" min="0" max="<?php echo $singleNum;?>" class="questionNum" name="singleChoice">
