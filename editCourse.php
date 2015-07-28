@@ -117,9 +117,9 @@
 									<input type="file" name="uploadFile" class="section-video">
 								</form>
 								<div id="video">
-									<video controls >
+									<video controls preload="none">
 									<!-- <?php echo "videos/" . $section['video'];?>" -->
-									<source src="<?php echo $section['video'];?>" type="video/mp4">
+									<source src="<?php echo $section['video'];?>"  type="video/mp4">
 									Your browser does not support the video tag.
 									</video>
 								</div>
