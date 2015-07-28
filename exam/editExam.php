@@ -89,41 +89,178 @@
 
 	}else if($generate_type == 'autoMode') {
 
-		$isValidTrueFalseQues = array();
-		$leftTrueFalseQues = array();
+		// ---- 是非題
+		$isValidQues = array();
+		$leftQues = array();
 
+		// 篩選題目章節範圍
 		foreach ($trueFalseQues as $question) {
 			if (in_array($question['test_section'], $chapterRange)) {
-				$isValidTrueFalseQues[] = $question;
+				$isValidQues[] = $question;
 			} else {
-				$leftTrueFalseQues[] = $question;
+				$leftQues[] = $question;
 			}
 		}
 
-		shuffle($isValidTrueFalseQues);
+		// 隨機排序
+		shuffle($isValidQues);
 
-		if (count($isValidTrueFalseQues) <= $trueFalseNum) {
-			$countTrueFalse += count($isValidTrueFalseQues);
-			$examList = array_merge($examList, $isValidTrueFalseQues);
+		if (count($isValidQues) <= $trueFalseNum) {
+			// 如果想要的題數大於篩選過的實際題數，全部加進去考卷
+			$countTrueFalse += count($isValidQues);
+			$examList = array_merge($examList, $isValidQues);
 		} else {
-			$pickedQues = array_slice($isValidTrueFalseQues, 0, $trueFalseNum);
-			$leftQues = array_slice($isValidTrueFalseQues, $trueFalseNum);
+			// 如果想要的題數小於篩選過的實際題數，加入想要的題數進考卷
+			$pickedQues = array_slice($isValidQues, 0, $trueFalseNum);
+			$unPickedQues = array_slice($isValidQues, $trueFalseNum);
 
 			$countTrueFalse += count($pickedQues);
 
 			$examList = array_merge($examList, $pickedQues);
-			$leftTrueFalseQues = array_merge($leftTrueFalseQues, $leftQues);
+			$leftQues = array_merge($leftQues, $unPickedQues);
 		}
 
+		// 剩餘的題目塞到右側待編輯
+		$questionList['trueFalseQues'] = $leftQues;
 
 
-		$questionList['trueFalseQues'] = $leftTrueFalseQues;
-		// start auto generate exam
+		// ---- 簡答題
+		$isValidQues = array();
+		$leftQues = array();
 
-		// randomly(Algorithmly) pick questions form grouped question to examList
+		// 篩選題目章節範圍
+		foreach ($shortAnswerQues as $question) {
+			if (in_array($question['test_section'], $chapterRange)) {
+				$isValidQues[] = $question;
+			} else {
+				$leftQues[] = $question;
+			}
+		}
 
-		// e.g. : $trueFalseQues ---- take 3 questions ----> $examlist
+		// 隨機排序
+		shuffle($isValidQues);
 
+		if (count($isValidQues) <= $shortAnswerNum) {
+			// 如果想要的題數大於篩選過的實際題數，全部加進去考卷
+			$countShortAnswer += count($isValidQues);
+			$examList = array_merge($examList, $isValidQues);
+		} else {
+			// 如果想要的題數小於篩選過的實際題數，加入想要的題數進考卷
+			$pickedQues = array_slice($isValidQues, 0, $shortAnswerNum);
+			$unPickedQues = array_slice($isValidQues, $shortAnswerNum);
+
+			$countShortAnswer += count($pickedQues);
+
+			$examList = array_merge($examList, $pickedQues);
+			$leftQues = array_merge($leftQues, $unPickedQues);
+		}
+
+		// 剩餘的題目塞到右側待編輯
+		$questionList['shortAnswerQues'] = $leftQues;
+
+		// ---- 單選題
+		$isValidQues = array();
+		$leftQues = array();
+
+		// 篩選題目章節範圍
+		foreach ($singleChoiceQues as $question) {
+			if (in_array($question['test_section'], $chapterRange)) {
+				$isValidQues[] = $question;
+			} else {
+				$leftQues[] = $question;
+			}
+		}
+
+		// 隨機排序
+		shuffle($isValidQues);
+
+		if (count($isValidQues) <= $singleChoiceNum) {
+			// 如果想要的題數大於篩選過的實際題數，全部加進去考卷
+			$countSingleChoice += count($isValidQues);
+			$examList = array_merge($examList, $isValidQues);
+		} else {
+			// 如果想要的題數小於篩選過的實際題數，加入想要的題數進考卷
+			$pickedQues = array_slice($isValidQues, 0, $singleChoiceNum);
+			$unPickedQues = array_slice($isValidQues, $singleChoiceNum);
+
+			$countSingleChoice += count($pickedQues);
+
+			$examList = array_merge($examList, $pickedQues);
+			$leftQues = array_merge($leftQues, $unPickedQues);
+		}
+
+		// 剩餘的題目塞到右側待編輯
+		$questionList['singleChoiceQues'] = $leftQues;
+
+
+		// ---- 多選題
+		$isValidQues = array();
+		$leftQues = array();
+
+		// 篩選題目章節範圍
+		foreach ($multiChoiceQues as $question) {
+			if (in_array($question['test_section'], $chapterRange)) {
+				$isValidQues[] = $question;
+			} else {
+				$leftQues[] = $question;
+			}
+		}
+
+		// 隨機排序
+		shuffle($isValidQues);
+
+		if (count($isValidQues) <= $multiChoiceNum) {
+			// 如果想要的題數大於篩選過的實際題數，全部加進去考卷
+			$countMultiChoice += count($isValidQues);
+			$examList = array_merge($examList, $isValidQues);
+		} else {
+			// 如果想要的題數小於篩選過的實際題數，加入想要的題數進考卷
+			$pickedQues = array_slice($isValidQues, 0, $multiChoiceNum);
+			$unPickedQues = array_slice($isValidQues, $multiChoiceNum);
+
+			$countMultiChoice += count($pickedQues);
+
+			$examList = array_merge($examList, $pickedQues);
+			$leftQues = array_merge($leftQues, $unPickedQues);
+		}
+
+		// 剩餘的題目塞到右側待編輯
+		$questionList['multiChoiceQues'] = $leftQues;
+
+
+		// ---- 題組
+		$isValidQues = array();
+		$leftQues = array();
+
+		// 篩選題目章節範圍
+		foreach ($seriesQues as $question) {
+			if (in_array($question['test_section'], $chapterRange)) {
+				$isValidQues[] = $question;
+			} else {
+				$leftQues[] = $question;
+			}
+		}
+
+		// 隨機排序
+		shuffle($isValidQues);
+
+		if (count($isValidQues) <= $seriesQuesNum) {
+			// 如果想要的題數大於篩選過的實際題數，全部加進去考卷
+			$countSeriesQues += count($isValidQues);
+			$examList = array_merge($examList, $isValidQues);
+		} else {
+			// 如果想要的題數小於篩選過的實際題數，加入想要的題數進考卷
+			$pickedQues = array_slice($isValidQues, 0, $seriesQuesNum);
+			$unPickedQues = array_slice($isValidQues, $seriesQuesNum);
+
+			$countSeriesQues += count($pickedQues);
+
+			$examList = array_merge($examList, $pickedQues);
+			$leftQues = array_merge($leftQues, $unPickedQues);
+		}
+
+		// 剩餘的題目塞到右側待編輯
+		$questionList['seriesQues'] = $leftQues;
 	}
 
 	// get course chapter content from mongo
@@ -171,7 +308,7 @@
 				<a>總時間：<span id="exam_time">0分0秒</span></a><br>
 				</div>
 				<div class="numberInfo">
-					<a>總題數：<span id="total_num">0</span></a>
+					<a>總題數：<span id="total_num"><?php echo $countTrueFalse+$countShortAnswer+$countSingleChoice+$countMultiChoice+$countSeriesQues?></span></a>
 					<a>是非：<span id="trueFalse_num"><?php echo $countTrueFalse;?></span><input id="trueFalsePer" class="scorePercent"></a>
 					<a>簡答：<span id="shortAnswer_num"><?php echo $countShortAnswer;?></span></a>
 					<a>單選：<span id="single_num"><?php echo $countSingleChoice;?></span></a>
@@ -230,8 +367,9 @@
 										</div>
 									</div>
 								</li>
-						<? }else if($type == "SHORT_ANSWER"){
-								$shortAnswerQuesBody = $question['body'];?>
+						<?php }else if($type == "SHORT_ANSWER"){
+								$shortAnswerQuesBody = $question['body'];
+						?>
 								<li class="short_answer_wrap questionItem">
 									<div class="question"><?php echo $shortAnswerQuesBody['question'];?></div>
 									<div class="short_answer_answer_wrap">
