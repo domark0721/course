@@ -111,7 +111,7 @@
 					<ul class="typeNum">
 					<?php if(!empty($shortAnswerQues)){ ?>
 						<li> 
-							<div class="typeName">是非題 <span class="score"></span></div>
+							<div class="typeName">簡答題 <span class="score"></span></div>
 					<?php } ?>
 							<ul class="questionNum">
 								<?php foreach($shortAnswerQues as $i => $question){
