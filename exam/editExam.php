@@ -30,14 +30,14 @@
 		$level = $_POST['level'];
 		$time = $_POST['time'];
 		$check_time = $_POST['check_time'];
-		$trueFalse = $_POST['trueFalse'];
-		$singleChoice = $_POST['singleChoice'];
-		$multiChoice = $_POST['multiChoice'];
-		$seriesQues = $_POST['seriesQues'];
+		$trueFalseNum = $_POST['trueFalse'];
+		$singleChoiceNum = $_POST['singleChoice'];
+		$multiChoiceNum = $_POST['multiChoice'];
+		$seriesQuesNum = $_POST['seriesQues'];
 		$chapterRange = explode(',', $_POST['chapter_range']);
 	}
 
-	$generate_type = 'manualMode';
+	$generate_type = $generateType;
 
 	// Get course meta data
 	$sql = "SELECT * FROM course WHERE course_id='$course_id'";
@@ -82,7 +82,32 @@
 
 	}else if($generate_type == 'autoMode') {
 
-		$examList = $seriesQues;
+		$isValidTrueFalseQues = array();
+		$leftTrueFalseQues = array();
+
+		foreach ($trueFalseQues as $question) {
+			if (in_array($question['test_section'], $chapterRange)) {
+				$isValidTrueFalseQues[] = $question;
+			} else {
+				$leftTrueFalseQues[] = $question;
+			}
+		}
+
+		shuffle($isValidTrueFalseQues);
+
+		if (count($isValidTrueFalseQues) <= $trueFalseNum) {
+			$examList = array_merge($examList, $isValidTrueFalseQues);
+		} else {
+			$pickedQues = array_slice($isValidTrueFalseQues, 0, $trueFalseNum);
+			$leftQues = array_slice($isValidTrueFalseQues, $trueFalseNum);
+
+			$examList = array_merge($examList, $pickedQues);
+			$leftTrueFalseQues = array_merge($leftTrueFalseQues, $leftQues);
+		}
+
+
+
+		$questionList['trueFalseQues'] = $leftTrueFalseQues;
 		// start auto generate exam
 
 		// randomly(Algorithmly) pick questions form grouped question to examList
