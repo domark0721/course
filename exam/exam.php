@@ -108,7 +108,7 @@
 					<?php } ?>
 
 					<!-- 簡答 -->
-					<ul class="typeNum">
+					
 					<?php if(!empty($shortAnswerQues)){ ?>
 						<li> 
 							<div class="typeName">簡答題 <span class="score"></span></div>
