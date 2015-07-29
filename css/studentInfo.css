@@ -9,11 +9,12 @@
     color: #fff;
     padding: 5px 10px;
     border-radius: 5px;
+    display: inline-block;
 }
 
 .name {
-    font-size: 22px;
-    margin: 10px 0;
+    font-size: 30px;
+    margin: 20px 0 10px 0;
 }
 
 .joinDate {
