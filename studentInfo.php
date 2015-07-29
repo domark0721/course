@@ -81,10 +81,10 @@
                                 修課狀態:
                                 <span class="finishRadioBtn">
                                     <input id="notFinish" type="radio" name="finish" value="0" <?php if($studentData['is_finish']=='0'){echo "checked";}?>>
-                                    <label for="notFinish">進行中</label>
+                                    <label for="notFinish">修習中</label>
 
                                     <input id="isFinish" type="radio" name="finish" value="1" <?php if($studentData['is_finish']=='1'){echo "checked";}?>>
-                                    <label for="isFinish">已結束</label>
+                                    <label for="isFinish">已修畢</label>
                                 </span>                                
                             </div>
                         </div>                          
