@@ -53,7 +53,16 @@
 }
 
 .totalScore {
-	width: 53%;
+	width: 10%;
+}
+
+.isFinish {
+	width: 42%;
+	color: rgba(121, 176, 61, 1);
+}
+
+.isFinish.finished {
+	color: #ccc;
 }
 
 .joinDate {

@@ -1,7 +1,7 @@
 $(document).ready(function(){
   
 
-  $('#saveStudentInfo').on('click', saveCourseContent);
+  $('#saveStudentInfo').on('click', function(e){
 
     var course_id = $('#param_course_id').val();
     var student_id = $('#param_student_id').val();
@@ -35,8 +35,6 @@ $(document).ready(function(){
       alert( "Request failed: " + textStatus );
     });
 
-  }
-
-
+  });
 
 });

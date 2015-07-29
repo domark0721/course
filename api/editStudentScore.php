@@ -8,7 +8,7 @@
     $isFinish = $_POST['isFinish'];
 
 
-    $updateMYSQL = "UPDATE course 
+    $updateMYSQL = "UPDATE attendent 
                     SET `score` = '$score',
                     `is_finish` = '$isFinish' 
                     WHERE course_id=$course_id
