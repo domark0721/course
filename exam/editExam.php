@@ -322,10 +322,13 @@
 						<ol id="drop-question-list">
 						<!-- 是非題 -->
 						<?php foreach($examList as $question){
-							$type = $question['type'];
-							if($type == "TRUE_FALSE"){
+							$questiontype = $question['type'];
+							if($questiontype == "TRUE_FALSE"){
 								$trueFalseQuesBody = $question['body'];?>
-								<li class="true_false_wrap questionItem">
+								<li class="true_false_wrap questionItem" data-exercise-id="<?php echo $question['_id'];?>" 
+																			 data-exercise-type="TRUE_FALSE" 
+																			 data-section-uid="<?php echo $question['test_section'];?>" 
+																			 data-section-name="<?php echo $sectionNameArray[$question['test_section']];?>">
 									<div class="true_false_answer_wrap">
 										<?php if($trueFalseQuesBody['answer'] == true){ ?>
 											<a class="trueFalseAnswer">Ｏ</a>
@@ -333,11 +336,11 @@
 											<a class="trueFalseAnswer">Ｘ</a>
 										<?php } ?>
 									</div>
-									<div class="tfQuestion"><?php echo $trueFalseQuesBody['question'];?></div>
+									<div class="tfQuestion"><?php echo nl2br($trueFalseQuesBody['question']);?></div>
 									<div class="question_editor_wrap">
 										<div class="questionInfo">
 											<a class="level" data-level="<?php echo $question['level'];?>">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
-											<a class="time">答題時間：<?php echo $question['time']; ?></a>
+											<a class="time" data-time="<?php echo $question['time']; ?>">答題時間：<?php echo $question['time']; ?></a>
 											<div class="tags">
 											<?php
 											if(!empty($question['tags'])){
@@ -350,27 +353,22 @@
 										<div class="for_section">
 											<?php if($question['test_section'] == "0"){ ?>
 												<a class="is_test">適用章節： <span>未指定</span></a>
-											<?php } else{
-													foreach($contentData['chapters'] as $i => $chapter){
-														foreach($chapter['sections'] as $j => $section){
-															$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
-															$courseURL = sprintf("../courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
-																					,$courseData['course_id'], $i, $j);
-
-															if($section['uid'] == $question['test_section']){ ?>
-																<a class="is_test">適用章節：</a>
-																<a class="is_test_href" target="_blank" href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a>
-											<?php 			}
-														}
-													}
-											}?>
+											<?php } else{ ?>
+												<a class="is_test">適用章節：</a>
+												<a class="is_test_href" target="_blank" href="<?php echo $courseURLArray[$question['test_section']];?>"><?php echo $sectionNameArray[$question['test_section']];?></a>
+											<?php 	}
+											 ?>
 										</div>
 									</div>
+									<span class="deleteQuestionBtn"><i class="fa fa-times-circle"></i></span>
 								</li>
-						<?php }else if($type == "SHORT_ANSWER"){
+						<?php }else if($questiontype == "SHORT_ANSWER"){
 								$shortAnswerQuesBody = $question['body'];
 						?>
-								<li class="short_answer_wrap questionItem">
+								<li class="short_answer_wrap questionItem" data-exercise-id="<?php echo $question['_id'];?>" 
+																			 data-exercise-type="TRUE_FALSE" 
+																			 data-section-uid="<?php echo $question['test_section'];?>" 
+																			 data-section-name="<?php echo $sectionNameArray[$question['test_section']];?>">
 									<div class="question"><?php echo $shortAnswerQuesBody['question'];?></div>
 									<div class="short_answer_answer_wrap">
 										<a><?php echo $shortAnswerQuesBody['answer'];?></a>
@@ -378,7 +376,7 @@
 									<div class="question_editor_wrap">
 										<div class="questionInfo">
 											<a class="level" data-level="<?php echo $question['level'];?>">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
-											<a class="time">答題時間：<?php echo $question['time']; ?></a>
+											<a class="time" data-time="<?php echo $question['time']; ?>">答題時間：<?php echo $question['time']; ?></a>
 											<div class="tags">
 											<?php
 											if(!empty($question['tags'])){
@@ -391,28 +389,23 @@
 										<div class="for_section">
 											<?php if($question['test_section'] == "0"){ ?>
 												<a class="is_test">適用章節： <span>未指定</span></a>
-											<?php } else{
-													foreach($contentData['chapters'] as $i => $chapter){
-														foreach($chapter['sections'] as $j => $section){
-															$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
-															$courseURL = sprintf("../courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
-																					,$courseData['course_id'], $i, $j);
-
-															if($section['uid'] == $question['test_section']){ ?>
-																<a class="is_test">適用章節：</a>
-																<a class="is_test_href" target="_blank" href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a>
-											<?php 			}
-														}
-													}
-											}?>
+											<?php } else{ ?>
+												<a class="is_test">適用章節：</a>
+												<a class="is_test_href" target="_blank" href="<?php echo $courseURLArray[$question['test_section']];?>"><?php echo $sectionNameArray[$question['test_section']];?></a>
+											<?php 	}
+											 ?>
 										</div>
 									</div>
+									<span class="deleteQuestionBtn"><i class="fa fa-times-circle"></i></span>
 								</li>
-							<?php } else if($type == 'SINGLE_CHOICE'){
+							<?php } else if($questiontype == 'SINGLE_CHOICE'){
 											$singleChoiceQuesBody = $question['body'];
 											$singleChoiceQuesOpt = $singleChoiceQuesBody['options'];
 							?>
-									<li class="single_choice_wrap questionItem">
+									<li class="single_choice_wrap questionItem" data-exercise-id="<?php echo $question['_id'];?>" 
+																			 data-exercise-type="TRUE_FALSE" 
+																			 data-section-uid="<?php echo $question['test_section'];?>" 
+																			 data-section-name="<?php echo $sectionNameArray[$question['test_section']];?>">
 										<div class="question"><?php echo $singleChoiceQuesBody['question'];?><!-- <span class="questionType"> ( 單選 )</span> --></div>
 										<div class="single_choice_answer_wrap">
 											<?php foreach($singleChoiceQuesOpt as $j => $options){
@@ -425,7 +418,7 @@
 										<div class="question_editor_wrap">
 											<div class="questionInfo">
 												<a class="level" data-level="<?php echo $question['level'];?>">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
-												<a class="time">答題時間：<?php echo $question['time']; ?></a>
+												<a class="time" data-time="<?php echo $question['time']; ?>">答題時間：<?php echo $question['time']; ?></a>
 												<div class="tags">
 													<?php
 													if(!empty($question['tags'])){
@@ -438,71 +431,58 @@
 											<div class="for_section">
 												<?php if($question['test_section'] == "0"){ ?>
 													<a class="is_test">適用章節： <span>未指定</span></a>
-												<?php } else{
-														foreach($contentData['chapters'] as $i => $chapter){
-															foreach($chapter['sections'] as $j => $section){
-																$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
-																$courseURL = sprintf("courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
-																						,$courseData['course_id'], $i, $j);
-
-																if($section['uid'] == $question['test_section']){ ?>
-																	<a class="is_test">適用章節：</a>
-																	<a class="is_test_href" target="_blank" href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a>
-												<?php 			}
-															}
-														}
-												}?>
+												<?php } else{ ?>
+													<a class="is_test">適用章節：</a>
+													<a class="is_test_href" target="_blank" href="<?php echo $courseURLArray[$question['test_section']];?>"><?php echo $sectionNameArray[$question['test_section']];?></a>
+												<?php 	}
+												 ?>
 											</div>
 										</div>
+										<span class="deleteQuestionBtn"><i class="fa fa-times-circle"></i></span>
 									</li>
-								<?php  }else if($type == 'MULTI_CHOICE'){
+								<?php  }else if($questiontype == 'MULTI_CHOICE'){
 									$multiChoiceQuesBody = $question['body'];
 									$multiChoiceQuesOpt = $multiChoiceQuesBody['options'];
 								?>
-									<li class="multi_choice_wrap questionItem">
-											<div class="question"><?php echo $multiChoiceQuesBody['question'];?><!-- <span class="questionType"> ( 多選 )</span> --></div>
-											<div class="multi_choice_answer_wrap">
-												<?php foreach($multiChoiceQuesOpt as $j => $options){
-													if($options['is_answer'] == true){?>
-														<a class="opt_true"><?php echo $options['content'];?></a>
-												<?php }else{  ?>
-														<a><?php echo $options['content'];?></a>
-												<?php } }?>	
-											</div>
-											<div class="question_editor_wrap">
-												<div class="questionInfo">
-													<a class="level" data-level="<?php echo $question['level'];?>">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
-													<a class="time">答題時間：<?php echo $question['time']; ?></a>
-													<div class="tags">
-													<?php
-													if(!empty($question['tags'])){
-														$tags = explode("," ,$question['tags']);
-														foreach($tags as $tag){ ?>
-															<a><?php echo $tag;?></a>
-												<?php }}?>
-													</div>
-												</div>
-												<div class="for_section">
-													<?php if($question['test_section'] == "0"){ ?>
-														<a class="is_test">適用章節： <span>未指定</span></a>
-													<?php } else{
-															foreach($contentData['chapters'] as $i => $chapter){
-																foreach($chapter['sections'] as $j => $section){
-																	$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
-																	$courseURL = sprintf("courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
-																							,$courseData['course_id'], $i, $j);
-
-																	if($section['uid'] == $question['test_section']){ ?>
-																		<a class="is_test">適用章節：</a>
-																		<a class="is_test_href" target="_blank" href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a>
-													<?php 			}
-																}
-															}
-													}?>
+									<li class="multi_choice_wrap questionItem" data-exercise-id="<?php echo $question['_id'];?>" 
+																			 data-exercise-type="TRUE_FALSE" 
+																			 data-section-uid="<?php echo $question['test_section'];?>" 
+																			 data-section-name="<?php echo $sectionNameArray[$question['test_section']];?>">
+										<div class="question"><?php echo $multiChoiceQuesBody['question'];?><!-- <span class="questionType"> ( 多選 )</span> --></div>
+										<div class="multi_choice_answer_wrap">
+											<?php foreach($multiChoiceQuesOpt as $j => $options){
+												if($options['is_answer'] == true){?>
+													<a class="opt_true"><?php echo $options['content'];?></a>
+											<?php }else{  ?>
+													<a><?php echo $options['content'];?></a>
+											<?php } }?>	
+										</div>
+										<div class="question_editor_wrap">
+											<div class="questionInfo">
+												<a class="level" data-level="<?php echo $question['level'];?>">難易度：<?php for($i=1; $i<=$question['level']; $i++) echo '★';?></a>
+												<a class="time" data-time="<?php echo $question['time']; ?>">答題時間：<?php echo $question['time']; ?></a>
+												<div class="tags">
+												<?php
+												if(!empty($question['tags'])){
+													$tags = explode("," ,$question['tags']);
+													foreach($tags as $tag){ ?>
+														<a><?php echo $tag;?></a>
+											<?php }}?>
 												</div>
 											</div>
+											<div class="for_section">
+												<?php if($question['test_section'] == "0"){ ?>
+													<a class="is_test">適用章節： <span>未指定</span></a>
+												<?php } else{ ?>
+													<a class="is_test">適用章節：</a>
+													<a class="is_test_href" target="_blank" href="<?php echo $courseURLArray[$question['test_section']];?>"><?php echo $sectionNameArray[$question['test_section']];?></a>
+												<?php 	}
+												 ?>
+											</div>
+										</div>
+										<span class="deleteQuestionBtn"><i class="fa fa-times-circle"></i></span>
 									</li>
-								<?php } else if($type == 'SERIES_QUESTIONS'){
+								<?php } else if($questiontype == 'SERIES_QUESTIONS'){
 									$seriesQuesHeader = $question['body'];
 								?>
 									<li class="series_question_wrap questionItem">
@@ -526,28 +506,20 @@
 										<div class="question_editor_wrap">
 											<div class="questionInfo">
 												<a class="level" data-level="<?php echo $questionHeader['level'];?>">難易度：<?php for($i=1; $i<=$questionHeader['level']; $i++) echo '★';?></a>
-												<a class="time">答題時間：<?php echo $questionHeader['time']; ?></a>
+												<a class="time" data-time="<?php echo $questionHeader['time']; ?>">答題時間：<?php echo $questionHeader['time']; ?></a>
 												<div class="tags"><a>演算法</a><a>Binary Tree</a></div>
 											</div>
 											<div class="for_section">
-												<?php if($questionHeader['is_test'] == false){ ?>
+												<?php if($seriesQuesHeader['test_section'] == "0"){ ?>
 													<a class="is_test">適用章節： <span>未指定</span></a>
-												<?php } else{
-														foreach($contentData['chapters'] as $i => $chapter){
-															foreach($chapter['sections'] as $j => $section){
-																$sectionName = sprintf("%d-%d %s", $i+1, $j+1, $section['name']);
-																$courseURL = sprintf("courseSections.php?course_id=%d&chapter_id=%d&section_id=%d"
-																						,$courseData['course_id'], $i, $j);
-
-																if($section['uid'] == $question['test_section']){ ?>
-																	<a class="is_test">適用章節：</a>
-																	<a class="is_test_href" target="_blank" href="<?php echo $courseURL;?>"><?php echo $sectionName;?></a>
-												<?php 			}
-															}
-														}
-												}?>
+												<?php } else{ ?>
+													<a class="is_test">適用章節：</a>
+													<a class="is_test_href" target="_blank" href="<?php echo $courseURLArray[$question['test_section']];?>"><?php echo $sectionNameArray[$question['test_section']];?></a>
+												<?php 	}
+												 ?>
 											</div>
 										</div>
+										<span class="deleteQuestionBtn"><i class="fa fa-times-circle"></i></span>
 									</li>
 								<?php } }?>
 						</ol>

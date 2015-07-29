@@ -133,19 +133,19 @@
 							<input type="number" value="0" min="0" class="time" name="check_time" ><a class="word_style"> 分</a>		 -->
 						<div class="questionNum_wrap">
 							<label for="trueFalse">是非題</label>
-								<input type="number" value="0" min="0" max="<?php echo $trueFalseNum;?>" class="questionNum" name="trueFalse">
+								<input type="number" value="0" min="0" max="<?php echo $trueFalseNum;?>" class="questionNum trueFalse" name="trueFalse">
 								<a class="showNum">(目前有 <?php echo $trueFalseNum;?> 題)</a>
 							<label for="shortAnswer">簡答題</label>
-								<input type="number" value="0" min="0" max="<?php echo $shortAnswerNum;?>" class="questionNum" name="shortAnswer">
+								<input type="number" value="0" min="0" max="<?php echo $shortAnswerNum;?>" class="questionNum shortAnswer" name="shortAnswer">
 								<a class="showNum">(目前有 <?php echo $shortAnswerNum;?> 題)</a>
 							<label for="singleChoice">單選題</label>
-								<input type="number" value="0" min="0" max="<?php echo $singleNum;?>" class="questionNum" name="singleChoice">
+								<input type="number" value="0" min="0" max="<?php echo $singleNum;?>" class="questionNum singleChoice" name="singleChoice">
 								<a class="showNum">(目前有 <?php echo $singleNum;?> 題)</a>
 							<label for="multiChoice">多選題</label>
-								<input type="number" value="0" min="0" max="<?php echo $multiNum;?>" class="questionNum" name="multiChoice">
+								<input type="number" value="0" min="0" max="<?php echo $multiNum;?>" class="questionNum multiChoice" name="multiChoice">
 								<a class="showNum">(目前有 <?php echo $multiNum;?> 題)</a>
 							<label for="seriesQues">題 組</label>
-								<input type="number" value="0" min="0" max="<?php echo $seriesNum;?>" class="questionNum" name="seriesQues">
+								<input type="number" value="0" min="0" max="<?php echo $seriesNum;?>" class="questionNum seriesQues" name="seriesQues">
 								<a class="showNum">(目前有 <?php echo $seriesNum;?> 題)</a>	
 						</div><br>
 						<label class="label_style">章節範圍</label>
@@ -177,6 +177,8 @@
 						<label class="label_style" for="explanation">說明</label>
 							<textarea class="explanation" name="explanation"> </textarea>
 						
+						<div class="formCheck"></div>
+
 						<input type="hidden" name="generateType" value="autoMode">
 						<input type="hidden" name="course_id" value="<?php echo $course_id;?>">
 						<div class="funcBtns_wrap">
@@ -223,7 +225,8 @@
 						</div><br>
 						<label class="label_style" for="explanation">說明</label>
 							<textarea class="explanation" name="explanation"> </textarea>
-
+						
+						<div class="formCheck"></div>
 						<input type="hidden" name="generateType" value="manualMode">
 						<input type="hidden" name="course_id" value="<?php echo $course_id;?>">
 						<div class="funcBtns_wrap">

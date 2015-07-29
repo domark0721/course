@@ -268,3 +268,9 @@ h3 {
 	background-color: rgba(173, 50, 50, .8);
 	transition: all 0.3s;
 }
+
+.formCheck {
+	text-align: center;
+	color: red;
+	font-size: 18px;
+}

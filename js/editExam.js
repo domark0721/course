@@ -122,7 +122,7 @@ $(document).ready(function(){
 	notSelect();
 	deleteQuestion();
 	beforeunload();
-
+	calculate();
 	$('#save_exam').on('click', function(){
 		var leftQuestion_num = $('.left-container .questionItem').length;
 		if(leftQuestion_num == 0){
