@@ -13,16 +13,18 @@
 
 	if(!$row['account'] == $account){
 		//insert new member to mysqlbd
+		
 		$newMember = "INSERT INTO member(account, password, name)VALUES('$account', '$password', '$name')" ;
-
-		session_start();
-		$_SESSION['isLogin'] = true;
-		$_SESSION['member_id'] = mysql_insert_id();
-		$_SESSION['account'] = $account;
-		$_SESSION['name'] = $name;
-		$_SESSION['mode'] = "st";
 		// echo $newMember;
 		if(mysql_query($newMember, $con )){
+			session_start();
+			$_SESSION['member_id'] = mysql_insert_id();
+			$_SESSION['isLogin'] = true;
+			$_SESSION['account'] = $account;
+			$_SESSION['name'] = $name;
+			$_SESSION['mode'] = "st";
+			
+			
 			// echo "register success";
 			$url = "stmode.php";
 			$result = array(
