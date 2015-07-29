@@ -24,7 +24,7 @@
 	$teachingMethods = replace_p_tag($teachingMethods);
 	$textbooks = replace_p_tag($textbooks);
 	$references = replace_p_tag($references);
-
+	$pic = 'img/defultCourseImg.png';
 	function replace_p_tag($content){
 		$content = str_replace('<p>', '', $content);
 		$content = str_replace('</p>', '<br />', $content);
@@ -42,6 +42,7 @@
 									  course_name='$course_name',
 									  type='$type',
 									  lang='$lang',
+									  pic='$pic',
 									  tags='$tags',
 									  status='$status',
 									  start_time='$start_time'
