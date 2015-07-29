@@ -38,6 +38,7 @@
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
         <link type="text/css" rel="stylesheet" href="css/courseSetting.css">
         <link type="text/css" rel="stylesheet" href="css/studentManage.css">
+        <link type="text/css" rel="stylesheet" href="css/studentInfo.css">
         <title>學生詳細資料 - <?php echo $courseMetadata['course_name']; ?> - NUCourse</title>
     </head> 
     <body>
@@ -68,22 +69,35 @@
                                 $joinDate = explode(' ', $studentData['create_date']);
 
                     ?>
-                        <div class="student_item">
-                            <div class="student_id"><?php echo $memberID;?></div>
-                            <div class="student_name"><a><?php echo $studentData['name'];?></a></div>
-                            <div class="totalScore">總成績: <?php echo $score;?></div>
+                        <div class="student_info">
+                            <div class="id"><?php echo $memberID;?></div>
+                            <div class="name"><?php echo $studentData['name'];?></div>
                             <div class="joinDate">加入日期: <?php echo $joinDate[0];?></div>
-                            <div class="isFinish"><?php echo $studentData['is_finish'];?></div>
+                            <div class="totalScore">
+                                <label>總成績: 
+                                <input type="text" value="<?php echo $score;?>"></label>
+                            </div>
+                            <div class="isFinish">
+                                修課狀態:
+                                <span class="finishRadioBtn">
+                                    <input id="notFinish" type="radio" name="finish" value="0" <?php if($studentData['is_finish']=='0'){echo "checked"};?>>
+>
+                                    <label for="notFinish">進行中</label>
+
+                                    <input id="isFinish" type="radio" name="finish" value="1" <?php if($studentData['is_finish']=='1'){echo "checked"};?>>
+                                    <label for="isFinish">已結束</label>
+                                </span>                                
+                            </div>
                         </div>                          
                         
-                <?php }}else{ ?>
+                <?php }else{ ?>
                         <div class="student_item">
                             <a class="no_student">--- 無該學生資料 ---</a>
                         </div>                                                          
                 <?php }?>
                     </div>
                     <div class="resultBtn">
-                        <a class="panelBtn giveup" href="temode.php">返 回</a>
+                        <a class="panelBtn giveup" href="studentManage.php?course_id=<?php echo $course_id;?>">返 回</a>
                     </div>  
                 </div>
             </div>

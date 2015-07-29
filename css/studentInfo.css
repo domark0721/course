@@ -1,0 +1,46 @@
+.student_info{
+    margin: 1em;
+    font-size: 18px;
+}
+
+.id {
+
+}
+
+.name {
+    font-size: 22px;
+    margin: 10px 0;
+}
+
+.joinDate {
+
+}
+
+.totalScore {
+
+}
+
+.isFinish {
+
+}
+
+.finishRadioBtn input[type="radio"]{
+    display: none !important;
+}
+
+.finishRadioBtn label {
+    margin: 5px 30px 15px 0;
+    padding: 4px 15px;
+    font-size: 18px;
+    background-color: #ddd;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 5px;
+}
+
+
+.finishRadioBtn input[type="radio"]:checked + label {
+    background-color: #79B03D;
+    color: #fff;   
+}
+
