@@ -70,7 +70,9 @@
 
                     ?>
                         <div class="student_info">
-                            <div class="id"><?php echo $memberID;?></div>
+                            <div class="id">
+                                <span><?php echo $memberID;?></span>
+                            </div>
                             <div class="name"><?php echo $studentData['name'];?></div>
                             <div class="joinDate">加入日期: <?php echo $joinDate[0];?></div>
                             <div class="totalScore">

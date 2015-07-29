@@ -4,8 +4,11 @@
     overflow: hidden;
 }
 
-.id {
-
+.id span{
+    background-color: #5C5C5C;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 .name {
@@ -33,6 +36,7 @@
     width: auto;
     margin: 20px 0;
     padding: 15px 0;
+    color: gray;
 }
 
 .finishRadioBtn {
