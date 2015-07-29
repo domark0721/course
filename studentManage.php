@@ -90,7 +90,7 @@
 									<td class="student_name"><a><?php echo $studentData['name'];?></a></td>
 									<td class="totalScore">總成績: <?php echo $score;?></td>
 									<td class="joinDate">加入日期: <?php echo $joinDate[0];?></td>
-									<td class="studentInfo"><a href="">詳細資料</a></td>
+									<td class="studentInfo"><a href="studentInfo.php?course_id=<?php echo $course_id;?>&student_id=<?php echo $studentData['member_id'];?>">詳細資料</a></td>
 								</tr>						
 							</table>
 						</div>							
