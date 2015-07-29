@@ -101,8 +101,12 @@
                     </div>  
                 </div>
             </div>
+            <input id="param_course_id" value="<?php echo $course_id;?>" type="hidden">
+            <input id="param_student_id" value="<?php echo $student_id;?>" type="hidden">
+
             <?php require("footer.php"); ?>
         </div>
         <?php require("js/js_com.php"); ?>
+        <script type="text/javascript" src="js/studentInfo.js"></script>
     </body>
 </html>
