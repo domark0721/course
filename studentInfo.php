@@ -63,7 +63,7 @@
                                 if(!empty($studentData['score'])){
                                     $score = $studentData['score'];
                                 } else { 
-                                    $score = '---';
+                                    $score = '';
                                 }
                                 
                                 $joinDate = explode(' ', $studentData['create_date']);
@@ -75,16 +75,15 @@
                             <div class="joinDate">加入日期: <?php echo $joinDate[0];?></div>
                             <div class="totalScore">
                                 <label>總成績: 
-                                <input type="text" value="<?php echo $score;?>"></label>
+                                <input id="scoreInput" type="text" value="<?php echo $score;?>" size="4"></label>
                             </div>
                             <div class="isFinish">
                                 修課狀態:
                                 <span class="finishRadioBtn">
-                                    <input id="notFinish" type="radio" name="finish" value="0" <?php if($studentData['is_finish']=='0'){echo "checked"};?>>
->
+                                    <input id="notFinish" type="radio" name="finish" value="0" <?php if($studentData['is_finish']=='0'){echo "checked";}?>>
                                     <label for="notFinish">進行中</label>
 
-                                    <input id="isFinish" type="radio" name="finish" value="1" <?php if($studentData['is_finish']=='1'){echo "checked"};?>>
+                                    <input id="isFinish" type="radio" name="finish" value="1" <?php if($studentData['is_finish']=='1'){echo "checked";}?>>
                                     <label for="isFinish">已結束</label>
                                 </span>                                
                             </div>
@@ -97,6 +96,7 @@
                 <?php }?>
                     </div>
                     <div class="resultBtn">
+                        <a class="panelBtn save" id="saveStudentInfo">儲存</a>
                         <a class="panelBtn giveup" href="studentManage.php?course_id=<?php echo $course_id;?>">返 回</a>
                     </div>  
                 </div>

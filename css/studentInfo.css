@@ -13,15 +13,29 @@
 }
 
 .joinDate {
-
+    width: auto;
+    margin: 16px 0;
 }
 
 .totalScore {
+    width: auto;
+    margin: 20px 0;
+}
 
+#scoreInput {
+    font-size: 30px;
+    margin-left: 10px;
+    padding: 6px;
 }
 
 .isFinish {
+    width: auto;
+    margin: 20px 0;
+    padding: 15px 0;
+}
 
+.finishRadioBtn {
+    padding-left: 18px;
 }
 
 .finishRadioBtn input[type="radio"]{
