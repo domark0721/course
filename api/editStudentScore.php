@@ -1,3 +1,4 @@
+<!-- 編輯學生分數 -->
 <?php
     include_once('auth.php');
     include_once("../mysql.php");

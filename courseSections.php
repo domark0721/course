@@ -1,4 +1,6 @@
 <?php
+	//課程內容呈現，影片、文字教材、隨堂練習、互動與討論
+
 	include_once('api/auth.php');
 	include_once("mongodb.php");
 	include_once("mysql.php");

@@ -1,3 +1,4 @@
+<!-- 所有頁面的header -->
 <header class="headerBar clearfix" >
 	<div class="content-wrap">
 		<div id="headerLogo"><a href="/www/course/index.php"><img src="/www/course/img/logo.png"/></a></div>

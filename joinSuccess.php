@@ -1,3 +1,4 @@
+<!-- 加入課程成功後跳轉 -->
 <?php
 	include_once('api/auth.php');
 	$course_id = $_GET['course_id'];

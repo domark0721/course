@@ -1,3 +1,4 @@
+<!-- mongodb連線 -->
 <?php
 	$mongo = new MongoClient("mongodb://root:10038@localhost");
 	$db = $mongo -> course;

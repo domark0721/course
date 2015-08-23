@@ -1,3 +1,4 @@
+<!-- 刪除考試api -->
 <?php
 	require ("../mysql.php");
 	$exam_id = $_POST['exam_id'];

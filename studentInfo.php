@@ -1,3 +1,4 @@
+<!-- 學生資訊，老師可以在這邊查看學生的資料 -->
 <?php
     include_once('api/auth.php');
     include_once("mongodb.php");

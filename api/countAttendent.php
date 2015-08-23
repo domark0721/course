@@ -1,3 +1,4 @@
+<!-- 計算學生加入課程的人數 -->
 <?php
 	include_once('auth.php');
 	include_once("../mysql.php");

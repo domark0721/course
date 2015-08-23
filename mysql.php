@@ -1,3 +1,4 @@
+<!-- mysql連線 -->
 <?php
 	$con = mysql_connect('127.0.0.1', 'root', '10038') or die("DB connect fault!");
 	// if(!$con){ echo "DB connect fault!";}

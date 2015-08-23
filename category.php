@@ -1,4 +1,5 @@
 <?php
+	//課程分類 未做
 	include_once('api/auth.php');
 ?>
 <!doctype html>

@@ -1,3 +1,5 @@
+<!-- 所有頁面的footer -->
+
 <footer>
 	<div id="section-footer">
 		 <div class="content-wrap">

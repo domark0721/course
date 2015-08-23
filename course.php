@@ -1,4 +1,6 @@
 <?php
+	//課程頁，課程資訊、內容、公告、考試皆在這裡呈現
+
 	include_once('api/auth.php');
 	include_once('api/isLogin.php'); 
 	include_once("mongodb.php");

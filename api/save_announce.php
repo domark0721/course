@@ -1,3 +1,4 @@
+<!-- 儲存公告 -->
 <?php
 	// include_once('isLogin.php');
 	require ("../mysql.php");

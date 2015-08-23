@@ -1,3 +1,4 @@
+<!-- 更新題目內容 -->
 <?php
 	ini_set('default_charset','utf-8');
 	include_once("../mongodb.php");

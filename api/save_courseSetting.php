@@ -1,3 +1,4 @@
+<!-- 儲存課程設定 -->
 <?php
 	ini_set('default_charset','utf-8');
 	require ("../mysql.php");

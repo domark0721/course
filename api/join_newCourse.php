@@ -1,3 +1,4 @@
+<!-- 加入新課程api -->
 <?php
 	include_once('api/auth.php');
 	include_once("../mysql.php");

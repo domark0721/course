@@ -1,3 +1,4 @@
+<!-- 新增課程頁面 -->
 <?php
 	include_once('api/auth.php');
 	include_once('api/isLogin.php');

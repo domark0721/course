@@ -1,3 +1,4 @@
+<!-- 學生模式下的課程清單 -->
 <?php
 	include_once('api/auth.php');
 	require ("mysql.php");

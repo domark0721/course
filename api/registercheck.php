@@ -1,3 +1,4 @@
+<!-- 註冊完，系統自動登入 -->
 <?php
 	//connect mysqldb
 	require("../mysql.php");

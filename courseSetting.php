@@ -1,4 +1,7 @@
 <?php
+	//課程設定頁，可編輯老師資訊、課程資訊與是否開放課程
+	//類似於教學大綱的呈現
+
 	include_once('api/auth.php');
 	include_once("mongodb.php");
 	include_once("mysql.php");

@@ -1,3 +1,4 @@
+<!-- 學生模式與老師模式切換api -->
 <?php
 	session_start();
 	if($_SESSION['mode'] == "st"){

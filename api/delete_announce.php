@@ -1,3 +1,4 @@
+<!-- 刪除課程公告api -->
 <?php
 
 	require ("../mysql.php");

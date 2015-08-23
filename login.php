@@ -1,3 +1,4 @@
+<!-- 使用者登入頁 -->
 <?php
 	session_start();
 	if(isset($_SESSION['isLogin']) && $_SESSION['isLogin']){

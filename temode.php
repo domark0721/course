@@ -1,3 +1,4 @@
+<!-- 老師模式下的課程清單 -->
 <?php
 	ini_set('default_charset','utf-8');
 	include_once('api/auth.php');

@@ -1,3 +1,4 @@
+<!-- 首頁的header，為了美觀設計，所以獨立開來 -->
 <header class="headerBar clearfix" >
 	<div class="content-wrap">
 		<div id="headerLogo"><a href="/www/course/index.php"><img src="/www/course/img/logo.png"/></a></div>

@@ -1,3 +1,4 @@
+<!-- NUCourse首頁 -->
 <?php
 	include_once('api/auth.php'); 
 ?>

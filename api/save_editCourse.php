@@ -1,3 +1,4 @@
+<!-- 儲存編輯的課程內容 -->
 <?php
 	date_default_timezone_set('Asia/Taipei');
 	require ("../mongodb.php");

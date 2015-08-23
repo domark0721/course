@@ -1,3 +1,4 @@
+<!-- 使用者登入後，要記錄 -->
 <?php
 	//connect mysqldb
 	require ("../mysql.php");

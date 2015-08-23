@@ -1,4 +1,6 @@
 <?php
+	//搜尋完課程，會進入到這個頁面，此頁面可以加入課程或收藏課程
+
 	include_once('api/auth.php');
 	include_once("mongodb.php");
 	include_once("mysql.php");

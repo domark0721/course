@@ -1,6 +1,4 @@
-<?php
-
-?>
+<!-- 註冊會員頁面 -->
 <!doctype html>
 <html>
 	<head>
